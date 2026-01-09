@@ -13,9 +13,9 @@ class RiskManager:
     def __init__(self):
         self.logger = logging.getLogger(__name__)
 
-    def calculate_position_size(self, account_balance, signal_info):
+    def calculate_position_size(self, account_balance, signal_info, market_trend=None, position_type=None, config=None):
         """
-        Calculate position size based on fixed dollar risk per trade
+        Calculate position size based on market-aware dynamic risk per trade
 
         Formula for EUR/USD:
         Position Size (units) = Risk Amount ($) / Stop Loss Distance (in price)
@@ -23,25 +23,23 @@ class RiskManager:
         Where:
         - 1 standard lot = 100,000 units
         - 1 pip = 0.0001
-        - Risk is fixed in dollars per trade
+        - Risk amount varies based on market trend and position direction
 
         Args:
             account_balance: Current account balance
             signal_info: Signal information dict with 'supertrend', 'price', 'atr'
+            market_trend: 'BULL', 'BEAR', or None (for market-aware sizing)
+            position_type: 'LONG', 'SHORT', or None (for market-aware sizing)
+            config: Configuration dict for dynamic position sizing
 
         Returns:
-            int: Number of units to trade
+            tuple: (position_size_units, risk_amount_used)
         """
         if not TradingConfig.use_dynamic_sizing:
-            return TradingConfig.position_size
+            return TradingConfig.position_size, TradingConfig.risk_per_trade
 
-        # Calculate risk amount (can be fixed or percentage of balance)
-        if TradingConfig.risk_per_trade < 1:
-            # Interpret as percentage (e.g., 0.02 = 2%)
-            risk_amount = account_balance * TradingConfig.risk_per_trade
-        else:
-            # Interpret as fixed dollar amount (e.g., 100 = $100)
-            risk_amount = TradingConfig.risk_per_trade
+        # Determine risk amount based on market trend and position type
+        risk_amount = self._get_risk_amount(market_trend, position_type, config, account_balance)
 
         # Estimate stop loss distance based on SuperTrend
         if signal_info['supertrend'] and signal_info['price']:
@@ -69,12 +67,51 @@ class RiskManager:
         actual_risk = position_size_units * stop_distance
         stop_distance_pips = stop_distance / 0.0001
 
-        self.logger.info(f"Calculated position size: {position_size_units} units ({position_size_lots:.3f} lots)")
+        self.logger.info(f"Market-aware position sizing:")
+        self.logger.info(f"  Market trend: {market_trend}, Position: {position_type}")
         self.logger.info(f"  Risk amount: ${risk_amount:.2f}")
+        self.logger.info(f"  Position size: {position_size_units} units ({position_size_lots:.3f} lots)")
         self.logger.info(f"  Actual risk: ${actual_risk:.2f}")
         self.logger.info(f"  Stop distance: {stop_distance:.5f} ({stop_distance_pips:.1f} pips)")
 
-        return position_size_units
+        return position_size_units, risk_amount
+    
+    def _get_risk_amount(self, market_trend, position_type, config, account_balance):
+        """
+        Get risk amount based on market trend and position type
+        
+        Args:
+            market_trend: 'BULL', 'BEAR', or None
+            position_type: 'LONG', 'SHORT', or None  
+            config: Configuration dict with position_sizing settings
+            account_balance: Current account balance
+            
+        Returns:
+            float: Risk amount in dollars
+        """
+        # If no market-aware config provided, fall back to default
+        if not config or not config.get('position_sizing', {}).get('use_dynamic'):
+            if TradingConfig.risk_per_trade < 1:
+                return account_balance * TradingConfig.risk_per_trade
+            else:
+                return TradingConfig.risk_per_trade
+        
+        position_config = config.get('position_sizing', {})
+        
+        # Get risk amount based on market trend and position direction
+        if market_trend == 'BEAR':
+            if position_type == 'SHORT':
+                return position_config.get('bear', {}).get('short_risk_per_trade', 100)
+            else:  # LONG
+                return position_config.get('bear', {}).get('long_risk_per_trade', 100)
+        elif market_trend == 'BULL':
+            if position_type == 'SHORT':
+                return position_config.get('bull', {}).get('short_risk_per_trade', 100)
+            else:  # LONG
+                return position_config.get('bull', {}).get('long_risk_per_trade', 100)
+        else:
+            # Neutral market - use default
+            return 100
 
     def calculate_stop_loss(self, signal_info, signal_type, client=None, instrument=None):
         """
@@ -175,8 +212,9 @@ class RiskManager:
         """
         signal = signal_info['signal']
 
-        # Check signal age - skip if too old (stale)
-        if 'candle_age_seconds' in signal_info:
+        # Check signal age - skip if too old (stale) - but only for entry signals
+        # HOLD signals should persist indefinitely to allow take profit targets to be reached
+        if 'candle_age_seconds' in signal_info and signal not in ['HOLD_LONG', 'HOLD_SHORT']:
             signal_age = signal_info['candle_age_seconds']
             if signal_age > TradingConfig.max_signal_age:
                 self.logger.warning(f"⏰ Skipping stale {signal} signal: {signal_age:.1f}s old (max: {TradingConfig.max_signal_age}s)")

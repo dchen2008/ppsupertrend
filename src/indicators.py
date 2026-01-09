@@ -303,5 +303,17 @@ def get_current_signal(df):
     # If in downtrend but no new signal, trend continuation
     elif last_row['trend'] == -1:
         signal_info['signal'] = 'HOLD_SHORT'
+    
+    # Add debug info for signal detection
+    if prev_row is not None:
+        signal_info['debug'] = {
+            'prev_trend': int(prev_row['trend']),
+            'curr_trend': int(last_row['trend']),
+            'trend_changed': int(prev_row['trend']) != int(last_row['trend']),
+            'prev_close': float(prev_row['close']),
+            'curr_close': float(last_row['close']),
+            'prev_st': float(prev_row['supertrend']) if not pd.isna(prev_row['supertrend']) else None,
+            'curr_st': float(last_row['supertrend']) if not pd.isna(last_row['supertrend']) else None
+        }
 
     return signal_info

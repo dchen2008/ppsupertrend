@@ -26,10 +26,15 @@ risk_reward:
     short_rr: 0.6         # Take profit at 0.6 R:R for short positions (small profit)
     long_rr: 1.2          # Take profit at 1.2 R:R for long positions
 
-# Optional: Override other trading parameters
-# position_sizing:
-#   use_dynamic: true
-#   risk_per_trade: 100   # Risk $100 per trade (or 0.02 for 2% of account)
+# Position sizing configuration based on market trend
+position_sizing:
+  use_dynamic: true
+  bear:  # Bear market (3H PP SuperTrend signal)
+    short_risk_per_trade: 300   # If 5min/15min PP sign is SHORT, risk $300 per trade
+    long_risk_per_trade: 100    # If 5min/15min PP sign is LONG, risk $100 per trade
+  bull:  # Bull market (3H PP SuperTrend signal)
+    short_risk_per_trade: 100   # If 5min/15min PP sign is SHORT, risk $100 per trade
+    long_risk_per_trade: 300    # If 5min/15min PP sign is LONG, risk $300 per trade
   
 # Optional: ATR and Pivot parameters
 # indicators:

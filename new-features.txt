@@ -4,7 +4,7 @@ New enhance the bot: adopt 3hours's PP SuperTrend buy/sell signal as bull/bear m
   2. Loads YAML configuration from account directories
   3. Checks 3H PP SuperTrend for market direction (bull/bear)
   4. Implements take profit logic based on risk/reward ratios according to market trend
-  
+
 Detail:
 Pls change run cmd from:
   ./scripts/auto_trade.sh EUR_USD tf:5m sl:SuperTrend account1 
@@ -51,3 +51,81 @@ During "bull" marketing trend: running ./scripts/auto_trade.sh at=account1 fr=EU
     when buy postion reach 1.2 risk/reward ratio, take profit immediately
  small profit(0.6))
 
+
+
+2. CSV log enhancement:
+
+Pls enhance csv file output colums as:
+tradeID,market,        action,                    pp_sign,   pp_sign_time,       order_time,          close_time,          duration(m), open_position,               entry_price, stop_loss, highest_pl, lowest_pl,  realized_pl, accountBalance
+700, bear|bull,  NEW_ORDER|CLOSE|EXTERNAL_CLOSE,SHORT|LONG, 2026-01-09 05:43:33, 2026-01-09 05:43:35, 2026-01-09 05:43:35,  95,     "EUR_USD SHORT -36,531 units",  1.16365,    1.16458,    +$210.00,  -$85.08,      +$115.00,  $499,777.30
+
+The tradeID's value should be same as: OANDA API response "Trade ID"
+open_position: should be same as OANDA API response: Open Position: EUR_USD SHORT -36,531 units
+if the column same as OANDA API response, should keep same value as OANDA.
+About highest_pl, lowest_pl, when the position live there 150mins, running many candles, when price run high/lower, pls calculate highest/lowest PL into here.
+This info(highest_pl, lowest_pl) are very important to measure the take profit risk/reward ratio reasonable late data analyse.
+
+One tradeID should have multiple rows into this CSV, e.g.: tradeID: 700
+tradeID, market,  action,    pp_sign,   pp_sign_time,        order_time,          close_time,        duration(m), open_position,               entry_price, stop_loss, highest_pl, lowest_pl,  realized_pl, accountBalance
+700, bear,         NEW_ORDER,  SHORT,  2026-01-09 05:43:33,  2026-01-09 05:43:35, N/A,                  N/A,     "EUR_USD SHORT -36,531 units",  1.16365,    1.16458,    +$10.00,  -$15.08,      N/A,      $499,777.30
+700, bear,         CLOSE,      SHORT,  2026-01-09 05:43:33,  2026-01-09 05:43:35, 2026-01-09 15:43:35,  145,     "EUR_USD SHORT -36,531 units",  1.16365,    1.16780,    +$210.00,  -$85.08,     +$115.00,  $499,777.30
+
+After bot restart, pls call OANDA API get tradeID and other info, and read CSV, pls don't duplicate more rows in CSV.
+
+Here is OANDA API response payload:
+  - Account Balance: $499,777.30
+  - Open Position: EUR_USD SHORT -36,531 units
+  - Entry Price: 1.16365
+  - Stop Loss: 1.16458
+  - Unrealized P&L: +$16.07
+  - Total P&L: -$1,594.96
+  - Trade ID: 700
+
+  The new CSV structure includes these columns:
+  - tradeID - OANDA trade ID (matches API response)
+  - market - Market trend (bear/bull/neutral)
+  - action - NEW_ORDER/CLOSE/EXTERNAL_CLOSE
+  - pp_sign - Position direction (SHORT/LONG)
+  - pp_sign_time - Timestamp when signal generated
+  - order_time - When order was placed
+  - close_time - When position closed
+  - duration(m) - Duration in minutes
+  - open_position - Description like "EUR_USD SHORT -36,531 units"
+  - entry_price - Entry price
+  - stop_loss - Stop loss level
+  - highest_pl - Highest P&L reached during trade lifetime
+  - lowest_pl - Lowest P&L reached during trade lifetime
+  - realized_pl - Final realized P&L
+  - accountBalance - Account balance
+
+
+3. Each order use dynamic position size
+Pls put below config into config.yaml
+position_sizing:
+  use_dynamic: true
+  bear: (it is 3H PP sign)
+    short_risk_per_trade: 300   # if 5min/15min's PP sign is SHORT, risk $300 per trade
+    long_risk_per_trade: 100    # if 5min/15min's PP sign is LONG, risk $100 per trade
+  bull:
+    short_risk_per_trade: 100   # if 5min/15min's PP sign is SHORT, risk $100 per trade
+    long_risk_per_trade: 300    # if 5min/15min's PP sign is LONG, risk $300 per trade
+
+ Key Enhancements:
+
+  1. Market-Aware Position Sizing: Risk amount now varies based on:
+    - 3H Market Trend: BULL vs BEAR (from 3H PP SuperTrend)
+    - Position Direction: LONG vs SHORT (from 5m/15m PP SuperTrend)
+  2. Risk Logic:
+    - Bear Market: Favor SHORT positions ($300) over LONG positions ($100)
+    - Bull Market: Favor LONG positions ($300) over SHORT positions ($100)
+  3. Improved R/R Calculation: Now uses the actual dynamic risk amount instead of fixed $100
+
+  How It Works:
+
+  - In a BEAR market with a SHORT signal: Bot risks $300 per trade
+  - In a BEAR market with a LONG signal: Bot risks $100 per trade
+  - In a BULL market with a LONG signal: Bot risks $300 per trade
+  - In a BULL market with a SHORT signal: Bot risks $100 per trade
+
+  This aligns position sizing with market conditions - taking larger positions when trading WITH the trend and
+  smaller positions when trading AGAINST the trend.

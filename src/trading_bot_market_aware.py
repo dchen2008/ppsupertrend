@@ -20,17 +20,50 @@ from .indicators import calculate_pp_supertrend, get_current_signal
 from .risk_manager import RiskManager
 
 
+class TradeTracker:
+    """Track P&L high/low for open trades"""
+    def __init__(self):
+        self.highest_pl = None
+        self.lowest_pl = None
+        self.entry_price = None
+        self.position_side = None
+        self.units = None
+        
+    def update_pl(self, current_price):
+        """Update highest/lowest P&L based on current price"""
+        if self.entry_price is None or self.units is None:
+            return
+            
+        # Calculate current P&L
+        if self.position_side == 'LONG':
+            current_pl = (current_price - self.entry_price) * abs(self.units)
+        else:  # SHORT
+            current_pl = (self.entry_price - current_price) * abs(self.units)
+        
+        # Update highest/lowest
+        if self.highest_pl is None or current_pl > self.highest_pl:
+            self.highest_pl = current_pl
+        if self.lowest_pl is None or current_pl < self.lowest_pl:
+            self.lowest_pl = current_pl
+    
+    def reset(self):
+        """Reset tracker for new trade"""
+        self.highest_pl = None
+        self.lowest_pl = None
+        self.entry_price = None
+        self.position_side = None
+        self.units = None
+
+
 class CSVLogger:
     """Thread-safe CSV logger for trade results"""
 
     def __init__(self, csv_filename):
         self.csv_filename = csv_filename
         self.lock = Lock()
-        self.fieldnames = ['tradeID', 'name', 'orderTime', 'closeTime', 'duration', 'superTrend', 'pivotPoint',
-                          'signal', 'type', 'positionSize', 'enterPrice', 'stopLoss', 'takeProfit', 'closePrice',
-                          'highestPrice', 'lowestPrice', 'highestProfit', 'lowestLoss',
-                          'stopLossHit', 'takeProfitHit', 'marketTrend', 'riskRewardTarget', 'riskRewardActual', 
-                          'profit', 'accountBalance']
+        self.fieldnames = ['tradeID', 'market', 'action', 'pp_sign', 'pp_sign_time', 'order_time', 
+                          'close_time', 'duration(m)', 'open_position', 'entry_price', 'stop_loss', 
+                          'highest_pl', 'lowest_pl', 'realized_pl', 'accountBalance']
 
         # Create CSV file with headers if it doesn't exist
         if not os.path.exists(self.csv_filename):
@@ -44,6 +77,22 @@ class CSVLogger:
             with open(self.csv_filename, 'a', newline='') as f:
                 writer = csv.DictWriter(f, fieldnames=self.fieldnames)
                 writer.writerow(trade_data)
+                
+    def trade_exists(self, trade_id, action):
+        """Check if a trade with specific action already exists in CSV"""
+        if not os.path.exists(self.csv_filename):
+            return False
+            
+        with self.lock:
+            try:
+                with open(self.csv_filename, 'r', newline='') as f:
+                    reader = csv.DictReader(f)
+                    for row in reader:
+                        if row.get('tradeID') == str(trade_id) and row.get('action') == action:
+                            return True
+            except Exception:
+                pass
+        return False
 
 
 class MarketAwareTradingBot:
@@ -102,6 +151,7 @@ class MarketAwareTradingBot:
         self.client = OANDAClient()
         self.risk_manager = RiskManager()
         self.csv_logger = CSVLogger(self.csv_filename)
+        self.trade_tracker = TradeTracker()
 
         # Bot state
         self.is_running = False
@@ -125,6 +175,7 @@ class MarketAwareTradingBot:
         self.current_position_size = None
         self.current_market_trend = 'NEUTRAL'  # Track market trend at trade open
         self.current_risk_reward_target = None  # Track target R:R
+        self.current_risk_amount = None  # Track actual risk amount used
 
         # Track unique trade IDs
         self.trade_id_counter = 0
@@ -507,36 +558,35 @@ class MarketAwareTradingBot:
                         if risk > 0:
                             risk_reward_actual = f"{(profit / risk):.2f}"
 
+                    # Calculate duration in minutes
+                    duration_minutes = 'N/A'
+                    if self.current_trade_open_time:
+                        duration_seconds = (close_time - self.current_trade_open_time).total_seconds()
+                        duration_minutes = int(duration_seconds / 60)
+                    
                     csv_data = {
-                        'tradeID': self.trade_id_counter,
-                        'name': self.instrument,
-                        'orderTime': self.current_trade_open_time.strftime('%Y-%m-%d %H:%M:%S') if self.current_trade_open_time else 'N/A',
-                        'closeTime': close_time.strftime('%Y-%m-%d %H:%M:%S'),
-                        'duration': duration,
-                        'superTrend': f"{self.current_supertrend_value:.5f}" if self.current_supertrend_value else 'N/A',
-                        'pivotPoint': f"{self.current_pivot_point_value:.5f}" if self.current_pivot_point_value else 'N/A',
-                        'signal': current_position['side'],
-                        'type': 'CLOSE',
-                        'positionSize': position_size,
-                        'enterPrice': f"{self.current_entry_price:.5f}" if self.current_entry_price else 'N/A',
-                        'stopLoss': f"{self.current_stop_loss_price:.5f}" if self.current_stop_loss_price else 'N/A',
-                        'takeProfit': f"{self.current_take_profit_price:.5f}" if self.current_take_profit_price else 'N/A',
-                        'closePrice': f"{close_price:.5f}",
-                        'highestPrice': f"{self.highest_price_during_trade:.5f}" if self.highest_price_during_trade else 'N/A',
-                        'lowestPrice': f"{self.lowest_price_during_trade:.5f}" if self.lowest_price_during_trade else 'N/A',
-                        'highestProfit': 'N/A',  # Can be calculated if needed
-                        'lowestLoss': 'N/A',  # Can be calculated if needed
-                        'stopLossHit': stop_loss_hit,
-                        'takeProfitHit': take_profit_hit,
-                        'marketTrend': self.current_market_trend,
-                        'riskRewardTarget': f"{self.current_risk_reward_target:.1f}" if self.current_risk_reward_target else 'N/A',
-                        'riskRewardActual': risk_reward_actual,
-                        'profit': f"{profit:.2f}",
-                        'accountBalance': account_summary['balance']
+                        'tradeID': self.current_trade_id if self.current_trade_id else self.trade_id_counter,
+                        'market': self.current_market_trend.lower() if self.current_market_trend else 'neutral',
+                        'action': 'CLOSE',
+                        'pp_sign': current_position['side'],
+                        'pp_sign_time': self.current_trade_open_time.strftime('%Y-%m-%d %H:%M:%S') if self.current_trade_open_time else 'N/A',
+                        'order_time': self.current_trade_open_time.strftime('%Y-%m-%d %H:%M:%S') if self.current_trade_open_time else 'N/A',
+                        'close_time': close_time.strftime('%Y-%m-%d %H:%M:%S'),
+                        'duration(m)': duration_minutes,
+                        'open_position': f"{self.instrument} {current_position['side']} {position_size:,.0f} units",
+                        'entry_price': f"{self.current_entry_price:.5f}" if self.current_entry_price else 'N/A',
+                        'stop_loss': f"{self.current_stop_loss_price:.5f}" if self.current_stop_loss_price else 'N/A',
+                        'highest_pl': f"+${self.trade_tracker.highest_pl:.2f}" if self.trade_tracker.highest_pl and self.trade_tracker.highest_pl > 0 else 'N/A',
+                        'lowest_pl': f"-${abs(self.trade_tracker.lowest_pl):.2f}" if self.trade_tracker.lowest_pl and self.trade_tracker.lowest_pl < 0 else 'N/A',
+                        'realized_pl': f"+${profit:.2f}" if profit >= 0 else f"-${abs(profit):.2f}",
+                        'accountBalance': f"${float(account_summary['balance']):,.2f}"
                     }
                     self.csv_logger.log_trade(csv_data)
 
                     self.logger.info(f"📊 Profit/Loss: ${profit:.2f}")
+
+                # Reset trade tracker
+                self.trade_tracker.reset()
 
                 # Clear tracking variables
                 self.current_stop_loss_order_id = None
@@ -553,6 +603,7 @@ class MarketAwareTradingBot:
                 self.current_position_size = None
                 self.current_market_trend = 'NEUTRAL'
                 self.current_risk_reward_target = None
+                self.current_risk_amount = None
 
                 # Reset signal tracking so next signal can be acted upon
                 self.last_signal_candle_time = None
@@ -563,10 +614,14 @@ class MarketAwareTradingBot:
             # Get current market trend
             market_trend = self.check_market_trend()
             
-            # Calculate position size
-            position_size = self.risk_manager.calculate_position_size(
+            # Calculate position size with market-aware dynamic sizing
+            position_type = 'LONG' if action == 'OPEN_LONG' else 'SHORT'
+            position_size, risk_amount_used = self.risk_manager.calculate_position_size(
                 account_summary['balance'],
-                signal_info
+                signal_info,
+                market_trend=market_trend,
+                position_type=position_type,
+                config=self.config
             )
 
             # Validate trade
@@ -599,7 +654,7 @@ class MarketAwareTradingBot:
             self.logger.info(f"Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
             self.logger.info(f"Instrument: {self.instrument}")
             self.logger.info(f"Direction: {signal_type}")
-            self.logger.info(f"Units: {abs(units)}")
+            self.logger.info(f"💰 Dynamic Position Size: ${risk_amount_used:.0f} risk → {abs(units):,} units ({abs(units)/100000:.3f} lots)")
             self.logger.info(f"Entry Price: {current_price:.5f}")
             self.logger.info(f"Stop Loss: {stop_loss:.5f}" if stop_loss else "Stop Loss: Not set")
             self.logger.info(f"Take Profit: {take_profit:.5f} (R:R {risk_reward_ratio:.1f})" if take_profit else "Take Profit: Not set")
@@ -637,6 +692,7 @@ class MarketAwareTradingBot:
                     self.current_position_size = abs(units)
                     self.current_market_trend = market_trend
                     self.current_risk_reward_target = risk_reward_ratio
+                    self.current_risk_amount = risk_amount_used
 
                     # Store trade ID
                     if 'tradeOpened' in fill:
@@ -654,33 +710,28 @@ class MarketAwareTradingBot:
                         tp_order = result['takeProfitOrderTransaction']
                         self.current_take_profit_price = float(tp_order['price'])
 
+                    # Initialize trade tracker
+                    self.trade_tracker.entry_price = actual_price
+                    self.trade_tracker.position_side = position_type
+                    self.trade_tracker.units = abs(units)
+
                     # Log to CSV (initial entry)
                     csv_data = {
-                        'tradeID': self.trade_id_counter,
-                        'name': self.instrument,
-                        'orderTime': self.current_trade_open_time.strftime('%Y-%m-%d %H:%M:%S'),
-                        'closeTime': 'N/A',
-                        'duration': 'N/A',
-                        'superTrend': f"{self.current_supertrend_value:.5f}" if self.current_supertrend_value else 'N/A',
-                        'pivotPoint': f"{self.current_pivot_point_value:.5f}" if self.current_pivot_point_value else 'N/A',
-                        'signal': position_type,
-                        'type': 'buy' if action == 'OPEN_LONG' else 'sell',
-                        'positionSize': abs(units),
-                        'enterPrice': f"{actual_price:.5f}",
-                        'stopLoss': f"{stop_loss:.5f}" if stop_loss else 'N/A',
-                        'takeProfit': f"{take_profit:.5f}" if take_profit else 'N/A',
-                        'closePrice': 'N/A',
-                        'highestPrice': 'N/A',
-                        'lowestPrice': 'N/A',
-                        'highestProfit': 'N/A',
-                        'lowestLoss': 'N/A',
-                        'stopLossHit': 'N/A',
-                        'takeProfitHit': 'N/A',
-                        'marketTrend': market_trend,
-                        'riskRewardTarget': f"{risk_reward_ratio:.1f}",
-                        'riskRewardActual': 'N/A',
-                        'profit': '0.00',
-                        'accountBalance': account_summary['balance']
+                        'tradeID': self.current_trade_id,
+                        'market': market_trend.lower() if market_trend else 'neutral',
+                        'action': 'NEW_ORDER',
+                        'pp_sign': position_type,
+                        'pp_sign_time': self.current_trade_open_time.strftime('%Y-%m-%d %H:%M:%S'),
+                        'order_time': self.current_trade_open_time.strftime('%Y-%m-%d %H:%M:%S'),
+                        'close_time': 'N/A',
+                        'duration(m)': 'N/A',
+                        'open_position': f"{self.instrument} {position_type} {abs(units):,.0f} units",
+                        'entry_price': f"{actual_price:.5f}",
+                        'stop_loss': f"{stop_loss:.5f}" if stop_loss else 'N/A',
+                        'highest_pl': 'N/A',
+                        'lowest_pl': 'N/A',
+                        'realized_pl': 'N/A',
+                        'accountBalance': f"${float(account_summary['balance']):,.2f}"
                     }
                     self.csv_logger.log_trade(csv_data)
             else:
@@ -827,36 +878,35 @@ class MarketAwareTradingBot:
                         if risk > 0:
                             risk_reward_actual = f"{(profit / risk):.2f}"
                     
+                    # Calculate duration in minutes
+                    duration_minutes = 'N/A'
+                    if self.current_trade_open_time:
+                        duration_seconds = (close_time - self.current_trade_open_time).total_seconds()
+                        duration_minutes = int(duration_seconds / 60)
+                    
                     # Log to CSV
                     csv_data = {
-                        'tradeID': self.trade_id_counter,
-                        'name': self.instrument,
-                        'orderTime': self.current_trade_open_time.strftime('%Y-%m-%d %H:%M:%S') if self.current_trade_open_time else 'N/A',
-                        'closeTime': close_time.strftime('%Y-%m-%d %H:%M:%S'),
-                        'duration': duration,
-                        'superTrend': f"{self.current_supertrend_value:.5f}" if self.current_supertrend_value else 'N/A',
-                        'pivotPoint': f"{self.current_pivot_point_value:.5f}" if self.current_pivot_point_value else 'N/A',
-                        'signal': self.current_position_side if self.current_position_side else 'N/A',
-                        'type': 'EXTERNAL_CLOSE',
-                        'positionSize': self.current_position_size if self.current_position_size else 0,
-                        'enterPrice': f"{self.current_entry_price:.5f}" if self.current_entry_price else 'N/A',
-                        'stopLoss': f"{self.current_stop_loss_price:.5f}" if self.current_stop_loss_price else 'N/A',
-                        'takeProfit': f"{self.current_take_profit_price:.5f}" if self.current_take_profit_price else 'N/A',
-                        'closePrice': f"{close_price:.5f}" if close_price else 'N/A',
-                        'highestPrice': f"{self.highest_price_during_trade:.5f}" if self.highest_price_during_trade else 'N/A',
-                        'lowestPrice': f"{self.lowest_price_during_trade:.5f}" if self.lowest_price_during_trade else 'N/A',
-                        'highestProfit': 'N/A',
-                        'lowestLoss': 'N/A',
-                        'stopLossHit': stop_loss_hit,
-                        'takeProfitHit': take_profit_hit,
-                        'marketTrend': self.current_market_trend,
-                        'riskRewardTarget': f"{self.current_risk_reward_target:.1f}" if self.current_risk_reward_target else 'N/A',
-                        'riskRewardActual': risk_reward_actual,
-                        'profit': f"{profit:.2f}",
-                        'accountBalance': account_summary['balance']
+                        'tradeID': self.current_trade_id if self.current_trade_id else self.trade_id_counter,
+                        'market': self.current_market_trend.lower() if self.current_market_trend else 'neutral',
+                        'action': 'CLOSE',
+                        'pp_sign': self.current_position_side if self.current_position_side else 'N/A',
+                        'pp_sign_time': self.current_trade_open_time.strftime('%Y-%m-%d %H:%M:%S') if self.current_trade_open_time else 'N/A',
+                        'order_time': self.current_trade_open_time.strftime('%Y-%m-%d %H:%M:%S') if self.current_trade_open_time else 'N/A',
+                        'close_time': close_time.strftime('%Y-%m-%d %H:%M:%S'),
+                        'duration(m)': duration_minutes,
+                        'open_position': f"{self.instrument} {self.current_position_side} {self.current_position_size:,.0f} units" if self.current_position_side and self.current_position_size else 'N/A',
+                        'entry_price': f"{self.current_entry_price:.5f}" if self.current_entry_price else 'N/A',
+                        'stop_loss': f"{self.current_stop_loss_price:.5f}" if self.current_stop_loss_price else 'N/A',
+                        'highest_pl': f"+${self.trade_tracker.highest_pl:.2f}" if self.trade_tracker.highest_pl and self.trade_tracker.highest_pl > 0 else 'N/A',
+                        'lowest_pl': f"-${abs(self.trade_tracker.lowest_pl):.2f}" if self.trade_tracker.lowest_pl and self.trade_tracker.lowest_pl < 0 else 'N/A',
+                        'realized_pl': f"+${profit:.2f}" if profit >= 0 else f"-${abs(profit):.2f}",
+                        'accountBalance': f"${float(account_summary['balance']):,.2f}"
                     }
                     self.csv_logger.log_trade(csv_data)
                     self.logger.info(f"   💾 Logged external close to CSV: P/L=${profit:.2f}")
+                    
+                    # Reset trade tracker
+                    self.trade_tracker.reset()
                     
                     # Clear all tracking
                     self.current_stop_loss_order_id = None
@@ -873,6 +923,7 @@ class MarketAwareTradingBot:
                     self.current_position_size = None
                     self.current_market_trend = 'NEUTRAL'
                     self.current_risk_reward_target = None
+                    self.current_risk_amount = None
                     self.last_signal_candle_time = None
 
             # Recover tracking if needed
@@ -909,33 +960,47 @@ class MarketAwareTradingBot:
                            f"P/L: ${account_summary['unrealized_pl']:.2f}")
 
             if current_position and current_position['units'] != 0:
-                self.logger.info(f"Position: {current_position['side']} {abs(current_position['units'])} units")
+                position_units = abs(current_position['units'])
+                position_lots = position_units / 100000
+                risk_used = self.current_risk_amount if self.current_risk_amount else 100
+                self.logger.info(f"Position: {current_position['side']} {position_units:,} units ({position_lots:.3f} lots) [${risk_used:.0f} risk]")
                 
                 # Calculate and display risk/reward information
                 if self.current_entry_price and self.current_stop_loss_price and self.current_position_size:
-                    # Calculate risk (stop distance * position size)
-                    risk_amount = abs(self.current_entry_price - self.current_stop_loss_price) * self.current_position_size
+                    # Use the actual risk amount that was used for this trade
+                    # This could be different based on market trend and position direction
+                    risk_amount = self.current_risk_amount if self.current_risk_amount else 100
                     
                     # Get expected R:R ratio based on market and position
                     position_type = 'LONG' if current_position['side'] == 'LONG' else 'SHORT'
                     expected_rr = self.get_risk_reward_ratio(self.current_market_signal, position_type)
                     
-                    # Calculate current R:R achieved
-                    current_price = signal_info['price']
-                    if position_type == 'LONG':
-                        current_profit = (current_price - self.current_entry_price) * self.current_position_size
-                    else:  # SHORT
-                        current_profit = (self.current_entry_price - current_price) * self.current_position_size
+                    # Calculate current profit in dollars (P/L from position)
+                    current_profit = float(current_position['unrealized_pl'])
                     
                     current_rr = current_profit / risk_amount if risk_amount > 0 else 0
                     
                     self.logger.info(f"Expected Take Profit R:R: {expected_rr:.1f} | Current R:R Reached: {current_rr:.2f}")
+                    
+                    # Update P&L tracking with current price
+                    if signal_info.get('close_price'):
+                        current_price = signal_info['close_price']
+                        self.trade_tracker.update_pl(current_price)
                     
                     # Show if approaching take profit
                     if current_rr >= expected_rr * 0.8:  # Within 80% of target
                         self.logger.info(f"⚠️  Approaching Take Profit Target ({current_rr:.2f}/{expected_rr:.1f})")
 
             self.logger.info(f"Signal: {signal_info['signal']} | Price: {signal_info['price']:.5f}")
+            
+            # Log debug info if available
+            if 'debug' in signal_info:
+                debug = signal_info['debug']
+                if debug.get('trend_changed'):
+                    self.logger.info(f"🔄 TREND CHANGED: {debug['prev_trend']} → {debug['curr_trend']}")
+                self.logger.debug(f"   Trend: {debug['prev_trend']} → {debug['curr_trend']} | "
+                                f"Price: {debug['prev_close']:.5f} → {debug['curr_close']:.5f} | "
+                                f"ST: {debug['prev_st']:.5f} → {debug['curr_st']:.5f}")
 
             # Add diagnostic logging for BUY/SELL signals
             if signal_info['signal'] in ['BUY', 'SELL']:
@@ -990,10 +1055,70 @@ class MarketAwareTradingBot:
         except Exception as e:
             self.logger.error(f"Error in check_and_trade: {e}", exc_info=True)
 
+    def check_existing_trades(self):
+        """Check for existing trades on startup and initialize tracking"""
+        trades = self.client.get_trades()
+        if not trades:
+            return
+            
+        account_summary = self.client.get_account_summary()
+        if not account_summary:
+            return
+            
+        for trade in trades:
+            trade_id = trade['id']
+            
+            # Check if NEW_ORDER entry already exists in CSV
+            if not self.csv_logger.trade_exists(trade_id, 'NEW_ORDER'):
+                # Log the existing trade as NEW_ORDER (external)
+                position_side = 'LONG' if float(trade['currentUnits']) > 0 else 'SHORT'
+                units = abs(float(trade['currentUnits']))
+                
+                csv_data = {
+                    'tradeID': trade_id,
+                    'market': 'NEUTRAL',  # Unknown at restart
+                    'action': 'NEW_ORDER',
+                    'pp_sign': position_side,
+                    'pp_sign_time': trade['openTime'][:19].replace('T', ' '),
+                    'order_time': trade['openTime'][:19].replace('T', ' '),
+                    'close_time': 'N/A',
+                    'duration(m)': 'N/A',
+                    'open_position': f"{trade['instrument']} {position_side} {units:,.0f} units",
+                    'entry_price': f"{float(trade['price']):.5f}",
+                    'stop_loss': f"{float(trade.get('stopLossOrder', {}).get('price', 0)):.5f}" if trade.get('stopLossOrder') else 'N/A',
+                    'highest_pl': 'N/A',
+                    'lowest_pl': 'N/A',
+                    'realized_pl': 'N/A',
+                    'accountBalance': f"${float(account_summary['balance']):,.2f}"
+                }
+                self.csv_logger.log_trade(csv_data)
+                self.logger.info(f"📊 Logged existing trade {trade_id} as NEW_ORDER")
+            
+            # Initialize tracking for existing trade
+            if trade['instrument'] == self.instrument:
+                self.current_trade_id = trade_id
+                self.current_position_side = 'LONG' if float(trade['currentUnits']) > 0 else 'SHORT'
+                self.current_entry_price = float(trade['price'])
+                self.current_position_size = abs(float(trade['currentUnits']))
+                
+                # Initialize trade tracker
+                self.trade_tracker.entry_price = self.current_entry_price
+                self.trade_tracker.position_side = self.current_position_side
+                self.trade_tracker.units = self.current_position_size
+                
+                if trade.get('stopLossOrder'):
+                    self.current_stop_loss_price = float(trade['stopLossOrder']['price'])
+                    self.current_stop_loss_order_id = trade['stopLossOrder']['id']
+                
+                self.logger.info(f"🔄 Resumed tracking existing {self.current_position_side} position (Trade ID: {trade_id})")
+
     def run(self):
         """Main bot loop"""
         self.is_running = True
         self.logger.info("🚀 Market-aware trading bot started")
+        
+        # Check for existing trades on startup
+        self.check_existing_trades()
 
         try:
             while self.is_running:

@@ -1,0 +1,4 @@
+tradeID,name,orderTime,closeTime,duration,superTrend,pivotPoint,signal,type,positionSize,enterPrice,stopLoss,takeProfit,closePrice,highestPrice,lowestPrice,highestProfit,lowestLoss,stopLossHit,takeProfitHit,marketTrend,riskRewardTarget,riskRewardActual,profit,accountBalance
+0,EUR_USD,N/A,2026-01-09 05:43:33,N/A,N/A,N/A,SHORT,EXTERNAL_CLOSE,138031.0,1.16506,1.16500,N/A,1.16500,1.16516,1.16405,N/A,N/A,UNKNOWN,UNKNOWN,NEUTRAL,N/A,0.00,0.00,499777.3042
+0,EUR_USD,N/A,2026-01-09 10:41:02,N/A,N/A,N/A,SHORT,EXTERNAL_CLOSE,36531.0,1.16365,1.16382,N/A,1.16382,1.16365,1.16298,N/A,N/A,UNKNOWN,UNKNOWN,NEUTRAL,N/A,0.00,0.00,499766.7102
+0,EUR_USD,N/A,2026-01-09 11:00:20,N/A,N/A,N/A,LONG,EXTERNAL_CLOSE,80006.0,1.16386,1.16273,N/A,1.16273,1.16386,1.16364,N/A,N/A,UNKNOWN,UNKNOWN,NEUTRAL,N/A,0.00,0.00,499724.307

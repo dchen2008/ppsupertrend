@@ -227,3 +227,1947 @@
 2026-01-08 22:30:22 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-08 22:30:22
 2026-01-08 22:30:22 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
 2026-01-08 22:30:22 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16508
+2026-01-08 22:36:59 - bot_EUR_USD_15m_market - INFO - Loaded account-specific config from: account2/config.yaml
+2026-01-08 22:36:59 - bot_EUR_USD_15m_market - INFO - ================================================================================
+2026-01-08 22:36:59 - bot_EUR_USD_15m_market - INFO - Market-Aware Trading Bot Initialized
+2026-01-08 22:36:59 - bot_EUR_USD_15m_market - INFO - ================================================================================
+2026-01-08 22:36:59 - bot_EUR_USD_15m_market - INFO - Account: 101-001-38143009-001
+2026-01-08 22:36:59 - bot_EUR_USD_15m_market - INFO - Mode: PRACTICE
+2026-01-08 22:36:59 - bot_EUR_USD_15m_market - INFO - Instrument: EUR_USD
+2026-01-08 22:36:59 - bot_EUR_USD_15m_market - INFO - Trading Timeframe: 15m (M15)
+2026-01-08 22:36:59 - bot_EUR_USD_15m_market - INFO - Market Trend Timeframe: H3 (H3)
+2026-01-08 22:36:59 - bot_EUR_USD_15m_market - INFO - Stop Loss Type: supertrend
+2026-01-08 22:36:59 - bot_EUR_USD_15m_market - INFO - CSV Log: account2/csv/EUR_USD_15m_market_aware.csv
+2026-01-08 22:36:59 - bot_EUR_USD_15m_market - INFO - Check Interval: 60 seconds
+2026-01-08 22:36:59 - bot_EUR_USD_15m_market - INFO - Risk/Reward Config: {'bear_market': {'short_rr': 1.2, 'long_rr': 0.6}, 'bull_market': {'short_rr': 0.6, 'long_rr': 1.2}}
+2026-01-08 22:36:59 - bot_EUR_USD_15m_market - INFO - ================================================================================
+2026-01-08 22:36:59 - bot_EUR_USD_15m_market - INFO - 🚀 Market-aware trading bot started
+2026-01-08 22:37:00 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-08 22:37:00 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-08 22:37:00 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16562
+2026-01-08 22:37:00 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-08 22:37:00 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:37:00 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-08 22:37:00
+2026-01-08 22:37:00 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-08 22:37:00 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16508
+2026-01-08 22:38:01 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:38:01 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-08 22:38:01
+2026-01-08 22:38:01 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-08 22:38:01 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16508
+2026-01-08 22:39:01 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:39:01 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-08 22:39:01
+2026-01-08 22:39:01 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-08 22:39:01 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16508
+2026-01-08 22:40:01 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-08 22:40:01 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-08 22:40:01 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16562
+2026-01-08 22:40:01 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-08 22:40:02 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:40:02 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-08 22:40:02
+2026-01-08 22:40:02 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-08 22:40:02 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16508
+2026-01-08 22:41:02 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:41:02 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-08 22:41:02
+2026-01-08 22:41:02 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-08 22:41:02 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16508
+2026-01-08 22:42:03 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:42:03 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-08 22:42:03
+2026-01-08 22:42:03 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-08 22:42:03 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16508
+2026-01-08 22:43:03 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-08 22:43:03 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-08 22:43:03 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16562
+2026-01-08 22:43:03 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-08 22:43:04 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:43:04 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-08 22:43:04
+2026-01-08 22:43:04 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-08 22:43:04 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16508
+2026-01-08 22:44:06 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:44:06 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-08 22:44:06
+2026-01-08 22:44:06 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-08 22:44:06 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16508
+2026-01-08 22:45:07 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:45:07 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-08 22:45:07
+2026-01-08 22:45:07 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-08 22:45:07 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16514
+2026-01-08 22:46:07 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-08 22:46:07 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-08 22:46:07 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16562
+2026-01-08 22:46:07 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-08 22:46:07 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:46:07 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-08 22:46:07
+2026-01-08 22:46:07 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-08 22:46:07 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16514
+2026-01-08 22:47:08 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:47:08 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-08 22:47:08
+2026-01-08 22:47:08 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-08 22:47:08 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16514
+2026-01-08 22:48:08 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:48:08 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-08 22:48:08
+2026-01-08 22:48:08 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-08 22:48:08 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16514
+2026-01-08 22:49:09 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-08 22:49:09 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-08 22:49:09 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16562
+2026-01-08 22:49:09 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-08 22:49:09 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:49:09 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-08 22:49:09
+2026-01-08 22:49:09 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-08 22:49:09 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16514
+2026-01-08 22:53:04 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-08 22:53:04 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-08 22:53:04 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16562
+2026-01-08 22:53:04 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-08 22:53:05 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:53:05 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-08 22:53:05
+2026-01-08 22:53:05 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-08 22:53:05 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16514
+2026-01-08 23:11:30 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-08 23:11:30 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-08 23:11:30 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16490
+2026-01-08 23:11:30 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-08 23:11:31 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 23:11:31 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-08 23:11:31
+2026-01-08 23:11:31 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-08 23:11:31 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16490
+2026-01-08 23:28:16 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-08 23:28:16 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-08 23:28:16 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16490
+2026-01-08 23:28:16 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-08 23:28:18 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 23:28:18 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-08 23:28:18
+2026-01-08 23:28:18 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-08 23:28:18 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16452
+2026-01-08 23:44:33 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-08 23:44:33 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-08 23:44:33 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16490
+2026-01-08 23:44:33 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-08 23:44:35 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 23:44:35 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-08 23:44:35
+2026-01-08 23:44:35 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-08 23:44:35 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16450
+2026-01-08 23:45:35 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 23:45:35 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-08 23:45:35
+2026-01-08 23:45:35 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-08 23:45:35 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16423
+2026-01-08 23:46:36 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 23:46:36 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-08 23:46:36
+2026-01-08 23:46:36 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-08 23:46:36 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16423
+2026-01-09 00:02:39 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 00:02:39 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 00:02:39 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16490
+2026-01-09 00:02:39 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 00:02:40 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 00:02:40 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 00:02:40
+2026-01-09 00:02:40 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 00:02:40 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16508
+2026-01-09 00:20:41 - bot_EUR_USD_15m_market - WARNING - Failed to fetch market trend data
+2026-01-09 00:20:54 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 00:20:54 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 00:20:54
+2026-01-09 00:20:54 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 00:20:54 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16438
+2026-01-09 00:37:54 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 00:37:54 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 00:37:54 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16490
+2026-01-09 00:37:54 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 00:37:56 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 00:37:56 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 00:37:56
+2026-01-09 00:37:56 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 00:37:56 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16456
+2026-01-09 00:45:48 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 00:45:48 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 00:45:48 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16490
+2026-01-09 00:45:48 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 00:45:48 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 00:45:48 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 00:45:48
+2026-01-09 00:45:48 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 00:45:48 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16429
+2026-01-09 01:17:06 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 01:17:06 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 01:17:06 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16490
+2026-01-09 01:17:06 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 01:17:07 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 01:17:07 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 01:17:07
+2026-01-09 01:17:07 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 01:17:07 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16478
+2026-01-09 01:34:13 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 01:34:13 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 01:34:13 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16490
+2026-01-09 01:34:13 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 01:34:14 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 01:34:14 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 01:34:14
+2026-01-09 01:34:14 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 01:34:14 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16427
+2026-01-09 01:51:41 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 01:51:41 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 01:51:41 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16490
+2026-01-09 01:51:41 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 01:51:41 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 01:51:41 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 01:51:41
+2026-01-09 01:51:41 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 01:51:41 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16436
+2026-01-09 02:08:53 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 02:08:53 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 02:08:53 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16426
+2026-01-09 02:08:53 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 02:08:54 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 02:08:54 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 02:08:54
+2026-01-09 02:08:54 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 02:08:54 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16426
+2026-01-09 02:25:00 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 02:25:00 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 02:25:00 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16426
+2026-01-09 02:25:00 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 02:41:11 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 02:41:11 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 02:41:11
+2026-01-09 02:41:11 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 02:41:11 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16436
+2026-01-09 02:59:22 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 02:59:22 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 02:59:22 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16426
+2026-01-09 02:59:22 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 02:59:23 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 02:59:23 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 02:59:23
+2026-01-09 02:59:23 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 02:59:23 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16428
+2026-01-09 03:16:17 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 03:16:17 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 03:16:17 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16426
+2026-01-09 03:16:17 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 03:16:18 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 03:16:18 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 03:16:18
+2026-01-09 03:16:18 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 03:16:18 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16442
+2026-01-09 03:35:08 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 03:35:08 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 03:35:08 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16426
+2026-01-09 03:35:08 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 03:35:09 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 03:35:09 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 03:35:09
+2026-01-09 03:35:09 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 03:35:09 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16452
+2026-01-09 03:53:18 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 03:53:18 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 03:53:18 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16426
+2026-01-09 03:53:18 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 03:53:19 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 03:53:19 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 03:53:19
+2026-01-09 03:53:19 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 03:53:19 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16458
+2026-01-09 04:09:45 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 04:09:45 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 04:09:45 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16426
+2026-01-09 04:09:45 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 04:09:45 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:09:45 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:09:45
+2026-01-09 04:09:45 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:09:45 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16461
+2026-01-09 04:10:46 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:10:46 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:10:46
+2026-01-09 04:10:46 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:10:46 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16461
+2026-01-09 04:11:46 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:11:46 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:11:46
+2026-01-09 04:11:46 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:11:46 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16461
+2026-01-09 04:12:46 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 04:12:46 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 04:12:46 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16426
+2026-01-09 04:12:46 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 04:12:47 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:12:47 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:12:47
+2026-01-09 04:12:47 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:12:47 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16461
+2026-01-09 04:13:48 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:13:48 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:13:48
+2026-01-09 04:13:48 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:13:48 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16461
+2026-01-09 04:14:48 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:14:48 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:14:48
+2026-01-09 04:14:48 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:14:48 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16461
+2026-01-09 04:15:48 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 04:15:48 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 04:15:48 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16426
+2026-01-09 04:15:48 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 04:15:49 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:15:49 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:15:49
+2026-01-09 04:15:49 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:15:49 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16440
+2026-01-09 04:16:50 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:16:50 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:16:50
+2026-01-09 04:16:50 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:16:50 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16440
+2026-01-09 04:17:50 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:17:50 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:17:50
+2026-01-09 04:17:50 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:17:50 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16440
+2026-01-09 04:18:50 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 04:18:50 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 04:18:50 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16426
+2026-01-09 04:18:50 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 04:18:51 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:18:51 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:18:51
+2026-01-09 04:18:51 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:18:51 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16440
+2026-01-09 04:19:51 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:19:51 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:19:51
+2026-01-09 04:19:51 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:19:51 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16440
+2026-01-09 04:20:52 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:20:52 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:20:52
+2026-01-09 04:20:52 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:20:52 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16440
+2026-01-09 04:21:52 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 04:21:52 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 04:21:52 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16426
+2026-01-09 04:21:52 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 04:21:53 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:21:53 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:21:53
+2026-01-09 04:21:53 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:21:53 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16440
+2026-01-09 04:22:53 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:22:53 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:22:53
+2026-01-09 04:22:53 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:22:53 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16440
+2026-01-09 04:23:54 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:23:54 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:23:54
+2026-01-09 04:23:54 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:23:54 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16440
+2026-01-09 04:24:54 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 04:24:54 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 04:24:54 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16426
+2026-01-09 04:24:54 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 04:24:55 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:24:55 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:24:55
+2026-01-09 04:24:55 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:24:55 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16440
+2026-01-09 04:25:55 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:25:55 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:25:55
+2026-01-09 04:25:55 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:25:55 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16440
+2026-01-09 04:26:56 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:26:56 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:26:56
+2026-01-09 04:26:56 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:26:56 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16440
+2026-01-09 04:27:56 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 04:27:56 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 04:27:56 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16426
+2026-01-09 04:27:56 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 04:27:56 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:27:56 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:27:56
+2026-01-09 04:27:56 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:27:56 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16440
+2026-01-09 04:28:57 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:28:57 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:28:57
+2026-01-09 04:28:57 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:28:57 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16440
+2026-01-09 04:29:58 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:29:58 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:29:58
+2026-01-09 04:29:58 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:29:58 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16440
+2026-01-09 04:30:58 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 04:30:58 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 04:30:58 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16426
+2026-01-09 04:30:58 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 04:30:58 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:30:58 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:30:58
+2026-01-09 04:30:58 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:30:58 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16434
+2026-01-09 04:31:59 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:31:59 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:31:59
+2026-01-09 04:31:59 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:31:59 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16434
+2026-01-09 04:33:00 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:33:00 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:33:00
+2026-01-09 04:33:00 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:33:00 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16434
+2026-01-09 04:34:00 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 04:34:00 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 04:34:00 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16426
+2026-01-09 04:34:00 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 04:34:01 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:34:01 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:34:01
+2026-01-09 04:34:01 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:34:01 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16434
+2026-01-09 04:35:01 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:35:01 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:35:01
+2026-01-09 04:35:01 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:35:01 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16434
+2026-01-09 04:36:02 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:36:02 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:36:02
+2026-01-09 04:36:02 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:36:02 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16434
+2026-01-09 04:37:02 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 04:37:02 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 04:37:02 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16426
+2026-01-09 04:37:02 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 04:37:03 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:37:03 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:37:03
+2026-01-09 04:37:03 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:37:03 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16434
+2026-01-09 04:38:03 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:38:03 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:38:03
+2026-01-09 04:38:03 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:38:03 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16434
+2026-01-09 04:39:04 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:39:04 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:39:04
+2026-01-09 04:39:04 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:39:04 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16434
+2026-01-09 04:40:04 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 04:40:04 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 04:40:04 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16426
+2026-01-09 04:40:04 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 04:40:05 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:40:05 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:40:05
+2026-01-09 04:40:05 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:40:05 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16434
+2026-01-09 04:41:06 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:41:06 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:41:06
+2026-01-09 04:41:06 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:41:06 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16434
+2026-01-09 04:42:07 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:42:07 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:42:07
+2026-01-09 04:42:07 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:42:07 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16434
+2026-01-09 04:43:07 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 04:43:07 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 04:43:07 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16426
+2026-01-09 04:43:07 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 04:43:07 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:43:07 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:43:07
+2026-01-09 04:43:07 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:43:07 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16434
+2026-01-09 04:44:08 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:44:08 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:44:08
+2026-01-09 04:44:08 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:44:08 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16434
+2026-01-09 04:45:09 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:45:09 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:45:09
+2026-01-09 04:45:09 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:45:09 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16414
+2026-01-09 04:46:09 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 04:46:09 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 04:46:09 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16426
+2026-01-09 04:46:09 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 04:46:09 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:46:09 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:46:09
+2026-01-09 04:46:09 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:46:09 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16414
+2026-01-09 04:47:10 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:47:10 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:47:10
+2026-01-09 04:47:10 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:47:10 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16414
+2026-01-09 04:48:11 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:48:11 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:48:11
+2026-01-09 04:48:11 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:48:11 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16414
+2026-01-09 04:49:11 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 04:49:11 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 04:49:11 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16426
+2026-01-09 04:49:11 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 04:49:11 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:49:11 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:49:11
+2026-01-09 04:49:11 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:49:11 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16414
+2026-01-09 04:50:12 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:50:12 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:50:12
+2026-01-09 04:50:12 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:50:12 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16414
+2026-01-09 04:51:13 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:51:13 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:51:13
+2026-01-09 04:51:13 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:51:13 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16414
+2026-01-09 04:52:13 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 04:52:13 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 04:52:13 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16426
+2026-01-09 04:52:13 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 04:52:14 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:52:14 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:52:14
+2026-01-09 04:52:14 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:52:14 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16414
+2026-01-09 04:53:14 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:53:14 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:53:14
+2026-01-09 04:53:14 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:53:14 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16414
+2026-01-09 04:54:15 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:54:15 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:54:15
+2026-01-09 04:54:15 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:54:15 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16414
+2026-01-09 04:55:15 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 04:55:15 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 04:55:15 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16426
+2026-01-09 04:55:15 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 04:55:16 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:55:16 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:55:16
+2026-01-09 04:55:16 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:55:16 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16414
+2026-01-09 04:56:16 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:56:16 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:56:16
+2026-01-09 04:56:16 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:56:16 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16414
+2026-01-09 04:57:17 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:57:17 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:57:17
+2026-01-09 04:57:17 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:57:17 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16414
+2026-01-09 04:58:17 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 04:58:17 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 04:58:17 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16426
+2026-01-09 04:58:17 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 04:58:18 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:58:18 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:58:18
+2026-01-09 04:58:18 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:58:18 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16414
+2026-01-09 04:59:18 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 04:59:18 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 04:59:18
+2026-01-09 04:59:18 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 04:59:18 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16414
+2026-01-09 05:00:19 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 05:00:19 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 05:00:19
+2026-01-09 05:00:19 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 05:00:19 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16414
+2026-01-09 05:01:19 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 05:01:19 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 05:01:19 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16414
+2026-01-09 05:01:19 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 05:01:20 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 05:01:20 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 05:01:20
+2026-01-09 05:01:20 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 05:01:20 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16414
+2026-01-09 05:02:20 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 05:02:20 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 05:02:20
+2026-01-09 05:02:20 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 05:02:20 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16414
+2026-01-09 05:03:21 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 05:03:21 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 05:03:21
+2026-01-09 05:03:21 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 05:03:21 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16414
+2026-01-09 05:04:21 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 05:04:21 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 05:04:21 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16414
+2026-01-09 05:04:21 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 05:04:22 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 05:04:22 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 05:04:22
+2026-01-09 05:04:22 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 05:04:22 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16414
+2026-01-09 05:05:22 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 05:05:22 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 05:05:22
+2026-01-09 05:05:22 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 05:05:22 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16414
+2026-01-09 05:06:23 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 05:06:23 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 05:06:23
+2026-01-09 05:06:23 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 05:06:23 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16414
+2026-01-09 05:07:23 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 05:07:23 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 05:07:23 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16414
+2026-01-09 05:07:23 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 05:07:24 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 05:07:24 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 05:07:24
+2026-01-09 05:07:24 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 05:07:24 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16414
+2026-01-09 05:08:24 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 05:08:24 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 05:08:24
+2026-01-09 05:08:24 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 05:08:24 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16414
+2026-01-09 05:09:25 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 05:09:25 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 05:09:25
+2026-01-09 05:09:25 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 05:09:25 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16414
+2026-01-09 05:10:25 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 05:10:25 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 05:10:25 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16414
+2026-01-09 05:10:25 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 05:10:25 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 05:10:25 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 05:10:25
+2026-01-09 05:10:25 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 05:10:25 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16414
+2026-01-09 05:11:26 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 05:11:26 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 05:11:26
+2026-01-09 05:11:26 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 05:11:26 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16414
+2026-01-09 05:12:26 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 05:12:26 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 05:12:26
+2026-01-09 05:12:26 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 05:12:26 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16414
+2026-01-09 05:43:22 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 05:43:22 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 05:43:22 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16414
+2026-01-09 05:43:22 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 05:43:23 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 05:43:23 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 05:43:23
+2026-01-09 05:43:23 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 05:43:23 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16430
+2026-01-09 05:59:39 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 05:59:39 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 05:59:39 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16414
+2026-01-09 05:59:39 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 05:59:40 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 05:59:40 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 05:59:40
+2026-01-09 05:59:40 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 05:59:40 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16566
+2026-01-09 06:17:24 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 06:17:24 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 06:17:24 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16414
+2026-01-09 06:17:24 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 06:17:25 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 06:17:25 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 06:17:25
+2026-01-09 06:17:25 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 06:17:25 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16427
+2026-01-09 06:19:53 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 06:19:53 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 06:19:53
+2026-01-09 06:19:53 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 06:19:53 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16427
+2026-01-09 06:33:34 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 06:33:34 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 06:33:34 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16414
+2026-01-09 06:33:34 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 06:33:35 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 06:33:35 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 06:33:35
+2026-01-09 06:33:35 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 06:33:35 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16382
+2026-01-09 06:34:35 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 06:34:35 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 06:34:35
+2026-01-09 06:34:35 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 06:34:35 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16382
+2026-01-09 06:35:36 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 06:35:36 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 06:35:36
+2026-01-09 06:35:36 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 06:35:36 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16382
+2026-01-09 06:36:36 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 06:36:36 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 06:36:36 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16414
+2026-01-09 06:36:36 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 06:36:37 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 06:36:37 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 06:36:37
+2026-01-09 06:36:37 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 06:36:37 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16382
+2026-01-09 06:37:37 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 06:37:37 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 06:37:37
+2026-01-09 06:37:37 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 06:37:37 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16382
+2026-01-09 06:38:38 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 06:38:38 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 06:38:38
+2026-01-09 06:38:38 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 06:38:38 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16382
+2026-01-09 06:39:38 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 06:39:38 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 06:39:38 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16414
+2026-01-09 06:39:38 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 06:39:39 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 06:39:39 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 06:39:39
+2026-01-09 06:39:39 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 06:39:39 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16382
+2026-01-09 06:40:12 - bot_EUR_USD_15m_market - INFO - 
+⏹️  Bot stopped by user
+2026-01-09 06:40:12 - bot_EUR_USD_15m_market - INFO - ================================================================================
+2026-01-09 06:40:12 - bot_EUR_USD_15m_market - INFO - Market-Aware Trading Bot Stopped
+2026-01-09 06:40:12 - bot_EUR_USD_15m_market - INFO - Total trades: 0
+2026-01-09 06:40:12 - bot_EUR_USD_15m_market - INFO - CSV Log: account2/csv/EUR_USD_15m_market_aware.csv
+2026-01-09 06:40:12 - bot_EUR_USD_15m_market - INFO - ================================================================================
+2026-01-09 06:40:17 - bot_EUR_USD_15m_market - INFO - Loaded account-specific config from: account2/config.yaml
+2026-01-09 06:40:17 - bot_EUR_USD_15m_market - INFO - ================================================================================
+2026-01-09 06:40:17 - bot_EUR_USD_15m_market - INFO - Market-Aware Trading Bot Initialized
+2026-01-09 06:40:17 - bot_EUR_USD_15m_market - INFO - ================================================================================
+2026-01-09 06:40:17 - bot_EUR_USD_15m_market - INFO - Account: 101-001-38143009-001
+2026-01-09 06:40:17 - bot_EUR_USD_15m_market - INFO - Mode: PRACTICE
+2026-01-09 06:40:17 - bot_EUR_USD_15m_market - INFO - Instrument: EUR_USD
+2026-01-09 06:40:17 - bot_EUR_USD_15m_market - INFO - Trading Timeframe: 15m (M15)
+2026-01-09 06:40:17 - bot_EUR_USD_15m_market - INFO - Market Trend Timeframe: H3 (H3)
+2026-01-09 06:40:17 - bot_EUR_USD_15m_market - INFO - Stop Loss Type: supertrend
+2026-01-09 06:40:17 - bot_EUR_USD_15m_market - INFO - CSV Log: account2/csv/EUR_USD_15m_market_aware.csv
+2026-01-09 06:40:17 - bot_EUR_USD_15m_market - INFO - Check Interval: 60 seconds
+2026-01-09 06:40:17 - bot_EUR_USD_15m_market - INFO - Risk/Reward Config: {'bear_market': {'short_rr': 1.2, 'long_rr': 0.6}, 'bull_market': {'short_rr': 0.6, 'long_rr': 1.2}}
+2026-01-09 06:40:17 - bot_EUR_USD_15m_market - INFO - ================================================================================
+2026-01-09 06:40:17 - bot_EUR_USD_15m_market - INFO - 🚀 Market-aware trading bot started
+2026-01-09 06:40:17 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 06:40:17 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 06:40:17 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16414
+2026-01-09 06:40:17 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 06:40:17 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 06:40:17 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 06:40:17
+2026-01-09 06:40:17 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 06:40:17 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16382
+2026-01-09 06:41:18 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 06:41:18 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 06:41:18
+2026-01-09 06:41:18 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 06:41:18 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16382
+2026-01-09 06:42:18 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 06:42:18 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 06:42:18
+2026-01-09 06:42:18 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 06:42:18 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16382
+2026-01-09 06:43:19 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 06:43:19 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 06:43:19 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16414
+2026-01-09 06:43:19 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 06:43:19 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 06:43:19 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 06:43:19
+2026-01-09 06:43:19 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 06:43:19 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16382
+2026-01-09 06:44:20 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 06:44:20 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 06:44:20
+2026-01-09 06:44:20 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 06:44:20 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16382
+2026-01-09 06:45:20 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 06:45:20 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 06:45:20
+2026-01-09 06:45:20 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 06:45:20 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16340
+2026-01-09 06:46:21 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 06:46:21 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 06:46:21 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16414
+2026-01-09 06:46:21 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 06:46:21 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 06:46:21 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 06:46:21
+2026-01-09 06:46:21 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 06:46:21 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16340
+2026-01-09 06:47:22 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 06:47:22 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 06:47:22
+2026-01-09 06:47:22 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 06:47:22 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16340
+2026-01-09 06:48:23 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 06:48:23 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 06:48:23
+2026-01-09 06:48:23 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 06:48:23 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16340
+2026-01-09 06:49:23 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 06:49:23 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 06:49:23 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16414
+2026-01-09 06:49:23 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 06:49:24 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 06:49:24 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 06:49:24
+2026-01-09 06:49:24 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 06:49:24 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16340
+2026-01-09 06:50:25 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 06:50:25 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 06:50:25
+2026-01-09 06:50:25 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 06:50:25 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16340
+2026-01-09 06:51:25 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 06:51:25 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 06:51:25
+2026-01-09 06:51:25 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 06:51:25 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16340
+2026-01-09 06:52:25 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 06:52:25 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 06:52:25 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16414
+2026-01-09 06:52:25 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 06:52:26 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 06:52:26 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 06:52:26
+2026-01-09 06:52:26 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 06:52:26 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16340
+2026-01-09 06:53:27 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 06:53:27 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 06:53:27
+2026-01-09 06:53:27 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 06:53:27 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16340
+2026-01-09 06:55:23 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 06:55:23 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 06:55:23
+2026-01-09 06:55:23 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 06:55:23 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16340
+2026-01-09 06:56:24 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 06:56:24 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 06:56:24 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16414
+2026-01-09 06:56:24 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 06:56:25 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 06:56:25 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 06:56:25
+2026-01-09 06:56:25 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 06:56:25 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16340
+2026-01-09 06:57:26 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 06:57:26 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 06:57:26
+2026-01-09 06:57:26 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 06:57:26 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16340
+2026-01-09 06:58:26 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 06:58:26 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 06:58:26
+2026-01-09 06:58:26 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 06:58:26 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16340
+2026-01-09 06:59:27 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 06:59:27 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 06:59:27 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16414
+2026-01-09 06:59:27 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 06:59:27 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 06:59:27 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 06:59:27
+2026-01-09 06:59:27 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 06:59:27 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16340
+2026-01-09 07:00:28 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 07:00:28 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 07:00:28
+2026-01-09 07:00:28 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 07:00:28 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16366
+2026-01-09 07:01:29 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 07:01:29 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 07:01:29
+2026-01-09 07:01:29 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 07:01:29 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16366
+2026-01-09 07:02:29 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 07:02:29 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 07:02:29 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16414
+2026-01-09 07:02:29 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 07:02:30 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 07:02:30 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 07:02:30
+2026-01-09 07:02:30 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 07:02:30 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16366
+2026-01-09 07:03:30 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 07:03:30 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 07:03:30
+2026-01-09 07:03:30 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 07:03:30 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16366
+2026-01-09 07:04:32 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 07:04:32 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 07:04:32
+2026-01-09 07:04:32 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 07:04:32 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16366
+2026-01-09 07:05:32 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 07:05:32 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 07:05:32 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16414
+2026-01-09 07:05:32 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 07:05:33 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 07:05:33 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 07:05:33
+2026-01-09 07:05:33 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 07:05:33 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16366
+2026-01-09 07:06:33 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 07:06:33 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 07:06:33
+2026-01-09 07:06:33 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 07:06:33 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16366
+2026-01-09 07:27:12 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 07:27:12 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 07:27:12 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16414
+2026-01-09 07:27:12 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 07:27:13 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 07:27:13 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 07:27:13
+2026-01-09 07:27:13 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 07:27:13 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16260
+2026-01-09 07:43:50 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 07:43:50 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 07:43:50 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16414
+2026-01-09 07:43:50 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 07:43:51 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 07:43:51 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 07:43:51
+2026-01-09 07:43:51 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 07:43:51 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16262
+2026-01-09 08:00:25 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 08:00:25 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 08:00:25 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 08:00:25 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 08:00:26 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 08:00:26 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 08:00:26
+2026-01-09 08:00:26 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 08:00:26 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16405
+2026-01-09 08:01:53 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 08:01:53 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 08:01:53
+2026-01-09 08:01:53 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 08:01:53 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16405
+2026-01-09 08:17:59 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 08:17:59 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 08:17:59 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 08:17:59 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 08:18:00 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 08:18:00 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 08:18:00
+2026-01-09 08:18:00 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 08:18:00 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16386
+2026-01-09 08:19:01 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 08:19:01 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 08:19:01
+2026-01-09 08:19:01 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 08:19:01 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16386
+2026-01-09 08:24:08 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 08:24:08 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 08:24:08 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 08:24:08 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 08:24:09 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 08:24:09 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 08:24:09
+2026-01-09 08:24:09 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 08:24:09 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16386
+2026-01-09 08:25:09 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 08:25:09 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 08:25:09
+2026-01-09 08:25:09 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 08:25:09 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16386
+2026-01-09 08:26:10 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 08:26:10 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 08:26:10
+2026-01-09 08:26:10 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 08:26:10 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16386
+2026-01-09 08:27:10 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 08:27:10 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 08:27:10 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 08:27:10 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 08:27:10 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 08:27:10 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 08:27:10
+2026-01-09 08:27:10 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 08:27:10 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16386
+2026-01-09 08:28:11 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 08:28:11 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 08:28:11
+2026-01-09 08:28:11 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 08:28:11 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16386
+2026-01-09 08:29:12 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 08:29:12 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 08:29:12
+2026-01-09 08:29:12 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 08:29:12 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16386
+2026-01-09 08:30:12 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 08:30:12 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 08:30:12 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 08:30:12 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 08:30:13 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 08:30:13 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 08:30:13
+2026-01-09 08:30:13 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 08:30:13 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16299
+2026-01-09 08:31:14 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 08:31:14 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 08:31:14
+2026-01-09 08:31:14 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 08:31:14 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16299
+2026-01-09 08:32:14 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 08:32:14 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 08:32:14
+2026-01-09 08:32:14 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 08:32:14 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16299
+2026-01-09 08:34:19 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 08:34:19 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 08:34:19 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 08:34:19 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 08:34:20 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 08:34:20 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 08:34:20
+2026-01-09 08:34:20 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 08:34:20 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16299
+2026-01-09 08:35:21 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 08:35:21 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 08:35:21
+2026-01-09 08:35:21 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 08:35:21 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16299
+2026-01-09 08:36:21 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 08:36:21 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 08:36:21
+2026-01-09 08:36:21 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 08:36:21 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16299
+2026-01-09 08:37:22 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 08:37:22 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 08:37:22 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 08:37:22 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 08:37:23 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 08:37:23 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 08:37:23
+2026-01-09 08:37:23 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 08:37:23 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16299
+2026-01-09 08:38:28 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 08:38:28 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 08:38:28
+2026-01-09 08:38:28 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 08:38:28 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16299
+2026-01-09 08:39:29 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 08:39:29 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 08:39:29
+2026-01-09 08:39:29 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 08:39:29 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16299
+2026-01-09 08:40:30 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 08:40:30 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 08:40:30 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 08:40:30 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 08:40:30 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 08:40:30 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 08:40:30
+2026-01-09 08:40:30 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 08:40:30 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16299
+2026-01-09 08:41:31 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 08:41:31 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 08:41:31
+2026-01-09 08:41:31 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 08:41:31 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16299
+2026-01-09 08:42:31 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 08:42:31 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 08:42:31
+2026-01-09 08:42:31 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 08:42:31 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16299
+2026-01-09 08:43:31 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 08:43:31 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 08:43:31 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 08:43:31 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 08:43:32 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 08:43:32 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 08:43:32
+2026-01-09 08:43:32 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 08:43:32 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16299
+2026-01-09 08:44:33 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 08:44:33 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 08:44:33
+2026-01-09 08:44:33 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 08:44:33 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16299
+2026-01-09 08:45:33 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 08:45:33 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 08:45:33
+2026-01-09 08:45:33 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 08:45:33 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16346
+2026-01-09 08:46:33 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 08:46:33 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 08:46:33 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 08:46:33 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 08:46:34 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 08:46:34 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 08:46:34
+2026-01-09 08:46:34 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 08:46:34 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16346
+2026-01-09 08:47:34 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 08:47:34 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 08:47:34
+2026-01-09 08:47:34 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 08:47:34 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16346
+2026-01-09 08:48:35 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 08:48:35 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 08:48:35
+2026-01-09 08:48:35 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 08:48:35 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16346
+2026-01-09 08:49:35 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 08:49:35 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 08:49:35 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 08:49:35 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 08:49:36 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 08:49:36 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 08:49:36
+2026-01-09 08:49:36 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 08:49:36 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16346
+2026-01-09 08:50:37 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 08:50:37 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 08:50:37
+2026-01-09 08:50:37 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 08:50:37 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16346
+2026-01-09 08:52:29 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 08:52:29 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 08:52:29
+2026-01-09 08:52:29 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 08:52:29 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16346
+2026-01-09 08:53:29 - bot_EUR_USD_15m_market - INFO - 
+⏹️  Bot stopped by user
+2026-01-09 08:53:29 - bot_EUR_USD_15m_market - INFO - ================================================================================
+2026-01-09 08:53:29 - bot_EUR_USD_15m_market - INFO - Market-Aware Trading Bot Stopped
+2026-01-09 08:53:29 - bot_EUR_USD_15m_market - INFO - Total trades: 0
+2026-01-09 08:53:29 - bot_EUR_USD_15m_market - INFO - CSV Log: account2/csv/EUR_USD_15m_market_aware.csv
+2026-01-09 08:53:29 - bot_EUR_USD_15m_market - INFO - ================================================================================
+2026-01-09 08:53:36 - bot_EUR_USD_15m_market - INFO - Loaded account-specific config from: account2/config.yaml
+2026-01-09 08:53:36 - bot_EUR_USD_15m_market - INFO - ================================================================================
+2026-01-09 08:53:36 - bot_EUR_USD_15m_market - INFO - Market-Aware Trading Bot Initialized
+2026-01-09 08:53:36 - bot_EUR_USD_15m_market - INFO - ================================================================================
+2026-01-09 08:53:36 - bot_EUR_USD_15m_market - INFO - Account: 101-001-38143009-001
+2026-01-09 08:53:36 - bot_EUR_USD_15m_market - INFO - Mode: PRACTICE
+2026-01-09 08:53:36 - bot_EUR_USD_15m_market - INFO - Instrument: EUR_USD
+2026-01-09 08:53:36 - bot_EUR_USD_15m_market - INFO - Trading Timeframe: 15m (M15)
+2026-01-09 08:53:36 - bot_EUR_USD_15m_market - INFO - Market Trend Timeframe: H3 (H3)
+2026-01-09 08:53:36 - bot_EUR_USD_15m_market - INFO - Stop Loss Type: supertrend
+2026-01-09 08:53:36 - bot_EUR_USD_15m_market - INFO - CSV Log: account2/csv/EUR_USD_15m_market_aware.csv
+2026-01-09 08:53:36 - bot_EUR_USD_15m_market - INFO - Check Interval: 60 seconds
+2026-01-09 08:53:36 - bot_EUR_USD_15m_market - INFO - Risk/Reward Config: {'bear_market': {'short_rr': 1.2, 'long_rr': 0.6}, 'bull_market': {'short_rr': 0.6, 'long_rr': 1.2}}
+2026-01-09 08:53:36 - bot_EUR_USD_15m_market - INFO - ================================================================================
+2026-01-09 08:53:36 - bot_EUR_USD_15m_market - INFO - 🚀 Market-aware trading bot started
+2026-01-09 08:53:36 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 08:53:36 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 08:53:36 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 08:53:36 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 08:53:36 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 08:53:36 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 08:53:36
+2026-01-09 08:53:36 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 08:53:36 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16346
+2026-01-09 08:54:38 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 08:54:38 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 08:54:38
+2026-01-09 08:54:38 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 08:54:38 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16346
+2026-01-09 08:55:38 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 08:55:38 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 08:55:38
+2026-01-09 08:55:38 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 08:55:38 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16346
+2026-01-09 08:56:39 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 08:56:39 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 08:56:39 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 08:56:39 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 08:56:40 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 08:56:40 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 08:56:40
+2026-01-09 08:56:40 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 08:56:40 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16346
+2026-01-09 08:57:41 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 08:57:41 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 08:57:41
+2026-01-09 08:57:41 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 08:57:41 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16346
+2026-01-09 08:58:41 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 08:58:41 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 08:58:41
+2026-01-09 08:58:41 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 08:58:41 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16346
+2026-01-09 08:59:42 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 08:59:42 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 08:59:42 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 08:59:42 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 08:59:42 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 08:59:42 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 08:59:42
+2026-01-09 08:59:42 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 08:59:42 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16346
+2026-01-09 09:00:43 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:00:43 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:00:43
+2026-01-09 09:00:43 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:00:43 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16332
+2026-01-09 09:01:43 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:01:43 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:01:43
+2026-01-09 09:01:43 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:01:43 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16332
+2026-01-09 09:02:44 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 09:02:44 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 09:02:44 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 09:02:44 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 09:02:45 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:02:45 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:02:45
+2026-01-09 09:02:45 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:02:45 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16332
+2026-01-09 09:03:45 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:03:45 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:03:45
+2026-01-09 09:03:45 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:03:45 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16332
+2026-01-09 09:04:47 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:04:47 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:04:47
+2026-01-09 09:04:47 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:04:47 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16332
+2026-01-09 09:05:47 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 09:05:47 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 09:05:47 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 09:05:47 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 09:05:48 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:05:48 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:05:48
+2026-01-09 09:05:48 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:05:48 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16332
+2026-01-09 09:06:49 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:06:49 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:06:49
+2026-01-09 09:06:49 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:06:49 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16332
+2026-01-09 09:07:50 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:07:50 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:07:50
+2026-01-09 09:07:50 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:07:50 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16332
+2026-01-09 09:08:50 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 09:08:50 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 09:08:50 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 09:08:50 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 09:08:50 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:08:50 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:08:50
+2026-01-09 09:08:50 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:08:50 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16332
+2026-01-09 09:09:51 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:09:51 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:09:51
+2026-01-09 09:09:51 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:09:51 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16332
+2026-01-09 09:10:52 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:10:52 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:10:52
+2026-01-09 09:10:52 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:10:52 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16332
+2026-01-09 09:11:52 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 09:11:52 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 09:11:52 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 09:11:52 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 09:11:53 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:11:53 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:11:53
+2026-01-09 09:11:53 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:11:53 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16332
+2026-01-09 09:12:53 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:12:53 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:12:53
+2026-01-09 09:12:53 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:12:53 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16332
+2026-01-09 09:13:54 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:13:54 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:13:54
+2026-01-09 09:13:54 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:13:54 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16332
+2026-01-09 09:14:54 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 09:14:54 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 09:14:54 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 09:14:54 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 09:14:54 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:14:54 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:14:54
+2026-01-09 09:14:54 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:14:54 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16332
+2026-01-09 09:15:55 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:15:55 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:15:55
+2026-01-09 09:15:55 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:15:55 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16312
+2026-01-09 09:16:55 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:16:55 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:16:55
+2026-01-09 09:16:55 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:16:55 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16312
+2026-01-09 09:17:56 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 09:17:56 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 09:17:56 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 09:17:56 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 09:17:57 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:17:57 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:17:57
+2026-01-09 09:17:57 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:17:57 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16312
+2026-01-09 09:18:57 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:18:57 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:18:57
+2026-01-09 09:18:57 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:18:57 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16312
+2026-01-09 09:19:58 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:19:58 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:19:58
+2026-01-09 09:19:58 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:19:58 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16312
+2026-01-09 09:20:58 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 09:20:58 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 09:20:58 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 09:20:58 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 09:20:59 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:20:59 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:20:59
+2026-01-09 09:20:59 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:20:59 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16312
+2026-01-09 09:21:59 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:21:59 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:21:59
+2026-01-09 09:21:59 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:21:59 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16312
+2026-01-09 09:23:00 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:23:00 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:23:00
+2026-01-09 09:23:00 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:23:00 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16312
+2026-01-09 09:24:00 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 09:24:00 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 09:24:00 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 09:24:00 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 09:24:01 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:24:01 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:24:01
+2026-01-09 09:24:01 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:24:01 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16312
+2026-01-09 09:25:01 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:25:01 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:25:01
+2026-01-09 09:25:01 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:25:01 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16312
+2026-01-09 09:26:02 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:26:02 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:26:02
+2026-01-09 09:26:02 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:26:02 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16312
+2026-01-09 09:27:02 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 09:27:02 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 09:27:02 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 09:27:02 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 09:27:03 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:27:03 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:27:03
+2026-01-09 09:27:03 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:27:03 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16312
+2026-01-09 09:28:04 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:28:04 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:28:04
+2026-01-09 09:28:04 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:28:04 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16312
+2026-01-09 09:29:04 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:29:04 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:29:04
+2026-01-09 09:29:04 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:29:04 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16312
+2026-01-09 09:30:05 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 09:30:05 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 09:30:05 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 09:30:05 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 09:30:06 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:30:06 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:30:06
+2026-01-09 09:30:06 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:30:06 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16308
+2026-01-09 09:31:07 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:31:07 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:31:07
+2026-01-09 09:31:07 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:31:07 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16308
+2026-01-09 09:32:08 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:32:08 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:32:08
+2026-01-09 09:32:08 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:32:08 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16308
+2026-01-09 09:33:08 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 09:33:08 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 09:33:08 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 09:33:08 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 09:33:08 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:33:08 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:33:08
+2026-01-09 09:33:08 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:33:08 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16308
+2026-01-09 09:34:09 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:34:09 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:34:09
+2026-01-09 09:34:09 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:34:09 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16308
+2026-01-09 09:35:10 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:35:10 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:35:10
+2026-01-09 09:35:10 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:35:10 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16308
+2026-01-09 09:36:10 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 09:36:10 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 09:36:10 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 09:36:10 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 09:36:11 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:36:11 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:36:11
+2026-01-09 09:36:11 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:36:11 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16308
+2026-01-09 09:37:12 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:37:12 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:37:12
+2026-01-09 09:37:12 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:37:12 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16308
+2026-01-09 09:38:12 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:38:12 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:38:12
+2026-01-09 09:38:12 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:38:12 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16308
+2026-01-09 09:39:13 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 09:39:13 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 09:39:13 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 09:39:13 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 09:39:13 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:39:13 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:39:13
+2026-01-09 09:39:13 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:39:13 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16308
+2026-01-09 09:40:14 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:40:14 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:40:14
+2026-01-09 09:40:14 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:40:14 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16308
+2026-01-09 09:41:14 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:41:14 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:41:14
+2026-01-09 09:41:14 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:41:14 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16308
+2026-01-09 09:42:15 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 09:42:15 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 09:42:15 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 09:42:15 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 09:42:15 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:42:15 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:42:15
+2026-01-09 09:42:15 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:42:15 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16308
+2026-01-09 09:43:16 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:43:16 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:43:16
+2026-01-09 09:43:16 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:43:16 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16308
+2026-01-09 09:44:16 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:44:16 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:44:16
+2026-01-09 09:44:16 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:44:16 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16308
+2026-01-09 09:45:17 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 09:45:17 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 09:45:17 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 09:45:17 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 09:45:17 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:45:17 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:45:17
+2026-01-09 09:45:17 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:45:17 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16310
+2026-01-09 09:46:18 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:46:18 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:46:18
+2026-01-09 09:46:18 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:46:18 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16310
+2026-01-09 09:47:18 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:47:18 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:47:18
+2026-01-09 09:47:18 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:47:18 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16310
+2026-01-09 09:48:19 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 09:48:19 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 09:48:19 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 09:48:19 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 09:48:20 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:48:20 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:48:20
+2026-01-09 09:48:20 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:48:20 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16310
+2026-01-09 09:49:21 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:49:21 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:49:21
+2026-01-09 09:49:21 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:49:21 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16310
+2026-01-09 09:50:21 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:50:21 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:50:21
+2026-01-09 09:50:21 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:50:21 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16310
+2026-01-09 09:51:22 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 09:51:22 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 09:51:22 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 09:51:22 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 09:51:23 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:51:23 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:51:23
+2026-01-09 09:51:23 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:51:23 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16310
+2026-01-09 09:52:23 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:52:23 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:52:23
+2026-01-09 09:52:23 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:52:23 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16310
+2026-01-09 09:53:24 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:53:24 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:53:24
+2026-01-09 09:53:24 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:53:24 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16310
+2026-01-09 09:54:25 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 09:54:25 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 09:54:25 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 09:54:25 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 09:54:25 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 09:54:25 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 09:54:25
+2026-01-09 09:54:25 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 09:54:25 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16310
+2026-01-09 10:11:06 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 10:11:06 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 10:11:06 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 10:11:06 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 10:11:07 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 10:11:07 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 10:11:07
+2026-01-09 10:11:07 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 10:11:07 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16316
+2026-01-09 10:23:32 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 10:23:32 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 10:23:32 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 10:23:32 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 10:23:32 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 10:23:32 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 10:23:32
+2026-01-09 10:23:32 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 10:23:32 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16319
+2026-01-09 10:24:33 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 10:24:33 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 10:24:33
+2026-01-09 10:24:33 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 10:24:33 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16319
+2026-01-09 10:25:33 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 10:25:33 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 10:25:33
+2026-01-09 10:25:33 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 10:25:33 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16319
+2026-01-09 10:26:34 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 10:26:34 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 10:26:34 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 10:26:34 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 10:26:34 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 10:26:34 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 10:26:34
+2026-01-09 10:26:34 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 10:26:34 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16319
+2026-01-09 10:27:36 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 10:27:36 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 10:27:36
+2026-01-09 10:27:36 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 10:27:36 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16319
+2026-01-09 10:28:36 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 10:28:36 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 10:28:36
+2026-01-09 10:28:36 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 10:28:36 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16319
+2026-01-09 10:29:37 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 10:29:37 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 10:29:37 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 10:29:37 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 10:29:37 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 10:29:37 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 10:29:37
+2026-01-09 10:29:37 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 10:29:37 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16319
+2026-01-09 10:30:38 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 10:30:38 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 10:30:38
+2026-01-09 10:30:38 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 10:30:38 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16334
+2026-01-09 10:31:39 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 10:31:39 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 10:31:39
+2026-01-09 10:31:39 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 10:31:39 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16334
+2026-01-09 10:32:39 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 10:32:39 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 10:32:39 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 10:32:39 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 10:32:40 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 10:32:40 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 10:32:40
+2026-01-09 10:32:40 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 10:32:40 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16334
+2026-01-09 10:33:40 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 10:33:40 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 10:33:40
+2026-01-09 10:33:40 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 10:33:40 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16334
+2026-01-09 10:34:41 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 10:34:41 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 10:34:41
+2026-01-09 10:34:41 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 10:34:41 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16334
+2026-01-09 10:35:41 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 10:35:41 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 10:35:41 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 10:35:41 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 10:35:42 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 10:35:42 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 10:35:42
+2026-01-09 10:35:42 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 10:35:42 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16334
+2026-01-09 10:36:42 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 10:36:42 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 10:36:42
+2026-01-09 10:36:42 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 10:36:42 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16334
+2026-01-09 10:37:43 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 10:37:43 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 10:37:43
+2026-01-09 10:37:43 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 10:37:43 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16334
+2026-01-09 10:38:43 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 10:38:43 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 10:38:43 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 10:38:43 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 10:38:44 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 10:38:44 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 10:38:44
+2026-01-09 10:38:44 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 10:38:44 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16334
+2026-01-09 10:39:44 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 10:39:44 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 10:39:44
+2026-01-09 10:39:44 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 10:39:44 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16334
+2026-01-09 10:40:45 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 10:40:45 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 10:40:45
+2026-01-09 10:40:45 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 10:40:45 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16334
+2026-01-09 10:41:45 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 10:41:45 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 10:41:45 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 10:41:45 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 10:41:46 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 10:41:46 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 10:41:46
+2026-01-09 10:41:46 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 10:41:46 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16334
+2026-01-09 10:42:47 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 10:42:47 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 10:42:47
+2026-01-09 10:42:47 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 10:42:47 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16334
+2026-01-09 10:43:47 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 10:43:47 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 10:43:47
+2026-01-09 10:43:47 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 10:43:47 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16334
+2026-01-09 10:44:48 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 10:44:48 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 10:44:48 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 10:44:48 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 10:44:48 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 10:44:48 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 10:44:48
+2026-01-09 10:44:48 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 10:44:48 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16334
+2026-01-09 10:45:49 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 10:45:49 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 10:45:49
+2026-01-09 10:45:49 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 10:45:49 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16378
+2026-01-09 10:46:50 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 10:46:50 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 10:46:50
+2026-01-09 10:46:50 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 10:46:50 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16378
+2026-01-09 10:47:50 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 10:47:50 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 10:47:50 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 10:47:50 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 10:47:51 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 10:47:51 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 10:47:51
+2026-01-09 10:47:51 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 10:47:51 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16378
+2026-01-09 10:48:52 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 10:48:52 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 10:48:52
+2026-01-09 10:48:52 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 10:48:52 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16378
+2026-01-09 10:49:52 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 10:49:52 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 10:49:52
+2026-01-09 10:49:52 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 10:49:52 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16378
+2026-01-09 10:50:53 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 10:50:53 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 10:50:53 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 10:50:53 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 10:50:53 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 10:50:53 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 10:50:53
+2026-01-09 10:50:53 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 10:50:53 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16378
+2026-01-09 10:51:54 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 10:51:54 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 10:51:54
+2026-01-09 10:51:54 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 10:51:54 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16378
+2026-01-09 10:52:54 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 10:52:54 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 10:52:54
+2026-01-09 10:52:54 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 10:52:54 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16378
+2026-01-09 10:53:55 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 10:53:55 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 10:53:55 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 10:53:55 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 10:53:55 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 10:53:55 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 10:53:55
+2026-01-09 10:53:55 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 10:53:55 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16378
+2026-01-09 10:54:56 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 10:54:56 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 10:54:56
+2026-01-09 10:54:56 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 10:54:56 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16378
+2026-01-09 10:55:56 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 10:55:56 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 10:55:56
+2026-01-09 10:55:56 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 10:55:56 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16378
+2026-01-09 10:56:57 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 10:56:57 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 10:56:57 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 10:56:57 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 10:56:57 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 10:56:57 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 10:56:57
+2026-01-09 10:56:57 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 10:56:57 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16378
+2026-01-09 10:57:58 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 10:57:58 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 10:57:58
+2026-01-09 10:57:58 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 10:57:58 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16378
+2026-01-09 10:58:58 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 10:58:58 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 10:58:58
+2026-01-09 10:58:58 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 10:58:58 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16378
+2026-01-09 10:59:59 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 10:59:59 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 10:59:59 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16405
+2026-01-09 10:59:59 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 10:59:59 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 10:59:59 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 10:59:59
+2026-01-09 10:59:59 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 10:59:59 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16378
+2026-01-09 11:01:00 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:01:00 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:01:00
+2026-01-09 11:01:00 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:01:00 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16340
+2026-01-09 11:02:00 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:02:00 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:02:00
+2026-01-09 11:02:00 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:02:00 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16340
+2026-01-09 11:03:01 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 11:03:01 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 11:03:01 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16340
+2026-01-09 11:03:01 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 11:03:02 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:03:02 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:03:02
+2026-01-09 11:03:02 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:03:02 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16340
+2026-01-09 11:04:02 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:04:02 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:04:02
+2026-01-09 11:04:02 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:04:02 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16340
+2026-01-09 11:05:03 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:05:03 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:05:03
+2026-01-09 11:05:03 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:05:03 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16340
+2026-01-09 11:06:03 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 11:06:03 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 11:06:03 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16340
+2026-01-09 11:06:03 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 11:06:04 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:06:04 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:06:04
+2026-01-09 11:06:04 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:06:04 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16340
+2026-01-09 11:07:04 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:07:04 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:07:04
+2026-01-09 11:07:04 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:07:04 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16340
+2026-01-09 11:08:05 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:08:05 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:08:05
+2026-01-09 11:08:05 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:08:05 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16340
+2026-01-09 11:09:05 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 11:09:05 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 11:09:05 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16340
+2026-01-09 11:09:05 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 11:09:06 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:09:06 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:09:06
+2026-01-09 11:09:06 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:09:06 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16340
+2026-01-09 11:10:06 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:10:06 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:10:06
+2026-01-09 11:10:06 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:10:06 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16340
+2026-01-09 11:11:07 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:11:07 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:11:07
+2026-01-09 11:11:07 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:11:07 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16340
+2026-01-09 11:12:07 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 11:12:07 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 11:12:07 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16340
+2026-01-09 11:12:07 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 11:12:08 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:12:08 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:12:08
+2026-01-09 11:12:08 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:12:08 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16340
+2026-01-09 11:13:09 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:13:09 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:13:09
+2026-01-09 11:13:09 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:13:09 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16340
+2026-01-09 11:14:09 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:14:09 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:14:09
+2026-01-09 11:14:09 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:14:09 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16340
+2026-01-09 11:15:10 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 11:15:10 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 11:15:10 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16340
+2026-01-09 11:15:10 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 11:15:10 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:15:10 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:15:10
+2026-01-09 11:15:10 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:15:10 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16360
+2026-01-09 11:16:11 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:16:11 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:16:11
+2026-01-09 11:16:11 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:16:11 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16360
+2026-01-09 11:17:11 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:17:11 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:17:11
+2026-01-09 11:17:11 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:17:11 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16360
+2026-01-09 11:18:12 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 11:18:12 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 11:18:12 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16340
+2026-01-09 11:18:12 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 11:18:12 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:18:12 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:18:12
+2026-01-09 11:18:12 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:18:12 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16360
+2026-01-09 11:18:12 - bot_EUR_USD_15m_market - INFO - 
+⏹️  Bot stopped by user
+2026-01-09 11:18:12 - bot_EUR_USD_15m_market - INFO - ================================================================================
+2026-01-09 11:18:12 - bot_EUR_USD_15m_market - INFO - Market-Aware Trading Bot Stopped
+2026-01-09 11:18:12 - bot_EUR_USD_15m_market - INFO - Total trades: 0
+2026-01-09 11:18:12 - bot_EUR_USD_15m_market - INFO - CSV Log: account2/csv/EUR_USD_15m_market_aware.csv
+2026-01-09 11:18:12 - bot_EUR_USD_15m_market - INFO - ================================================================================
+2026-01-09 11:18:17 - bot_EUR_USD_15m_market - INFO - Loaded account-specific config from: account2/config.yaml
+2026-01-09 11:18:17 - bot_EUR_USD_15m_market - INFO - ================================================================================
+2026-01-09 11:18:17 - bot_EUR_USD_15m_market - INFO - Market-Aware Trading Bot Initialized
+2026-01-09 11:18:17 - bot_EUR_USD_15m_market - INFO - ================================================================================
+2026-01-09 11:18:17 - bot_EUR_USD_15m_market - INFO - Account: 101-001-38143009-001
+2026-01-09 11:18:17 - bot_EUR_USD_15m_market - INFO - Mode: PRACTICE
+2026-01-09 11:18:17 - bot_EUR_USD_15m_market - INFO - Instrument: EUR_USD
+2026-01-09 11:18:17 - bot_EUR_USD_15m_market - INFO - Trading Timeframe: 15m (M15)
+2026-01-09 11:18:17 - bot_EUR_USD_15m_market - INFO - Market Trend Timeframe: H3 (H3)
+2026-01-09 11:18:17 - bot_EUR_USD_15m_market - INFO - Stop Loss Type: supertrend
+2026-01-09 11:18:17 - bot_EUR_USD_15m_market - INFO - CSV Log: account2/csv/EUR_USD_15m_market_aware.csv
+2026-01-09 11:18:17 - bot_EUR_USD_15m_market - INFO - Check Interval: 60 seconds
+2026-01-09 11:18:17 - bot_EUR_USD_15m_market - INFO - Risk/Reward Config: {'bear_market': {'short_rr': 1.2, 'long_rr': 0.6}, 'bull_market': {'short_rr': 0.6, 'long_rr': 1.2}}
+2026-01-09 11:18:17 - bot_EUR_USD_15m_market - INFO - ================================================================================
+2026-01-09 11:18:17 - bot_EUR_USD_15m_market - INFO - 🚀 Market-aware trading bot started
+2026-01-09 11:18:18 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 11:18:18 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 11:18:18 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16340
+2026-01-09 11:18:18 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 11:18:18 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:18:18 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:18:18
+2026-01-09 11:18:18 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:18:18 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16360
+2026-01-09 11:19:19 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:19:19 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:19:19
+2026-01-09 11:19:19 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:19:19 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16360
+2026-01-09 11:20:19 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:20:19 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:20:19
+2026-01-09 11:20:19 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:20:19 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16360
+2026-01-09 11:21:19 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 11:21:19 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 11:21:19 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16340
+2026-01-09 11:21:19 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 11:21:20 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:21:20 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:21:20
+2026-01-09 11:21:20 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:21:20 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16360
+2026-01-09 11:22:21 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:22:21 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:22:21
+2026-01-09 11:22:21 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:22:21 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16360
+2026-01-09 11:23:21 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:23:21 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:23:21
+2026-01-09 11:23:21 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:23:21 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16360
+2026-01-09 11:24:21 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 11:24:21 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 11:24:21 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16340
+2026-01-09 11:24:21 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 11:24:22 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:24:22 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:24:22
+2026-01-09 11:24:22 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:24:22 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16360
+2026-01-09 11:25:23 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:25:23 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:25:23
+2026-01-09 11:25:23 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:25:23 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16360
+2026-01-09 11:26:23 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:26:23 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:26:23
+2026-01-09 11:26:23 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:26:23 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16360
+2026-01-09 11:27:23 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 11:27:23 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 11:27:23 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16340
+2026-01-09 11:27:23 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 11:27:24 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:27:24 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:27:24
+2026-01-09 11:27:24 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:27:24 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16360
+2026-01-09 11:28:25 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:28:25 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:28:25
+2026-01-09 11:28:25 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:28:25 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16360
+2026-01-09 11:29:25 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:29:25 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:29:25
+2026-01-09 11:29:25 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:29:25 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16360
+2026-01-09 11:30:25 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 11:30:25 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 11:30:25 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16340
+2026-01-09 11:30:25 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 11:30:28 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:30:28 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:30:28
+2026-01-09 11:30:28 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:30:28 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16378
+2026-01-09 11:31:28 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:31:28 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:31:28
+2026-01-09 11:31:28 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:31:28 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16378
+2026-01-09 11:32:16 - bot_EUR_USD_15m_market - INFO - 
+⏹️  Bot stopped by user
+2026-01-09 11:32:16 - bot_EUR_USD_15m_market - INFO - ================================================================================
+2026-01-09 11:32:16 - bot_EUR_USD_15m_market - INFO - Market-Aware Trading Bot Stopped
+2026-01-09 11:32:16 - bot_EUR_USD_15m_market - INFO - Total trades: 0
+2026-01-09 11:32:16 - bot_EUR_USD_15m_market - INFO - CSV Log: account2/csv/EUR_USD_15m_market_aware.csv
+2026-01-09 11:32:16 - bot_EUR_USD_15m_market - INFO - ================================================================================
+2026-01-09 11:32:21 - bot_EUR_USD_15m_market - INFO - Loaded account-specific config from: account2/config.yaml
+2026-01-09 11:32:21 - bot_EUR_USD_15m_market - INFO - ================================================================================
+2026-01-09 11:32:21 - bot_EUR_USD_15m_market - INFO - Market-Aware Trading Bot Initialized
+2026-01-09 11:32:21 - bot_EUR_USD_15m_market - INFO - ================================================================================
+2026-01-09 11:32:21 - bot_EUR_USD_15m_market - INFO - Account: 101-001-38143009-001
+2026-01-09 11:32:21 - bot_EUR_USD_15m_market - INFO - Mode: PRACTICE
+2026-01-09 11:32:21 - bot_EUR_USD_15m_market - INFO - Instrument: EUR_USD
+2026-01-09 11:32:21 - bot_EUR_USD_15m_market - INFO - Trading Timeframe: 15m (M15)
+2026-01-09 11:32:21 - bot_EUR_USD_15m_market - INFO - Market Trend Timeframe: H3 (H3)
+2026-01-09 11:32:21 - bot_EUR_USD_15m_market - INFO - Stop Loss Type: supertrend
+2026-01-09 11:32:21 - bot_EUR_USD_15m_market - INFO - CSV Log: account2/csv/EUR_USD_15m_market_aware.csv
+2026-01-09 11:32:21 - bot_EUR_USD_15m_market - INFO - Check Interval: 60 seconds
+2026-01-09 11:32:21 - bot_EUR_USD_15m_market - INFO - Risk/Reward Config: {'bear_market': {'short_rr': 1.2, 'long_rr': 0.6}, 'bull_market': {'short_rr': 0.6, 'long_rr': 1.2}}
+2026-01-09 11:32:21 - bot_EUR_USD_15m_market - INFO - ================================================================================
+2026-01-09 11:32:21 - bot_EUR_USD_15m_market - INFO - 🚀 Market-aware trading bot started
+2026-01-09 11:32:21 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 11:32:21 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 11:32:21 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16340
+2026-01-09 11:32:21 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 11:32:22 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:32:22 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:32:22
+2026-01-09 11:32:22 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:32:22 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16378
+2026-01-09 11:33:23 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:33:23 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:33:23
+2026-01-09 11:33:23 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:33:23 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16378
+2026-01-09 11:34:23 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:34:23 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:34:23
+2026-01-09 11:34:23 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:34:23 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16378
+2026-01-09 11:35:23 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 11:35:23 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 11:35:23 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16340
+2026-01-09 11:35:23 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 11:35:24 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:35:24 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:35:24
+2026-01-09 11:35:24 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:35:24 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16378
+2026-01-09 11:36:25 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:36:25 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:36:25
+2026-01-09 11:36:25 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:36:25 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16378
+2026-01-09 11:37:25 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:37:25 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:37:25
+2026-01-09 11:37:25 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:37:25 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16378
+2026-01-09 11:38:25 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 11:38:25 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 11:38:25 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16340
+2026-01-09 11:38:25 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 11:38:26 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:38:26 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:38:26
+2026-01-09 11:38:26 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:38:26 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16378
+2026-01-09 11:39:26 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:39:26 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:39:26
+2026-01-09 11:39:26 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:39:26 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16378
+2026-01-09 11:40:28 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:40:28 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:40:28
+2026-01-09 11:40:28 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:40:28 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16378
+2026-01-09 11:41:28 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 11:41:28 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 11:41:28 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16340
+2026-01-09 11:41:28 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 11:41:28 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:41:28 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:41:28
+2026-01-09 11:41:28 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:41:28 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16378
+2026-01-09 11:42:29 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:42:29 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:42:29
+2026-01-09 11:42:29 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:42:29 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16378
+2026-01-09 11:43:29 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:43:29 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:43:29
+2026-01-09 11:43:29 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:43:29 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16378
+2026-01-09 11:44:30 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 11:44:30 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 11:44:30 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16340
+2026-01-09 11:44:30 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 11:44:31 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:44:31 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:44:31
+2026-01-09 11:44:31 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:44:31 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16378
+2026-01-09 11:45:32 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:45:32 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:45:32
+2026-01-09 11:45:32 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:45:32 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16356
+2026-01-09 11:46:33 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:46:33 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:46:33
+2026-01-09 11:46:33 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:46:33 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16356
+2026-01-09 11:47:33 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 11:47:33 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 11:47:33 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16340
+2026-01-09 11:47:33 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 11:47:34 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:47:34 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:47:34
+2026-01-09 11:47:34 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:47:34 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16356
+2026-01-09 11:48:34 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:48:34 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:48:34
+2026-01-09 11:48:34 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:48:34 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16356
+2026-01-09 11:49:35 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:49:35 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:49:35
+2026-01-09 11:49:35 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:49:35 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16356
+2026-01-09 11:50:35 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 11:50:35 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 11:50:35 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16340
+2026-01-09 11:50:35 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 11:50:35 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:50:35 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:50:35
+2026-01-09 11:50:35 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:50:35 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16356
+2026-01-09 11:51:36 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:51:36 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:51:36
+2026-01-09 11:51:36 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:51:36 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16356
+2026-01-09 11:52:37 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:52:37 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:52:37
+2026-01-09 11:52:37 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:52:37 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16356
+2026-01-09 11:53:37 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 11:53:37 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 11:53:37 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16340
+2026-01-09 11:53:37 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 11:53:37 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:53:37 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:53:37
+2026-01-09 11:53:37 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:53:37 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16356
+2026-01-09 11:54:38 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:54:38 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:54:38
+2026-01-09 11:54:38 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:54:38 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16356
+2026-01-09 11:55:39 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:55:39 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:55:39
+2026-01-09 11:55:39 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:55:39 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16356
+2026-01-09 11:56:39 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 11:56:39 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 11:56:39 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16340
+2026-01-09 11:56:39 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 11:56:40 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:56:40 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:56:40
+2026-01-09 11:56:40 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:56:40 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16356
+2026-01-09 11:57:40 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:57:40 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:57:40
+2026-01-09 11:57:40 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:57:40 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16356
+2026-01-09 11:58:41 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:58:41 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:58:41
+2026-01-09 11:58:41 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:58:41 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16356
+2026-01-09 11:59:41 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 11:59:41 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 11:59:41 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16340
+2026-01-09 11:59:41 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 11:59:42 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 11:59:42 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 11:59:42
+2026-01-09 11:59:42 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 11:59:42 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16356
+2026-01-09 12:00:43 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 12:00:43 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 12:00:43
+2026-01-09 12:00:43 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 12:00:43 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16348
+2026-01-09 12:01:43 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 12:01:43 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 12:01:43
+2026-01-09 12:01:43 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 12:01:43 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16348
+2026-01-09 12:02:44 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 12:02:44 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 12:02:44 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16340
+2026-01-09 12:02:44 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 12:02:44 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 12:02:44 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 12:02:44
+2026-01-09 12:02:44 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 12:02:44 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16348
+2026-01-09 12:03:45 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 12:03:45 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 12:03:45
+2026-01-09 12:03:45 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 12:03:45 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16348
+2026-01-09 12:04:45 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 12:04:45 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 12:04:45
+2026-01-09 12:04:45 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 12:04:45 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16348
+2026-01-09 12:05:45 - bot_EUR_USD_15m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-09 12:05:45 - bot_EUR_USD_15m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-09 12:05:45 - bot_EUR_USD_15m_market - INFO -    3H Price: 1.16340
+2026-01-09 12:05:45 - bot_EUR_USD_15m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-09 12:05:46 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 12:05:46 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 12:05:46
+2026-01-09 12:05:46 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 12:05:46 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16348
+2026-01-09 12:06:46 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 12:06:46 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 12:06:46
+2026-01-09 12:06:46 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 12:06:46 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16348
+2026-01-09 12:07:47 - bot_EUR_USD_15m_market - INFO - --------------------------------------------------------------------------------
+2026-01-09 12:07:47 - bot_EUR_USD_15m_market - INFO - Time: 2026-01-09 12:07:47
+2026-01-09 12:07:47 - bot_EUR_USD_15m_market - INFO - OVERALL Market: BEAR | Balance: $99960.64 | P/L: $0.00
+2026-01-09 12:07:47 - bot_EUR_USD_15m_market - INFO - Signal: HOLD_SHORT | Price: 1.16348
