@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pivot Point SuperTrend - Technical Documentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f4f4f4;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            border-bottom: 4px solid #3498db;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #2980b9;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-left: 5px solid #3498db;
+            padding-left: 15px;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .header-info {
+            background: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+
+        .header-info p {
+            margin: 5px 0;
+        }
+
+        .parameter-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .parameter-table th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .parameter-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .parameter-table tr:hover {
+            background: #f5f5f5;
+        }
+
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        .formula {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .info-box {
+            background: #d1ecf1;
+            border-left: 4px solid #17a2b8;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .warning-box {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .success-box {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            border: 1px solid #dee2e6;
+        }
+
+        .feature-card h4 {
+            color: #2980b9;
+            margin-bottom: 10px;
+        }
+
+        .signal-buy {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .signal-sell {
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+        .step-list {
+            counter-reset: step-counter;
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .step-list li {
+            counter-increment: step-counter;
+            margin-bottom: 20px;
+            padding-left: 60px;
+            position: relative;
+        }
+
+        .step-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #3498db;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Pivot Point SuperTrend Indicator</h1>
+
+        <div class="header-info">
+            <p><strong>Indicator Name:</strong> Pivot Point SuperTrend</p>
+            <p><strong>Version:</strong> Pine Script v4</p>
+            <p><strong>Author:</strong> LonesomeTheBlue</p>
+            <p><strong>License:</strong> Mozilla Public License 2.0</p>
+            <p><strong>Type:</strong> Overlay Indicator (displays on the price chart)</p>
+        </div>
+
+        <h2>📋 Overview</h2>
+        <p>
+            The Pivot Point SuperTrend is an advanced trend-following indicator that combines the concept of
+            <strong>Pivot Points</strong> with the <strong>SuperTrend</strong> methodology. Unlike the traditional
+            SuperTrend indicator that uses a simple moving average or high/low prices as its baseline, this indicator
+            uses a dynamic center line calculated from pivot points, making it more adaptive to market structure.
+        </p>
+
+        <div class="info-box">
+            <strong>Key Concept:</strong> This indicator identifies trend direction by creating an adaptive trailing
+            stop line based on pivot points and ATR (Average True Range). It generates buy and sell signals when the
+            trend changes direction.
+        </div>
+
+        <h2>⚙️ Input Parameters</h2>
+        <p>The indicator accepts six customizable parameters:</p>
+
+        <table class="parameter-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Default Value</th>
+                    <th>Range</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Pivot Point Period</strong></td>
+                    <td>2</td>
+                    <td>1 - 50</td>
+                    <td>Number of bars to the left and right used to identify pivot highs and lows. Lower values = more sensitive, more pivot points detected.</td>
+                </tr>
+                <tr>
+                    <td><strong>ATR Factor</strong></td>
+                    <td>3</td>
+                    <td>1+</td>
+                    <td>Multiplier for ATR to calculate the bands. Higher values = wider bands, fewer signals, less sensitivity.</td>
+                </tr>
+                <tr>
+                    <td><strong>ATR Period</strong></td>
+                    <td>10</td>
+                    <td>1+</td>
+                    <td>Number of periods used to calculate the Average True Range. Standard ATR lookback period.</td>
+                </tr>
+                <tr>
+                    <td><strong>Show Pivot Points</strong></td>
+                    <td>false</td>
+                    <td>true/false</td>
+                    <td>Toggle to display 'H' and 'L' labels at detected pivot high and low points on the chart.</td>
+                </tr>
+                <tr>
+                    <td><strong>Show Buy/Sell Labels</strong></td>
+                    <td>true</td>
+                    <td>true/false</td>
+                    <td>Toggle to display "Buy" and "Sell" labels when trend changes occur.</td>
+                </tr>
+                <tr>
+                    <td><strong>Show PP Center Line</strong></td>
+                    <td>false</td>
+                    <td>true/false</td>
+                    <td>Toggle to display the pivot point center line (blue when price is above, red when below).</td>
+                </tr>
+                <tr>
+                    <td><strong>Show Support/Resistance</strong></td>
+                    <td>false</td>
+                    <td>true/false</td>
+                    <td>Toggle to display support and resistance levels based on the most recent pivot lows and highs.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>🔍 How It Works - Step by Step</h2>
+
+        <ol class="step-list">
+            <li>
+                <strong>Detect Pivot Points</strong>
+                <p>The indicator identifies pivot highs and pivot lows using the specified period:</p>
+                <div class="code-block">
+float ph = pivothigh(prd, prd)
+float pl = pivotlow(prd, prd)
+                </div>
+                <p>A pivot high requires the high to be the highest price within <code>prd</code> bars on both sides.
+                A pivot low requires the low to be the lowest price within <code>prd</code> bars on both sides.</p>
+            </li>
+
+            <li>
+                <strong>Calculate Dynamic Center Line</strong>
+                <p>The center line is calculated using a weighted average of detected pivot points:</p>
+                <div class="formula">
+If first pivot detected:
+    center = pivot value
+
+For subsequent pivots:
+    center = (center × 2 + new_pivot) / 3
+                </div>
+                <p>This weighted calculation gives more importance to the existing center line while gradually adapting
+                to new pivot points, creating a smooth, adaptive baseline.</p>
+            </li>
+
+            <li>
+                <strong>Calculate Upper and Lower Bands</strong>
+                <p>Using the center line and ATR, the indicator calculates two bands:</p>
+                <div class="formula">
+Up (Lower Band) = center - (Factor × ATR(Pd))
+Dn (Upper Band) = center + (Factor × ATR(Pd))
+                </div>
+                <p>These bands represent the volatility-adjusted range around the center line. The ATR Factor determines
+                how far the bands are from the center.</p>
+            </li>
+
+            <li>
+                <strong>Calculate Trailing Stop Lines</strong>
+                <p>The indicator creates adaptive trailing stop lines that adjust based on price movement:</p>
+                <div class="code-block">
+TUp = close[1] > TUp[1] ? max(Up, TUp[1]) : Up
+TDown = close[1] < TDown[1] ? min(Dn, TDown[1]) : Dn
+                </div>
+                <ul>
+                    <li><strong>TUp (Trailing Up):</strong> When price is rising, it takes the higher value between the new Up and previous TUp (trailing stop rises)</li>
+                    <li><strong>TDown (Trailing Down):</strong> When price is falling, it takes the lower value between the new Dn and previous TDown (trailing stop falls)</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Determine Trend Direction</strong>
+                <p>The trend is determined by the price position relative to the trailing stops:</p>
+                <div class="formula">
+If close > TDown[1]: Trend = 1 (Uptrend)
+If close < TUp[1]: Trend = -1 (Downtrend)
+Otherwise: Trend = previous Trend
+                </div>
+                <ul>
+                    <li><strong>Trend = 1:</strong> Uptrend (green line)</li>
+                    <li><strong>Trend = -1:</strong> Downtrend (red line)</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Plot Trailing Stop Line</strong>
+                <p>The active trailing stop line is displayed:</p>
+                <div class="code-block">
+Trailingsl = Trend == 1 ? TUp : TDown
+                </div>
+                <ul>
+                    <li>In uptrend: Shows TUp line (support) in <span class="signal-buy">green</span></li>
+                    <li>In downtrend: Shows TDown line (resistance) in <span class="signal-sell">red</span></li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Generate Trading Signals</strong>
+                <div class="formula">
+Buy Signal: Trend changes from -1 to 1
+Sell Signal: Trend changes from 1 to -1
+                </div>
+                <div class="success-box">
+                    <strong class="signal-buy">BUY SIGNAL:</strong> Triggered when price crosses above the TDown line,
+                    indicating a trend reversal from downtrend to uptrend.
+                </div>
+                <div class="warning-box">
+                    <strong class="signal-sell">SELL SIGNAL:</strong> Triggered when price crosses below the TUp line,
+                    indicating a trend reversal from uptrend to downtrend.
+                </div>
+            </li>
+
+            <li>
+                <strong>Track Support and Resistance</strong>
+                <p>The indicator maintains support and resistance levels based on the most recent pivot points:</p>
+                <ul>
+                    <li><strong>Support:</strong> Most recent pivot low (updates when new pivot low detected)</li>
+                    <li><strong>Resistance:</strong> Most recent pivot high (updates when new pivot high detected)</li>
+                </ul>
+            </li>
+        </ol>
+
+        <h2>📈 Visual Elements</h2>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h4>🟢 SuperTrend Line (Green)</h4>
+                <p>Displays during uptrends. The line represents the trailing stop level (TUp). Price staying above this line confirms uptrend continuation.</p>
+            </div>
+
+            <div class="feature-card">
+                <h4>🔴 SuperTrend Line (Red)</h4>
+                <p>Displays during downtrends. The line represents the trailing stop level (TDown). Price staying below this line confirms downtrend continuation.</p>
+            </div>
+
+            <div class="feature-card">
+                <h4>🔵 Center Line (Optional)</h4>
+                <p>The dynamic pivot point-based baseline. Blue when price is above center, red when price is below. Helps identify market structure.</p>
+            </div>
+
+            <div class="feature-card">
+                <h4>🏷️ Pivot Labels (Optional)</h4>
+                <p>"H" labels mark pivot highs (red), "L" labels mark pivot lows (green). These show the structural turning points used in calculations.</p>
+            </div>
+
+            <div class="feature-card">
+                <h4>✅ Buy Labels</h4>
+                <p>Green "Buy" labels appear at the trailing stop line when trend changes from bearish to bullish.</p>
+            </div>
+
+            <div class="feature-card">
+                <h4>❌ Sell Labels</h4>
+                <p>Red "Sell" labels appear at the trailing stop line when trend changes from bullish to bearish.</p>
+            </div>
+
+            <div class="feature-card">
+                <h4>🟢 Support Circles (Optional)</h4>
+                <p>Green circles plotted at the most recent pivot low level, representing dynamic support.</p>
+            </div>
+
+            <div class="feature-card">
+                <h4>🔴 Resistance Circles (Optional)</h4>
+                <p>Red circles plotted at the most recent pivot high level, representing dynamic resistance.</p>
+            </div>
+        </div>
+
+        <h2>🔔 Alert Conditions</h2>
+        <p>The indicator includes three built-in alert conditions:</p>
+
+        <ol>
+            <li>
+                <strong class="signal-buy">Buy Signal Alert</strong>
+                <div class="code-block">
+Trigger: Trend == 1 and Trend[1] == -1
+Message: "Buy Signal"
+                </div>
+                <p>Fires when the trend changes from downtrend to uptrend.</p>
+            </li>
+
+            <li>
+                <strong class="signal-sell">Sell Signal Alert</strong>
+                <div class="code-block">
+Trigger: Trend == -1 and Trend[1] == 1
+Message: "Sell Signal"
+                </div>
+                <p>Fires when the trend changes from uptrend to downtrend.</p>
+            </li>
+
+            <li>
+                <strong>Trend Change Alert</strong>
+                <div class="code-block">
+Trigger: change(Trend)
+Message: "Trend Changed"
+                </div>
+                <p>Fires whenever the trend direction changes (catches both buy and sell signals).</p>
+            </li>
+        </ol>
+
+        <h2>💡 Trading Strategy Guidelines</h2>
+
+        <h3>Entry Signals</h3>
+        <ul>
+            <li><strong class="signal-buy">Long Entry:</strong> When "Buy" label appears (price crosses above the SuperTrend line)</li>
+            <li><strong class="signal-sell">Short Entry:</strong> When "Sell" label appears (price crosses below the SuperTrend line)</li>
+        </ul>
+
+        <h3>Exit Signals</h3>
+        <ul>
+            <li><strong>Long Exit:</strong> When "Sell" label appears (trend reversal)</li>
+            <li><strong>Short Exit:</strong> When "Buy" label appears (trend reversal)</li>
+            <li><strong>Trailing Stop:</strong> Use the SuperTrend line itself as a dynamic trailing stop level</li>
+        </ul>
+
+        <h3>Confirmation Techniques</h3>
+        <div class="info-box">
+            <ul style="margin: 0;">
+                <li>Look for signals that align with support/resistance levels</li>
+                <li>Confirm signals with higher timeframe trends</li>
+                <li>Consider volume confirmation (not included in this indicator)</li>
+                <li>Wait for price to close beyond the SuperTrend line for confirmation</li>
+                <li>Use the center line as an additional trend filter</li>
+            </ul>
+        </div>
+
+        <h2>⚖️ Advantages vs. Traditional SuperTrend</h2>
+
+        <table class="parameter-table">
+            <thead>
+                <tr>
+                    <th>Aspect</th>
+                    <th>Traditional SuperTrend</th>
+                    <th>Pivot Point SuperTrend</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Baseline</strong></td>
+                    <td>Simple average of high and low (hl2)</td>
+                    <td>Dynamic center line based on pivot points</td>
+                </tr>
+                <tr>
+                    <td><strong>Market Structure</strong></td>
+                    <td>Ignores swing points</td>
+                    <td>Adapts to swing highs and lows</td>
+                </tr>
+                <tr>
+                    <td><strong>Sensitivity</strong></td>
+                    <td>Fixed sensitivity based on ATR only</td>
+                    <td>Adapts to market structure + ATR</td>
+                </tr>
+                <tr>
+                    <td><strong>Support/Resistance</strong></td>
+                    <td>Not included</td>
+                    <td>Built-in S/R levels from pivots</td>
+                </tr>
+                <tr>
+                    <td><strong>Whipsaws</strong></td>
+                    <td>More prone in ranging markets</td>
+                    <td>Potentially fewer due to pivot-based adaptation</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>⚠️ Important Considerations</h2>
+
+        <div class="warning-box">
+            <h3>Limitations</h3>
+            <ul style="margin: 0;">
+                <li><strong>Lagging Indicator:</strong> Like all trend-following indicators, signals occur after the trend has already started</li>
+                <li><strong>Ranging Markets:</strong> Can produce false signals in sideways/choppy markets</li>
+                <li><strong>Pivot Offset:</strong> Pivot points are detected with a delay (prd bars), which adds lag to the center line calculation</li>
+                <li><strong>No Volume Analysis:</strong> Does not consider trading volume, which can be important for signal confirmation</li>
+            </ul>
+        </div>
+
+        <h3>Best Practices</h3>
+        <ol>
+            <li><strong>Parameter Optimization:</strong> Test different combinations of Pivot Period, ATR Factor, and ATR Period for your specific market and timeframe</li>
+            <li><strong>Timeframe Selection:</strong> Works better on higher timeframes (4H, Daily) with clearer trends</li>
+            <li><strong>Combine with Other Indicators:</strong> Use alongside momentum indicators (RSI, MACD) or volume analysis for confirmation</li>
+            <li><strong>Risk Management:</strong> Always use stop losses; the SuperTrend line can serve as a logical stop level</li>
+            <li><strong>Market Conditions:</strong> Most effective in trending markets; consider avoiding in confirmed ranging conditions</li>
+        </ol>
+
+        <h2>🎯 Parameter Tuning Guide</h2>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h4>Lower Pivot Period (1-2)</h4>
+                <p><strong>Effect:</strong> More pivot points detected, more responsive center line</p>
+                <p><strong>Use when:</strong> Trading shorter timeframes or volatile assets</p>
+                <p><strong>Risk:</strong> More false signals</p>
+            </div>
+
+            <div class="feature-card">
+                <h4>Higher Pivot Period (3-5)</h4>
+                <p><strong>Effect:</strong> Fewer, more significant pivot points, smoother center line</p>
+                <p><strong>Use when:</strong> Trading higher timeframes or seeking major trends</p>
+                <p><strong>Risk:</strong> Delayed signals</p>
+            </div>
+
+            <div class="feature-card">
+                <h4>Lower ATR Factor (1-2)</h4>
+                <p><strong>Effect:</strong> Tighter bands, more frequent signals</p>
+                <p><strong>Use when:</strong> High volatility markets or short-term trading</p>
+                <p><strong>Risk:</strong> More whipsaws</p>
+            </div>
+
+            <div class="feature-card">
+                <h4>Higher ATR Factor (4-6)</h4>
+                <p><strong>Effect:</strong> Wider bands, fewer signals, more confirmation needed</p>
+                <p><strong>Use when:</strong> Seeking only strong trends, avoiding noise</p>
+                <p><strong>Risk:</strong> Missing early entries</p>
+            </div>
+        </div>
+
+        <h2>📊 Technical Formula Summary</h2>
+
+        <div class="code-block">
+# Step 1: Detect Pivots
+PivotHigh = pivothigh(period, period)
+PivotLow = pivotlow(period, period)
+
+# Step 2: Calculate Center Line (weighted average)
+LastPivot = PivotHigh ? PivotHigh : PivotLow ? PivotLow : na
+Center = (Center[1] × 2 + LastPivot) / 3
+
+# Step 3: Calculate Bands
+UpperBand = Center + (Factor × ATR(Period))
+LowerBand = Center - (Factor × ATR(Period))
+
+# Step 4: Calculate Trailing Stops
+TrailingUp = close[1] > TrailingUp[1] ? max(LowerBand, TrailingUp[1]) : LowerBand
+TrailingDown = close[1] < TrailingDown[1] ? min(UpperBand, TrailingDown[1]) : UpperBand
+
+# Step 5: Determine Trend
+Trend = close > TrailingDown[1] ? 1 : close < TrailingUp[1] ? -1 : Trend[1]
+
+# Step 6: Set Active Trailing Stop
+SuperTrendLine = Trend == 1 ? TrailingUp : TrailingDown
+
+# Step 7: Generate Signals
+BuySignal = (Trend == 1) AND (Trend[1] == -1)
+SellSignal = (Trend == -1) AND (Trend[1] == 1)
+        </div>
+
+        <h2>🔗 Summary</h2>
+        <p>
+            The Pivot Point SuperTrend indicator is a sophisticated trend-following tool that combines the structural
+            analysis of pivot points with the trend-tracking capabilities of the SuperTrend methodology. By using a
+            dynamic, pivot-based center line instead of a simple price average, it adapts better to market structure
+            and potentially provides more reliable signals in trending conditions.
+        </p>
+
+        <div class="success-box">
+            <strong>Best Use Cases:</strong>
+            <ul style="margin: 5px 0 0 20px;">
+                <li>Medium to long-term trend trading</li>
+                <li>Identifying trend reversals with structural confirmation</li>
+                <li>Setting dynamic trailing stop levels</li>
+                <li>Combining with support/resistance analysis</li>
+                <li>Filtering trades to align with major trend direction</li>
+            </ul>
+        </div>
+
+        <div style="margin-top: 40px; padding-top: 20px; border-top: 2px solid #ddd; text-align: center; color: #666;">
+            <p><strong>Indicator:</strong> Pivot Point SuperTrend | <strong>Author:</strong> LonesomeTheBlue | <strong>License:</strong> MPL 2.0</p>
+            <p style="font-size: 0.9em; margin-top: 10px;">This documentation is for educational purposes. Always backtest strategies and use proper risk management.</p>
+        </div>
+    </div>
+</body>
+</html>

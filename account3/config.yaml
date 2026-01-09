@@ -1,0 +1,23 @@
+# Account3 Configuration Override
+# Aggressive configuration - higher risk/reward ratios
+
+# Check interval in seconds
+check_interval: 45
+
+# Market trend configuration
+market:
+  indicator: ppsupertrend
+  timeframe: H3
+
+# Stop loss configuration
+stoploss:
+  type: PPSuperTrend
+  
+# Aggressive Risk/Reward configuration
+risk_reward:
+  bear_market:
+    short_rr: 1.5    # Aggressive approach
+    long_rr: 0.5     # Very conservative counter-trend
+  bull_market:
+    short_rr: 0.5    # Very conservative counter-trend
+    long_rr: 1.5     # Aggressive approach

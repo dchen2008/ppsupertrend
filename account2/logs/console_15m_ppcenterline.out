@@ -1,0 +1,344 @@
+==========================================
+Starting Auto Trade Bot
+==========================================
+Instrument:  EUR_USD
+Timeframe:   tf:15m
+Stop Loss:   sl:PPCenterLine
+Account:     account2
+CSV Log:     /Users/dongchen/Documents/AI-project/GitHub/ppsupertrend/account2/csv/EUR_USD_15m_sl-PPCenterLine.csv
+Bot Log:     /Users/dongchen/Documents/AI-project/GitHub/ppsupertrend/account2/logs/bot_EUR_USD_15m_PPCenterLine.log
+==========================================
+
+/Users/dongchen/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+
+✓ Using account: account2 (101-001-38143009-001)
+
+================================================================================
+⚠️  RUNNING IN PRACTICE MODE
+================================================================================
+[15m-ppcenterline] 2026-01-08 21:30:48 - INFO - ================================================================================
+[15m-ppcenterline] 2026-01-08 21:30:48 - INFO - Enhanced Trading Bot Initialized
+[15m-ppcenterline] 2026-01-08 21:30:48 - INFO - ================================================================================
+[15m-ppcenterline] 2026-01-08 21:30:48 - INFO - Account: 101-001-38143009-001
+[15m-ppcenterline] 2026-01-08 21:30:48 - INFO - Mode: PRACTICE
+[15m-ppcenterline] 2026-01-08 21:30:48 - INFO - Instrument: EUR_USD
+[15m-ppcenterline] 2026-01-08 21:30:48 - INFO - Timeframe: 15m (M15)
+[15m-ppcenterline] 2026-01-08 21:30:48 - INFO - Stop Loss Type: PPCenterLine
+[15m-ppcenterline] 2026-01-08 21:30:48 - INFO - CSV Log: account2/csv/EUR_USD_15m_sl-PPCenterLine.csv
+[15m-ppcenterline] 2026-01-08 21:30:48 - INFO - Text Log: account2/logs/bot_EUR_USD_15m_PPCenterLine.log
+[15m-ppcenterline] 2026-01-08 21:30:48 - INFO - Parameters: PP=2, ATR Factor=3.0, ATR Period=10
+[15m-ppcenterline] 2026-01-08 21:30:48 - INFO - Check Interval: 60 seconds
+[15m-ppcenterline] 2026-01-08 21:30:48 - INFO - Trailing Stop: ENABLED
+[15m-ppcenterline] 2026-01-08 21:30:48 - INFO - ================================================================================
+
+📊 Starting bot...
+Account: account2
+Instrument: EUR_USD
+Timeframe: 15m
+Stop Loss: PPCenterLine
+CSV Log: account2/csv/EUR_USD_15m_sl-PPCenterLine.csv
+
+Press Ctrl+C to stop
+
+[15m-ppcenterline] 2026-01-08 21:30:48 - INFO - 🚀 Trading bot started
+[15m-ppcenterline] 2026-01-08 21:30:49 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 21:30:49 - INFO - Time: 2026-01-08 21:30:49
+[15m-ppcenterline] 2026-01-08 21:30:49 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 21:30:49 - INFO - Signal: HOLD_SHORT | Price: 1.16530
+⏰ Skipping stale HOLD_SHORT signal: 948.9s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 21:31:49 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 21:31:49 - INFO - Time: 2026-01-08 21:31:49
+[15m-ppcenterline] 2026-01-08 21:31:49 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 21:31:49 - INFO - Signal: HOLD_SHORT | Price: 1.16530
+⏰ Skipping stale HOLD_SHORT signal: 1009.4s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 21:32:50 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 21:32:50 - INFO - Time: 2026-01-08 21:32:50
+[15m-ppcenterline] 2026-01-08 21:32:50 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 21:32:50 - INFO - Signal: HOLD_SHORT | Price: 1.16530
+⏰ Skipping stale HOLD_SHORT signal: 1070.0s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 21:33:50 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 21:33:50 - INFO - Time: 2026-01-08 21:33:50
+[15m-ppcenterline] 2026-01-08 21:33:50 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 21:33:50 - INFO - Signal: HOLD_SHORT | Price: 1.16530
+⏰ Skipping stale HOLD_SHORT signal: 1130.5s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 21:34:51 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 21:34:51 - INFO - Time: 2026-01-08 21:34:51
+[15m-ppcenterline] 2026-01-08 21:34:51 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 21:34:51 - INFO - Signal: HOLD_SHORT | Price: 1.16530
+⏰ Skipping stale HOLD_SHORT signal: 1191.1s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 21:35:51 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 21:35:51 - INFO - Time: 2026-01-08 21:35:51
+[15m-ppcenterline] 2026-01-08 21:35:51 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 21:35:51 - INFO - Signal: HOLD_SHORT | Price: 1.16530
+⏰ Skipping stale HOLD_SHORT signal: 1251.6s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 21:36:52 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 21:36:52 - INFO - Time: 2026-01-08 21:36:52
+[15m-ppcenterline] 2026-01-08 21:36:52 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 21:36:52 - INFO - Signal: HOLD_SHORT | Price: 1.16530
+⏰ Skipping stale HOLD_SHORT signal: 1312.1s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 21:37:52 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 21:37:52 - INFO - Time: 2026-01-08 21:37:52
+[15m-ppcenterline] 2026-01-08 21:37:52 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 21:37:52 - INFO - Signal: HOLD_SHORT | Price: 1.16530
+⏰ Skipping stale HOLD_SHORT signal: 1372.7s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 21:38:53 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 21:38:53 - INFO - Time: 2026-01-08 21:38:53
+[15m-ppcenterline] 2026-01-08 21:38:53 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 21:38:53 - INFO - Signal: HOLD_SHORT | Price: 1.16530
+⏰ Skipping stale HOLD_SHORT signal: 1433.5s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 21:39:54 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 21:39:54 - INFO - Time: 2026-01-08 21:39:54
+[15m-ppcenterline] 2026-01-08 21:39:54 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 21:39:54 - INFO - Signal: HOLD_SHORT | Price: 1.16530
+⏰ Skipping stale HOLD_SHORT signal: 1493.9s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 21:40:54 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 21:40:54 - INFO - Time: 2026-01-08 21:40:54
+[15m-ppcenterline] 2026-01-08 21:40:54 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 21:40:54 - INFO - Signal: HOLD_SHORT | Price: 1.16530
+⏰ Skipping stale HOLD_SHORT signal: 1554.4s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 21:41:55 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 21:41:55 - INFO - Time: 2026-01-08 21:41:55
+[15m-ppcenterline] 2026-01-08 21:41:55 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 21:41:55 - INFO - Signal: HOLD_SHORT | Price: 1.16530
+⏰ Skipping stale HOLD_SHORT signal: 1615.4s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 21:42:56 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 21:42:56 - INFO - Time: 2026-01-08 21:42:56
+[15m-ppcenterline] 2026-01-08 21:42:56 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 21:42:56 - INFO - Signal: HOLD_SHORT | Price: 1.16530
+⏰ Skipping stale HOLD_SHORT signal: 1676.2s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 21:43:56 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 21:43:56 - INFO - Time: 2026-01-08 21:43:56
+[15m-ppcenterline] 2026-01-08 21:43:56 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 21:43:56 - INFO - Signal: HOLD_SHORT | Price: 1.16530
+⏰ Skipping stale HOLD_SHORT signal: 1736.7s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 21:44:57 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 21:44:57 - INFO - Time: 2026-01-08 21:44:57
+[15m-ppcenterline] 2026-01-08 21:44:57 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 21:44:57 - INFO - Signal: HOLD_SHORT | Price: 1.16530
+⏰ Skipping stale HOLD_SHORT signal: 1797.2s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 21:45:58 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 21:45:58 - INFO - Time: 2026-01-08 21:45:58
+[15m-ppcenterline] 2026-01-08 21:45:58 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 21:45:58 - INFO - Signal: HOLD_SHORT | Price: 1.16512
+⏰ Skipping stale HOLD_SHORT signal: 958.1s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 21:46:58 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 21:46:58 - INFO - Time: 2026-01-08 21:46:58
+[15m-ppcenterline] 2026-01-08 21:46:58 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 21:46:58 - INFO - Signal: HOLD_SHORT | Price: 1.16512
+⏰ Skipping stale HOLD_SHORT signal: 1018.6s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 21:47:59 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 21:47:59 - INFO - Time: 2026-01-08 21:47:59
+[15m-ppcenterline] 2026-01-08 21:47:59 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 21:47:59 - INFO - Signal: HOLD_SHORT | Price: 1.16512
+⏰ Skipping stale HOLD_SHORT signal: 1079.1s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 21:48:59 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 21:48:59 - INFO - Time: 2026-01-08 21:48:59
+[15m-ppcenterline] 2026-01-08 21:48:59 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 21:48:59 - INFO - Signal: HOLD_SHORT | Price: 1.16512
+⏰ Skipping stale HOLD_SHORT signal: 1139.6s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 21:50:00 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 21:50:00 - INFO - Time: 2026-01-08 21:50:00
+[15m-ppcenterline] 2026-01-08 21:50:00 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 21:50:00 - INFO - Signal: HOLD_SHORT | Price: 1.16512
+⏰ Skipping stale HOLD_SHORT signal: 1200.1s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 21:51:00 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 21:51:00 - INFO - Time: 2026-01-08 21:51:00
+[15m-ppcenterline] 2026-01-08 21:51:00 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 21:51:00 - INFO - Signal: HOLD_SHORT | Price: 1.16512
+⏰ Skipping stale HOLD_SHORT signal: 1260.7s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 21:52:01 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 21:52:01 - INFO - Time: 2026-01-08 21:52:01
+[15m-ppcenterline] 2026-01-08 21:52:01 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 21:52:01 - INFO - Signal: HOLD_SHORT | Price: 1.16512
+⏰ Skipping stale HOLD_SHORT signal: 1321.3s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 21:53:01 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 21:53:01 - INFO - Time: 2026-01-08 21:53:01
+[15m-ppcenterline] 2026-01-08 21:53:01 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 21:53:01 - INFO - Signal: HOLD_SHORT | Price: 1.16512
+⏰ Skipping stale HOLD_SHORT signal: 1381.8s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 21:54:02 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 21:54:02 - INFO - Time: 2026-01-08 21:54:02
+[15m-ppcenterline] 2026-01-08 21:54:02 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 21:54:02 - INFO - Signal: HOLD_SHORT | Price: 1.16512
+⏰ Skipping stale HOLD_SHORT signal: 1442.3s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 21:55:03 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 21:55:03 - INFO - Time: 2026-01-08 21:55:03
+[15m-ppcenterline] 2026-01-08 21:55:03 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 21:55:03 - INFO - Signal: HOLD_SHORT | Price: 1.16512
+⏰ Skipping stale HOLD_SHORT signal: 1502.9s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 21:56:03 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 21:56:03 - INFO - Time: 2026-01-08 21:56:03
+[15m-ppcenterline] 2026-01-08 21:56:03 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 21:56:03 - INFO - Signal: HOLD_SHORT | Price: 1.16512
+⏰ Skipping stale HOLD_SHORT signal: 1563.4s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 21:57:04 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 21:57:04 - INFO - Time: 2026-01-08 21:57:04
+[15m-ppcenterline] 2026-01-08 21:57:04 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 21:57:04 - INFO - Signal: HOLD_SHORT | Price: 1.16512
+⏰ Skipping stale HOLD_SHORT signal: 1624.4s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 21:58:04 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 21:58:04 - INFO - Time: 2026-01-08 21:58:04
+[15m-ppcenterline] 2026-01-08 21:58:04 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 21:58:04 - INFO - Signal: HOLD_SHORT | Price: 1.16512
+⏰ Skipping stale HOLD_SHORT signal: 1684.9s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 21:59:05 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 21:59:05 - INFO - Time: 2026-01-08 21:59:05
+[15m-ppcenterline] 2026-01-08 21:59:05 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 21:59:05 - INFO - Signal: HOLD_SHORT | Price: 1.16512
+⏰ Skipping stale HOLD_SHORT signal: 1745.4s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 22:00:06 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 22:00:06 - INFO - Time: 2026-01-08 22:00:06
+[15m-ppcenterline] 2026-01-08 22:00:06 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 22:00:06 - INFO - Signal: HOLD_SHORT | Price: 1.16511
+⏰ Skipping stale HOLD_SHORT signal: 906.0s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 22:01:06 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 22:01:06 - INFO - Time: 2026-01-08 22:01:06
+[15m-ppcenterline] 2026-01-08 22:01:06 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 22:01:06 - INFO - Signal: HOLD_SHORT | Price: 1.16511
+⏰ Skipping stale HOLD_SHORT signal: 966.5s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 22:02:07 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 22:02:07 - INFO - Time: 2026-01-08 22:02:07
+[15m-ppcenterline] 2026-01-08 22:02:07 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 22:02:07 - INFO - Signal: HOLD_SHORT | Price: 1.16511
+⏰ Skipping stale HOLD_SHORT signal: 1027.0s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 22:03:07 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 22:03:07 - INFO - Time: 2026-01-08 22:03:07
+[15m-ppcenterline] 2026-01-08 22:03:07 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 22:03:07 - INFO - Signal: HOLD_SHORT | Price: 1.16511
+⏰ Skipping stale HOLD_SHORT signal: 1087.5s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 22:04:08 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 22:04:08 - INFO - Time: 2026-01-08 22:04:08
+[15m-ppcenterline] 2026-01-08 22:04:08 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 22:04:08 - INFO - Signal: HOLD_SHORT | Price: 1.16511
+⏰ Skipping stale HOLD_SHORT signal: 1148.0s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 22:05:08 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 22:05:08 - INFO - Time: 2026-01-08 22:05:08
+[15m-ppcenterline] 2026-01-08 22:05:08 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 22:05:08 - INFO - Signal: HOLD_SHORT | Price: 1.16511
+⏰ Skipping stale HOLD_SHORT signal: 1208.7s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 22:06:09 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 22:06:09 - INFO - Time: 2026-01-08 22:06:09
+[15m-ppcenterline] 2026-01-08 22:06:09 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 22:06:09 - INFO - Signal: HOLD_SHORT | Price: 1.16511
+⏰ Skipping stale HOLD_SHORT signal: 1269.3s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 22:07:10 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 22:07:10 - INFO - Time: 2026-01-08 22:07:10
+[15m-ppcenterline] 2026-01-08 22:07:10 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 22:07:10 - INFO - Signal: HOLD_SHORT | Price: 1.16511
+⏰ Skipping stale HOLD_SHORT signal: 1330.0s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 22:08:10 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 22:08:10 - INFO - Time: 2026-01-08 22:08:10
+[15m-ppcenterline] 2026-01-08 22:08:10 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 22:08:10 - INFO - Signal: HOLD_SHORT | Price: 1.16511
+⏰ Skipping stale HOLD_SHORT signal: 1390.5s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 22:09:11 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 22:09:11 - INFO - Time: 2026-01-08 22:09:11
+[15m-ppcenterline] 2026-01-08 22:09:11 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 22:09:11 - INFO - Signal: HOLD_SHORT | Price: 1.16511
+⏰ Skipping stale HOLD_SHORT signal: 1451.0s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 22:10:12 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 22:10:12 - INFO - Time: 2026-01-08 22:10:12
+[15m-ppcenterline] 2026-01-08 22:10:12 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 22:10:12 - INFO - Signal: HOLD_SHORT | Price: 1.16511
+⏰ Skipping stale HOLD_SHORT signal: 1512.1s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 22:11:12 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 22:11:12 - INFO - Time: 2026-01-08 22:11:12
+[15m-ppcenterline] 2026-01-08 22:11:12 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 22:11:12 - INFO - Signal: HOLD_SHORT | Price: 1.16511
+⏰ Skipping stale HOLD_SHORT signal: 1572.6s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 22:12:13 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 22:12:13 - INFO - Time: 2026-01-08 22:12:13
+[15m-ppcenterline] 2026-01-08 22:12:13 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 22:12:13 - INFO - Signal: HOLD_SHORT | Price: 1.16511
+⏰ Skipping stale HOLD_SHORT signal: 1633.2s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 22:13:13 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 22:13:13 - INFO - Time: 2026-01-08 22:13:13
+[15m-ppcenterline] 2026-01-08 22:13:13 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 22:13:13 - INFO - Signal: HOLD_SHORT | Price: 1.16511
+⏰ Skipping stale HOLD_SHORT signal: 1693.7s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 22:14:14 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 22:14:14 - INFO - Time: 2026-01-08 22:14:14
+[15m-ppcenterline] 2026-01-08 22:14:14 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 22:14:14 - INFO - Signal: HOLD_SHORT | Price: 1.16511
+⏰ Skipping stale HOLD_SHORT signal: 1754.3s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 22:15:14 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 22:15:14 - INFO - Time: 2026-01-08 22:15:14
+[15m-ppcenterline] 2026-01-08 22:15:14 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 22:15:14 - INFO - Signal: HOLD_SHORT | Price: 1.16493
+⏰ Skipping stale HOLD_SHORT signal: 914.9s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 22:16:15 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 22:16:15 - INFO - Time: 2026-01-08 22:16:15
+[15m-ppcenterline] 2026-01-08 22:16:15 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 22:16:15 - INFO - Signal: HOLD_SHORT | Price: 1.16493
+⏰ Skipping stale HOLD_SHORT signal: 975.4s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 22:17:16 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 22:17:16 - INFO - Time: 2026-01-08 22:17:16
+[15m-ppcenterline] 2026-01-08 22:17:16 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 22:17:16 - INFO - Signal: HOLD_SHORT | Price: 1.16493
+⏰ Skipping stale HOLD_SHORT signal: 1035.9s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 22:18:16 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 22:18:16 - INFO - Time: 2026-01-08 22:18:16
+[15m-ppcenterline] 2026-01-08 22:18:16 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 22:18:16 - INFO - Signal: HOLD_SHORT | Price: 1.16493
+⏰ Skipping stale HOLD_SHORT signal: 1096.5s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 22:19:17 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 22:19:17 - INFO - Time: 2026-01-08 22:19:17
+[15m-ppcenterline] 2026-01-08 22:19:17 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 22:19:17 - INFO - Signal: HOLD_SHORT | Price: 1.16493
+⏰ Skipping stale HOLD_SHORT signal: 1157.0s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 22:20:17 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 22:20:17 - INFO - Time: 2026-01-08 22:20:17
+[15m-ppcenterline] 2026-01-08 22:20:17 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 22:20:17 - INFO - Signal: HOLD_SHORT | Price: 1.16493
+⏰ Skipping stale HOLD_SHORT signal: 1217.6s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 22:21:18 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 22:21:18 - INFO - Time: 2026-01-08 22:21:18
+[15m-ppcenterline] 2026-01-08 22:21:18 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 22:21:18 - INFO - Signal: HOLD_SHORT | Price: 1.16493
+⏰ Skipping stale HOLD_SHORT signal: 1278.1s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 22:22:18 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 22:22:18 - INFO - Time: 2026-01-08 22:22:18
+[15m-ppcenterline] 2026-01-08 22:22:18 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 22:22:18 - INFO - Signal: HOLD_SHORT | Price: 1.16493
+⏰ Skipping stale HOLD_SHORT signal: 1338.8s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 22:23:19 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 22:23:19 - INFO - Time: 2026-01-08 22:23:19
+[15m-ppcenterline] 2026-01-08 22:23:19 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 22:23:19 - INFO - Signal: HOLD_SHORT | Price: 1.16493
+⏰ Skipping stale HOLD_SHORT signal: 1399.3s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 22:24:20 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 22:24:20 - INFO - Time: 2026-01-08 22:24:20
+[15m-ppcenterline] 2026-01-08 22:24:20 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 22:24:20 - INFO - Signal: HOLD_SHORT | Price: 1.16493
+⏰ Skipping stale HOLD_SHORT signal: 1459.9s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 22:25:20 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 22:25:20 - INFO - Time: 2026-01-08 22:25:20
+[15m-ppcenterline] 2026-01-08 22:25:20 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 22:25:20 - INFO - Signal: HOLD_SHORT | Price: 1.16493
+⏰ Skipping stale HOLD_SHORT signal: 1520.4s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 22:26:21 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 22:26:21 - INFO - Time: 2026-01-08 22:26:21
+[15m-ppcenterline] 2026-01-08 22:26:21 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 22:26:21 - INFO - Signal: HOLD_SHORT | Price: 1.16493
+⏰ Skipping stale HOLD_SHORT signal: 1581.0s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 22:27:21 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 22:27:21 - INFO - Time: 2026-01-08 22:27:21
+[15m-ppcenterline] 2026-01-08 22:27:21 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 22:27:21 - INFO - Signal: HOLD_SHORT | Price: 1.16493
+⏰ Skipping stale HOLD_SHORT signal: 1641.6s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 22:28:22 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 22:28:22 - INFO - Time: 2026-01-08 22:28:22
+[15m-ppcenterline] 2026-01-08 22:28:22 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 22:28:22 - INFO - Signal: HOLD_SHORT | Price: 1.16493
+⏰ Skipping stale HOLD_SHORT signal: 1702.2s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 22:29:22 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 22:29:22 - INFO - Time: 2026-01-08 22:29:22
+[15m-ppcenterline] 2026-01-08 22:29:22 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 22:29:22 - INFO - Signal: HOLD_SHORT | Price: 1.16493
+⏰ Skipping stale HOLD_SHORT signal: 1762.8s old (max: 180s)
+[15m-ppcenterline] 2026-01-08 22:30:23 - INFO - --------------------------------------------------------------------------------
+[15m-ppcenterline] 2026-01-08 22:30:23 - INFO - Time: 2026-01-08 22:30:23
+[15m-ppcenterline] 2026-01-08 22:30:23 - INFO - Balance: $99960.64 | P/L: $0.00
+[15m-ppcenterline] 2026-01-08 22:30:23 - INFO - Signal: HOLD_SHORT | Price: 1.16508
+⏰ Skipping stale HOLD_SHORT signal: 923.3s old (max: 180s)

@@ -1,0 +1,38 @@
+# Default Configuration for Market-Aware Trading Bot
+# This file contains default settings that apply to all accounts
+# Account-specific config files (account1/config.yaml, etc.) will override these settings
+
+# Check interval in seconds (how often to check both market trend and trading signals)
+check_interval: 60
+
+# Market trend configuration (using higher timeframe PP SuperTrend as bull/bear indicator)
+market:
+  indicator: ppsupertrend  # Use PP SuperTrend for market direction
+  timeframe: H3            # 3-hour timeframe for market trend
+
+# Stop loss configuration
+stoploss:
+  type: PPSuperTrend      # Trailing stop using PP SuperTrend from trading timeframe
+  
+# Risk/Reward configuration for take profit
+# Based on market trend (bull/bear) and position direction  
+risk_reward:
+  bear_market:
+    # During bear markets, favor short positions
+    short_rr: 1.2         # Take profit at 1.2 R:R for short positions
+    long_rr: 0.6          # Take profit at 0.6 R:R for long positions (small profit)
+  bull_market:
+    # During bull markets, favor long positions  
+    short_rr: 0.6         # Take profit at 0.6 R:R for short positions (small profit)
+    long_rr: 1.2          # Take profit at 1.2 R:R for long positions
+
+# Optional: Override other trading parameters
+# position_sizing:
+#   use_dynamic: true
+#   risk_per_trade: 100   # Risk $100 per trade (or 0.02 for 2% of account)
+  
+# Optional: ATR and Pivot parameters
+# indicators:
+#   pivot_period: 2
+#   atr_period: 10
+#   atr_factor: 3.0

@@ -1,0 +1,646 @@
+==========================================
+Starting Auto Trade Bot
+==========================================
+Instrument:  EUR_USD
+Timeframe:   tf:15m
+Stop Loss:   sl:SuperTrend
+Account:     account1
+CSV Log:     /Users/dongchen/Documents/AI-project/GitHub/ppsupertrend/account1/csv/EUR_USD_15m_sl-SuperTrend.csv
+Bot Log:     /Users/dongchen/Documents/AI-project/GitHub/ppsupertrend/account1/logs/bot_EUR_USD_15m_SuperTrend.log
+==========================================
+
+/Users/dongchen/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+
+✓ Using account: account1 (101-001-35749385-001)
+
+================================================================================
+⚠️  RUNNING IN PRACTICE MODE
+================================================================================
+[15m-supertrend] 2026-01-08 21:30:48 - INFO - ================================================================================
+[15m-supertrend] 2026-01-08 21:30:48 - INFO - Enhanced Trading Bot Initialized
+[15m-supertrend] 2026-01-08 21:30:48 - INFO - ================================================================================
+[15m-supertrend] 2026-01-08 21:30:48 - INFO - Account: 101-001-35749385-001
+[15m-supertrend] 2026-01-08 21:30:48 - INFO - Mode: PRACTICE
+[15m-supertrend] 2026-01-08 21:30:48 - INFO - Instrument: EUR_USD
+[15m-supertrend] 2026-01-08 21:30:48 - INFO - Timeframe: 15m (M15)
+[15m-supertrend] 2026-01-08 21:30:48 - INFO - Stop Loss Type: SuperTrend
+[15m-supertrend] 2026-01-08 21:30:48 - INFO - CSV Log: account1/csv/EUR_USD_15m_sl-SuperTrend.csv
+[15m-supertrend] 2026-01-08 21:30:48 - INFO - Text Log: account1/logs/bot_EUR_USD_15m_SuperTrend.log
+[15m-supertrend] 2026-01-08 21:30:48 - INFO - Parameters: PP=2, ATR Factor=3.0, ATR Period=10
+[15m-supertrend] 2026-01-08 21:30:48 - INFO - Check Interval: 60 seconds
+[15m-supertrend] 2026-01-08 21:30:48 - INFO - Trailing Stop: ENABLED
+[15m-supertrend] 2026-01-08 21:30:48 - INFO - ================================================================================
+
+📊 Starting bot...
+Account: account1
+Instrument: EUR_USD
+Timeframe: 15m
+Stop Loss: SuperTrend
+CSV Log: account1/csv/EUR_USD_15m_sl-SuperTrend.csv
+
+Press Ctrl+C to stop
+
+[15m-supertrend] 2026-01-08 21:30:48 - INFO - 🚀 Trading bot started
+[15m-supertrend] 2026-01-08 21:30:48 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 21:30:48 - INFO - Time: 2026-01-08 21:30:48
+[15m-supertrend] 2026-01-08 21:30:48 - INFO - Balance: $499773.16 | P/L: $0.00
+[15m-supertrend] 2026-01-08 21:30:48 - INFO - Signal: HOLD_SHORT | Price: 1.16530
+⏰ Skipping stale HOLD_SHORT signal: 948.9s old (max: 180s)
+[15m-supertrend] 2026-01-08 21:31:49 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 21:31:49 - INFO - Time: 2026-01-08 21:31:49
+[15m-supertrend] 2026-01-08 21:31:49 - INFO - Balance: $499773.16 | P/L: $0.00
+[15m-supertrend] 2026-01-08 21:31:49 - INFO - Signal: HOLD_SHORT | Price: 1.16530
+⏰ Skipping stale HOLD_SHORT signal: 1009.3s old (max: 180s)
+[15m-supertrend] 2026-01-08 21:32:50 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 21:32:50 - INFO - Time: 2026-01-08 21:32:50
+[15m-supertrend] 2026-01-08 21:32:50 - INFO - Balance: $499773.16 | P/L: $0.00
+[15m-supertrend] 2026-01-08 21:32:50 - INFO - Signal: HOLD_SHORT | Price: 1.16530
+⏰ Skipping stale HOLD_SHORT signal: 1070.0s old (max: 180s)
+[15m-supertrend] 2026-01-08 21:33:50 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 21:33:50 - INFO - Time: 2026-01-08 21:33:50
+[15m-supertrend] 2026-01-08 21:33:50 - INFO - Balance: $499773.16 | P/L: $0.00
+[15m-supertrend] 2026-01-08 21:33:50 - INFO - Signal: HOLD_SHORT | Price: 1.16530
+⏰ Skipping stale HOLD_SHORT signal: 1130.6s old (max: 180s)
+[15m-supertrend] 2026-01-08 21:34:51 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 21:34:51 - INFO - Time: 2026-01-08 21:34:51
+[15m-supertrend] 2026-01-08 21:34:51 - INFO - Balance: $499773.16 | P/L: $0.00
+[15m-supertrend] 2026-01-08 21:34:51 - INFO - Signal: HOLD_SHORT | Price: 1.16530
+⏰ Skipping stale HOLD_SHORT signal: 1191.2s old (max: 180s)
+[15m-supertrend] 2026-01-08 21:35:51 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 21:35:51 - INFO - Time: 2026-01-08 21:35:51
+[15m-supertrend] 2026-01-08 21:35:51 - INFO - Balance: $499773.16 | P/L: $0.00
+[15m-supertrend] 2026-01-08 21:35:51 - INFO - Signal: HOLD_SHORT | Price: 1.16530
+⏰ Skipping stale HOLD_SHORT signal: 1251.7s old (max: 180s)
+[15m-supertrend] 2026-01-08 21:36:52 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 21:36:52 - INFO - Time: 2026-01-08 21:36:52
+[15m-supertrend] 2026-01-08 21:36:52 - INFO - Balance: $499773.16 | P/L: $0.00
+[15m-supertrend] 2026-01-08 21:36:52 - INFO - Signal: HOLD_SHORT | Price: 1.16530
+⏰ Skipping stale HOLD_SHORT signal: 1312.2s old (max: 180s)
+[15m-supertrend] 2026-01-08 21:37:52 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 21:37:52 - INFO - Time: 2026-01-08 21:37:52
+[15m-supertrend] 2026-01-08 21:37:52 - INFO - Balance: $499773.16 | P/L: $0.00
+[15m-supertrend] 2026-01-08 21:37:52 - INFO - Signal: HOLD_SHORT | Price: 1.16530
+⏰ Skipping stale HOLD_SHORT signal: 1372.8s old (max: 180s)
+[15m-supertrend] 2026-01-08 21:38:53 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 21:38:53 - INFO - Time: 2026-01-08 21:38:53
+[15m-supertrend] 2026-01-08 21:38:53 - INFO - Balance: $499773.16 | P/L: $0.00
+[15m-supertrend] 2026-01-08 21:38:53 - INFO - Signal: HOLD_SHORT | Price: 1.16530
+⏰ Skipping stale HOLD_SHORT signal: 1433.5s old (max: 180s)
+[15m-supertrend] 2026-01-08 21:39:54 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 21:39:54 - INFO - Time: 2026-01-08 21:39:54
+[15m-supertrend] 2026-01-08 21:39:54 - INFO - Balance: $499773.16 | P/L: $0.00
+[15m-supertrend] 2026-01-08 21:39:54 - INFO - Signal: HOLD_SHORT | Price: 1.16530
+⏰ Skipping stale HOLD_SHORT signal: 1494.0s old (max: 180s)
+[15m-supertrend] 2026-01-08 21:40:55 - INFO - 📌 Recovered tracking: Trade 663 @ 1.16506
+[15m-supertrend] 2026-01-08 21:40:55 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 21:40:55 - INFO - Time: 2026-01-08 21:40:55
+[15m-supertrend] 2026-01-08 21:40:55 - INFO - Balance: $499773.16 | P/L: $-16.56
+[15m-supertrend] 2026-01-08 21:40:55 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 21:40:55 - INFO - Signal: HOLD_SHORT | Price: 1.16530
+⏰ Skipping stale HOLD_SHORT signal: 1554.9s old (max: 180s)
+[15m-supertrend] 2026-01-08 21:40:55 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+[15m-supertrend] 2026-01-08 21:40:55 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 21:40:55 - INFO -     Spread: 0.00015 (1.5 pips)
+[15m-supertrend] 2026-01-08 21:40:55 - INFO -     Adjustment: +0.00008 (+0.8 pips)
+[15m-supertrend] 2026-01-08 21:40:55 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 21:40:55 - INFO - Initialized trailing stop: 1.16629
+[15m-supertrend] 2026-01-08 21:41:56 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 21:41:56 - INFO - Time: 2026-01-08 21:41:56
+[15m-supertrend] 2026-01-08 21:41:56 - INFO - Balance: $499773.16 | P/L: $-20.70
+[15m-supertrend] 2026-01-08 21:41:56 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 21:41:56 - INFO - Signal: HOLD_SHORT | Price: 1.16530
+⏰ Skipping stale HOLD_SHORT signal: 1616.2s old (max: 180s)
+[15m-supertrend] 2026-01-08 21:41:56 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+[15m-supertrend] 2026-01-08 21:41:56 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 21:41:56 - INFO -     Spread: 0.00016 (1.6 pips)
+[15m-supertrend] 2026-01-08 21:41:56 - INFO -     Adjustment: +0.00008 (+0.8 pips)
+[15m-supertrend] 2026-01-08 21:41:56 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 21:42:56 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 21:42:56 - INFO - Time: 2026-01-08 21:42:56
+[15m-supertrend] 2026-01-08 21:42:56 - INFO - Balance: $499773.16 | P/L: $-17.94
+[15m-supertrend] 2026-01-08 21:42:56 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 21:42:56 - INFO - Signal: HOLD_SHORT | Price: 1.16530
+⏰ Skipping stale HOLD_SHORT signal: 1676.8s old (max: 180s)
+[15m-supertrend] 2026-01-08 21:42:57 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+[15m-supertrend] 2026-01-08 21:42:57 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 21:42:57 - INFO -     Spread: 0.00015 (1.5 pips)
+[15m-supertrend] 2026-01-08 21:42:57 - INFO -     Adjustment: +0.00007 (+0.7 pips)
+[15m-supertrend] 2026-01-08 21:42:57 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 21:43:57 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 21:43:57 - INFO - Time: 2026-01-08 21:43:57
+[15m-supertrend] 2026-01-08 21:43:57 - INFO - Balance: $499773.16 | P/L: $-22.09
+[15m-supertrend] 2026-01-08 21:43:57 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 21:43:57 - INFO - Signal: HOLD_SHORT | Price: 1.16530
+⏰ Skipping stale HOLD_SHORT signal: 1737.5s old (max: 180s)
+[15m-supertrend] 2026-01-08 21:43:57 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+[15m-supertrend] 2026-01-08 21:43:57 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 21:43:57 - INFO -     Spread: 0.00016 (1.6 pips)
+[15m-supertrend] 2026-01-08 21:43:57 - INFO -     Adjustment: +0.00008 (+0.8 pips)
+[15m-supertrend] 2026-01-08 21:43:57 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 21:44:58 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 21:44:58 - INFO - Time: 2026-01-08 21:44:58
+[15m-supertrend] 2026-01-08 21:44:58 - INFO - Balance: $499773.16 | P/L: $-17.94
+[15m-supertrend] 2026-01-08 21:44:58 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 21:44:58 - INFO - Signal: HOLD_SHORT | Price: 1.16530
+⏰ Skipping stale HOLD_SHORT signal: 1798.2s old (max: 180s)
+[15m-supertrend] 2026-01-08 21:44:58 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+[15m-supertrend] 2026-01-08 21:44:58 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 21:44:58 - INFO -     Spread: 0.00015 (1.5 pips)
+[15m-supertrend] 2026-01-08 21:44:58 - INFO -     Adjustment: +0.00007 (+0.7 pips)
+[15m-supertrend] 2026-01-08 21:44:58 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 21:45:58 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 21:45:58 - INFO - Time: 2026-01-08 21:45:58
+[15m-supertrend] 2026-01-08 21:45:58 - INFO - Balance: $499773.16 | P/L: $-13.80
+[15m-supertrend] 2026-01-08 21:45:58 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 21:45:58 - INFO - Signal: HOLD_SHORT | Price: 1.16512
+⏰ Skipping stale HOLD_SHORT signal: 958.8s old (max: 180s)
+[15m-supertrend] 2026-01-08 21:45:59 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16630
+[15m-supertrend] 2026-01-08 21:45:59 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 21:45:59 - INFO -     Spread: 0.00017 (1.7 pips)
+[15m-supertrend] 2026-01-08 21:45:59 - INFO -     Adjustment: +0.00009 (+0.9 pips)
+[15m-supertrend] 2026-01-08 21:45:59 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 21:46:59 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 21:46:59 - INFO - Time: 2026-01-08 21:46:59
+[15m-supertrend] 2026-01-08 21:46:59 - INFO - Balance: $499773.16 | P/L: $-15.18
+[15m-supertrend] 2026-01-08 21:46:59 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 21:46:59 - INFO - Signal: HOLD_SHORT | Price: 1.16512
+⏰ Skipping stale HOLD_SHORT signal: 1019.5s old (max: 180s)
+[15m-supertrend] 2026-01-08 21:46:59 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+[15m-supertrend] 2026-01-08 21:46:59 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 21:46:59 - INFO -     Spread: 0.00016 (1.6 pips)
+[15m-supertrend] 2026-01-08 21:46:59 - INFO -     Adjustment: +0.00008 (+0.8 pips)
+[15m-supertrend] 2026-01-08 21:46:59 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 21:48:00 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 21:48:00 - INFO - Time: 2026-01-08 21:48:00
+[15m-supertrend] 2026-01-08 21:48:00 - INFO - Balance: $499773.16 | P/L: $-24.85
+[15m-supertrend] 2026-01-08 21:48:00 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 21:48:00 - INFO - Signal: HOLD_SHORT | Price: 1.16512
+⏰ Skipping stale HOLD_SHORT signal: 1080.4s old (max: 180s)
+[15m-supertrend] 2026-01-08 21:48:00 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+[15m-supertrend] 2026-01-08 21:48:00 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 21:48:00 - INFO -     Spread: 0.00016 (1.6 pips)
+[15m-supertrend] 2026-01-08 21:48:00 - INFO -     Adjustment: +0.00008 (+0.8 pips)
+[15m-supertrend] 2026-01-08 21:48:00 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 21:49:01 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 21:49:01 - INFO - Time: 2026-01-08 21:49:01
+[15m-supertrend] 2026-01-08 21:49:01 - INFO - Balance: $499773.16 | P/L: $-30.37
+[15m-supertrend] 2026-01-08 21:49:01 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 21:49:01 - INFO - Signal: HOLD_SHORT | Price: 1.16512
+⏰ Skipping stale HOLD_SHORT signal: 1141.0s old (max: 180s)
+[15m-supertrend] 2026-01-08 21:49:01 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+[15m-supertrend] 2026-01-08 21:49:01 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 21:49:01 - INFO -     Spread: 0.00016 (1.6 pips)
+[15m-supertrend] 2026-01-08 21:49:01 - INFO -     Adjustment: +0.00008 (+0.8 pips)
+[15m-supertrend] 2026-01-08 21:49:01 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 21:50:01 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 21:50:01 - INFO - Time: 2026-01-08 21:50:01
+[15m-supertrend] 2026-01-08 21:50:01 - INFO - Balance: $499773.16 | P/L: $-27.61
+[15m-supertrend] 2026-01-08 21:50:01 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 21:50:01 - INFO - Signal: HOLD_SHORT | Price: 1.16512
+⏰ Skipping stale HOLD_SHORT signal: 1201.7s old (max: 180s)
+[15m-supertrend] 2026-01-08 21:50:01 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16630
+[15m-supertrend] 2026-01-08 21:50:01 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 21:50:01 - INFO -     Spread: 0.00017 (1.7 pips)
+[15m-supertrend] 2026-01-08 21:50:01 - INFO -     Adjustment: +0.00009 (+0.9 pips)
+[15m-supertrend] 2026-01-08 21:50:01 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 21:51:02 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 21:51:02 - INFO - Time: 2026-01-08 21:51:02
+[15m-supertrend] 2026-01-08 21:51:02 - INFO - Balance: $499773.16 | P/L: $-26.23
+[15m-supertrend] 2026-01-08 21:51:02 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 21:51:02 - INFO - Signal: HOLD_SHORT | Price: 1.16512
+⏰ Skipping stale HOLD_SHORT signal: 1262.4s old (max: 180s)
+[15m-supertrend] 2026-01-08 21:51:02 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+[15m-supertrend] 2026-01-08 21:51:02 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 21:51:02 - INFO -     Spread: 0.00016 (1.6 pips)
+[15m-supertrend] 2026-01-08 21:51:02 - INFO -     Adjustment: +0.00008 (+0.8 pips)
+[15m-supertrend] 2026-01-08 21:51:02 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 21:52:03 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 21:52:03 - INFO - Time: 2026-01-08 21:52:03
+[15m-supertrend] 2026-01-08 21:52:03 - INFO - Balance: $499773.16 | P/L: $-22.09
+[15m-supertrend] 2026-01-08 21:52:03 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 21:52:03 - INFO - Signal: HOLD_SHORT | Price: 1.16512
+⏰ Skipping stale HOLD_SHORT signal: 1323.1s old (max: 180s)
+[15m-supertrend] 2026-01-08 21:52:03 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+[15m-supertrend] 2026-01-08 21:52:03 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 21:52:03 - INFO -     Spread: 0.00016 (1.6 pips)
+[15m-supertrend] 2026-01-08 21:52:03 - INFO -     Adjustment: +0.00008 (+0.8 pips)
+[15m-supertrend] 2026-01-08 21:52:03 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 21:53:03 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 21:53:03 - INFO - Time: 2026-01-08 21:53:03
+[15m-supertrend] 2026-01-08 21:53:03 - INFO - Balance: $499773.16 | P/L: $-20.70
+[15m-supertrend] 2026-01-08 21:53:03 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 21:53:03 - INFO - Signal: HOLD_SHORT | Price: 1.16512
+⏰ Skipping stale HOLD_SHORT signal: 1383.8s old (max: 180s)
+[15m-supertrend] 2026-01-08 21:53:04 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+[15m-supertrend] 2026-01-08 21:53:04 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 21:53:04 - INFO -     Spread: 0.00016 (1.6 pips)
+[15m-supertrend] 2026-01-08 21:53:04 - INFO -     Adjustment: +0.00008 (+0.8 pips)
+[15m-supertrend] 2026-01-08 21:53:04 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 21:54:04 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 21:54:04 - INFO - Time: 2026-01-08 21:54:04
+[15m-supertrend] 2026-01-08 21:54:04 - INFO - Balance: $499773.16 | P/L: $-12.42
+[15m-supertrend] 2026-01-08 21:54:04 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 21:54:04 - INFO - Signal: HOLD_SHORT | Price: 1.16512
+⏰ Skipping stale HOLD_SHORT signal: 1444.4s old (max: 180s)
+[15m-supertrend] 2026-01-08 21:54:04 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+[15m-supertrend] 2026-01-08 21:54:04 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 21:54:04 - INFO -     Spread: 0.00015 (1.5 pips)
+[15m-supertrend] 2026-01-08 21:54:04 - INFO -     Adjustment: +0.00007 (+0.7 pips)
+[15m-supertrend] 2026-01-08 21:54:04 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 21:55:05 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 21:55:05 - INFO - Time: 2026-01-08 21:55:05
+[15m-supertrend] 2026-01-08 21:55:05 - INFO - Balance: $499773.16 | P/L: $-5.52
+[15m-supertrend] 2026-01-08 21:55:05 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 21:55:05 - INFO - Signal: HOLD_SHORT | Price: 1.16512
+⏰ Skipping stale HOLD_SHORT signal: 1505.0s old (max: 180s)
+[15m-supertrend] 2026-01-08 21:55:05 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16630
+[15m-supertrend] 2026-01-08 21:55:05 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 21:55:05 - INFO -     Spread: 0.00017 (1.7 pips)
+[15m-supertrend] 2026-01-08 21:55:05 - INFO -     Adjustment: +0.00009 (+0.9 pips)
+[15m-supertrend] 2026-01-08 21:55:05 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 21:56:05 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 21:56:05 - INFO - Time: 2026-01-08 21:56:05
+[15m-supertrend] 2026-01-08 21:56:05 - INFO - Balance: $499773.16 | P/L: $-6.90
+[15m-supertrend] 2026-01-08 21:56:05 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 21:56:05 - INFO - Signal: HOLD_SHORT | Price: 1.16512
+⏰ Skipping stale HOLD_SHORT signal: 1565.7s old (max: 180s)
+[15m-supertrend] 2026-01-08 21:56:05 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16630
+[15m-supertrend] 2026-01-08 21:56:05 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 21:56:05 - INFO -     Spread: 0.00017 (1.7 pips)
+[15m-supertrend] 2026-01-08 21:56:05 - INFO -     Adjustment: +0.00009 (+0.9 pips)
+[15m-supertrend] 2026-01-08 21:56:05 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 21:57:06 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 21:57:06 - INFO - Time: 2026-01-08 21:57:06
+[15m-supertrend] 2026-01-08 21:57:06 - INFO - Balance: $499773.16 | P/L: $-12.42
+[15m-supertrend] 2026-01-08 21:57:06 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 21:57:06 - INFO - Signal: HOLD_SHORT | Price: 1.16512
+⏰ Skipping stale HOLD_SHORT signal: 1626.4s old (max: 180s)
+[15m-supertrend] 2026-01-08 21:57:06 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+[15m-supertrend] 2026-01-08 21:57:06 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 21:57:06 - INFO -     Spread: 0.00016 (1.6 pips)
+[15m-supertrend] 2026-01-08 21:57:06 - INFO -     Adjustment: +0.00008 (+0.8 pips)
+[15m-supertrend] 2026-01-08 21:57:06 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 21:58:07 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 21:58:07 - INFO - Time: 2026-01-08 21:58:07
+[15m-supertrend] 2026-01-08 21:58:07 - INFO - Balance: $499773.16 | P/L: $-11.04
+[15m-supertrend] 2026-01-08 21:58:07 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 21:58:07 - INFO - Signal: HOLD_SHORT | Price: 1.16512
+⏰ Skipping stale HOLD_SHORT signal: 1687.1s old (max: 180s)
+[15m-supertrend] 2026-01-08 21:58:07 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+[15m-supertrend] 2026-01-08 21:58:07 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 21:58:07 - INFO -     Spread: 0.00015 (1.5 pips)
+[15m-supertrend] 2026-01-08 21:58:07 - INFO -     Adjustment: +0.00008 (+0.8 pips)
+[15m-supertrend] 2026-01-08 21:58:07 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 21:59:07 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 21:59:07 - INFO - Time: 2026-01-08 21:59:07
+[15m-supertrend] 2026-01-08 21:59:07 - INFO - Balance: $499773.16 | P/L: $-15.18
+[15m-supertrend] 2026-01-08 21:59:07 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 21:59:07 - INFO - Signal: HOLD_SHORT | Price: 1.16512
+⏰ Skipping stale HOLD_SHORT signal: 1747.8s old (max: 180s)
+[15m-supertrend] 2026-01-08 21:59:08 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+[15m-supertrend] 2026-01-08 21:59:08 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 21:59:08 - INFO -     Spread: 0.00015 (1.5 pips)
+[15m-supertrend] 2026-01-08 21:59:08 - INFO -     Adjustment: +0.00007 (+0.7 pips)
+[15m-supertrend] 2026-01-08 21:59:08 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 22:00:08 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 22:00:08 - INFO - Time: 2026-01-08 22:00:08
+[15m-supertrend] 2026-01-08 22:00:08 - INFO - Balance: $499773.16 | P/L: $-16.56
+[15m-supertrend] 2026-01-08 22:00:08 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 22:00:08 - INFO - Signal: HOLD_SHORT | Price: 1.16511
+⏰ Skipping stale HOLD_SHORT signal: 908.6s old (max: 180s)
+[15m-supertrend] 2026-01-08 22:00:08 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16630
+[15m-supertrend] 2026-01-08 22:00:08 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 22:00:08 - INFO -     Spread: 0.00017 (1.7 pips)
+[15m-supertrend] 2026-01-08 22:00:08 - INFO -     Adjustment: +0.00009 (+0.9 pips)
+[15m-supertrend] 2026-01-08 22:00:08 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 22:01:09 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 22:01:09 - INFO - Time: 2026-01-08 22:01:09
+[15m-supertrend] 2026-01-08 22:01:09 - INFO - Balance: $499773.16 | P/L: $-1.38
+[15m-supertrend] 2026-01-08 22:01:09 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 22:01:09 - INFO - Signal: HOLD_SHORT | Price: 1.16511
+⏰ Skipping stale HOLD_SHORT signal: 969.3s old (max: 180s)
+[15m-supertrend] 2026-01-08 22:01:09 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+[15m-supertrend] 2026-01-08 22:01:09 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 22:01:09 - INFO -     Spread: 0.00015 (1.5 pips)
+[15m-supertrend] 2026-01-08 22:01:09 - INFO -     Adjustment: +0.00008 (+0.8 pips)
+[15m-supertrend] 2026-01-08 22:01:09 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 22:02:10 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 22:02:10 - INFO - Time: 2026-01-08 22:02:10
+[15m-supertrend] 2026-01-08 22:02:10 - INFO - Balance: $499773.16 | P/L: $-20.70
+[15m-supertrend] 2026-01-08 22:02:10 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 22:02:10 - INFO - Signal: HOLD_SHORT | Price: 1.16511
+⏰ Skipping stale HOLD_SHORT signal: 1030.0s old (max: 180s)
+[15m-supertrend] 2026-01-08 22:02:10 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+[15m-supertrend] 2026-01-08 22:02:10 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 22:02:10 - INFO -     Spread: 0.00016 (1.6 pips)
+[15m-supertrend] 2026-01-08 22:02:10 - INFO -     Adjustment: +0.00008 (+0.8 pips)
+[15m-supertrend] 2026-01-08 22:02:10 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 22:03:10 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 22:03:10 - INFO - Time: 2026-01-08 22:03:10
+[15m-supertrend] 2026-01-08 22:03:10 - INFO - Balance: $499773.16 | P/L: $-20.70
+[15m-supertrend] 2026-01-08 22:03:10 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 22:03:10 - INFO - Signal: HOLD_SHORT | Price: 1.16511
+⏰ Skipping stale HOLD_SHORT signal: 1090.7s old (max: 180s)
+[15m-supertrend] 2026-01-08 22:03:10 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16630
+[15m-supertrend] 2026-01-08 22:03:10 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 22:03:10 - INFO -     Spread: 0.00017 (1.7 pips)
+[15m-supertrend] 2026-01-08 22:03:10 - INFO -     Adjustment: +0.00009 (+0.9 pips)
+[15m-supertrend] 2026-01-08 22:03:10 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 22:04:11 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 22:04:11 - INFO - Time: 2026-01-08 22:04:11
+[15m-supertrend] 2026-01-08 22:04:11 - INFO - Balance: $499773.16 | P/L: $-28.99
+[15m-supertrend] 2026-01-08 22:04:11 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 22:04:11 - INFO - Signal: HOLD_SHORT | Price: 1.16511
+⏰ Skipping stale HOLD_SHORT signal: 1151.4s old (max: 180s)
+[15m-supertrend] 2026-01-08 22:04:11 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+[15m-supertrend] 2026-01-08 22:04:11 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 22:04:11 - INFO -     Spread: 0.00015 (1.5 pips)
+[15m-supertrend] 2026-01-08 22:04:11 - INFO -     Adjustment: +0.00008 (+0.8 pips)
+[15m-supertrend] 2026-01-08 22:04:11 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 22:05:12 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 22:05:12 - INFO - Time: 2026-01-08 22:05:12
+[15m-supertrend] 2026-01-08 22:05:12 - INFO - Balance: $499773.16 | P/L: $-30.37
+[15m-supertrend] 2026-01-08 22:05:12 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 22:05:12 - INFO - Signal: HOLD_SHORT | Price: 1.16511
+⏰ Skipping stale HOLD_SHORT signal: 1212.1s old (max: 180s)
+[15m-supertrend] 2026-01-08 22:05:12 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16628
+[15m-supertrend] 2026-01-08 22:05:12 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 22:05:12 - INFO -     Spread: 0.00014 (1.4 pips)
+[15m-supertrend] 2026-01-08 22:05:12 - INFO -     Adjustment: +0.00007 (+0.7 pips)
+[15m-supertrend] 2026-01-08 22:05:12 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 22:06:13 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 22:06:13 - INFO - Time: 2026-01-08 22:06:13
+[15m-supertrend] 2026-01-08 22:06:13 - INFO - Balance: $499773.16 | P/L: $-30.37
+[15m-supertrend] 2026-01-08 22:06:13 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 22:06:13 - INFO - Signal: HOLD_SHORT | Price: 1.16511
+⏰ Skipping stale HOLD_SHORT signal: 1272.9s old (max: 180s)
+[15m-supertrend] 2026-01-08 22:06:13 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+[15m-supertrend] 2026-01-08 22:06:13 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 22:06:13 - INFO -     Spread: 0.00015 (1.5 pips)
+[15m-supertrend] 2026-01-08 22:06:13 - INFO -     Adjustment: +0.00008 (+0.8 pips)
+[15m-supertrend] 2026-01-08 22:06:13 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 22:07:13 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 22:07:13 - INFO - Time: 2026-01-08 22:07:13
+[15m-supertrend] 2026-01-08 22:07:13 - INFO - Balance: $499773.16 | P/L: $-31.75
+[15m-supertrend] 2026-01-08 22:07:13 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 22:07:13 - INFO - Signal: HOLD_SHORT | Price: 1.16511
+⏰ Skipping stale HOLD_SHORT signal: 1333.7s old (max: 180s)
+[15m-supertrend] 2026-01-08 22:07:13 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+[15m-supertrend] 2026-01-08 22:07:13 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 22:07:13 - INFO -     Spread: 0.00015 (1.5 pips)
+[15m-supertrend] 2026-01-08 22:07:13 - INFO -     Adjustment: +0.00007 (+0.7 pips)
+[15m-supertrend] 2026-01-08 22:07:13 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 22:08:14 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 22:08:14 - INFO - Time: 2026-01-08 22:08:14
+[15m-supertrend] 2026-01-08 22:08:14 - INFO - Balance: $499773.16 | P/L: $-8.28
+[15m-supertrend] 2026-01-08 22:08:14 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 22:08:14 - INFO - Signal: HOLD_SHORT | Price: 1.16511
+⏰ Skipping stale HOLD_SHORT signal: 1394.3s old (max: 180s)
+[15m-supertrend] 2026-01-08 22:08:14 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16630
+[15m-supertrend] 2026-01-08 22:08:14 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 22:08:14 - INFO -     Spread: 0.00017 (1.7 pips)
+[15m-supertrend] 2026-01-08 22:08:14 - INFO -     Adjustment: +0.00009 (+0.9 pips)
+[15m-supertrend] 2026-01-08 22:08:14 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 22:09:15 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 22:09:15 - INFO - Time: 2026-01-08 22:09:15
+[15m-supertrend] 2026-01-08 22:09:15 - INFO - Balance: $499773.16 | P/L: $-8.28
+[15m-supertrend] 2026-01-08 22:09:15 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 22:09:15 - INFO - Signal: HOLD_SHORT | Price: 1.16511
+⏰ Skipping stale HOLD_SHORT signal: 1455.0s old (max: 180s)
+[15m-supertrend] 2026-01-08 22:09:15 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16630
+[15m-supertrend] 2026-01-08 22:09:15 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 22:09:15 - INFO -     Spread: 0.00017 (1.7 pips)
+[15m-supertrend] 2026-01-08 22:09:15 - INFO -     Adjustment: +0.00009 (+0.9 pips)
+[15m-supertrend] 2026-01-08 22:09:15 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 22:10:15 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 22:10:15 - INFO - Time: 2026-01-08 22:10:15
+[15m-supertrend] 2026-01-08 22:10:15 - INFO - Balance: $499773.16 | P/L: $1.38
+[15m-supertrend] 2026-01-08 22:10:15 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 22:10:15 - INFO - Signal: HOLD_SHORT | Price: 1.16511
+⏰ Skipping stale HOLD_SHORT signal: 1515.7s old (max: 180s)
+[15m-supertrend] 2026-01-08 22:10:15 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16628
+[15m-supertrend] 2026-01-08 22:10:15 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 22:10:15 - INFO -     Spread: 0.00014 (1.4 pips)
+[15m-supertrend] 2026-01-08 22:10:15 - INFO -     Adjustment: +0.00007 (+0.7 pips)
+[15m-supertrend] 2026-01-08 22:10:15 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 22:11:16 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 22:11:16 - INFO - Time: 2026-01-08 22:11:16
+[15m-supertrend] 2026-01-08 22:11:16 - INFO - Balance: $499773.16 | P/L: $2.76
+[15m-supertrend] 2026-01-08 22:11:16 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 22:11:16 - INFO - Signal: HOLD_SHORT | Price: 1.16511
+⏰ Skipping stale HOLD_SHORT signal: 1576.4s old (max: 180s)
+[15m-supertrend] 2026-01-08 22:11:16 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16630
+[15m-supertrend] 2026-01-08 22:11:16 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 22:11:16 - INFO -     Spread: 0.00018 (1.8 pips)
+[15m-supertrend] 2026-01-08 22:11:16 - INFO -     Adjustment: +0.00009 (+0.9 pips)
+[15m-supertrend] 2026-01-08 22:11:16 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 22:12:17 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 22:12:17 - INFO - Time: 2026-01-08 22:12:17
+[15m-supertrend] 2026-01-08 22:12:17 - INFO - Balance: $499773.16 | P/L: $13.80
+[15m-supertrend] 2026-01-08 22:12:17 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 22:12:17 - INFO - Signal: HOLD_SHORT | Price: 1.16511
+⏰ Skipping stale HOLD_SHORT signal: 1637.5s old (max: 180s)
+[15m-supertrend] 2026-01-08 22:12:17 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+[15m-supertrend] 2026-01-08 22:12:17 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 22:12:17 - INFO -     Spread: 0.00016 (1.6 pips)
+[15m-supertrend] 2026-01-08 22:12:17 - INFO -     Adjustment: +0.00008 (+0.8 pips)
+[15m-supertrend] 2026-01-08 22:12:17 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 22:13:18 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 22:13:18 - INFO - Time: 2026-01-08 22:13:18
+[15m-supertrend] 2026-01-08 22:13:18 - INFO - Balance: $499773.16 | P/L: $11.04
+[15m-supertrend] 2026-01-08 22:13:18 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 22:13:18 - INFO - Signal: HOLD_SHORT | Price: 1.16511
+⏰ Skipping stale HOLD_SHORT signal: 1698.6s old (max: 180s)
+[15m-supertrend] 2026-01-08 22:13:18 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16630
+[15m-supertrend] 2026-01-08 22:13:18 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 22:13:18 - INFO -     Spread: 0.00017 (1.7 pips)
+[15m-supertrend] 2026-01-08 22:13:18 - INFO -     Adjustment: +0.00009 (+0.9 pips)
+[15m-supertrend] 2026-01-08 22:13:18 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 22:14:19 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 22:14:19 - INFO - Time: 2026-01-08 22:14:19
+[15m-supertrend] 2026-01-08 22:14:19 - INFO - Balance: $499773.16 | P/L: $6.90
+[15m-supertrend] 2026-01-08 22:14:19 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 22:14:19 - INFO - Signal: HOLD_SHORT | Price: 1.16511
+⏰ Skipping stale HOLD_SHORT signal: 1759.3s old (max: 180s)
+[15m-supertrend] 2026-01-08 22:14:19 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+[15m-supertrend] 2026-01-08 22:14:19 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 22:14:19 - INFO -     Spread: 0.00015 (1.5 pips)
+[15m-supertrend] 2026-01-08 22:14:19 - INFO -     Adjustment: +0.00008 (+0.8 pips)
+[15m-supertrend] 2026-01-08 22:14:19 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 22:15:20 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 22:15:20 - INFO - Time: 2026-01-08 22:15:20
+[15m-supertrend] 2026-01-08 22:15:20 - INFO - Balance: $499773.16 | P/L: $1.38
+[15m-supertrend] 2026-01-08 22:15:20 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 22:15:20 - INFO - Signal: HOLD_SHORT | Price: 1.16493
+⏰ Skipping stale HOLD_SHORT signal: 920.4s old (max: 180s)
+[15m-supertrend] 2026-01-08 22:15:20 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+[15m-supertrend] 2026-01-08 22:15:20 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 22:15:20 - INFO -     Spread: 0.00015 (1.5 pips)
+[15m-supertrend] 2026-01-08 22:15:20 - INFO -     Adjustment: +0.00008 (+0.8 pips)
+[15m-supertrend] 2026-01-08 22:15:20 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 22:16:21 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 22:16:21 - INFO - Time: 2026-01-08 22:16:21
+[15m-supertrend] 2026-01-08 22:16:21 - INFO - Balance: $499773.16 | P/L: $2.76
+[15m-supertrend] 2026-01-08 22:16:21 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 22:16:21 - INFO - Signal: HOLD_SHORT | Price: 1.16493
+⏰ Skipping stale HOLD_SHORT signal: 981.2s old (max: 180s)
+[15m-supertrend] 2026-01-08 22:16:21 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+[15m-supertrend] 2026-01-08 22:16:21 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 22:16:21 - INFO -     Spread: 0.00015 (1.5 pips)
+[15m-supertrend] 2026-01-08 22:16:21 - INFO -     Adjustment: +0.00008 (+0.8 pips)
+[15m-supertrend] 2026-01-08 22:16:21 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 22:17:21 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 22:17:21 - INFO - Time: 2026-01-08 22:17:21
+[15m-supertrend] 2026-01-08 22:17:21 - INFO - Balance: $499773.16 | P/L: $-5.52
+[15m-supertrend] 2026-01-08 22:17:21 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 22:17:21 - INFO - Signal: HOLD_SHORT | Price: 1.16493
+⏰ Skipping stale HOLD_SHORT signal: 1041.8s old (max: 180s)
+[15m-supertrend] 2026-01-08 22:17:22 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16630
+[15m-supertrend] 2026-01-08 22:17:22 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 22:17:22 - INFO -     Spread: 0.00018 (1.8 pips)
+[15m-supertrend] 2026-01-08 22:17:22 - INFO -     Adjustment: +0.00009 (+0.9 pips)
+[15m-supertrend] 2026-01-08 22:17:22 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 22:18:22 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 22:18:22 - INFO - Time: 2026-01-08 22:18:22
+[15m-supertrend] 2026-01-08 22:18:22 - INFO - Balance: $499773.16 | P/L: $-2.76
+[15m-supertrend] 2026-01-08 22:18:22 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 22:18:22 - INFO - Signal: HOLD_SHORT | Price: 1.16493
+⏰ Skipping stale HOLD_SHORT signal: 1102.5s old (max: 180s)
+[15m-supertrend] 2026-01-08 22:18:22 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+[15m-supertrend] 2026-01-08 22:18:22 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 22:18:22 - INFO -     Spread: 0.00016 (1.6 pips)
+[15m-supertrend] 2026-01-08 22:18:22 - INFO -     Adjustment: +0.00008 (+0.8 pips)
+[15m-supertrend] 2026-01-08 22:18:22 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 22:19:23 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 22:19:23 - INFO - Time: 2026-01-08 22:19:23
+[15m-supertrend] 2026-01-08 22:19:23 - INFO - Balance: $499773.16 | P/L: $-1.38
+[15m-supertrend] 2026-01-08 22:19:23 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 22:19:23 - INFO - Signal: HOLD_SHORT | Price: 1.16493
+⏰ Skipping stale HOLD_SHORT signal: 1163.2s old (max: 180s)
+[15m-supertrend] 2026-01-08 22:19:23 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+[15m-supertrend] 2026-01-08 22:19:23 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 22:19:23 - INFO -     Spread: 0.00015 (1.5 pips)
+[15m-supertrend] 2026-01-08 22:19:23 - INFO -     Adjustment: +0.00008 (+0.8 pips)
+[15m-supertrend] 2026-01-08 22:19:23 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 22:20:23 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 22:20:24 - INFO - Time: 2026-01-08 22:20:24
+[15m-supertrend] 2026-01-08 22:20:24 - INFO - Balance: $499773.16 | P/L: $0.00
+[15m-supertrend] 2026-01-08 22:20:24 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 22:20:24 - INFO - Signal: HOLD_SHORT | Price: 1.16493
+⏰ Skipping stale HOLD_SHORT signal: 1223.9s old (max: 180s)
+[15m-supertrend] 2026-01-08 22:20:24 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+[15m-supertrend] 2026-01-08 22:20:24 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 22:20:24 - INFO -     Spread: 0.00016 (1.6 pips)
+[15m-supertrend] 2026-01-08 22:20:24 - INFO -     Adjustment: +0.00008 (+0.8 pips)
+[15m-supertrend] 2026-01-08 22:20:24 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 22:21:24 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 22:21:24 - INFO - Time: 2026-01-08 22:21:24
+[15m-supertrend] 2026-01-08 22:21:24 - INFO - Balance: $499773.16 | P/L: $2.76
+[15m-supertrend] 2026-01-08 22:21:24 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 22:21:24 - INFO - Signal: HOLD_SHORT | Price: 1.16493
+⏰ Skipping stale HOLD_SHORT signal: 1284.6s old (max: 180s)
+[15m-supertrend] 2026-01-08 22:21:24 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+[15m-supertrend] 2026-01-08 22:21:24 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 22:21:24 - INFO -     Spread: 0.00016 (1.6 pips)
+[15m-supertrend] 2026-01-08 22:21:24 - INFO -     Adjustment: +0.00008 (+0.8 pips)
+[15m-supertrend] 2026-01-08 22:21:24 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 22:22:25 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 22:22:25 - INFO - Time: 2026-01-08 22:22:25
+[15m-supertrend] 2026-01-08 22:22:25 - INFO - Balance: $499773.16 | P/L: $9.66
+[15m-supertrend] 2026-01-08 22:22:25 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 22:22:25 - INFO - Signal: HOLD_SHORT | Price: 1.16493
+⏰ Skipping stale HOLD_SHORT signal: 1345.3s old (max: 180s)
+[15m-supertrend] 2026-01-08 22:22:25 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+[15m-supertrend] 2026-01-08 22:22:25 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 22:22:25 - INFO -     Spread: 0.00016 (1.6 pips)
+[15m-supertrend] 2026-01-08 22:22:25 - INFO -     Adjustment: +0.00008 (+0.8 pips)
+[15m-supertrend] 2026-01-08 22:22:25 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 22:23:26 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 22:23:26 - INFO - Time: 2026-01-08 22:23:26
+[15m-supertrend] 2026-01-08 22:23:26 - INFO - Balance: $499773.16 | P/L: $13.80
+[15m-supertrend] 2026-01-08 22:23:26 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 22:23:26 - INFO - Signal: HOLD_SHORT | Price: 1.16493
+⏰ Skipping stale HOLD_SHORT signal: 1406.0s old (max: 180s)
+[15m-supertrend] 2026-01-08 22:23:26 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16630
+[15m-supertrend] 2026-01-08 22:23:26 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 22:23:26 - INFO -     Spread: 0.00017 (1.7 pips)
+[15m-supertrend] 2026-01-08 22:23:26 - INFO -     Adjustment: +0.00009 (+0.9 pips)
+[15m-supertrend] 2026-01-08 22:23:26 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 22:24:26 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 22:24:26 - INFO - Time: 2026-01-08 22:24:26
+[15m-supertrend] 2026-01-08 22:24:26 - INFO - Balance: $499773.16 | P/L: $-2.76
+[15m-supertrend] 2026-01-08 22:24:26 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 22:24:26 - INFO - Signal: HOLD_SHORT | Price: 1.16493
+⏰ Skipping stale HOLD_SHORT signal: 1466.6s old (max: 180s)
+[15m-supertrend] 2026-01-08 22:24:26 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+[15m-supertrend] 2026-01-08 22:24:26 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 22:24:26 - INFO -     Spread: 0.00016 (1.6 pips)
+[15m-supertrend] 2026-01-08 22:24:26 - INFO -     Adjustment: +0.00008 (+0.8 pips)
+[15m-supertrend] 2026-01-08 22:24:26 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 22:25:27 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 22:25:27 - INFO - Time: 2026-01-08 22:25:27
+[15m-supertrend] 2026-01-08 22:25:27 - INFO - Balance: $499773.16 | P/L: $-5.52
+[15m-supertrend] 2026-01-08 22:25:27 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 22:25:27 - INFO - Signal: HOLD_SHORT | Price: 1.16493
+⏰ Skipping stale HOLD_SHORT signal: 1527.3s old (max: 180s)
+[15m-supertrend] 2026-01-08 22:25:27 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+[15m-supertrend] 2026-01-08 22:25:27 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 22:25:27 - INFO -     Spread: 0.00016 (1.6 pips)
+[15m-supertrend] 2026-01-08 22:25:27 - INFO -     Adjustment: +0.00008 (+0.8 pips)
+[15m-supertrend] 2026-01-08 22:25:27 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 22:26:28 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 22:26:28 - INFO - Time: 2026-01-08 22:26:28
+[15m-supertrend] 2026-01-08 22:26:28 - INFO - Balance: $499773.16 | P/L: $-19.32
+[15m-supertrend] 2026-01-08 22:26:28 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 22:26:28 - INFO - Signal: HOLD_SHORT | Price: 1.16493
+⏰ Skipping stale HOLD_SHORT signal: 1588.0s old (max: 180s)
+[15m-supertrend] 2026-01-08 22:26:28 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+[15m-supertrend] 2026-01-08 22:26:28 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 22:26:28 - INFO -     Spread: 0.00016 (1.6 pips)
+[15m-supertrend] 2026-01-08 22:26:28 - INFO -     Adjustment: +0.00008 (+0.8 pips)
+[15m-supertrend] 2026-01-08 22:26:28 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 22:27:28 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 22:27:28 - INFO - Time: 2026-01-08 22:27:28
+[15m-supertrend] 2026-01-08 22:27:28 - INFO - Balance: $499773.16 | P/L: $-26.23
+[15m-supertrend] 2026-01-08 22:27:28 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 22:27:28 - INFO - Signal: HOLD_SHORT | Price: 1.16493
+⏰ Skipping stale HOLD_SHORT signal: 1648.7s old (max: 180s)
+[15m-supertrend] 2026-01-08 22:27:28 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16630
+[15m-supertrend] 2026-01-08 22:27:28 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 22:27:28 - INFO -     Spread: 0.00017 (1.7 pips)
+[15m-supertrend] 2026-01-08 22:27:28 - INFO -     Adjustment: +0.00009 (+0.9 pips)
+[15m-supertrend] 2026-01-08 22:27:28 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 22:28:29 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 22:28:29 - INFO - Time: 2026-01-08 22:28:29
+[15m-supertrend] 2026-01-08 22:28:29 - INFO - Balance: $499773.16 | P/L: $-24.85
+[15m-supertrend] 2026-01-08 22:28:29 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 22:28:29 - INFO - Signal: HOLD_SHORT | Price: 1.16493
+⏰ Skipping stale HOLD_SHORT signal: 1709.4s old (max: 180s)
+[15m-supertrend] 2026-01-08 22:28:29 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+[15m-supertrend] 2026-01-08 22:28:29 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 22:28:29 - INFO -     Spread: 0.00016 (1.6 pips)
+[15m-supertrend] 2026-01-08 22:28:29 - INFO -     Adjustment: +0.00008 (+0.8 pips)
+[15m-supertrend] 2026-01-08 22:28:29 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 22:29:30 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 22:29:30 - INFO - Time: 2026-01-08 22:29:30
+[15m-supertrend] 2026-01-08 22:29:30 - INFO - Balance: $499773.16 | P/L: $-19.32
+[15m-supertrend] 2026-01-08 22:29:30 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 22:29:30 - INFO - Signal: HOLD_SHORT | Price: 1.16493
+⏰ Skipping stale HOLD_SHORT signal: 1770.1s old (max: 180s)
+[15m-supertrend] 2026-01-08 22:29:30 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16630
+[15m-supertrend] 2026-01-08 22:29:30 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 22:29:30 - INFO -     Spread: 0.00018 (1.8 pips)
+[15m-supertrend] 2026-01-08 22:29:30 - INFO -     Adjustment: +0.00009 (+0.9 pips)
+[15m-supertrend] 2026-01-08 22:29:30 - INFO -     → Position closes when midpoint touches 1.16621
+[15m-supertrend] 2026-01-08 22:30:30 - INFO - --------------------------------------------------------------------------------
+[15m-supertrend] 2026-01-08 22:30:30 - INFO - Time: 2026-01-08 22:30:30
+[15m-supertrend] 2026-01-08 22:30:30 - INFO - Balance: $499773.16 | P/L: $-26.23
+[15m-supertrend] 2026-01-08 22:30:30 - INFO - Position: SHORT 138031.0 units
+[15m-supertrend] 2026-01-08 22:30:30 - INFO - Signal: HOLD_SHORT | Price: 1.16508
+⏰ Skipping stale HOLD_SHORT signal: 930.8s old (max: 180s)
+[15m-supertrend] 2026-01-08 22:30:31 - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16628
+[15m-supertrend] 2026-01-08 22:30:31 - INFO -     SuperTrend (midpoint): 1.16621
+[15m-supertrend] 2026-01-08 22:30:31 - INFO -     Spread: 0.00014 (1.4 pips)
+[15m-supertrend] 2026-01-08 22:30:31 - INFO -     Adjustment: +0.00007 (+0.7 pips)
+[15m-supertrend] 2026-01-08 22:30:31 - INFO -     → Position closes when midpoint touches 1.16621

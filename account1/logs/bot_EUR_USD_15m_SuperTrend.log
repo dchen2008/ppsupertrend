@@ -1,0 +1,1526 @@
+2026-01-08 10:21:00 - bot_EUR_USD_15m_supertrend - INFO - ================================================================================
+2026-01-08 10:21:00 - bot_EUR_USD_15m_supertrend - INFO - Enhanced Trading Bot Initialized
+2026-01-08 10:21:00 - bot_EUR_USD_15m_supertrend - INFO - ================================================================================
+2026-01-08 10:21:00 - bot_EUR_USD_15m_supertrend - INFO - Account: 101-001-35749385-001
+2026-01-08 10:21:00 - bot_EUR_USD_15m_supertrend - INFO - Mode: PRACTICE
+2026-01-08 10:21:00 - bot_EUR_USD_15m_supertrend - INFO - Instrument: EUR_USD
+2026-01-08 10:21:00 - bot_EUR_USD_15m_supertrend - INFO - Timeframe: 15m (M15)
+2026-01-08 10:21:00 - bot_EUR_USD_15m_supertrend - INFO - Stop Loss Type: SuperTrend
+2026-01-08 10:21:00 - bot_EUR_USD_15m_supertrend - INFO - CSV Log: EUR_USD_15m_sl-SuperTrend.csv
+2026-01-08 10:21:00 - bot_EUR_USD_15m_supertrend - INFO - Text Log: bot_EUR_USD_15m_SuperTrend.log
+2026-01-08 10:21:00 - bot_EUR_USD_15m_supertrend - INFO - Parameters: PP=2, ATR Factor=3.0, ATR Period=10
+2026-01-08 10:21:00 - bot_EUR_USD_15m_supertrend - INFO - Check Interval: 60 seconds
+2026-01-08 10:21:00 - bot_EUR_USD_15m_supertrend - INFO - Trailing Stop: ENABLED
+2026-01-08 10:21:00 - bot_EUR_USD_15m_supertrend - INFO - ================================================================================
+2026-01-08 10:21:00 - bot_EUR_USD_15m_supertrend - INFO - 🚀 Trading bot started
+2026-01-08 10:21:00 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 10:21:00 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 10:21:00
+2026-01-08 10:21:00 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499879.62 | P/L: $0.00
+2026-01-08 10:21:00 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16499
+2026-01-08 10:22:01 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 10:22:01 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 10:22:01
+2026-01-08 10:22:01 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499879.62 | P/L: $0.00
+2026-01-08 10:22:01 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16499
+2026-01-08 10:23:01 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 10:23:01 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 10:23:01
+2026-01-08 10:23:01 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499879.62 | P/L: $0.00
+2026-01-08 10:23:01 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16499
+2026-01-08 10:24:02 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 10:24:02 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 10:24:02
+2026-01-08 10:24:02 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499879.62 | P/L: $0.00
+2026-01-08 10:24:02 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16499
+2026-01-08 10:25:03 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 10:25:03 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 10:25:03
+2026-01-08 10:25:03 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499879.62 | P/L: $0.00
+2026-01-08 10:25:03 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16499
+2026-01-08 10:26:03 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 10:26:03 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 10:26:03
+2026-01-08 10:26:03 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499879.62 | P/L: $0.00
+2026-01-08 10:26:03 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16499
+2026-01-08 10:27:04 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 10:27:04 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 10:27:04
+2026-01-08 10:27:04 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499879.62 | P/L: $0.00
+2026-01-08 10:27:04 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16499
+2026-01-08 10:28:04 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 10:28:04 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 10:28:04
+2026-01-08 10:28:04 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499879.62 | P/L: $0.00
+2026-01-08 10:28:04 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16499
+2026-01-08 10:29:05 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 10:29:05 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 10:29:05
+2026-01-08 10:29:05 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499879.62 | P/L: $0.00
+2026-01-08 10:29:05 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16499
+2026-01-08 10:30:06 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 10:30:06 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 10:30:06
+2026-01-08 10:30:06 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499879.62 | P/L: $0.00
+2026-01-08 10:30:06 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16496
+2026-01-08 10:31:07 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 10:31:07 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 10:31:07
+2026-01-08 10:31:07 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499879.62 | P/L: $0.00
+2026-01-08 10:31:07 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16496
+2026-01-08 10:31:39 - bot_EUR_USD_15m_supertrend - INFO - 
+⏹️  Bot stopped by user
+2026-01-08 10:31:39 - bot_EUR_USD_15m_supertrend - INFO - ================================================================================
+2026-01-08 10:31:39 - bot_EUR_USD_15m_supertrend - INFO - Trading Bot Stopped
+2026-01-08 10:31:39 - bot_EUR_USD_15m_supertrend - INFO - Total trades: 0
+2026-01-08 10:31:39 - bot_EUR_USD_15m_supertrend - INFO - CSV Log: EUR_USD_15m_sl-SuperTrend.csv
+2026-01-08 10:31:39 - bot_EUR_USD_15m_supertrend - INFO - ================================================================================
+2026-01-08 10:31:47 - bot_EUR_USD_15m_supertrend - INFO - ================================================================================
+2026-01-08 10:31:47 - bot_EUR_USD_15m_supertrend - INFO - Enhanced Trading Bot Initialized
+2026-01-08 10:31:47 - bot_EUR_USD_15m_supertrend - INFO - ================================================================================
+2026-01-08 10:31:47 - bot_EUR_USD_15m_supertrend - INFO - Account: 101-001-38143009-001
+2026-01-08 10:31:47 - bot_EUR_USD_15m_supertrend - INFO - Mode: PRACTICE
+2026-01-08 10:31:47 - bot_EUR_USD_15m_supertrend - INFO - Instrument: EUR_USD
+2026-01-08 10:31:47 - bot_EUR_USD_15m_supertrend - INFO - Timeframe: 15m (M15)
+2026-01-08 10:31:47 - bot_EUR_USD_15m_supertrend - INFO - Stop Loss Type: SuperTrend
+2026-01-08 10:31:47 - bot_EUR_USD_15m_supertrend - INFO - CSV Log: EUR_USD_15m_sl-SuperTrend.csv
+2026-01-08 10:31:47 - bot_EUR_USD_15m_supertrend - INFO - Text Log: bot_EUR_USD_15m_SuperTrend.log
+2026-01-08 10:31:47 - bot_EUR_USD_15m_supertrend - INFO - Parameters: PP=2, ATR Factor=3.0, ATR Period=10
+2026-01-08 10:31:47 - bot_EUR_USD_15m_supertrend - INFO - Check Interval: 60 seconds
+2026-01-08 10:31:47 - bot_EUR_USD_15m_supertrend - INFO - Trailing Stop: ENABLED
+2026-01-08 10:31:47 - bot_EUR_USD_15m_supertrend - INFO - ================================================================================
+2026-01-08 10:31:47 - bot_EUR_USD_15m_supertrend - INFO - 🚀 Trading bot started
+2026-01-08 10:31:48 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 10:31:48 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 10:31:48
+2026-01-08 10:31:48 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 10:31:48 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16496
+2026-01-08 10:32:49 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 10:32:49 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 10:32:49
+2026-01-08 10:32:49 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 10:32:49 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16496
+2026-01-08 10:33:50 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 10:33:50 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 10:33:50
+2026-01-08 10:33:50 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 10:33:50 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16496
+2026-01-08 10:34:51 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 10:34:51 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 10:34:51
+2026-01-08 10:34:51 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 10:34:51 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16496
+2026-01-08 10:35:51 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 10:35:51 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 10:35:51
+2026-01-08 10:35:51 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 10:35:51 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16496
+2026-01-08 10:36:52 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 10:36:52 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 10:36:52
+2026-01-08 10:36:52 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 10:36:52 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16496
+2026-01-08 10:37:52 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 10:37:52 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 10:37:52
+2026-01-08 10:37:52 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 10:37:52 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16496
+2026-01-08 10:38:53 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 10:38:53 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 10:38:53
+2026-01-08 10:38:53 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 10:38:53 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16496
+2026-01-08 10:39:53 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 10:39:53 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 10:39:53
+2026-01-08 10:39:53 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 10:39:53 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16496
+2026-01-08 10:40:54 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 10:40:54 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 10:40:54
+2026-01-08 10:40:54 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 10:40:54 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16496
+2026-01-08 10:41:55 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 10:41:55 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 10:41:55
+2026-01-08 10:41:55 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 10:41:55 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16496
+2026-01-08 10:42:55 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 10:42:55 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 10:42:55
+2026-01-08 10:42:55 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 10:42:55 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16496
+2026-01-08 10:43:56 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 10:43:56 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 10:43:56
+2026-01-08 10:43:56 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 10:43:56 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16496
+2026-01-08 10:44:56 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 10:44:56 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 10:44:56
+2026-01-08 10:44:56 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 10:44:56 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16496
+2026-01-08 10:45:57 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 10:45:57 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 10:45:57
+2026-01-08 10:45:57 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 10:45:57 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16504
+2026-01-08 10:46:58 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 10:46:58 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 10:46:58
+2026-01-08 10:46:58 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 10:46:58 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16504
+2026-01-08 10:47:59 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 10:47:59 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 10:47:59
+2026-01-08 10:47:59 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 10:47:59 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16504
+2026-01-08 10:49:00 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 10:49:00 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 10:49:00
+2026-01-08 10:49:00 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 10:49:00 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16504
+2026-01-08 10:50:00 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 10:50:00 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 10:50:00
+2026-01-08 10:50:00 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 10:50:00 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16504
+2026-01-08 10:51:01 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 10:51:01 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 10:51:01
+2026-01-08 10:51:01 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 10:51:01 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16504
+2026-01-08 11:00:55 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:00:55 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:00:55
+2026-01-08 11:00:55 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:00:55 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16452
+2026-01-08 11:01:56 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:01:56 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:01:56
+2026-01-08 11:01:56 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:01:56 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16452
+2026-01-08 11:02:57 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:02:57 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:02:57
+2026-01-08 11:02:57 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:02:57 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16452
+2026-01-08 11:03:58 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:03:58 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:03:58
+2026-01-08 11:03:58 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:03:58 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16452
+2026-01-08 11:04:59 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:04:59 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:04:59
+2026-01-08 11:04:59 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:04:59 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16452
+2026-01-08 11:05:59 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:05:59 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:05:59
+2026-01-08 11:05:59 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:05:59 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16452
+2026-01-08 11:07:00 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:07:00 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:07:00
+2026-01-08 11:07:00 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:07:00 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16452
+2026-01-08 11:08:00 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:08:00 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:08:00
+2026-01-08 11:08:00 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:08:00 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16452
+2026-01-08 11:09:01 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:09:01 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:09:01
+2026-01-08 11:09:01 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:09:01 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16452
+2026-01-08 11:10:02 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:10:02 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:10:02
+2026-01-08 11:10:02 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:10:02 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16452
+2026-01-08 11:11:54 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:11:54 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:11:54
+2026-01-08 11:11:54 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:11:54 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16452
+2026-01-08 11:12:54 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:12:54 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:12:54
+2026-01-08 11:12:54 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:12:54 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16452
+2026-01-08 11:13:55 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:13:55 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:13:55
+2026-01-08 11:13:55 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:13:55 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16452
+2026-01-08 11:14:56 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:14:56 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:14:56
+2026-01-08 11:14:56 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:14:56 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16452
+2026-01-08 11:15:56 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:15:56 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:15:56
+2026-01-08 11:15:56 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:15:56 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16465
+2026-01-08 11:16:57 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:16:57 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:16:57
+2026-01-08 11:16:57 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:16:57 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16465
+2026-01-08 11:17:58 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:17:58 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:17:58
+2026-01-08 11:17:58 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:17:58 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16465
+2026-01-08 11:18:59 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:18:59 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:18:59
+2026-01-08 11:18:59 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:18:59 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16465
+2026-01-08 11:20:00 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:20:00 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:20:00
+2026-01-08 11:20:00 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:20:00 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16465
+2026-01-08 11:21:01 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:21:01 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:21:01
+2026-01-08 11:21:01 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:21:01 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16465
+2026-01-08 11:22:02 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:22:02 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:22:02
+2026-01-08 11:22:02 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:22:02 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16465
+2026-01-08 11:23:02 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:23:02 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:23:02
+2026-01-08 11:23:02 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:23:02 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16465
+2026-01-08 11:24:03 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:24:03 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:24:03
+2026-01-08 11:24:03 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:24:03 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16465
+2026-01-08 11:25:03 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:25:03 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:25:03
+2026-01-08 11:25:03 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:25:03 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16465
+2026-01-08 11:26:04 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:26:04 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:26:04
+2026-01-08 11:26:04 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:26:04 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16465
+2026-01-08 11:27:04 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:27:04 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:27:04
+2026-01-08 11:27:04 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:27:04 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16465
+2026-01-08 11:28:05 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:28:05 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:28:05
+2026-01-08 11:28:05 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:28:05 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16465
+2026-01-08 11:29:06 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:29:06 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:29:06
+2026-01-08 11:29:06 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:29:06 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16465
+2026-01-08 11:30:06 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:30:06 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:30:06
+2026-01-08 11:30:06 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:30:06 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16458
+2026-01-08 11:31:07 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:31:07 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:31:07
+2026-01-08 11:31:07 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:31:07 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16458
+2026-01-08 11:32:08 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:32:08 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:32:08
+2026-01-08 11:32:08 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:32:08 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16458
+2026-01-08 11:33:09 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:33:09 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:33:09
+2026-01-08 11:33:09 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:33:09 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16458
+2026-01-08 11:34:10 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:34:10 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:34:10
+2026-01-08 11:34:10 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:34:10 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16458
+2026-01-08 11:35:11 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:35:11 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:35:11
+2026-01-08 11:35:11 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:35:11 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16458
+2026-01-08 11:36:12 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:36:12 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:36:12
+2026-01-08 11:36:12 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:36:12 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16458
+2026-01-08 11:37:12 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:37:12 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:37:12
+2026-01-08 11:37:12 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:37:12 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16458
+2026-01-08 11:38:13 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:38:13 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:38:13
+2026-01-08 11:38:13 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:38:13 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16458
+2026-01-08 11:39:13 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:39:13 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:39:13
+2026-01-08 11:39:13 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:39:13 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16458
+2026-01-08 11:40:14 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:40:14 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:40:14
+2026-01-08 11:40:14 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:40:14 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16458
+2026-01-08 11:41:15 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:41:15 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:41:15
+2026-01-08 11:41:15 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:41:15 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16458
+2026-01-08 11:42:15 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:42:15 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:42:15
+2026-01-08 11:42:15 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:42:15 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16458
+2026-01-08 11:43:16 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:43:16 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:43:16
+2026-01-08 11:43:16 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:43:16 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16458
+2026-01-08 11:44:16 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:44:16 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:44:16
+2026-01-08 11:44:16 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:44:16 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16458
+2026-01-08 11:45:17 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:45:17 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:45:17
+2026-01-08 11:45:17 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:45:17 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16466
+2026-01-08 11:46:18 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:46:18 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:46:18
+2026-01-08 11:46:18 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:46:18 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16466
+2026-01-08 11:47:18 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:47:18 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:47:18
+2026-01-08 11:47:18 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:47:18 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16466
+2026-01-08 11:48:19 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:48:19 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:48:19
+2026-01-08 11:48:19 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:48:19 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16466
+2026-01-08 11:49:20 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:49:20 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:49:20
+2026-01-08 11:49:20 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:49:20 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16466
+2026-01-08 11:50:21 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:50:21 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:50:21
+2026-01-08 11:50:21 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:50:21 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16466
+2026-01-08 11:51:21 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:51:21 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:51:21
+2026-01-08 11:51:21 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:51:21 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16466
+2026-01-08 11:52:22 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:52:22 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:52:22
+2026-01-08 11:52:22 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:52:22 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16466
+2026-01-08 11:53:22 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:53:22 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:53:22
+2026-01-08 11:53:22 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:53:22 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16466
+2026-01-08 11:54:23 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:54:23 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:54:23
+2026-01-08 11:54:23 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:54:23 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16466
+2026-01-08 11:55:24 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:55:24 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:55:24
+2026-01-08 11:55:24 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:55:24 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16466
+2026-01-08 11:56:24 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:56:24 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:56:24
+2026-01-08 11:56:24 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:56:24 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16466
+2026-01-08 11:57:25 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:57:25 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:57:25
+2026-01-08 11:57:25 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:57:25 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16466
+2026-01-08 11:58:25 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:58:25 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:58:25
+2026-01-08 11:58:25 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:58:25 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16466
+2026-01-08 11:59:26 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 11:59:26 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 11:59:26
+2026-01-08 11:59:26 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 11:59:26 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16466
+2026-01-08 12:00:26 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 12:00:26 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 12:00:26
+2026-01-08 12:00:26 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 12:00:26 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16501
+2026-01-08 12:01:27 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 12:01:27 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 12:01:27
+2026-01-08 12:01:27 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 12:01:27 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16501
+2026-01-08 12:02:28 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 12:02:28 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 12:02:28
+2026-01-08 12:02:28 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 12:02:28 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16501
+2026-01-08 12:03:28 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 12:03:28 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 12:03:28
+2026-01-08 12:03:28 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 12:03:28 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16501
+2026-01-08 12:04:29 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 12:04:29 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 12:04:29
+2026-01-08 12:04:29 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 12:04:29 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16501
+2026-01-08 12:05:29 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 12:05:29 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 12:05:29
+2026-01-08 12:05:29 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 12:05:29 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16501
+2026-01-08 12:06:30 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 12:06:30 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 12:06:30
+2026-01-08 12:06:30 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 12:06:30 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16501
+2026-01-08 12:07:30 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 12:07:30 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 12:07:30
+2026-01-08 12:07:30 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 12:07:30 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16501
+2026-01-08 12:08:31 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 12:08:31 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 12:08:31
+2026-01-08 12:08:31 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 12:08:31 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16501
+2026-01-08 12:09:32 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 12:09:32 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 12:09:32
+2026-01-08 12:09:32 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 12:09:32 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16501
+2026-01-08 12:10:33 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 12:10:33 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 12:10:33
+2026-01-08 12:10:33 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 12:10:33 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16501
+2026-01-08 12:11:33 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 12:11:33 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 12:11:33
+2026-01-08 12:11:33 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 12:11:33 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16501
+2026-01-08 12:12:34 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 12:12:34 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 12:12:34
+2026-01-08 12:12:34 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 12:12:34 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16501
+2026-01-08 12:13:34 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 12:13:34 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 12:13:34
+2026-01-08 12:13:34 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 12:13:34 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16501
+2026-01-08 12:14:35 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 12:14:35 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 12:14:35
+2026-01-08 12:14:35 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 12:14:35 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16501
+2026-01-08 12:15:36 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 12:15:36 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 12:15:36
+2026-01-08 12:15:36 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 12:15:36 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16509
+2026-01-08 12:16:36 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 12:16:36 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 12:16:36
+2026-01-08 12:16:36 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 12:16:36 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16509
+2026-01-08 12:32:47 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 12:32:47 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 12:32:47
+2026-01-08 12:32:47 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 12:32:47 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16532
+2026-01-08 12:45:37 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 12:45:37 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 12:45:37
+2026-01-08 12:45:37 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 12:45:37 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16526
+2026-01-08 12:46:38 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 12:46:38 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 12:46:38
+2026-01-08 12:46:38 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 12:46:38 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16526
+2026-01-08 12:47:38 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 12:47:38 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 12:47:38
+2026-01-08 12:47:38 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 12:47:38 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16526
+2026-01-08 12:48:39 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 12:48:39 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 12:48:39
+2026-01-08 12:48:39 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 12:48:39 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16526
+2026-01-08 12:49:40 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 12:49:40 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 12:49:40
+2026-01-08 12:49:40 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 12:49:40 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16526
+2026-01-08 12:50:41 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 12:50:41 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 12:50:41
+2026-01-08 12:50:41 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 12:50:41 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16526
+2026-01-08 12:51:41 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 12:51:41 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 12:51:41
+2026-01-08 12:51:41 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 12:51:41 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16526
+2026-01-08 12:52:42 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 12:52:42 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 12:52:42
+2026-01-08 12:52:42 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 12:52:42 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16526
+2026-01-08 12:53:37 - bot_EUR_USD_15m_supertrend - INFO - 
+⏹️  Bot stopped by user
+2026-01-08 12:53:37 - bot_EUR_USD_15m_supertrend - INFO - ================================================================================
+2026-01-08 12:53:37 - bot_EUR_USD_15m_supertrend - INFO - Trading Bot Stopped
+2026-01-08 12:53:37 - bot_EUR_USD_15m_supertrend - INFO - Total trades: 0
+2026-01-08 12:53:37 - bot_EUR_USD_15m_supertrend - INFO - CSV Log: EUR_USD_15m_sl-SuperTrend.csv
+2026-01-08 12:53:37 - bot_EUR_USD_15m_supertrend - INFO - ================================================================================
+2026-01-08 12:53:39 - bot_EUR_USD_15m_supertrend - INFO - ================================================================================
+2026-01-08 12:53:39 - bot_EUR_USD_15m_supertrend - INFO - Enhanced Trading Bot Initialized
+2026-01-08 12:53:39 - bot_EUR_USD_15m_supertrend - INFO - ================================================================================
+2026-01-08 12:53:39 - bot_EUR_USD_15m_supertrend - INFO - Account: 101-001-38143009-001
+2026-01-08 12:53:39 - bot_EUR_USD_15m_supertrend - INFO - Mode: PRACTICE
+2026-01-08 12:53:39 - bot_EUR_USD_15m_supertrend - INFO - Instrument: EUR_USD
+2026-01-08 12:53:39 - bot_EUR_USD_15m_supertrend - INFO - Timeframe: 15m (M15)
+2026-01-08 12:53:39 - bot_EUR_USD_15m_supertrend - INFO - Stop Loss Type: SuperTrend
+2026-01-08 12:53:39 - bot_EUR_USD_15m_supertrend - INFO - CSV Log: EUR_USD_15m_sl-SuperTrend.csv
+2026-01-08 12:53:39 - bot_EUR_USD_15m_supertrend - INFO - Text Log: bot_EUR_USD_15m_SuperTrend.log
+2026-01-08 12:53:39 - bot_EUR_USD_15m_supertrend - INFO - Parameters: PP=2, ATR Factor=3.0, ATR Period=10
+2026-01-08 12:53:39 - bot_EUR_USD_15m_supertrend - INFO - Check Interval: 60 seconds
+2026-01-08 12:53:39 - bot_EUR_USD_15m_supertrend - INFO - Trailing Stop: ENABLED
+2026-01-08 12:53:39 - bot_EUR_USD_15m_supertrend - INFO - ================================================================================
+2026-01-08 12:53:39 - bot_EUR_USD_15m_supertrend - INFO - 🚀 Trading bot started
+2026-01-08 12:53:39 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 12:53:39 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 12:53:39
+2026-01-08 12:53:39 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 12:53:39 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16526
+2026-01-08 12:54:40 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 12:54:40 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 12:54:40
+2026-01-08 12:54:40 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 12:54:40 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16526
+2026-01-08 12:55:41 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 12:55:41 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 12:55:41
+2026-01-08 12:55:41 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 12:55:41 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16526
+2026-01-08 12:56:41 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 12:56:41 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 12:56:41
+2026-01-08 12:56:41 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 12:56:41 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16526
+2026-01-08 12:57:42 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 12:57:42 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 12:57:42
+2026-01-08 12:57:42 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 12:57:42 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16526
+2026-01-08 12:58:42 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 12:58:42 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 12:58:42
+2026-01-08 12:58:42 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 12:58:42 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16526
+2026-01-08 12:59:43 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 12:59:43 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 12:59:43
+2026-01-08 12:59:43 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 12:59:43 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16526
+2026-01-08 13:00:43 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:00:43 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:00:43
+2026-01-08 13:00:43 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:00:43 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16513
+2026-01-08 13:01:44 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:01:44 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:01:44
+2026-01-08 13:01:44 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:01:44 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16513
+2026-01-08 13:02:45 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:02:45 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:02:45
+2026-01-08 13:02:45 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:02:45 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16513
+2026-01-08 13:03:46 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:03:46 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:03:46
+2026-01-08 13:03:46 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:03:46 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16513
+2026-01-08 13:04:47 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:04:47 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:04:47
+2026-01-08 13:04:47 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:04:47 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16513
+2026-01-08 13:05:48 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:05:48 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:05:48
+2026-01-08 13:05:48 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:05:48 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16513
+2026-01-08 13:06:48 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:06:48 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:06:48
+2026-01-08 13:06:48 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:06:48 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16513
+2026-01-08 13:07:49 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:07:49 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:07:49
+2026-01-08 13:07:49 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:07:49 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16513
+2026-01-08 13:08:49 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:08:49 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:08:49
+2026-01-08 13:08:49 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:08:49 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16513
+2026-01-08 13:09:50 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:09:50 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:09:50
+2026-01-08 13:09:50 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:09:50 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16513
+2026-01-08 13:10:51 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:10:51 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:10:51
+2026-01-08 13:10:51 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:10:51 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16513
+2026-01-08 13:11:51 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:11:51 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:11:51
+2026-01-08 13:11:51 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:11:51 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16513
+2026-01-08 13:12:52 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:12:52 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:12:52
+2026-01-08 13:12:52 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:12:52 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16513
+2026-01-08 13:13:52 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:13:52 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:13:52
+2026-01-08 13:13:52 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:13:52 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16513
+2026-01-08 13:14:53 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:14:53 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:14:53
+2026-01-08 13:14:53 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:14:53 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16513
+2026-01-08 13:15:54 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:15:54 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:15:54
+2026-01-08 13:15:54 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:15:54 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16522
+2026-01-08 13:16:54 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:16:54 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:16:54
+2026-01-08 13:16:54 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:16:54 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16522
+2026-01-08 13:17:55 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:17:55 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:17:55
+2026-01-08 13:17:55 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:17:55 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16522
+2026-01-08 13:18:56 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:18:56 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:18:56
+2026-01-08 13:18:56 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:18:56 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16522
+2026-01-08 13:19:56 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:19:56 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:19:56
+2026-01-08 13:19:56 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:19:56 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16522
+2026-01-08 13:20:57 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:20:57 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:20:57
+2026-01-08 13:20:57 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:20:57 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16522
+2026-01-08 13:21:58 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:21:58 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:21:58
+2026-01-08 13:21:58 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:21:58 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16522
+2026-01-08 13:22:59 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:22:59 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:22:59
+2026-01-08 13:22:59 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:22:59 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16522
+2026-01-08 13:24:00 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:24:00 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:24:00
+2026-01-08 13:24:00 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:24:00 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16522
+2026-01-08 13:25:46 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:25:46 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:25:46
+2026-01-08 13:25:46 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:25:46 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16522
+2026-01-08 13:26:46 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:26:46 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:26:46
+2026-01-08 13:26:46 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:26:46 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16522
+2026-01-08 13:27:47 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:27:47 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:27:47
+2026-01-08 13:27:47 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:27:47 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16522
+2026-01-08 13:28:48 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:28:48 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:28:48
+2026-01-08 13:28:48 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:28:48 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16522
+2026-01-08 13:29:48 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:29:48 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:29:48
+2026-01-08 13:29:48 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:29:48 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16522
+2026-01-08 13:30:49 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:30:49 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:30:49
+2026-01-08 13:30:49 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:30:49 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16542
+2026-01-08 13:31:49 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:31:49 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:31:49
+2026-01-08 13:31:49 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:31:49 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16542
+2026-01-08 13:32:50 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:32:50 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:32:50
+2026-01-08 13:32:50 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:32:50 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16542
+2026-01-08 13:33:50 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:33:50 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:33:50
+2026-01-08 13:33:50 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:33:50 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16542
+2026-01-08 13:34:51 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:34:51 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:34:51
+2026-01-08 13:34:51 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:34:51 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16542
+2026-01-08 13:35:51 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:35:51 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:35:51
+2026-01-08 13:35:51 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:35:51 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16542
+2026-01-08 13:36:53 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:36:53 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:36:53
+2026-01-08 13:36:53 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:36:53 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16542
+2026-01-08 13:37:54 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:37:54 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:37:54
+2026-01-08 13:37:54 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:37:54 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16542
+2026-01-08 13:38:55 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:38:55 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:38:55
+2026-01-08 13:38:55 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:38:55 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16542
+2026-01-08 13:39:55 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:39:55 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:39:55
+2026-01-08 13:39:55 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:39:55 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16542
+2026-01-08 13:40:56 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:40:56 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:40:56
+2026-01-08 13:40:56 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:40:56 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16542
+2026-01-08 13:41:56 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:41:56 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:41:56
+2026-01-08 13:41:56 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:41:56 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16542
+2026-01-08 13:42:57 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:42:57 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:42:57
+2026-01-08 13:42:57 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:42:57 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16542
+2026-01-08 13:43:57 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:43:57 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:43:57
+2026-01-08 13:43:57 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:43:57 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16542
+2026-01-08 13:44:21 - bot_EUR_USD_15m_supertrend - INFO - 
+⏹️  Bot stopped by user
+2026-01-08 13:44:21 - bot_EUR_USD_15m_supertrend - INFO - ================================================================================
+2026-01-08 13:44:21 - bot_EUR_USD_15m_supertrend - INFO - Trading Bot Stopped
+2026-01-08 13:44:21 - bot_EUR_USD_15m_supertrend - INFO - Total trades: 0
+2026-01-08 13:44:21 - bot_EUR_USD_15m_supertrend - INFO - CSV Log: EUR_USD_15m_sl-SuperTrend.csv
+2026-01-08 13:44:21 - bot_EUR_USD_15m_supertrend - INFO - ================================================================================
+2026-01-08 13:44:23 - bot_EUR_USD_15m_supertrend - INFO - ================================================================================
+2026-01-08 13:44:23 - bot_EUR_USD_15m_supertrend - INFO - Enhanced Trading Bot Initialized
+2026-01-08 13:44:23 - bot_EUR_USD_15m_supertrend - INFO - ================================================================================
+2026-01-08 13:44:23 - bot_EUR_USD_15m_supertrend - INFO - Account: 101-001-38143009-001
+2026-01-08 13:44:23 - bot_EUR_USD_15m_supertrend - INFO - Mode: PRACTICE
+2026-01-08 13:44:23 - bot_EUR_USD_15m_supertrend - INFO - Instrument: EUR_USD
+2026-01-08 13:44:23 - bot_EUR_USD_15m_supertrend - INFO - Timeframe: 15m (M15)
+2026-01-08 13:44:23 - bot_EUR_USD_15m_supertrend - INFO - Stop Loss Type: SuperTrend
+2026-01-08 13:44:23 - bot_EUR_USD_15m_supertrend - INFO - CSV Log: EUR_USD_15m_sl-SuperTrend.csv
+2026-01-08 13:44:23 - bot_EUR_USD_15m_supertrend - INFO - Text Log: bot_EUR_USD_15m_SuperTrend.log
+2026-01-08 13:44:23 - bot_EUR_USD_15m_supertrend - INFO - Parameters: PP=2, ATR Factor=3.0, ATR Period=10
+2026-01-08 13:44:23 - bot_EUR_USD_15m_supertrend - INFO - Check Interval: 60 seconds
+2026-01-08 13:44:23 - bot_EUR_USD_15m_supertrend - INFO - Trailing Stop: ENABLED
+2026-01-08 13:44:23 - bot_EUR_USD_15m_supertrend - INFO - ================================================================================
+2026-01-08 13:44:23 - bot_EUR_USD_15m_supertrend - INFO - 🚀 Trading bot started
+2026-01-08 13:44:23 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:44:23 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:44:23
+2026-01-08 13:44:23 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:44:23 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16542
+2026-01-08 13:45:24 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:45:24 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:45:24
+2026-01-08 13:45:24 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:45:24 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16598
+2026-01-08 13:46:25 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:46:25 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:46:25
+2026-01-08 13:46:25 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:46:25 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16598
+2026-01-08 13:47:25 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:47:25 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:47:25
+2026-01-08 13:47:25 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:47:25 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16598
+2026-01-08 13:48:26 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:48:26 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:48:26
+2026-01-08 13:48:26 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:48:26 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16598
+2026-01-08 13:49:26 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:49:26 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:49:26
+2026-01-08 13:49:26 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:49:26 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16598
+2026-01-08 13:50:27 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:50:27 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:50:27
+2026-01-08 13:50:27 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:50:27 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16598
+2026-01-08 13:51:28 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:51:28 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:51:28
+2026-01-08 13:51:28 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:51:28 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16598
+2026-01-08 13:52:29 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 13:52:29 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 13:52:29
+2026-01-08 13:52:29 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 13:52:29 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16598
+2026-01-08 14:29:10 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 14:29:10 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 14:29:10
+2026-01-08 14:29:10 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 14:29:10 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16594
+2026-01-08 14:33:39 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 14:33:39 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 14:33:39
+2026-01-08 14:33:39 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 14:33:39 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16577
+2026-01-08 14:34:40 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 14:34:40 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 14:34:40
+2026-01-08 14:34:40 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 14:34:40 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16577
+2026-01-08 14:35:40 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 14:35:40 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 14:35:40
+2026-01-08 14:35:40 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 14:35:40 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16577
+2026-01-08 14:36:41 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 14:36:41 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 14:36:41
+2026-01-08 14:36:41 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 14:36:41 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16577
+2026-01-08 15:10:02 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 15:10:02 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 15:10:02
+2026-01-08 15:10:02 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 15:10:02 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16587
+2026-01-08 15:36:52 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 15:36:52 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 15:36:52
+2026-01-08 15:36:52 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 15:36:52 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16583
+2026-01-08 16:04:36 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 16:04:36 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 16:04:36
+2026-01-08 16:04:36 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 16:04:36 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16581
+2026-01-08 16:05:36 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 16:05:36 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 16:05:36
+2026-01-08 16:05:36 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 16:05:36 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16581
+2026-01-08 16:06:37 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 16:06:37 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 16:06:37
+2026-01-08 16:06:37 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 16:06:37 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16581
+2026-01-08 16:07:37 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 16:07:37 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 16:07:37
+2026-01-08 16:07:37 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 16:07:37 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16581
+2026-01-08 16:08:38 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 16:08:38 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 16:08:38
+2026-01-08 16:08:38 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 16:08:38 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16581
+2026-01-08 16:09:38 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 16:09:38 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 16:09:38
+2026-01-08 16:09:38 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 16:09:38 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16581
+2026-01-08 16:10:39 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 16:10:39 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 16:10:39
+2026-01-08 16:10:39 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 16:10:39 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16581
+2026-01-08 16:11:39 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 16:11:39 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 16:11:39
+2026-01-08 16:11:39 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 16:11:39 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16581
+2026-01-08 16:12:40 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 16:12:40 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 16:12:40
+2026-01-08 16:12:40 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 16:12:40 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16581
+2026-01-08 16:13:40 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 16:13:40 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 16:13:40
+2026-01-08 16:13:40 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 16:13:40 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16581
+2026-01-08 16:14:41 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 16:14:41 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 16:14:41
+2026-01-08 16:14:41 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 16:14:41 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16581
+2026-01-08 16:15:42 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 16:15:42 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 16:15:42
+2026-01-08 16:15:42 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 16:15:42 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16550
+2026-01-08 16:16:42 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 16:16:42 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 16:16:42
+2026-01-08 16:16:42 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 16:16:42 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16550
+2026-01-08 16:17:53 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 16:17:53 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 16:17:53
+2026-01-08 16:17:53 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 16:17:53 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16550
+2026-01-08 16:18:53 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 16:18:53 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 16:18:53
+2026-01-08 16:18:53 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 16:18:53 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16550
+2026-01-08 16:19:55 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 16:19:55 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 16:19:55
+2026-01-08 16:19:55 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 16:19:55 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16550
+2026-01-08 16:20:56 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 16:20:56 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 16:20:56
+2026-01-08 16:20:56 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 16:20:56 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16550
+2026-01-08 16:21:57 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 16:21:57 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 16:21:57
+2026-01-08 16:21:57 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 16:21:57 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16550
+2026-01-08 16:22:57 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 16:22:57 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 16:22:57
+2026-01-08 16:22:57 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 16:22:57 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16550
+2026-01-08 16:23:58 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 16:23:58 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 16:23:58
+2026-01-08 16:23:58 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 16:23:58 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16550
+2026-01-08 16:24:59 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 16:24:59 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 16:24:59
+2026-01-08 16:24:59 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 16:24:59 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16550
+2026-01-08 16:25:59 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 16:25:59 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 16:25:59
+2026-01-08 16:25:59 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 16:25:59 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16550
+2026-01-08 16:27:00 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 16:27:00 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 16:27:00
+2026-01-08 16:27:00 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 16:27:00 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16550
+2026-01-08 16:28:00 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 16:28:00 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 16:28:00
+2026-01-08 16:28:00 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 16:28:00 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16550
+2026-01-08 16:29:01 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 16:29:01 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 16:29:01
+2026-01-08 16:29:01 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 16:29:01 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16550
+2026-01-08 16:30:02 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 16:30:02 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 16:30:02
+2026-01-08 16:30:02 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 16:30:02 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16562
+2026-01-08 16:31:02 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 16:31:02 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 16:31:02
+2026-01-08 16:31:02 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 16:31:02 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16562
+2026-01-08 16:32:03 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 16:32:03 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 16:32:03
+2026-01-08 16:32:03 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 16:32:03 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16562
+2026-01-08 16:33:04 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 16:33:04 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 16:33:04
+2026-01-08 16:33:04 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 16:33:04 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16562
+2026-01-08 16:34:04 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 16:34:04 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 16:34:04
+2026-01-08 16:34:04 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 16:34:04 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16562
+2026-01-08 16:35:05 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 16:35:05 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 16:35:05
+2026-01-08 16:35:05 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 16:35:05 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16562
+2026-01-08 16:36:05 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 16:36:05 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 16:36:05
+2026-01-08 16:36:05 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 16:36:05 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16562
+2026-01-08 16:37:06 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 16:37:06 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 16:37:06
+2026-01-08 16:37:06 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 16:37:06 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16562
+2026-01-08 16:38:07 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 16:38:07 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 16:38:07
+2026-01-08 16:38:07 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 16:38:07 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16562
+2026-01-08 16:39:08 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 16:39:08 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 16:39:08
+2026-01-08 16:39:08 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 16:39:08 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16562
+2026-01-08 16:40:08 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 16:40:08 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 16:40:08
+2026-01-08 16:40:08 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 16:40:08 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16562
+2026-01-08 16:41:09 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 16:41:09 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 16:41:09
+2026-01-08 16:41:09 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 16:41:09 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16562
+2026-01-08 16:42:09 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 16:42:09 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 16:42:09
+2026-01-08 16:42:09 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 16:42:09 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16562
+2026-01-08 16:43:10 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 16:43:10 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 16:43:10
+2026-01-08 16:43:10 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 16:43:10 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16562
+2026-01-08 16:44:10 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 16:44:10 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 16:44:10
+2026-01-08 16:44:10 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 16:44:10 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16562
+2026-01-08 16:45:11 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 16:45:11 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 16:45:11
+2026-01-08 16:45:11 - bot_EUR_USD_15m_supertrend - INFO - Balance: $99960.64 | P/L: $0.00
+2026-01-08 16:45:11 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16550
+2026-01-08 21:30:48 - bot_EUR_USD_15m_supertrend - INFO - ================================================================================
+2026-01-08 21:30:48 - bot_EUR_USD_15m_supertrend - INFO - Enhanced Trading Bot Initialized
+2026-01-08 21:30:48 - bot_EUR_USD_15m_supertrend - INFO - ================================================================================
+2026-01-08 21:30:48 - bot_EUR_USD_15m_supertrend - INFO - Account: 101-001-35749385-001
+2026-01-08 21:30:48 - bot_EUR_USD_15m_supertrend - INFO - Mode: PRACTICE
+2026-01-08 21:30:48 - bot_EUR_USD_15m_supertrend - INFO - Instrument: EUR_USD
+2026-01-08 21:30:48 - bot_EUR_USD_15m_supertrend - INFO - Timeframe: 15m (M15)
+2026-01-08 21:30:48 - bot_EUR_USD_15m_supertrend - INFO - Stop Loss Type: SuperTrend
+2026-01-08 21:30:48 - bot_EUR_USD_15m_supertrend - INFO - CSV Log: account1/csv/EUR_USD_15m_sl-SuperTrend.csv
+2026-01-08 21:30:48 - bot_EUR_USD_15m_supertrend - INFO - Text Log: account1/logs/bot_EUR_USD_15m_SuperTrend.log
+2026-01-08 21:30:48 - bot_EUR_USD_15m_supertrend - INFO - Parameters: PP=2, ATR Factor=3.0, ATR Period=10
+2026-01-08 21:30:48 - bot_EUR_USD_15m_supertrend - INFO - Check Interval: 60 seconds
+2026-01-08 21:30:48 - bot_EUR_USD_15m_supertrend - INFO - Trailing Stop: ENABLED
+2026-01-08 21:30:48 - bot_EUR_USD_15m_supertrend - INFO - ================================================================================
+2026-01-08 21:30:48 - bot_EUR_USD_15m_supertrend - INFO - 🚀 Trading bot started
+2026-01-08 21:30:48 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 21:30:48 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 21:30:48
+2026-01-08 21:30:48 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $0.00
+2026-01-08 21:30:48 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16530
+2026-01-08 21:31:49 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 21:31:49 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 21:31:49
+2026-01-08 21:31:49 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $0.00
+2026-01-08 21:31:49 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16530
+2026-01-08 21:32:50 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 21:32:50 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 21:32:50
+2026-01-08 21:32:50 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $0.00
+2026-01-08 21:32:50 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16530
+2026-01-08 21:33:50 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 21:33:50 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 21:33:50
+2026-01-08 21:33:50 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $0.00
+2026-01-08 21:33:50 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16530
+2026-01-08 21:34:51 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 21:34:51 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 21:34:51
+2026-01-08 21:34:51 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $0.00
+2026-01-08 21:34:51 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16530
+2026-01-08 21:35:51 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 21:35:51 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 21:35:51
+2026-01-08 21:35:51 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $0.00
+2026-01-08 21:35:51 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16530
+2026-01-08 21:36:52 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 21:36:52 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 21:36:52
+2026-01-08 21:36:52 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $0.00
+2026-01-08 21:36:52 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16530
+2026-01-08 21:37:52 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 21:37:52 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 21:37:52
+2026-01-08 21:37:52 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $0.00
+2026-01-08 21:37:52 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16530
+2026-01-08 21:38:53 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 21:38:53 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 21:38:53
+2026-01-08 21:38:53 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $0.00
+2026-01-08 21:38:53 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16530
+2026-01-08 21:39:54 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 21:39:54 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 21:39:54
+2026-01-08 21:39:54 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $0.00
+2026-01-08 21:39:54 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16530
+2026-01-08 21:40:55 - bot_EUR_USD_15m_supertrend - INFO - 📌 Recovered tracking: Trade 663 @ 1.16506
+2026-01-08 21:40:55 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 21:40:55 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 21:40:55
+2026-01-08 21:40:55 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $-16.56
+2026-01-08 21:40:55 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 21:40:55 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16530
+2026-01-08 21:40:55 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+2026-01-08 21:40:55 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 21:40:55 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00015 (1.5 pips)
+2026-01-08 21:40:55 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00008 (+0.8 pips)
+2026-01-08 21:40:55 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 21:40:55 - bot_EUR_USD_15m_supertrend - INFO - Initialized trailing stop: 1.16629
+2026-01-08 21:41:56 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 21:41:56 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 21:41:56
+2026-01-08 21:41:56 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $-20.70
+2026-01-08 21:41:56 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 21:41:56 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16530
+2026-01-08 21:41:56 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+2026-01-08 21:41:56 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 21:41:56 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00016 (1.6 pips)
+2026-01-08 21:41:56 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00008 (+0.8 pips)
+2026-01-08 21:41:56 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 21:42:56 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 21:42:56 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 21:42:56
+2026-01-08 21:42:56 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $-17.94
+2026-01-08 21:42:56 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 21:42:56 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16530
+2026-01-08 21:42:57 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+2026-01-08 21:42:57 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 21:42:57 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00015 (1.5 pips)
+2026-01-08 21:42:57 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00007 (+0.7 pips)
+2026-01-08 21:42:57 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 21:43:57 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 21:43:57 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 21:43:57
+2026-01-08 21:43:57 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $-22.09
+2026-01-08 21:43:57 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 21:43:57 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16530
+2026-01-08 21:43:57 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+2026-01-08 21:43:57 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 21:43:57 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00016 (1.6 pips)
+2026-01-08 21:43:57 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00008 (+0.8 pips)
+2026-01-08 21:43:57 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 21:44:58 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 21:44:58 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 21:44:58
+2026-01-08 21:44:58 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $-17.94
+2026-01-08 21:44:58 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 21:44:58 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16530
+2026-01-08 21:44:58 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+2026-01-08 21:44:58 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 21:44:58 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00015 (1.5 pips)
+2026-01-08 21:44:58 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00007 (+0.7 pips)
+2026-01-08 21:44:58 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 21:45:58 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 21:45:58 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 21:45:58
+2026-01-08 21:45:58 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $-13.80
+2026-01-08 21:45:58 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 21:45:58 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16512
+2026-01-08 21:45:59 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16630
+2026-01-08 21:45:59 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 21:45:59 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00017 (1.7 pips)
+2026-01-08 21:45:59 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00009 (+0.9 pips)
+2026-01-08 21:45:59 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 21:46:59 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 21:46:59 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 21:46:59
+2026-01-08 21:46:59 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $-15.18
+2026-01-08 21:46:59 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 21:46:59 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16512
+2026-01-08 21:46:59 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+2026-01-08 21:46:59 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 21:46:59 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00016 (1.6 pips)
+2026-01-08 21:46:59 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00008 (+0.8 pips)
+2026-01-08 21:46:59 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 21:48:00 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 21:48:00 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 21:48:00
+2026-01-08 21:48:00 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $-24.85
+2026-01-08 21:48:00 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 21:48:00 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16512
+2026-01-08 21:48:00 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+2026-01-08 21:48:00 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 21:48:00 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00016 (1.6 pips)
+2026-01-08 21:48:00 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00008 (+0.8 pips)
+2026-01-08 21:48:00 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 21:49:01 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 21:49:01 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 21:49:01
+2026-01-08 21:49:01 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $-30.37
+2026-01-08 21:49:01 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 21:49:01 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16512
+2026-01-08 21:49:01 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+2026-01-08 21:49:01 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 21:49:01 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00016 (1.6 pips)
+2026-01-08 21:49:01 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00008 (+0.8 pips)
+2026-01-08 21:49:01 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 21:50:01 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 21:50:01 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 21:50:01
+2026-01-08 21:50:01 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $-27.61
+2026-01-08 21:50:01 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 21:50:01 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16512
+2026-01-08 21:50:01 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16630
+2026-01-08 21:50:01 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 21:50:01 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00017 (1.7 pips)
+2026-01-08 21:50:01 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00009 (+0.9 pips)
+2026-01-08 21:50:01 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 21:51:02 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 21:51:02 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 21:51:02
+2026-01-08 21:51:02 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $-26.23
+2026-01-08 21:51:02 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 21:51:02 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16512
+2026-01-08 21:51:02 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+2026-01-08 21:51:02 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 21:51:02 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00016 (1.6 pips)
+2026-01-08 21:51:02 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00008 (+0.8 pips)
+2026-01-08 21:51:02 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 21:52:03 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 21:52:03 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 21:52:03
+2026-01-08 21:52:03 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $-22.09
+2026-01-08 21:52:03 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 21:52:03 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16512
+2026-01-08 21:52:03 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+2026-01-08 21:52:03 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 21:52:03 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00016 (1.6 pips)
+2026-01-08 21:52:03 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00008 (+0.8 pips)
+2026-01-08 21:52:03 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 21:53:03 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 21:53:03 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 21:53:03
+2026-01-08 21:53:03 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $-20.70
+2026-01-08 21:53:03 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 21:53:03 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16512
+2026-01-08 21:53:04 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+2026-01-08 21:53:04 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 21:53:04 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00016 (1.6 pips)
+2026-01-08 21:53:04 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00008 (+0.8 pips)
+2026-01-08 21:53:04 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 21:54:04 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 21:54:04 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 21:54:04
+2026-01-08 21:54:04 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $-12.42
+2026-01-08 21:54:04 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 21:54:04 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16512
+2026-01-08 21:54:04 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+2026-01-08 21:54:04 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 21:54:04 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00015 (1.5 pips)
+2026-01-08 21:54:04 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00007 (+0.7 pips)
+2026-01-08 21:54:04 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 21:55:05 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 21:55:05 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 21:55:05
+2026-01-08 21:55:05 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $-5.52
+2026-01-08 21:55:05 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 21:55:05 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16512
+2026-01-08 21:55:05 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16630
+2026-01-08 21:55:05 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 21:55:05 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00017 (1.7 pips)
+2026-01-08 21:55:05 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00009 (+0.9 pips)
+2026-01-08 21:55:05 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 21:56:05 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 21:56:05 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 21:56:05
+2026-01-08 21:56:05 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $-6.90
+2026-01-08 21:56:05 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 21:56:05 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16512
+2026-01-08 21:56:05 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16630
+2026-01-08 21:56:05 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 21:56:05 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00017 (1.7 pips)
+2026-01-08 21:56:05 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00009 (+0.9 pips)
+2026-01-08 21:56:05 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 21:57:06 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 21:57:06 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 21:57:06
+2026-01-08 21:57:06 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $-12.42
+2026-01-08 21:57:06 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 21:57:06 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16512
+2026-01-08 21:57:06 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+2026-01-08 21:57:06 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 21:57:06 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00016 (1.6 pips)
+2026-01-08 21:57:06 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00008 (+0.8 pips)
+2026-01-08 21:57:06 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 21:58:07 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 21:58:07 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 21:58:07
+2026-01-08 21:58:07 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $-11.04
+2026-01-08 21:58:07 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 21:58:07 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16512
+2026-01-08 21:58:07 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+2026-01-08 21:58:07 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 21:58:07 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00015 (1.5 pips)
+2026-01-08 21:58:07 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00008 (+0.8 pips)
+2026-01-08 21:58:07 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 21:59:07 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 21:59:07 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 21:59:07
+2026-01-08 21:59:07 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $-15.18
+2026-01-08 21:59:07 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 21:59:07 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16512
+2026-01-08 21:59:08 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+2026-01-08 21:59:08 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 21:59:08 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00015 (1.5 pips)
+2026-01-08 21:59:08 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00007 (+0.7 pips)
+2026-01-08 21:59:08 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 22:00:08 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:00:08 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 22:00:08
+2026-01-08 22:00:08 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $-16.56
+2026-01-08 22:00:08 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:00:08 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16511
+2026-01-08 22:00:08 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16630
+2026-01-08 22:00:08 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 22:00:08 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00017 (1.7 pips)
+2026-01-08 22:00:08 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00009 (+0.9 pips)
+2026-01-08 22:00:08 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 22:01:09 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:01:09 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 22:01:09
+2026-01-08 22:01:09 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $-1.38
+2026-01-08 22:01:09 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:01:09 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16511
+2026-01-08 22:01:09 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+2026-01-08 22:01:09 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 22:01:09 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00015 (1.5 pips)
+2026-01-08 22:01:09 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00008 (+0.8 pips)
+2026-01-08 22:01:09 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 22:02:10 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:02:10 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 22:02:10
+2026-01-08 22:02:10 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $-20.70
+2026-01-08 22:02:10 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:02:10 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16511
+2026-01-08 22:02:10 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+2026-01-08 22:02:10 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 22:02:10 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00016 (1.6 pips)
+2026-01-08 22:02:10 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00008 (+0.8 pips)
+2026-01-08 22:02:10 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 22:03:10 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:03:10 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 22:03:10
+2026-01-08 22:03:10 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $-20.70
+2026-01-08 22:03:10 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:03:10 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16511
+2026-01-08 22:03:10 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16630
+2026-01-08 22:03:10 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 22:03:10 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00017 (1.7 pips)
+2026-01-08 22:03:10 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00009 (+0.9 pips)
+2026-01-08 22:03:10 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 22:04:11 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:04:11 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 22:04:11
+2026-01-08 22:04:11 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $-28.99
+2026-01-08 22:04:11 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:04:11 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16511
+2026-01-08 22:04:11 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+2026-01-08 22:04:11 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 22:04:11 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00015 (1.5 pips)
+2026-01-08 22:04:11 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00008 (+0.8 pips)
+2026-01-08 22:04:11 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 22:05:12 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:05:12 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 22:05:12
+2026-01-08 22:05:12 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $-30.37
+2026-01-08 22:05:12 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:05:12 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16511
+2026-01-08 22:05:12 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16628
+2026-01-08 22:05:12 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 22:05:12 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00014 (1.4 pips)
+2026-01-08 22:05:12 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00007 (+0.7 pips)
+2026-01-08 22:05:12 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 22:06:13 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:06:13 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 22:06:13
+2026-01-08 22:06:13 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $-30.37
+2026-01-08 22:06:13 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:06:13 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16511
+2026-01-08 22:06:13 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+2026-01-08 22:06:13 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 22:06:13 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00015 (1.5 pips)
+2026-01-08 22:06:13 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00008 (+0.8 pips)
+2026-01-08 22:06:13 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 22:07:13 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:07:13 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 22:07:13
+2026-01-08 22:07:13 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $-31.75
+2026-01-08 22:07:13 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:07:13 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16511
+2026-01-08 22:07:13 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+2026-01-08 22:07:13 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 22:07:13 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00015 (1.5 pips)
+2026-01-08 22:07:13 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00007 (+0.7 pips)
+2026-01-08 22:07:13 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 22:08:14 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:08:14 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 22:08:14
+2026-01-08 22:08:14 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $-8.28
+2026-01-08 22:08:14 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:08:14 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16511
+2026-01-08 22:08:14 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16630
+2026-01-08 22:08:14 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 22:08:14 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00017 (1.7 pips)
+2026-01-08 22:08:14 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00009 (+0.9 pips)
+2026-01-08 22:08:14 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 22:09:15 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:09:15 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 22:09:15
+2026-01-08 22:09:15 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $-8.28
+2026-01-08 22:09:15 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:09:15 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16511
+2026-01-08 22:09:15 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16630
+2026-01-08 22:09:15 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 22:09:15 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00017 (1.7 pips)
+2026-01-08 22:09:15 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00009 (+0.9 pips)
+2026-01-08 22:09:15 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 22:10:15 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:10:15 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 22:10:15
+2026-01-08 22:10:15 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $1.38
+2026-01-08 22:10:15 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:10:15 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16511
+2026-01-08 22:10:15 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16628
+2026-01-08 22:10:15 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 22:10:15 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00014 (1.4 pips)
+2026-01-08 22:10:15 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00007 (+0.7 pips)
+2026-01-08 22:10:15 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 22:11:16 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:11:16 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 22:11:16
+2026-01-08 22:11:16 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $2.76
+2026-01-08 22:11:16 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:11:16 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16511
+2026-01-08 22:11:16 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16630
+2026-01-08 22:11:16 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 22:11:16 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00018 (1.8 pips)
+2026-01-08 22:11:16 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00009 (+0.9 pips)
+2026-01-08 22:11:16 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 22:12:17 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:12:17 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 22:12:17
+2026-01-08 22:12:17 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $13.80
+2026-01-08 22:12:17 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:12:17 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16511
+2026-01-08 22:12:17 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+2026-01-08 22:12:17 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 22:12:17 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00016 (1.6 pips)
+2026-01-08 22:12:17 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00008 (+0.8 pips)
+2026-01-08 22:12:17 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 22:13:18 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:13:18 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 22:13:18
+2026-01-08 22:13:18 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $11.04
+2026-01-08 22:13:18 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:13:18 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16511
+2026-01-08 22:13:18 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16630
+2026-01-08 22:13:18 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 22:13:18 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00017 (1.7 pips)
+2026-01-08 22:13:18 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00009 (+0.9 pips)
+2026-01-08 22:13:18 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 22:14:19 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:14:19 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 22:14:19
+2026-01-08 22:14:19 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $6.90
+2026-01-08 22:14:19 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:14:19 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16511
+2026-01-08 22:14:19 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+2026-01-08 22:14:19 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 22:14:19 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00015 (1.5 pips)
+2026-01-08 22:14:19 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00008 (+0.8 pips)
+2026-01-08 22:14:19 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 22:15:20 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:15:20 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 22:15:20
+2026-01-08 22:15:20 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $1.38
+2026-01-08 22:15:20 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:15:20 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16493
+2026-01-08 22:15:20 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+2026-01-08 22:15:20 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 22:15:20 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00015 (1.5 pips)
+2026-01-08 22:15:20 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00008 (+0.8 pips)
+2026-01-08 22:15:20 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 22:16:21 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:16:21 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 22:16:21
+2026-01-08 22:16:21 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $2.76
+2026-01-08 22:16:21 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:16:21 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16493
+2026-01-08 22:16:21 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+2026-01-08 22:16:21 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 22:16:21 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00015 (1.5 pips)
+2026-01-08 22:16:21 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00008 (+0.8 pips)
+2026-01-08 22:16:21 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 22:17:21 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:17:21 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 22:17:21
+2026-01-08 22:17:21 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $-5.52
+2026-01-08 22:17:21 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:17:21 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16493
+2026-01-08 22:17:22 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16630
+2026-01-08 22:17:22 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 22:17:22 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00018 (1.8 pips)
+2026-01-08 22:17:22 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00009 (+0.9 pips)
+2026-01-08 22:17:22 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 22:18:22 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:18:22 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 22:18:22
+2026-01-08 22:18:22 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $-2.76
+2026-01-08 22:18:22 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:18:22 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16493
+2026-01-08 22:18:22 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+2026-01-08 22:18:22 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 22:18:22 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00016 (1.6 pips)
+2026-01-08 22:18:22 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00008 (+0.8 pips)
+2026-01-08 22:18:22 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 22:19:23 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:19:23 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 22:19:23
+2026-01-08 22:19:23 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $-1.38
+2026-01-08 22:19:23 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:19:23 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16493
+2026-01-08 22:19:23 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+2026-01-08 22:19:23 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 22:19:23 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00015 (1.5 pips)
+2026-01-08 22:19:23 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00008 (+0.8 pips)
+2026-01-08 22:19:23 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 22:20:23 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:20:24 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 22:20:24
+2026-01-08 22:20:24 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $0.00
+2026-01-08 22:20:24 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:20:24 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16493
+2026-01-08 22:20:24 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+2026-01-08 22:20:24 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 22:20:24 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00016 (1.6 pips)
+2026-01-08 22:20:24 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00008 (+0.8 pips)
+2026-01-08 22:20:24 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 22:21:24 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:21:24 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 22:21:24
+2026-01-08 22:21:24 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $2.76
+2026-01-08 22:21:24 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:21:24 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16493
+2026-01-08 22:21:24 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+2026-01-08 22:21:24 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 22:21:24 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00016 (1.6 pips)
+2026-01-08 22:21:24 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00008 (+0.8 pips)
+2026-01-08 22:21:24 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 22:22:25 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:22:25 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 22:22:25
+2026-01-08 22:22:25 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $9.66
+2026-01-08 22:22:25 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:22:25 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16493
+2026-01-08 22:22:25 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+2026-01-08 22:22:25 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 22:22:25 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00016 (1.6 pips)
+2026-01-08 22:22:25 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00008 (+0.8 pips)
+2026-01-08 22:22:25 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 22:23:26 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:23:26 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 22:23:26
+2026-01-08 22:23:26 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $13.80
+2026-01-08 22:23:26 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:23:26 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16493
+2026-01-08 22:23:26 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16630
+2026-01-08 22:23:26 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 22:23:26 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00017 (1.7 pips)
+2026-01-08 22:23:26 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00009 (+0.9 pips)
+2026-01-08 22:23:26 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 22:24:26 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:24:26 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 22:24:26
+2026-01-08 22:24:26 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $-2.76
+2026-01-08 22:24:26 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:24:26 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16493
+2026-01-08 22:24:26 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+2026-01-08 22:24:26 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 22:24:26 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00016 (1.6 pips)
+2026-01-08 22:24:26 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00008 (+0.8 pips)
+2026-01-08 22:24:26 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 22:25:27 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:25:27 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 22:25:27
+2026-01-08 22:25:27 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $-5.52
+2026-01-08 22:25:27 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:25:27 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16493
+2026-01-08 22:25:27 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+2026-01-08 22:25:27 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 22:25:27 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00016 (1.6 pips)
+2026-01-08 22:25:27 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00008 (+0.8 pips)
+2026-01-08 22:25:27 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 22:26:28 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:26:28 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 22:26:28
+2026-01-08 22:26:28 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $-19.32
+2026-01-08 22:26:28 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:26:28 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16493
+2026-01-08 22:26:28 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+2026-01-08 22:26:28 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 22:26:28 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00016 (1.6 pips)
+2026-01-08 22:26:28 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00008 (+0.8 pips)
+2026-01-08 22:26:28 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 22:27:28 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:27:28 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 22:27:28
+2026-01-08 22:27:28 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $-26.23
+2026-01-08 22:27:28 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:27:28 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16493
+2026-01-08 22:27:28 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16630
+2026-01-08 22:27:28 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 22:27:28 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00017 (1.7 pips)
+2026-01-08 22:27:28 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00009 (+0.9 pips)
+2026-01-08 22:27:28 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 22:28:29 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:28:29 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 22:28:29
+2026-01-08 22:28:29 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $-24.85
+2026-01-08 22:28:29 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:28:29 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16493
+2026-01-08 22:28:29 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16629
+2026-01-08 22:28:29 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 22:28:29 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00016 (1.6 pips)
+2026-01-08 22:28:29 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00008 (+0.8 pips)
+2026-01-08 22:28:29 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 22:29:30 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:29:30 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 22:29:30
+2026-01-08 22:29:30 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $-19.32
+2026-01-08 22:29:30 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:29:30 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16493
+2026-01-08 22:29:30 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16630
+2026-01-08 22:29:30 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 22:29:30 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00018 (1.8 pips)
+2026-01-08 22:29:30 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00009 (+0.9 pips)
+2026-01-08 22:29:30 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621
+2026-01-08 22:30:30 - bot_EUR_USD_15m_supertrend - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:30:30 - bot_EUR_USD_15m_supertrend - INFO - Time: 2026-01-08 22:30:30
+2026-01-08 22:30:30 - bot_EUR_USD_15m_supertrend - INFO - Balance: $499773.16 | P/L: $-26.23
+2026-01-08 22:30:30 - bot_EUR_USD_15m_supertrend - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:30:30 - bot_EUR_USD_15m_supertrend - INFO - Signal: HOLD_SHORT | Price: 1.16508
+2026-01-08 22:30:31 - bot_EUR_USD_15m_supertrend - INFO -   Stop Loss Adjustment (SHORT): 1.16621 → 1.16628
+2026-01-08 22:30:31 - bot_EUR_USD_15m_supertrend - INFO -     SuperTrend (midpoint): 1.16621
+2026-01-08 22:30:31 - bot_EUR_USD_15m_supertrend - INFO -     Spread: 0.00014 (1.4 pips)
+2026-01-08 22:30:31 - bot_EUR_USD_15m_supertrend - INFO -     Adjustment: +0.00007 (+0.7 pips)
+2026-01-08 22:30:31 - bot_EUR_USD_15m_supertrend - INFO -     → Position closes when midpoint touches 1.16621

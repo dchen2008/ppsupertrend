@@ -1,0 +1,23 @@
+# Account2 Configuration Override
+# Standard configuration - uses defaults from src/config.yaml
+
+# Check interval in seconds
+check_interval: 60
+
+# Market trend configuration
+market:
+  indicator: ppsupertrend
+  timeframe: H3
+
+# Stop loss configuration
+stoploss:
+  type: PPSuperTrend
+  
+# Standard Risk/Reward configuration (same as defaults)
+risk_reward:
+  bear_market:
+    short_rr: 1.2    # Standard approach
+    long_rr: 0.6     # Standard approach
+  bull_market:
+    short_rr: 0.6    # Standard approach
+    long_rr: 1.2     # Standard approach

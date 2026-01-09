@@ -1,0 +1,53 @@
+
+New enhance the bot: adopt 3hours's PP SuperTrend buy/sell signal as bull/bear marketing sign.
+  1. Supports the new command-line argument format (at=, fr=, tf=)
+  2. Loads YAML configuration from account directories
+  3. Checks 3H PP SuperTrend for market direction (bull/bear)
+  4. Implements take profit logic based on risk/reward ratios according to market trend
+  
+Detail:
+Pls change run cmd from:
+  ./scripts/auto_trade.sh EUR_USD tf:5m sl:SuperTrend account1 
+to: 
+  ./scripts/auto_trade.sh at=account1 fr=EUR_USD tf=5m
+
+The script will auto overwrite more params from ./account1/config.yaml (optional for other format if you think it is more easy)
+The overwrite config includes:
+check_interval: 60 (seconds), every 60s will check 3H's pp SuperTrend, and 5mins/15mins pp SuperTrend signals, etc.
+
+marketing:
+  indicator:
+  - ppsupertrend (means: 3hours PP supertrend buy/sell signal as bull/bear marketing signal)
+  - 3h
+
+stoploss:
+ trailing:PPSuperTrend  (which trailing 5min or 15mins's pp supertrend)
+ 
+risk_reward:
+  bear:
+    sell=1.2
+    buy=0.6
+  bull:
+    sell:0.6
+    buy:1.2
+
+Above risk reward ration implement logic:
+
+During "bear" marketing trend: 
+    5min/15m's sell postion, take profit risk/reward ratio: 1.2
+    5min/15m's buy postion, take profit risk/reward ratio: 0.6
+
+During "bull" marketing trend: 
+    5min/15m's sell postion, take profit risk/reward ratio: 0.6
+    5min/15m's buy postion, take profit risk/reward ratio: 1.2
+
+e.g.:
+During "bear" marketing trend: running ./scripts/auto_trade.sh at=account1 fr=EUR_USD tf=5m
+    when sell postion reach 1.2 risk/reward ratio, take profit immediately
+    when buy postion reach 0.6 risk/reward ratio, take profit immediately
+
+During "bull" marketing trend: running ./scripts/auto_trade.sh at=account1 fr=EUR_USD tf=5m
+    when sell postion reach 0.6 risk/reward ratio, take profit immediately
+    when buy postion reach 1.2 risk/reward ratio, take profit immediately
+ small profit(0.6))
+

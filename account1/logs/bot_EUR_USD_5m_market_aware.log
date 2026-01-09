@@ -1,0 +1,366 @@
+2026-01-08 21:55:03 - bot_EUR_USD_5m_market - INFO - Loaded account-specific config from: account1/config.yaml
+2026-01-08 21:55:03 - bot_EUR_USD_5m_market - INFO - ================================================================================
+2026-01-08 21:55:03 - bot_EUR_USD_5m_market - INFO - Market-Aware Trading Bot Initialized
+2026-01-08 21:55:03 - bot_EUR_USD_5m_market - INFO - ================================================================================
+2026-01-08 21:55:03 - bot_EUR_USD_5m_market - INFO - Account: 101-001-35749385-001
+2026-01-08 21:55:03 - bot_EUR_USD_5m_market - INFO - Mode: PRACTICE
+2026-01-08 21:55:03 - bot_EUR_USD_5m_market - INFO - Instrument: EUR_USD
+2026-01-08 21:55:03 - bot_EUR_USD_5m_market - INFO - Trading Timeframe: 5m (M5)
+2026-01-08 21:55:03 - bot_EUR_USD_5m_market - INFO - Market Trend Timeframe: H3 (H3)
+2026-01-08 21:55:03 - bot_EUR_USD_5m_market - INFO - Stop Loss Type: supertrend
+2026-01-08 21:55:03 - bot_EUR_USD_5m_market - INFO - CSV Log: account1/csv/EUR_USD_5m_market_aware.csv
+2026-01-08 21:55:03 - bot_EUR_USD_5m_market - INFO - Check Interval: 60 seconds
+2026-01-08 21:55:03 - bot_EUR_USD_5m_market - INFO - Risk/Reward Config: {'bear_market': {'short_rr': 1.0, 'long_rr': 0.5}, 'bull_market': {'short_rr': 0.5, 'long_rr': 1.0}}
+2026-01-08 21:55:03 - bot_EUR_USD_5m_market - INFO - ================================================================================
+2026-01-08 21:55:03 - bot_EUR_USD_5m_market - INFO - 🚀 Market-aware trading bot started
+2026-01-08 21:55:03 - bot_EUR_USD_5m_market - INFO - 📊 Market Trend Check (H3): NEUTRAL
+2026-01-08 21:55:03 - bot_EUR_USD_5m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-08 21:55:03 - bot_EUR_USD_5m_market - INFO -    3H Price: 1.16562
+2026-01-08 21:55:03 - bot_EUR_USD_5m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-08 21:55:04 - bot_EUR_USD_5m_market - INFO - 📌 Recovered tracking: Trade 663 @ 1.16506
+2026-01-08 21:55:04 - bot_EUR_USD_5m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 21:55:04 - bot_EUR_USD_5m_market - INFO - Time: 2026-01-08 21:55:04
+2026-01-08 21:55:04 - bot_EUR_USD_5m_market - INFO - Market: NEUTRAL | Balance: $499773.16 | P/L: $-6.90
+2026-01-08 21:55:04 - bot_EUR_USD_5m_market - INFO - Position: SHORT 138031.0 units
+2026-01-08 21:55:04 - bot_EUR_USD_5m_market - INFO - Signal: HOLD_SHORT | Price: 1.16503
+2026-01-08 21:55:04 - bot_EUR_USD_5m_market - INFO -   Stop Loss Adjustment (SHORT): 1.16577 → 1.16585
+2026-01-08 21:55:04 - bot_EUR_USD_5m_market - INFO - Initialized trailing stop: 1.16585
+2026-01-08 21:55:38 - bot_EUR_USD_5m_market - INFO - Loaded account-specific config from: account1/config.yaml
+2026-01-08 21:55:38 - bot_EUR_USD_5m_market - INFO - ================================================================================
+2026-01-08 21:55:38 - bot_EUR_USD_5m_market - INFO - Market-Aware Trading Bot Initialized
+2026-01-08 21:55:38 - bot_EUR_USD_5m_market - INFO - ================================================================================
+2026-01-08 21:55:38 - bot_EUR_USD_5m_market - INFO - Account: 101-001-35749385-001
+2026-01-08 21:55:38 - bot_EUR_USD_5m_market - INFO - Mode: PRACTICE
+2026-01-08 21:55:38 - bot_EUR_USD_5m_market - INFO - Instrument: EUR_USD
+2026-01-08 21:55:38 - bot_EUR_USD_5m_market - INFO - Trading Timeframe: 5m (M5)
+2026-01-08 21:55:38 - bot_EUR_USD_5m_market - INFO - Market Trend Timeframe: H3 (H3)
+2026-01-08 21:55:38 - bot_EUR_USD_5m_market - INFO - Stop Loss Type: supertrend
+2026-01-08 21:55:38 - bot_EUR_USD_5m_market - INFO - CSV Log: account1/csv/EUR_USD_5m_market_aware.csv
+2026-01-08 21:55:38 - bot_EUR_USD_5m_market - INFO - Check Interval: 60 seconds
+2026-01-08 21:55:38 - bot_EUR_USD_5m_market - INFO - Risk/Reward Config: {'bear_market': {'short_rr': 1.0, 'long_rr': 0.5}, 'bull_market': {'short_rr': 0.5, 'long_rr': 1.0}}
+2026-01-08 21:55:38 - bot_EUR_USD_5m_market - INFO - ================================================================================
+2026-01-08 21:55:38 - bot_EUR_USD_5m_market - INFO - 🚀 Market-aware trading bot started
+2026-01-08 21:55:38 - bot_EUR_USD_5m_market - INFO - 📊 Market Trend Check (H3): NEUTRAL
+2026-01-08 21:55:38 - bot_EUR_USD_5m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-08 21:55:38 - bot_EUR_USD_5m_market - INFO -    3H Price: 1.16562
+2026-01-08 21:55:38 - bot_EUR_USD_5m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-08 21:55:39 - bot_EUR_USD_5m_market - INFO - 📌 Recovered tracking: Trade 663 @ 1.16506
+2026-01-08 21:55:39 - bot_EUR_USD_5m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 21:55:39 - bot_EUR_USD_5m_market - INFO - Time: 2026-01-08 21:55:39
+2026-01-08 21:55:39 - bot_EUR_USD_5m_market - INFO - Market: NEUTRAL | Balance: $499773.16 | P/L: $-8.28
+2026-01-08 21:55:39 - bot_EUR_USD_5m_market - INFO - Position: SHORT 138031.0 units
+2026-01-08 21:55:39 - bot_EUR_USD_5m_market - INFO - Signal: HOLD_SHORT | Price: 1.16503
+2026-01-08 21:55:39 - bot_EUR_USD_5m_market - INFO -   Stop Loss Adjustment (SHORT): 1.16577 → 1.16586
+2026-01-08 21:55:39 - bot_EUR_USD_5m_market - INFO - Initialized trailing stop: 1.16586
+2026-01-08 21:56:40 - bot_EUR_USD_5m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 21:56:40 - bot_EUR_USD_5m_market - INFO - Time: 2026-01-08 21:56:40
+2026-01-08 21:56:40 - bot_EUR_USD_5m_market - INFO - Market: NEUTRAL | Balance: $499773.16 | P/L: $-6.90
+2026-01-08 21:56:40 - bot_EUR_USD_5m_market - INFO - Position: SHORT 138031.0 units
+2026-01-08 21:56:40 - bot_EUR_USD_5m_market - INFO - Signal: HOLD_SHORT | Price: 1.16503
+2026-01-08 21:56:40 - bot_EUR_USD_5m_market - INFO -   Stop Loss Adjustment (SHORT): 1.16577 → 1.16585
+2026-01-08 21:57:41 - bot_EUR_USD_5m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 21:57:41 - bot_EUR_USD_5m_market - INFO - Time: 2026-01-08 21:57:41
+2026-01-08 21:57:41 - bot_EUR_USD_5m_market - INFO - Market: NEUTRAL | Balance: $499773.16 | P/L: $-6.90
+2026-01-08 21:57:41 - bot_EUR_USD_5m_market - INFO - Position: SHORT 138031.0 units
+2026-01-08 21:57:41 - bot_EUR_USD_5m_market - INFO - Signal: HOLD_SHORT | Price: 1.16503
+2026-01-08 21:57:41 - bot_EUR_USD_5m_market - INFO -   Stop Loss Adjustment (SHORT): 1.16577 → 1.16586
+2026-01-08 21:58:42 - bot_EUR_USD_5m_market - INFO - 📊 Market Trend Check (H3): NEUTRAL
+2026-01-08 21:58:42 - bot_EUR_USD_5m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-08 21:58:42 - bot_EUR_USD_5m_market - INFO -    3H Price: 1.16562
+2026-01-08 21:58:42 - bot_EUR_USD_5m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-08 21:58:42 - bot_EUR_USD_5m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 21:58:42 - bot_EUR_USD_5m_market - INFO - Time: 2026-01-08 21:58:42
+2026-01-08 21:58:42 - bot_EUR_USD_5m_market - INFO - Market: NEUTRAL | Balance: $499773.16 | P/L: $-16.56
+2026-01-08 21:58:42 - bot_EUR_USD_5m_market - INFO - Position: SHORT 138031.0 units
+2026-01-08 21:58:42 - bot_EUR_USD_5m_market - INFO - Signal: HOLD_SHORT | Price: 1.16503
+2026-01-08 21:58:42 - bot_EUR_USD_5m_market - INFO -   Stop Loss Adjustment (SHORT): 1.16577 → 1.16585
+2026-01-08 21:59:43 - bot_EUR_USD_5m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 21:59:43 - bot_EUR_USD_5m_market - INFO - Time: 2026-01-08 21:59:43
+2026-01-08 21:59:43 - bot_EUR_USD_5m_market - INFO - Market: NEUTRAL | Balance: $499773.16 | P/L: $-13.80
+2026-01-08 21:59:43 - bot_EUR_USD_5m_market - INFO - Position: SHORT 138031.0 units
+2026-01-08 21:59:43 - bot_EUR_USD_5m_market - INFO - Signal: HOLD_SHORT | Price: 1.16503
+2026-01-08 21:59:43 - bot_EUR_USD_5m_market - INFO -   Stop Loss Adjustment (SHORT): 1.16577 → 1.16585
+2026-01-08 22:00:44 - bot_EUR_USD_5m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:00:44 - bot_EUR_USD_5m_market - INFO - Time: 2026-01-08 22:00:44
+2026-01-08 22:00:44 - bot_EUR_USD_5m_market - INFO - Market: NEUTRAL | Balance: $499773.16 | P/L: $-1.38
+2026-01-08 22:00:44 - bot_EUR_USD_5m_market - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:00:44 - bot_EUR_USD_5m_market - INFO - Signal: HOLD_SHORT | Price: 1.16511
+2026-01-08 22:00:44 - bot_EUR_USD_5m_market - INFO -   Stop Loss Adjustment (SHORT): 1.16574 → 1.16582
+2026-01-08 22:01:44 - bot_EUR_USD_5m_market - INFO - 📊 Market Trend Check (H3): NEUTRAL
+2026-01-08 22:01:44 - bot_EUR_USD_5m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-08 22:01:44 - bot_EUR_USD_5m_market - INFO -    3H Price: 1.16562
+2026-01-08 22:01:44 - bot_EUR_USD_5m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-08 22:01:45 - bot_EUR_USD_5m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:01:45 - bot_EUR_USD_5m_market - INFO - Time: 2026-01-08 22:01:45
+2026-01-08 22:01:45 - bot_EUR_USD_5m_market - INFO - Market: NEUTRAL | Balance: $499773.16 | P/L: $-11.04
+2026-01-08 22:01:45 - bot_EUR_USD_5m_market - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:01:45 - bot_EUR_USD_5m_market - INFO - Signal: HOLD_SHORT | Price: 1.16511
+2026-01-08 22:01:45 - bot_EUR_USD_5m_market - INFO -   Stop Loss Adjustment (SHORT): 1.16574 → 1.16583
+2026-01-08 22:02:45 - bot_EUR_USD_5m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:02:45 - bot_EUR_USD_5m_market - INFO - Time: 2026-01-08 22:02:45
+2026-01-08 22:02:45 - bot_EUR_USD_5m_market - INFO - Market: NEUTRAL | Balance: $499773.16 | P/L: $-16.56
+2026-01-08 22:02:45 - bot_EUR_USD_5m_market - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:02:45 - bot_EUR_USD_5m_market - INFO - Signal: HOLD_SHORT | Price: 1.16511
+2026-01-08 22:02:46 - bot_EUR_USD_5m_market - INFO -   Stop Loss Adjustment (SHORT): 1.16574 → 1.16582
+2026-01-08 22:03:46 - bot_EUR_USD_5m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:03:46 - bot_EUR_USD_5m_market - INFO - Time: 2026-01-08 22:03:46
+2026-01-08 22:03:46 - bot_EUR_USD_5m_market - INFO - Market: NEUTRAL | Balance: $499773.16 | P/L: $-31.75
+2026-01-08 22:03:46 - bot_EUR_USD_5m_market - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:03:46 - bot_EUR_USD_5m_market - INFO - Signal: HOLD_SHORT | Price: 1.16511
+2026-01-08 22:03:46 - bot_EUR_USD_5m_market - INFO -   Stop Loss Adjustment (SHORT): 1.16574 → 1.16582
+2026-01-08 22:04:46 - bot_EUR_USD_5m_market - INFO - 📊 Market Trend Check (H3): NEUTRAL
+2026-01-08 22:04:46 - bot_EUR_USD_5m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-08 22:04:46 - bot_EUR_USD_5m_market - INFO -    3H Price: 1.16562
+2026-01-08 22:04:46 - bot_EUR_USD_5m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-08 22:04:47 - bot_EUR_USD_5m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:04:47 - bot_EUR_USD_5m_market - INFO - Time: 2026-01-08 22:04:47
+2026-01-08 22:04:47 - bot_EUR_USD_5m_market - INFO - Market: NEUTRAL | Balance: $499773.16 | P/L: $-33.13
+2026-01-08 22:04:47 - bot_EUR_USD_5m_market - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:04:47 - bot_EUR_USD_5m_market - INFO - Signal: HOLD_SHORT | Price: 1.16511
+2026-01-08 22:04:47 - bot_EUR_USD_5m_market - INFO -   Stop Loss Adjustment (SHORT): 1.16574 → 1.16583
+2026-01-08 22:05:48 - bot_EUR_USD_5m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:05:48 - bot_EUR_USD_5m_market - INFO - Time: 2026-01-08 22:05:48
+2026-01-08 22:05:48 - bot_EUR_USD_5m_market - INFO - Market: NEUTRAL | Balance: $499773.16 | P/L: $-35.89
+2026-01-08 22:05:48 - bot_EUR_USD_5m_market - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:05:48 - bot_EUR_USD_5m_market - INFO - Signal: HOLD_SHORT | Price: 1.16522
+2026-01-08 22:05:48 - bot_EUR_USD_5m_market - INFO -   Stop Loss Adjustment (SHORT): 1.16574 → 1.16582
+2026-01-08 22:06:49 - bot_EUR_USD_5m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:06:49 - bot_EUR_USD_5m_market - INFO - Time: 2026-01-08 22:06:49
+2026-01-08 22:06:49 - bot_EUR_USD_5m_market - INFO - Market: NEUTRAL | Balance: $499773.16 | P/L: $-37.27
+2026-01-08 22:06:49 - bot_EUR_USD_5m_market - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:06:49 - bot_EUR_USD_5m_market - INFO - Signal: HOLD_SHORT | Price: 1.16522
+2026-01-08 22:06:49 - bot_EUR_USD_5m_market - INFO -   Stop Loss Adjustment (SHORT): 1.16574 → 1.16582
+2026-01-08 22:07:49 - bot_EUR_USD_5m_market - INFO - 📊 Market Trend Check (H3): NEUTRAL
+2026-01-08 22:07:49 - bot_EUR_USD_5m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-08 22:07:49 - bot_EUR_USD_5m_market - INFO -    3H Price: 1.16562
+2026-01-08 22:07:49 - bot_EUR_USD_5m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-08 22:07:49 - bot_EUR_USD_5m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:07:49 - bot_EUR_USD_5m_market - INFO - Time: 2026-01-08 22:07:49
+2026-01-08 22:07:49 - bot_EUR_USD_5m_market - INFO - Market: NEUTRAL | Balance: $499773.16 | P/L: $-33.13
+2026-01-08 22:07:49 - bot_EUR_USD_5m_market - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:07:49 - bot_EUR_USD_5m_market - INFO - Signal: HOLD_SHORT | Price: 1.16522
+2026-01-08 22:07:50 - bot_EUR_USD_5m_market - INFO -   Stop Loss Adjustment (SHORT): 1.16574 → 1.16582
+2026-01-08 22:08:50 - bot_EUR_USD_5m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:08:50 - bot_EUR_USD_5m_market - INFO - Time: 2026-01-08 22:08:50
+2026-01-08 22:08:50 - bot_EUR_USD_5m_market - INFO - Market: NEUTRAL | Balance: $499773.16 | P/L: $0.00
+2026-01-08 22:08:50 - bot_EUR_USD_5m_market - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:08:50 - bot_EUR_USD_5m_market - INFO - Signal: HOLD_SHORT | Price: 1.16522
+2026-01-08 22:08:50 - bot_EUR_USD_5m_market - INFO -   Stop Loss Adjustment (SHORT): 1.16574 → 1.16582
+2026-01-08 22:09:51 - bot_EUR_USD_5m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:09:51 - bot_EUR_USD_5m_market - INFO - Time: 2026-01-08 22:09:51
+2026-01-08 22:09:51 - bot_EUR_USD_5m_market - INFO - Market: NEUTRAL | Balance: $499773.16 | P/L: $-4.14
+2026-01-08 22:09:51 - bot_EUR_USD_5m_market - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:09:51 - bot_EUR_USD_5m_market - INFO - Signal: HOLD_SHORT | Price: 1.16522
+2026-01-08 22:09:51 - bot_EUR_USD_5m_market - INFO -   Stop Loss Adjustment (SHORT): 1.16574 → 1.16582
+2026-01-08 22:10:51 - bot_EUR_USD_5m_market - INFO - 📊 Market Trend Check (H3): NEUTRAL
+2026-01-08 22:10:51 - bot_EUR_USD_5m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-08 22:10:51 - bot_EUR_USD_5m_market - INFO -    3H Price: 1.16562
+2026-01-08 22:10:51 - bot_EUR_USD_5m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-08 22:10:52 - bot_EUR_USD_5m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:10:52 - bot_EUR_USD_5m_market - INFO - Time: 2026-01-08 22:10:52
+2026-01-08 22:10:52 - bot_EUR_USD_5m_market - INFO - Market: NEUTRAL | Balance: $499773.16 | P/L: $-2.76
+2026-01-08 22:10:52 - bot_EUR_USD_5m_market - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:10:52 - bot_EUR_USD_5m_market - INFO - Signal: HOLD_SHORT | Price: 1.16498
+2026-01-08 22:10:52 - bot_EUR_USD_5m_market - INFO -   Stop Loss Adjustment (SHORT): 1.16574 → 1.16582
+2026-01-08 22:11:53 - bot_EUR_USD_5m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:11:53 - bot_EUR_USD_5m_market - INFO - Time: 2026-01-08 22:11:53
+2026-01-08 22:11:53 - bot_EUR_USD_5m_market - INFO - Market: NEUTRAL | Balance: $499773.16 | P/L: $9.66
+2026-01-08 22:11:53 - bot_EUR_USD_5m_market - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:11:53 - bot_EUR_USD_5m_market - INFO - Signal: HOLD_SHORT | Price: 1.16498
+2026-01-08 22:11:53 - bot_EUR_USD_5m_market - INFO -   Stop Loss Adjustment (SHORT): 1.16574 → 1.16582
+2026-01-08 22:12:53 - bot_EUR_USD_5m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:12:53 - bot_EUR_USD_5m_market - INFO - Time: 2026-01-08 22:12:53
+2026-01-08 22:12:53 - bot_EUR_USD_5m_market - INFO - Market: NEUTRAL | Balance: $499773.16 | P/L: $12.42
+2026-01-08 22:12:53 - bot_EUR_USD_5m_market - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:12:53 - bot_EUR_USD_5m_market - INFO - Signal: HOLD_SHORT | Price: 1.16498
+2026-01-08 22:12:54 - bot_EUR_USD_5m_market - INFO -   Stop Loss Adjustment (SHORT): 1.16574 → 1.16581
+2026-01-08 22:13:54 - bot_EUR_USD_5m_market - INFO - 📊 Market Trend Check (H3): NEUTRAL
+2026-01-08 22:13:54 - bot_EUR_USD_5m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-08 22:13:54 - bot_EUR_USD_5m_market - INFO -    3H Price: 1.16562
+2026-01-08 22:13:54 - bot_EUR_USD_5m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-08 22:13:55 - bot_EUR_USD_5m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:13:55 - bot_EUR_USD_5m_market - INFO - Time: 2026-01-08 22:13:55
+2026-01-08 22:13:55 - bot_EUR_USD_5m_market - INFO - Market: NEUTRAL | Balance: $499773.16 | P/L: $6.90
+2026-01-08 22:13:55 - bot_EUR_USD_5m_market - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:13:55 - bot_EUR_USD_5m_market - INFO - Signal: HOLD_SHORT | Price: 1.16498
+2026-01-08 22:13:55 - bot_EUR_USD_5m_market - INFO -   Stop Loss Adjustment (SHORT): 1.16574 → 1.16582
+2026-01-08 22:14:55 - bot_EUR_USD_5m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:14:55 - bot_EUR_USD_5m_market - INFO - Time: 2026-01-08 22:14:55
+2026-01-08 22:14:55 - bot_EUR_USD_5m_market - INFO - Market: NEUTRAL | Balance: $499773.16 | P/L: $4.14
+2026-01-08 22:14:55 - bot_EUR_USD_5m_market - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:14:55 - bot_EUR_USD_5m_market - INFO - Signal: HOLD_SHORT | Price: 1.16498
+2026-01-08 22:14:56 - bot_EUR_USD_5m_market - INFO -   Stop Loss Adjustment (SHORT): 1.16574 → 1.16582
+2026-01-08 22:15:42 - bot_EUR_USD_5m_market - INFO - Loaded account-specific config from: account1/config.yaml
+2026-01-08 22:15:42 - bot_EUR_USD_5m_market - INFO - ================================================================================
+2026-01-08 22:15:42 - bot_EUR_USD_5m_market - INFO - Market-Aware Trading Bot Initialized
+2026-01-08 22:15:42 - bot_EUR_USD_5m_market - INFO - ================================================================================
+2026-01-08 22:15:42 - bot_EUR_USD_5m_market - INFO - Account: 101-001-35749385-001
+2026-01-08 22:15:42 - bot_EUR_USD_5m_market - INFO - Mode: PRACTICE
+2026-01-08 22:15:42 - bot_EUR_USD_5m_market - INFO - Instrument: EUR_USD
+2026-01-08 22:15:42 - bot_EUR_USD_5m_market - INFO - Trading Timeframe: 5m (M5)
+2026-01-08 22:15:42 - bot_EUR_USD_5m_market - INFO - Market Trend Timeframe: H3 (H3)
+2026-01-08 22:15:42 - bot_EUR_USD_5m_market - INFO - Stop Loss Type: supertrend
+2026-01-08 22:15:42 - bot_EUR_USD_5m_market - INFO - CSV Log: account1/csv/EUR_USD_5m_market_aware.csv
+2026-01-08 22:15:42 - bot_EUR_USD_5m_market - INFO - Check Interval: 60 seconds
+2026-01-08 22:15:42 - bot_EUR_USD_5m_market - INFO - Risk/Reward Config: {'bear_market': {'short_rr': 1.0, 'long_rr': 0.5}, 'bull_market': {'short_rr': 0.5, 'long_rr': 1.0}}
+2026-01-08 22:15:42 - bot_EUR_USD_5m_market - INFO - ================================================================================
+2026-01-08 22:15:42 - bot_EUR_USD_5m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-08 22:15:42 - bot_EUR_USD_5m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-08 22:15:42 - bot_EUR_USD_5m_market - INFO -    3H Price: 1.16562
+2026-01-08 22:15:42 - bot_EUR_USD_5m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-08 22:15:43 - bot_EUR_USD_5m_market - INFO - 📌 Recovered tracking: Trade 663 @ 1.16506
+2026-01-08 22:15:43 - bot_EUR_USD_5m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:15:43 - bot_EUR_USD_5m_market - INFO - Time: 2026-01-08 22:15:43
+2026-01-08 22:15:43 - bot_EUR_USD_5m_market - INFO - OVERALL Market: BEAR | Balance: $499773.16 | P/L: $4.14
+2026-01-08 22:15:43 - bot_EUR_USD_5m_market - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:15:43 - bot_EUR_USD_5m_market - INFO - Signal: HOLD_SHORT | Price: 1.16493
+2026-01-08 22:15:43 - bot_EUR_USD_5m_market - INFO -   Stop Loss Adjustment (SHORT): 1.16574 → 1.16582
+2026-01-08 22:15:43 - bot_EUR_USD_5m_market - INFO - Initialized trailing stop: 1.16582
+2026-01-08 22:15:56 - bot_EUR_USD_5m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:15:56 - bot_EUR_USD_5m_market - INFO - Time: 2026-01-08 22:15:56
+2026-01-08 22:15:56 - bot_EUR_USD_5m_market - INFO - Market: NEUTRAL | Balance: $499773.16 | P/L: $9.66
+2026-01-08 22:15:56 - bot_EUR_USD_5m_market - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:15:56 - bot_EUR_USD_5m_market - INFO - Signal: HOLD_SHORT | Price: 1.16493
+2026-01-08 22:15:56 - bot_EUR_USD_5m_market - INFO -   Stop Loss Adjustment (SHORT): 1.16574 → 1.16582
+2026-01-08 22:16:35 - bot_EUR_USD_5m_market - INFO - 
+⏹️  Bot stopped by user
+2026-01-08 22:16:35 - bot_EUR_USD_5m_market - INFO - ================================================================================
+2026-01-08 22:16:35 - bot_EUR_USD_5m_market - INFO - Market-Aware Trading Bot Stopped
+2026-01-08 22:16:35 - bot_EUR_USD_5m_market - INFO - Total trades: 0
+2026-01-08 22:16:35 - bot_EUR_USD_5m_market - INFO - CSV Log: account1/csv/EUR_USD_5m_market_aware.csv
+2026-01-08 22:16:35 - bot_EUR_USD_5m_market - INFO - ================================================================================
+2026-01-08 22:16:40 - bot_EUR_USD_5m_market - INFO - Loaded account-specific config from: account1/config.yaml
+2026-01-08 22:16:40 - bot_EUR_USD_5m_market - INFO - ================================================================================
+2026-01-08 22:16:40 - bot_EUR_USD_5m_market - INFO - Market-Aware Trading Bot Initialized
+2026-01-08 22:16:40 - bot_EUR_USD_5m_market - INFO - ================================================================================
+2026-01-08 22:16:40 - bot_EUR_USD_5m_market - INFO - Account: 101-001-35749385-001
+2026-01-08 22:16:40 - bot_EUR_USD_5m_market - INFO - Mode: PRACTICE
+2026-01-08 22:16:40 - bot_EUR_USD_5m_market - INFO - Instrument: EUR_USD
+2026-01-08 22:16:40 - bot_EUR_USD_5m_market - INFO - Trading Timeframe: 5m (M5)
+2026-01-08 22:16:40 - bot_EUR_USD_5m_market - INFO - Market Trend Timeframe: H3 (H3)
+2026-01-08 22:16:40 - bot_EUR_USD_5m_market - INFO - Stop Loss Type: supertrend
+2026-01-08 22:16:40 - bot_EUR_USD_5m_market - INFO - CSV Log: account1/csv/EUR_USD_5m_market_aware.csv
+2026-01-08 22:16:40 - bot_EUR_USD_5m_market - INFO - Check Interval: 60 seconds
+2026-01-08 22:16:40 - bot_EUR_USD_5m_market - INFO - Risk/Reward Config: {'bear_market': {'short_rr': 1.0, 'long_rr': 0.5}, 'bull_market': {'short_rr': 0.5, 'long_rr': 1.0}}
+2026-01-08 22:16:40 - bot_EUR_USD_5m_market - INFO - ================================================================================
+2026-01-08 22:16:40 - bot_EUR_USD_5m_market - INFO - 🚀 Market-aware trading bot started
+2026-01-08 22:16:40 - bot_EUR_USD_5m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-08 22:16:40 - bot_EUR_USD_5m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-08 22:16:40 - bot_EUR_USD_5m_market - INFO -    3H Price: 1.16562
+2026-01-08 22:16:40 - bot_EUR_USD_5m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-08 22:16:41 - bot_EUR_USD_5m_market - INFO - 📌 Recovered tracking: Trade 663
+2026-01-08 22:16:41 - bot_EUR_USD_5m_market - INFO -    Entry: 1.16506
+2026-01-08 22:16:41 - bot_EUR_USD_5m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:16:41 - bot_EUR_USD_5m_market - INFO - Time: 2026-01-08 22:16:41
+2026-01-08 22:16:41 - bot_EUR_USD_5m_market - INFO - OVERALL Market: BEAR | Balance: $499773.16 | P/L: $4.14
+2026-01-08 22:16:41 - bot_EUR_USD_5m_market - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:16:41 - bot_EUR_USD_5m_market - INFO - Signal: HOLD_SHORT | Price: 1.16493
+2026-01-08 22:16:41 - bot_EUR_USD_5m_market - INFO -   Stop Loss Adjustment (SHORT): 1.16574 → 1.16582
+2026-01-08 22:16:41 - bot_EUR_USD_5m_market - INFO - Initialized trailing stop: 1.16582
+2026-01-08 22:17:41 - bot_EUR_USD_5m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:17:41 - bot_EUR_USD_5m_market - INFO - Time: 2026-01-08 22:17:41
+2026-01-08 22:17:41 - bot_EUR_USD_5m_market - INFO - OVERALL Market: BEAR | Balance: $499773.16 | P/L: $-12.42
+2026-01-08 22:17:41 - bot_EUR_USD_5m_market - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:17:41 - bot_EUR_USD_5m_market - INFO - Expected Take Profit R:R: 1.0 | Current R:R Reached: 0.17
+2026-01-08 22:17:41 - bot_EUR_USD_5m_market - INFO - Signal: HOLD_SHORT | Price: 1.16493
+2026-01-08 22:17:41 - bot_EUR_USD_5m_market - INFO -   Stop Loss Adjustment (SHORT): 1.16574 → 1.16583
+2026-01-08 22:18:42 - bot_EUR_USD_5m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:18:42 - bot_EUR_USD_5m_market - INFO - Time: 2026-01-08 22:18:42
+2026-01-08 22:18:42 - bot_EUR_USD_5m_market - INFO - OVERALL Market: BEAR | Balance: $499773.16 | P/L: $5.52
+2026-01-08 22:18:42 - bot_EUR_USD_5m_market - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:18:42 - bot_EUR_USD_5m_market - INFO - Expected Take Profit R:R: 1.0 | Current R:R Reached: 0.17
+2026-01-08 22:18:42 - bot_EUR_USD_5m_market - INFO - Signal: HOLD_SHORT | Price: 1.16493
+2026-01-08 22:18:42 - bot_EUR_USD_5m_market - INFO -   Stop Loss Adjustment (SHORT): 1.16574 → 1.16582
+2026-01-08 22:19:42 - bot_EUR_USD_5m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-08 22:19:42 - bot_EUR_USD_5m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-08 22:19:42 - bot_EUR_USD_5m_market - INFO -    3H Price: 1.16562
+2026-01-08 22:19:42 - bot_EUR_USD_5m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-08 22:19:43 - bot_EUR_USD_5m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:19:43 - bot_EUR_USD_5m_market - INFO - Time: 2026-01-08 22:19:43
+2026-01-08 22:19:43 - bot_EUR_USD_5m_market - INFO - OVERALL Market: BEAR | Balance: $499773.16 | P/L: $-5.52
+2026-01-08 22:19:43 - bot_EUR_USD_5m_market - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:19:43 - bot_EUR_USD_5m_market - INFO - Expected Take Profit R:R: 1.0 | Current R:R Reached: 0.17
+2026-01-08 22:19:43 - bot_EUR_USD_5m_market - INFO - Signal: HOLD_SHORT | Price: 1.16493
+2026-01-08 22:19:43 - bot_EUR_USD_5m_market - INFO -   Stop Loss Adjustment (SHORT): 1.16574 → 1.16582
+2026-01-08 22:20:44 - bot_EUR_USD_5m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:20:44 - bot_EUR_USD_5m_market - INFO - Time: 2026-01-08 22:20:44
+2026-01-08 22:20:44 - bot_EUR_USD_5m_market - INFO - OVERALL Market: BEAR | Balance: $499773.16 | P/L: $0.00
+2026-01-08 22:20:44 - bot_EUR_USD_5m_market - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:20:44 - bot_EUR_USD_5m_market - INFO - Expected Take Profit R:R: 1.0 | Current R:R Reached: 0.07
+2026-01-08 22:20:44 - bot_EUR_USD_5m_market - INFO - Signal: HOLD_SHORT | Price: 1.16501
+2026-01-08 22:20:44 - bot_EUR_USD_5m_market - INFO -   Stop Loss Adjustment (SHORT): 1.16574 → 1.16582
+2026-01-08 22:21:44 - bot_EUR_USD_5m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:21:44 - bot_EUR_USD_5m_market - INFO - Time: 2026-01-08 22:21:44
+2026-01-08 22:21:44 - bot_EUR_USD_5m_market - INFO - OVERALL Market: BEAR | Balance: $499773.16 | P/L: $8.28
+2026-01-08 22:21:44 - bot_EUR_USD_5m_market - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:21:44 - bot_EUR_USD_5m_market - INFO - Expected Take Profit R:R: 1.0 | Current R:R Reached: 0.07
+2026-01-08 22:21:44 - bot_EUR_USD_5m_market - INFO - Signal: HOLD_SHORT | Price: 1.16501
+2026-01-08 22:21:44 - bot_EUR_USD_5m_market - INFO -   Stop Loss Adjustment (SHORT): 1.16574 → 1.16583
+2026-01-08 22:22:45 - bot_EUR_USD_5m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-08 22:22:45 - bot_EUR_USD_5m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-08 22:22:45 - bot_EUR_USD_5m_market - INFO -    3H Price: 1.16562
+2026-01-08 22:22:45 - bot_EUR_USD_5m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-08 22:22:45 - bot_EUR_USD_5m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:22:45 - bot_EUR_USD_5m_market - INFO - Time: 2026-01-08 22:22:45
+2026-01-08 22:22:45 - bot_EUR_USD_5m_market - INFO - OVERALL Market: BEAR | Balance: $499773.16 | P/L: $17.94
+2026-01-08 22:22:45 - bot_EUR_USD_5m_market - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:22:45 - bot_EUR_USD_5m_market - INFO - Expected Take Profit R:R: 1.0 | Current R:R Reached: 0.07
+2026-01-08 22:22:45 - bot_EUR_USD_5m_market - INFO - Signal: HOLD_SHORT | Price: 1.16501
+2026-01-08 22:22:46 - bot_EUR_USD_5m_market - INFO -   Stop Loss Adjustment (SHORT): 1.16574 → 1.16582
+2026-01-08 22:23:46 - bot_EUR_USD_5m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:23:46 - bot_EUR_USD_5m_market - INFO - Time: 2026-01-08 22:23:46
+2026-01-08 22:23:46 - bot_EUR_USD_5m_market - INFO - OVERALL Market: BEAR | Balance: $499773.16 | P/L: $-2.76
+2026-01-08 22:23:46 - bot_EUR_USD_5m_market - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:23:46 - bot_EUR_USD_5m_market - INFO - Expected Take Profit R:R: 1.0 | Current R:R Reached: 0.07
+2026-01-08 22:23:46 - bot_EUR_USD_5m_market - INFO - Signal: HOLD_SHORT | Price: 1.16501
+2026-01-08 22:23:46 - bot_EUR_USD_5m_market - INFO -   Stop Loss Adjustment (SHORT): 1.16574 → 1.16583
+2026-01-08 22:24:47 - bot_EUR_USD_5m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:24:47 - bot_EUR_USD_5m_market - INFO - Time: 2026-01-08 22:24:47
+2026-01-08 22:24:47 - bot_EUR_USD_5m_market - INFO - OVERALL Market: BEAR | Balance: $499773.16 | P/L: $-2.76
+2026-01-08 22:24:47 - bot_EUR_USD_5m_market - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:24:47 - bot_EUR_USD_5m_market - INFO - Expected Take Profit R:R: 1.0 | Current R:R Reached: 0.07
+2026-01-08 22:24:47 - bot_EUR_USD_5m_market - INFO - Signal: HOLD_SHORT | Price: 1.16501
+2026-01-08 22:24:47 - bot_EUR_USD_5m_market - INFO -   Stop Loss Adjustment (SHORT): 1.16574 → 1.16582
+2026-01-08 22:25:47 - bot_EUR_USD_5m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-08 22:25:47 - bot_EUR_USD_5m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-08 22:25:47 - bot_EUR_USD_5m_market - INFO -    3H Price: 1.16562
+2026-01-08 22:25:47 - bot_EUR_USD_5m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-08 22:25:48 - bot_EUR_USD_5m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:25:48 - bot_EUR_USD_5m_market - INFO - Time: 2026-01-08 22:25:48
+2026-01-08 22:25:48 - bot_EUR_USD_5m_market - INFO - OVERALL Market: BEAR | Balance: $499773.16 | P/L: $-4.14
+2026-01-08 22:25:48 - bot_EUR_USD_5m_market - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:25:48 - bot_EUR_USD_5m_market - INFO - Expected Take Profit R:R: 1.0 | Current R:R Reached: 0.11
+2026-01-08 22:25:48 - bot_EUR_USD_5m_market - INFO - Signal: HOLD_SHORT | Price: 1.16498
+2026-01-08 22:25:48 - bot_EUR_USD_5m_market - INFO -   Stop Loss Adjustment (SHORT): 1.16574 → 1.16582
+2026-01-08 22:26:49 - bot_EUR_USD_5m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:26:49 - bot_EUR_USD_5m_market - INFO - Time: 2026-01-08 22:26:49
+2026-01-08 22:26:49 - bot_EUR_USD_5m_market - INFO - OVERALL Market: BEAR | Balance: $499773.16 | P/L: $-19.32
+2026-01-08 22:26:49 - bot_EUR_USD_5m_market - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:26:49 - bot_EUR_USD_5m_market - INFO - Expected Take Profit R:R: 1.0 | Current R:R Reached: 0.11
+2026-01-08 22:26:49 - bot_EUR_USD_5m_market - INFO - Signal: HOLD_SHORT | Price: 1.16498
+2026-01-08 22:26:49 - bot_EUR_USD_5m_market - INFO -   Stop Loss Adjustment (SHORT): 1.16574 → 1.16582
+2026-01-08 22:27:55 - bot_EUR_USD_5m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:27:55 - bot_EUR_USD_5m_market - INFO - Time: 2026-01-08 22:27:55
+2026-01-08 22:27:55 - bot_EUR_USD_5m_market - INFO - OVERALL Market: BEAR | Balance: $499773.16 | P/L: $-13.80
+2026-01-08 22:27:55 - bot_EUR_USD_5m_market - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:27:55 - bot_EUR_USD_5m_market - INFO - Expected Take Profit R:R: 1.0 | Current R:R Reached: 0.11
+2026-01-08 22:27:55 - bot_EUR_USD_5m_market - INFO - Signal: HOLD_SHORT | Price: 1.16498
+2026-01-08 22:27:55 - bot_EUR_USD_5m_market - INFO -   Stop Loss Adjustment (SHORT): 1.16574 → 1.16582
+2026-01-08 22:28:56 - bot_EUR_USD_5m_market - INFO - 📊 Market Trend Check (H3): BEAR
+2026-01-08 22:28:56 - bot_EUR_USD_5m_market - INFO -    3H PP SuperTrend Signal: HOLD_SHORT
+2026-01-08 22:28:56 - bot_EUR_USD_5m_market - INFO -    3H Price: 1.16562
+2026-01-08 22:28:56 - bot_EUR_USD_5m_market - INFO -    3H SuperTrend: 1.17198
+2026-01-08 22:28:57 - bot_EUR_USD_5m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:28:57 - bot_EUR_USD_5m_market - INFO - Time: 2026-01-08 22:28:57
+2026-01-08 22:28:57 - bot_EUR_USD_5m_market - INFO - OVERALL Market: BEAR | Balance: $499773.16 | P/L: $-17.94
+2026-01-08 22:28:57 - bot_EUR_USD_5m_market - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:28:57 - bot_EUR_USD_5m_market - INFO - Expected Take Profit R:R: 1.0 | Current R:R Reached: 0.11
+2026-01-08 22:28:57 - bot_EUR_USD_5m_market - INFO - Signal: HOLD_SHORT | Price: 1.16498
+2026-01-08 22:28:57 - bot_EUR_USD_5m_market - INFO -   Stop Loss Adjustment (SHORT): 1.16574 → 1.16582
+2026-01-08 22:29:57 - bot_EUR_USD_5m_market - INFO - --------------------------------------------------------------------------------
+2026-01-08 22:29:57 - bot_EUR_USD_5m_market - INFO - Time: 2026-01-08 22:29:57
+2026-01-08 22:29:57 - bot_EUR_USD_5m_market - INFO - OVERALL Market: BEAR | Balance: $499773.16 | P/L: $-13.80
+2026-01-08 22:29:57 - bot_EUR_USD_5m_market - INFO - Position: SHORT 138031.0 units
+2026-01-08 22:29:57 - bot_EUR_USD_5m_market - INFO - Expected Take Profit R:R: 1.0 | Current R:R Reached: 0.11
+2026-01-08 22:29:57 - bot_EUR_USD_5m_market - INFO - Signal: HOLD_SHORT | Price: 1.16498
+2026-01-08 22:29:58 - bot_EUR_USD_5m_market - INFO -   Stop Loss Adjustment (SHORT): 1.16574 → 1.16582
