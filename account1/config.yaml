@@ -25,6 +25,7 @@ risk_reward:
 # Position sizing configuration based on market trend
 position_sizing:
   use_dynamic: true
+  disable_opposite_trade: true  # if 3H PP SuperTrend sign is bear/bull, the bot will skip trade when 5mins/15mins's pp sign is LONG/SHORT
   bear:  # Bear market (3H PP SuperTrend signal)
     short_risk_per_trade: 300   # If 5min/15min PP sign is SHORT, risk $300 per trade
     long_risk_per_trade: 100    # If 5min/15min PP sign is LONG, risk $100 per trade

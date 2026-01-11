@@ -1,0 +1,344 @@
+/Users/dongchen/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-01-11 00:24:51,778 - INFO - Downloading EUR_USD data for timeframes: ['M5', 'H3', 'M1']
+2026-01-11 00:24:51,778 - INFO - Downloading EUR_USD data for timeframes: ['M5', 'H3', 'M1']
+2026-01-11 00:24:51,778 - INFO - 
+--- Downloading M5 data ---
+2026-01-11 00:24:51,778 - INFO - 
+--- Downloading M5 data ---
+2026-01-11 00:24:51,778 - INFO - Loading cached data from backtest/data/EUR_USD_M5_20251212_20260111.csv
+2026-01-11 00:24:51,778 - INFO - Loading cached data from backtest/data/EUR_USD_M5_20251212_20260111.csv
+2026-01-11 00:24:51,797 - INFO - ✓ M5: 5000 candles
+2026-01-11 00:24:51,797 - INFO - ✓ M5: 5000 candles
+2026-01-11 00:24:51,797 - INFO - 
+--- Downloading H3 data ---
+2026-01-11 00:24:51,797 - INFO - 
+--- Downloading H3 data ---
+2026-01-11 00:24:51,797 - INFO - Loading cached data from backtest/data/EUR_USD_H3_20251212_20260111.csv
+2026-01-11 00:24:51,797 - INFO - Loading cached data from backtest/data/EUR_USD_H3_20251212_20260111.csv
+2026-01-11 00:24:51,800 - INFO - ✓ H3: 240 candles
+2026-01-11 00:24:51,800 - INFO - ✓ H3: 240 candles
+2026-01-11 00:24:51,800 - INFO - 
+--- Downloading M1 data ---
+2026-01-11 00:24:51,800 - INFO - 
+--- Downloading M1 data ---
+2026-01-11 00:24:51,800 - INFO - Loading cached data from backtest/data/EUR_USD_M1_20251212_20260111.csv
+2026-01-11 00:24:51,800 - INFO - Loading cached data from backtest/data/EUR_USD_M1_20251212_20260111.csv
+2026-01-11 00:24:51,817 - INFO - ✓ M1: 5000 candles
+2026-01-11 00:24:51,817 - INFO - ✓ M1: 5000 candles
+2026-01-11 00:24:51,822 - INFO - 🎯 Starting FIXED backtest (exact live bot logic)
+2026-01-11 00:24:51,822 - INFO - Period: 2026-01-04 16:00:00+00:00 to 2026-01-09 16:00:00+00:00
+2026-01-11 00:24:51,822 - INFO - Filtered to 1369 trading candles
+2026-01-11 00:24:52,596 - INFO - 
+📍 Signal at 2026-01-04 22:55:00+00:00: SELL
+2026-01-11 00:24:52,596 - INFO -    Market Trend: BEAR
+2026-01-11 00:24:52,596 - INFO -    Entry Price: 1.17116
+2026-01-11 00:24:52,596 - INFO -    ✅ Trade ALLOWED: OPEN_SHORT
+2026-01-11 00:24:52,596 - INFO - Market-aware position sizing:
+2026-01-11 00:24:52,596 - INFO -   Market trend: BEAR, Position: SHORT
+2026-01-11 00:24:52,596 - INFO -   Risk amount: $300.00
+2026-01-11 00:24:52,596 - INFO -   Position size: 227790 units (2.278 lots)
+2026-01-11 00:24:52,596 - INFO -   Actual risk: $300.00
+2026-01-11 00:24:52,596 - INFO -   Stop distance: 0.00132 (13.2 pips)
+2026-01-11 00:24:52,618 - INFO -    💰 Take Profit HIT: $385.42 profit
+2026-01-11 00:24:52,944 - INFO - 
+📍 Signal at 2026-01-05 05:40:00+00:00: BUY
+2026-01-11 00:24:52,944 - INFO -    Market Trend: BEAR
+2026-01-11 00:24:52,944 - INFO -    Entry Price: 1.16848
+2026-01-11 00:24:52,944 - INFO - ⚠️  Skipping LONG trade: disable_opposite_trade enabled and market trend is BEAR
+2026-01-11 00:24:52,944 - INFO -    🚫 Trade FILTERED: BUY blocked by disable_opposite_trade in BEAR market
+2026-01-11 00:24:53,162 - INFO - 
+📍 Signal at 2026-01-05 09:40:00+00:00: SELL
+2026-01-11 00:24:53,162 - INFO -    Market Trend: BEAR
+2026-01-11 00:24:53,162 - INFO -    Entry Price: 1.16757
+2026-01-11 00:24:53,162 - INFO -    ✅ Trade ALLOWED: OPEN_SHORT
+2026-01-11 00:24:53,162 - INFO - Market-aware position sizing:
+2026-01-11 00:24:53,162 - INFO -   Market trend: BEAR, Position: SHORT
+2026-01-11 00:24:53,162 - INFO -   Risk amount: $300.00
+2026-01-11 00:24:53,162 - INFO -   Position size: 155100 units (1.551 lots)
+2026-01-11 00:24:53,162 - INFO -   Actual risk: $300.00
+2026-01-11 00:24:53,162 - INFO -   Stop distance: 0.00193 (19.3 pips)
+2026-01-11 00:24:53,180 - INFO -    📊 Max Potential: $255.91 (ratio: 0.71:1)
+2026-01-11 00:24:53,180 - INFO -    ⏸️  Position OPEN: TP=1.16526, SL=1.16988, Max=1.16592
+2026-01-11 00:24:53,180 - INFO -    📊 Position OPENED: SHORT at 1.16757
+2026-01-11 00:24:53,504 - INFO - 
+📍 Signal at 2026-01-05 15:00:00+00:00: BUY
+2026-01-11 00:24:53,504 - INFO -    Market Trend: BEAR
+2026-01-11 00:24:53,504 - INFO -    Entry Price: 1.16940
+2026-01-11 00:24:53,504 - INFO -    🔄 Closing existing SELL position
+2026-01-11 00:24:53,505 - INFO -    💼 Position CLOSED: -283.83 P&L (Reason: NEW_SIGNAL)
+2026-01-11 00:24:53,505 - INFO - ⚠️  Skipping LONG trade: disable_opposite_trade enabled and market trend is BEAR
+2026-01-11 00:24:53,505 - INFO -    🚫 Trade FILTERED: BUY blocked by disable_opposite_trade in BEAR market
+2026-01-11 00:24:54,041 - INFO - 
+📍 Signal at 2026-01-05 21:40:00+00:00: SELL
+2026-01-11 00:24:54,041 - INFO -    Market Trend: BEAR
+2026-01-11 00:24:54,041 - INFO -    Entry Price: 1.17206
+2026-01-11 00:24:54,041 - INFO -    ✅ Trade ALLOWED: OPEN_SHORT
+2026-01-11 00:24:54,041 - INFO - Market-aware position sizing:
+2026-01-11 00:24:54,041 - INFO -   Market trend: BEAR, Position: SHORT
+2026-01-11 00:24:54,041 - INFO -   Risk amount: $300.00
+2026-01-11 00:24:54,041 - INFO -   Position size: 329565 units (3.296 lots)
+2026-01-11 00:24:54,041 - INFO -   Actual risk: $300.00
+2026-01-11 00:24:54,041 - INFO -   Stop distance: 0.00091 (9.1 pips)
+2026-01-11 00:24:54,099 - INFO -    📊 Max Potential: $329.57 (ratio: 0.78:1)
+2026-01-11 00:24:54,099 - INFO -    ⏸️  Position OPEN: TP=1.17077, SL=1.17335, Max=1.17106
+2026-01-11 00:24:54,099 - INFO -    📊 Position OPENED: SHORT at 1.17206
+2026-01-11 00:24:54,431 - INFO - 
+📍 Signal at 2026-01-06 01:40:00+00:00: BUY
+2026-01-11 00:24:54,431 - INFO -    Market Trend: BEAR
+2026-01-11 00:24:54,431 - INFO -    Entry Price: 1.17204
+2026-01-11 00:24:54,431 - INFO -    🔄 Closing existing SELL position
+2026-01-11 00:24:54,431 - INFO -    💼 Position CLOSED: +6.59 P&L (Reason: NEW_SIGNAL)
+2026-01-11 00:24:54,431 - INFO - ⚠️  Skipping LONG trade: disable_opposite_trade enabled and market trend is BEAR
+2026-01-11 00:24:54,431 - INFO -    🚫 Trade FILTERED: BUY blocked by disable_opposite_trade in BEAR market
+2026-01-11 00:24:54,790 - INFO - 
+📍 Signal at 2026-01-06 05:50:00+00:00: SELL
+2026-01-11 00:24:54,790 - INFO -    Market Trend: BEAR
+2026-01-11 00:24:54,790 - INFO -    Entry Price: 1.17300
+2026-01-11 00:24:54,791 - INFO -    ✅ Trade ALLOWED: OPEN_SHORT
+2026-01-11 00:24:54,791 - INFO - Market-aware position sizing:
+2026-01-11 00:24:54,791 - INFO -   Market trend: BEAR, Position: SHORT
+2026-01-11 00:24:54,791 - INFO -   Risk amount: $300.00
+2026-01-11 00:24:54,791 - INFO -   Position size: 390822 units (3.908 lots)
+2026-01-11 00:24:54,791 - INFO -   Actual risk: $300.00
+2026-01-11 00:24:54,791 - INFO -   Stop distance: 0.00077 (7.7 pips)
+2026-01-11 00:24:54,795 - INFO -    📊 Max Potential: $105.52 (ratio: 0.24:1)
+2026-01-11 00:24:54,796 - INFO -    ⏸️  Position OPEN: TP=1.17186, SL=1.17414, Max=1.17273
+2026-01-11 00:24:54,796 - INFO -    📊 Position OPENED: SHORT at 1.17300
+2026-01-11 00:24:54,904 - INFO - 
+📍 Signal at 2026-01-06 07:00:00+00:00: BUY
+2026-01-11 00:24:54,905 - INFO -    Market Trend: BEAR
+2026-01-11 00:24:54,905 - INFO -    Entry Price: 1.17406
+2026-01-11 00:24:54,905 - INFO -    🔄 Closing existing SELL position
+2026-01-11 00:24:54,905 - INFO -    💼 Position CLOSED: -414.27 P&L (Reason: NEW_SIGNAL)
+2026-01-11 00:24:54,905 - INFO - ⚠️  Skipping LONG trade: disable_opposite_trade enabled and market trend is BEAR
+2026-01-11 00:24:54,905 - INFO -    🚫 Trade FILTERED: BUY blocked by disable_opposite_trade in BEAR market
+2026-01-11 00:24:54,958 - INFO - 
+📍 Signal at 2026-01-06 07:55:00+00:00: SELL
+2026-01-11 00:24:54,958 - INFO -    Market Trend: BEAR
+2026-01-11 00:24:54,958 - INFO -    Entry Price: 1.17291
+2026-01-11 00:24:54,958 - INFO -    ✅ Trade ALLOWED: OPEN_SHORT
+2026-01-11 00:24:54,958 - INFO - Market-aware position sizing:
+2026-01-11 00:24:54,958 - INFO -   Market trend: BEAR, Position: SHORT
+2026-01-11 00:24:54,958 - INFO -   Risk amount: $300.00
+2026-01-11 00:24:54,958 - INFO -   Position size: 200250 units (2.002 lots)
+2026-01-11 00:24:54,958 - INFO -   Actual risk: $300.00
+2026-01-11 00:24:54,958 - INFO -   Stop distance: 0.00150 (15.0 pips)
+2026-01-11 00:24:54,978 - INFO -    💰 Take Profit HIT: $375.09 profit
+2026-01-11 00:24:55,303 - INFO - 
+📍 Signal at 2026-01-06 14:00:00+00:00: BUY
+2026-01-11 00:24:55,303 - INFO -    Market Trend: BEAR
+2026-01-11 00:24:55,303 - INFO -    Entry Price: 1.17143
+2026-01-11 00:24:55,303 - INFO - ⚠️  Skipping LONG trade: disable_opposite_trade enabled and market trend is BEAR
+2026-01-11 00:24:55,303 - INFO -    🚫 Trade FILTERED: BUY blocked by disable_opposite_trade in BEAR market
+2026-01-11 00:24:55,358 - INFO - 
+📍 Signal at 2026-01-06 15:10:00+00:00: SELL
+2026-01-11 00:24:55,358 - INFO -    Market Trend: BEAR
+2026-01-11 00:24:55,358 - INFO -    Entry Price: 1.16958
+2026-01-11 00:24:55,358 - INFO -    ✅ Trade ALLOWED: OPEN_SHORT
+2026-01-11 00:24:55,358 - INFO - Market-aware position sizing:
+2026-01-11 00:24:55,358 - INFO -   Market trend: BEAR, Position: SHORT
+2026-01-11 00:24:55,358 - INFO -   Risk amount: $300.00
+2026-01-11 00:24:55,358 - INFO -   Position size: 115212 units (1.152 lots)
+2026-01-11 00:24:55,358 - INFO -   Actual risk: $300.00
+2026-01-11 00:24:55,358 - INFO -   Stop distance: 0.00260 (26.0 pips)
+2026-01-11 00:24:55,369 - INFO -    📊 Max Potential: $135.95 (ratio: 0.40:1)
+2026-01-11 00:24:55,369 - INFO -    ⏸️  Position OPEN: TP=1.16660, SL=1.17256, Max=1.16840
+2026-01-11 00:24:55,369 - INFO -    📊 Position OPENED: SHORT at 1.16958
+2026-01-11 00:24:55,531 - INFO - 
+📍 Signal at 2026-01-06 18:00:00+00:00: BUY
+2026-01-11 00:24:55,531 - INFO -    Market Trend: BEAR
+2026-01-11 00:24:55,531 - INFO -    Entry Price: 1.17012
+2026-01-11 00:24:55,531 - INFO -    🔄 Closing existing SELL position
+2026-01-11 00:24:55,531 - INFO -    💼 Position CLOSED: -62.21 P&L (Reason: NEW_SIGNAL)
+2026-01-11 00:24:55,531 - INFO - ⚠️  Skipping LONG trade: disable_opposite_trade enabled and market trend is BEAR
+2026-01-11 00:24:55,531 - INFO -    🚫 Trade FILTERED: BUY blocked by disable_opposite_trade in BEAR market
+2026-01-11 00:24:55,535 - INFO - 
+📍 Signal at 2026-01-06 18:50:00+00:00: SELL
+2026-01-11 00:24:55,535 - INFO -    Market Trend: BEAR
+2026-01-11 00:24:55,535 - INFO -    Entry Price: 1.16874
+2026-01-11 00:24:55,535 - INFO -    ✅ Trade ALLOWED: OPEN_SHORT
+2026-01-11 00:24:55,535 - INFO - Market-aware position sizing:
+2026-01-11 00:24:55,535 - INFO -   Market trend: BEAR, Position: SHORT
+2026-01-11 00:24:55,535 - INFO -   Risk amount: $300.00
+2026-01-11 00:24:55,535 - INFO -   Position size: 185173 units (1.852 lots)
+2026-01-11 00:24:55,535 - INFO -   Actual risk: $300.00
+2026-01-11 00:24:55,535 - INFO -   Stop distance: 0.00162 (16.2 pips)
+2026-01-11 00:24:55,553 - INFO -    📊 Max Potential: $62.96 (ratio: 0.17:1)
+2026-01-11 00:24:55,553 - INFO -    ⏸️  Position OPEN: TP=1.16674, SL=1.17074, Max=1.16840
+2026-01-11 00:24:55,554 - INFO -    📊 Position OPENED: SHORT at 1.16874
+2026-01-11 00:24:55,872 - INFO - 
+📍 Signal at 2026-01-07 00:30:00+00:00: BUY
+2026-01-11 00:24:55,872 - INFO -    Market Trend: BEAR
+2026-01-11 00:24:55,872 - INFO -    Entry Price: 1.16911
+2026-01-11 00:24:55,872 - INFO -    🔄 Closing existing SELL position
+2026-01-11 00:24:55,872 - INFO -    💼 Position CLOSED: -68.51 P&L (Reason: NEW_SIGNAL)
+2026-01-11 00:24:55,872 - INFO - ⚠️  Skipping LONG trade: disable_opposite_trade enabled and market trend is BEAR
+2026-01-11 00:24:55,872 - INFO -    🚫 Trade FILTERED: BUY blocked by disable_opposite_trade in BEAR market
+2026-01-11 00:24:56,106 - INFO - 
+📍 Signal at 2026-01-07 04:50:00+00:00: SELL
+2026-01-11 00:24:56,106 - INFO -    Market Trend: BEAR
+2026-01-11 00:24:56,106 - INFO -    Entry Price: 1.16934
+2026-01-11 00:24:56,106 - INFO -    ✅ Trade ALLOWED: OPEN_SHORT
+2026-01-11 00:24:56,106 - INFO - Market-aware position sizing:
+2026-01-11 00:24:56,106 - INFO -   Market trend: BEAR, Position: SHORT
+2026-01-11 00:24:56,106 - INFO -   Risk amount: $300.00
+2026-01-11 00:24:56,106 - INFO -   Position size: 298361 units (2.984 lots)
+2026-01-11 00:24:56,106 - INFO -   Actual risk: $300.00
+2026-01-11 00:24:56,106 - INFO -   Stop distance: 0.00101 (10.1 pips)
+2026-01-11 00:24:56,114 - INFO -    📊 Max Potential: $74.59 (ratio: 0.18:1)
+2026-01-11 00:24:56,114 - INFO -    ⏸️  Position OPEN: TP=1.16796, SL=1.17072, Max=1.16909
+2026-01-11 00:24:56,114 - INFO -    📊 Position OPENED: SHORT at 1.16934
+2026-01-11 00:24:56,223 - INFO - 
+📍 Signal at 2026-01-07 06:50:00+00:00: BUY
+2026-01-11 00:24:56,223 - INFO -    Market Trend: BEAR
+2026-01-11 00:24:56,223 - INFO -    Entry Price: 1.16990
+2026-01-11 00:24:56,223 - INFO -    🔄 Closing existing SELL position
+2026-01-11 00:24:56,223 - INFO -    💼 Position CLOSED: -167.08 P&L (Reason: NEW_SIGNAL)
+2026-01-11 00:24:56,223 - INFO - ⚠️  Skipping LONG trade: disable_opposite_trade enabled and market trend is BEAR
+2026-01-11 00:24:56,223 - INFO -    🚫 Trade FILTERED: BUY blocked by disable_opposite_trade in BEAR market
+2026-01-11 00:24:56,276 - INFO - 
+📍 Signal at 2026-01-07 07:30:00+00:00: SELL
+2026-01-11 00:24:56,276 - INFO -    Market Trend: BEAR
+2026-01-11 00:24:56,276 - INFO -    Entry Price: 1.16864
+2026-01-11 00:24:56,276 - INFO -    ✅ Trade ALLOWED: OPEN_SHORT
+2026-01-11 00:24:56,276 - INFO - Market-aware position sizing:
+2026-01-11 00:24:56,276 - INFO -   Market trend: BEAR, Position: SHORT
+2026-01-11 00:24:56,276 - INFO -   Risk amount: $300.00
+2026-01-11 00:24:56,276 - INFO -   Position size: 190081 units (1.901 lots)
+2026-01-11 00:24:56,276 - INFO -   Actual risk: $300.00
+2026-01-11 00:24:56,276 - INFO -   Stop distance: 0.00158 (15.8 pips)
+2026-01-11 00:24:56,288 - INFO -    📊 Max Potential: $256.61 (ratio: 0.69:1)
+2026-01-11 00:24:56,289 - INFO -    ⏸️  Position OPEN: TP=1.16669, SL=1.17059, Max=1.16729
+2026-01-11 00:24:56,289 - INFO -    📊 Position OPENED: SHORT at 1.16864
+2026-01-11 00:24:56,502 - INFO - 
+📍 Signal at 2026-01-07 11:15:00+00:00: BUY
+2026-01-11 00:24:56,502 - INFO -    Market Trend: BEAR
+2026-01-11 00:24:56,502 - INFO -    Entry Price: 1.16924
+2026-01-11 00:24:56,502 - INFO -    🔄 Closing existing SELL position
+2026-01-11 00:24:56,502 - INFO -    💼 Position CLOSED: -114.05 P&L (Reason: NEW_SIGNAL)
+2026-01-11 00:24:56,502 - INFO - ⚠️  Skipping LONG trade: disable_opposite_trade enabled and market trend is BEAR
+2026-01-11 00:24:56,502 - INFO -    🚫 Trade FILTERED: BUY blocked by disable_opposite_trade in BEAR market
+2026-01-11 00:24:56,928 - INFO - 
+📍 Signal at 2026-01-07 18:55:00+00:00: SELL
+2026-01-11 00:24:56,928 - INFO -    Market Trend: BEAR
+2026-01-11 00:24:56,928 - INFO -    Entry Price: 1.16830
+2026-01-11 00:24:56,928 - INFO -    ✅ Trade ALLOWED: OPEN_SHORT
+2026-01-11 00:24:56,928 - INFO - Market-aware position sizing:
+2026-01-11 00:24:56,928 - INFO -   Market trend: BEAR, Position: SHORT
+2026-01-11 00:24:56,928 - INFO -   Risk amount: $300.00
+2026-01-11 00:24:56,928 - INFO -   Position size: 252405 units (2.524 lots)
+2026-01-11 00:24:56,928 - INFO -   Actual risk: $300.00
+2026-01-11 00:24:56,928 - INFO -   Stop distance: 0.00119 (11.9 pips)
+2026-01-11 00:24:56,954 - INFO -    📊 Max Potential: $257.45 (ratio: 0.65:1)
+2026-01-11 00:24:56,954 - INFO -    ⏸️  Position OPEN: TP=1.16674, SL=1.16986, Max=1.16728
+2026-01-11 00:24:56,954 - INFO -    📊 Position OPENED: SHORT at 1.16830
+2026-01-11 00:24:57,339 - INFO - 
+📍 Signal at 2026-01-08 02:40:00+00:00: BUY
+2026-01-11 00:24:57,339 - INFO -    Market Trend: BEAR
+2026-01-11 00:24:57,339 - INFO -    Entry Price: 1.16798
+2026-01-11 00:24:57,339 - INFO -    🔄 Closing existing SELL position
+2026-01-11 00:24:57,339 - INFO -    💼 Position CLOSED: +80.77 P&L (Reason: NEW_SIGNAL)
+2026-01-11 00:24:57,339 - INFO - ⚠️  Skipping LONG trade: disable_opposite_trade enabled and market trend is BEAR
+2026-01-11 00:24:57,339 - INFO -    🚫 Trade FILTERED: BUY blocked by disable_opposite_trade in BEAR market
+2026-01-11 00:24:57,667 - INFO - 
+📍 Signal at 2026-01-08 08:15:00+00:00: SELL
+2026-01-11 00:24:57,667 - INFO -    Market Trend: BEAR
+2026-01-11 00:24:57,667 - INFO -    Entry Price: 1.16739
+2026-01-11 00:24:57,667 - INFO -    ✅ Trade ALLOWED: OPEN_SHORT
+2026-01-11 00:24:57,667 - INFO - Market-aware position sizing:
+2026-01-11 00:24:57,667 - INFO -   Market trend: BEAR, Position: SHORT
+2026-01-11 00:24:57,667 - INFO -   Risk amount: $300.00
+2026-01-11 00:24:57,667 - INFO -   Position size: 300791 units (3.008 lots)
+2026-01-11 00:24:57,667 - INFO -   Actual risk: $300.00
+2026-01-11 00:24:57,667 - INFO -   Stop distance: 0.00100 (10.0 pips)
+2026-01-11 00:24:57,707 - INFO -    💰 Take Profit HIT: $412.80 profit
+2026-01-11 00:24:58,356 - INFO - 
+📍 Signal at 2026-01-08 20:25:00+00:00: BUY
+2026-01-11 00:24:58,356 - INFO -    Market Trend: BEAR
+2026-01-11 00:24:58,356 - INFO -    Entry Price: 1.16532
+2026-01-11 00:24:58,356 - INFO - ⚠️  Skipping LONG trade: disable_opposite_trade enabled and market trend is BEAR
+2026-01-11 00:24:58,356 - INFO -    🚫 Trade FILTERED: BUY blocked by disable_opposite_trade in BEAR market
+2026-01-11 00:24:58,569 - INFO - 
+📍 Signal at 2026-01-09 00:10:00+00:00: SELL
+2026-01-11 00:24:58,569 - INFO -    Market Trend: BEAR
+2026-01-11 00:24:58,569 - INFO -    Entry Price: 1.16550
+2026-01-11 00:24:58,569 - INFO -    ✅ Trade ALLOWED: OPEN_SHORT
+2026-01-11 00:24:58,569 - INFO - Market-aware position sizing:
+2026-01-11 00:24:58,569 - INFO -   Market trend: BEAR, Position: SHORT
+2026-01-11 00:24:58,569 - INFO -   Risk amount: $300.00
+2026-01-11 00:24:58,569 - INFO -   Position size: 508843 units (5.088 lots)
+2026-01-11 00:24:58,569 - INFO -   Actual risk: $300.00
+2026-01-11 00:24:58,569 - INFO -   Stop distance: 0.00059 (5.9 pips)
+2026-01-11 00:24:58,580 - INFO -    📊 Max Potential: $457.96 (ratio: 0.93:1)
+2026-01-11 00:24:58,580 - INFO -    ⏸️  Position OPEN: TP=1.16454, SL=1.16646, Max=1.16460
+2026-01-11 00:24:58,580 - INFO -    📊 Position OPENED: SHORT at 1.16550
+2026-01-11 00:24:58,741 - INFO - 
+📍 Signal at 2026-01-09 03:05:00+00:00: BUY
+2026-01-11 00:24:58,741 - INFO -    Market Trend: BEAR
+2026-01-11 00:24:58,741 - INFO -    Entry Price: 1.16571
+2026-01-11 00:24:58,741 - INFO -    🔄 Closing existing SELL position
+2026-01-11 00:24:58,741 - INFO -    💼 Position CLOSED: -106.86 P&L (Reason: NEW_SIGNAL)
+2026-01-11 00:24:58,741 - INFO - ⚠️  Skipping LONG trade: disable_opposite_trade enabled and market trend is BEAR
+2026-01-11 00:24:58,741 - INFO -    🚫 Trade FILTERED: BUY blocked by disable_opposite_trade in BEAR market
+2026-01-11 00:24:58,851 - INFO - 
+📍 Signal at 2026-01-09 05:35:00+00:00: SELL
+2026-01-11 00:24:58,851 - INFO -    Market Trend: BEAR
+2026-01-11 00:24:58,851 - INFO -    Entry Price: 1.16508
+2026-01-11 00:24:58,851 - INFO -    ✅ Trade ALLOWED: OPEN_SHORT
+2026-01-11 00:24:58,851 - INFO - Market-aware position sizing:
+2026-01-11 00:24:58,851 - INFO -   Market trend: BEAR, Position: SHORT
+2026-01-11 00:24:58,851 - INFO -   Risk amount: $300.00
+2026-01-11 00:24:58,851 - INFO -   Position size: 428414 units (4.284 lots)
+2026-01-11 00:24:58,851 - INFO -   Actual risk: $300.00
+2026-01-11 00:24:58,851 - INFO -   Stop distance: 0.00070 (7.0 pips)
+2026-01-11 00:24:58,877 - INFO -    💰 Take Profit HIT: $460.66 profit
+2026-01-11 00:24:59,307 - INFO - 
+📍 Signal at 2026-01-09 13:30:00+00:00: BUY
+2026-01-11 00:24:59,307 - INFO -    Market Trend: BEAR
+2026-01-11 00:24:59,307 - INFO -    Entry Price: 1.16516
+2026-01-11 00:24:59,308 - INFO - ⚠️  Skipping LONG trade: disable_opposite_trade enabled and market trend is BEAR
+2026-01-11 00:24:59,308 - INFO -    🚫 Trade FILTERED: BUY blocked by disable_opposite_trade in BEAR market
+2026-01-11 00:24:59,362 - INFO - 
+📍 Signal at 2026-01-09 14:25:00+00:00: SELL
+2026-01-11 00:24:59,362 - INFO -    Market Trend: BEAR
+2026-01-11 00:24:59,362 - INFO -    Entry Price: 1.16382
+2026-01-11 00:24:59,362 - INFO -    ✅ Trade ALLOWED: OPEN_SHORT
+2026-01-11 00:24:59,362 - INFO - Market-aware position sizing:
+2026-01-11 00:24:59,362 - INFO -   Market trend: BEAR, Position: SHORT
+2026-01-11 00:24:59,362 - INFO -   Risk amount: $300.00
+2026-01-11 00:24:59,362 - INFO -   Position size: 109592 units (1.096 lots)
+2026-01-11 00:24:59,362 - INFO -   Actual risk: $300.00
+2026-01-11 00:24:59,362 - INFO -   Stop distance: 0.00274 (27.4 pips)
+2026-01-11 00:24:59,368 - INFO -    📊 Max Potential: $219.18 (ratio: 0.64:1)
+2026-01-11 00:24:59,368 - INFO -    ⏸️  Position OPEN: TP=1.16071, SL=1.16693, Max=1.16182
+2026-01-11 00:24:59,368 - INFO -    📊 Position OPENED: SHORT at 1.16382
+2026-01-11 00:24:59,475 - INFO - 
+⏰ End of backtest period - closing remaining position
+2026-01-11 00:24:59,475 - INFO -    💼 Position CLOSED: -13.15 P&L (Reason: END_OF_PERIOD)
+
+🎯 FIXED BACKTEST - EXACT LIVE BOT LOGIC
+Account: account1
+Instrument: EUR_USD
+Timeframe: 5m
+Period: 2026-01-04 16:00:00+00:00 to 2026-01-09 16:00:00+00:00
+Initial Balance: $5,000.00
+
+📥 Downloading data...
+
+🔧 Running FIXED backtest with exact live bot logic...
+
+📊 FIXED BACKTEST RESULTS:
+Total Allowed Trades: 14
+Profitable Trades (TP Hit): 4
+Win Rate (TP Hit Rate): 28.6%
+Actual Profit (TP Hits): $1633.97
+Max Potential Profit: $5713.07
+Return %: +32.68%
+Final Balance: $7,125.32
+
+📈 TRADE BREAKDOWN:
+  SELL trades: 14 total, 4 profitable (28.6%)
+
+📄 Signal analysis saved to: EUR_USD_5m_account1_sign_ratio_profit_Jan-4_Jan-9_709.csv
+Path: backtest/results/EUR_USD_5m_account1_sign_ratio_profit_Jan-4_Jan-9_709.csv

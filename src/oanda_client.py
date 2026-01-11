@@ -8,7 +8,10 @@ from datetime import datetime
 import logging
 import time
 from functools import wraps
-from .config import OANDAConfig
+try:
+    from .config import OANDAConfig
+except ImportError:
+    from config import OANDAConfig  # type: ignore
 
 
 def api_retry_handler(func):

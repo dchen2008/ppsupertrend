@@ -146,6 +146,9 @@ class MarketAwareTradingBot:
         self.stop_loss_type = self.config.get('stoploss', {}).get('type', 'PPSuperTrend').lower()
         if self.stop_loss_type == 'ppsupertrend':
             self.stop_loss_type = 'supertrend'
+        
+        # Buffer for spread adjustment (in pips, configurable)
+        self.spread_buffer_pips = self.config.get('stoploss', {}).get('spread_buffer_pips', 3)
 
         # Initialize components
         self.client = OANDAClient()
@@ -338,13 +341,16 @@ class MarketAwareTradingBot:
             
             # Determine market trend based on signal
             # BUY or HOLD_LONG indicates bull market
-            # SELL or HOLD_SHORT indicates bear market
+            # SELL or HOLD_SHORT indicates bear market  
+            # PP SuperTrend should NEVER be NEUTRAL - always bullish or bearish
             if signal_info['signal'] in ['BUY', 'HOLD_LONG']:
                 market_trend = 'BULL'
             elif signal_info['signal'] in ['SELL', 'HOLD_SHORT']:
                 market_trend = 'BEAR'
             else:
-                market_trend = 'NEUTRAL'
+                # This should never happen with fixed PP SuperTrend
+                self.logger.error(f"⚠️  UNEXPECTED signal: {signal_info['signal']} - defaulting to BEAR")
+                market_trend = 'BEAR'
             
             self.logger.info(f"📊 Market Trend Check ({self.market_timeframe}): {market_trend}")
             self.logger.info(f"   3H PP SuperTrend Signal: {signal_info['signal']}")
@@ -476,14 +482,16 @@ class MarketAwareTradingBot:
             spread = self.client.get_current_spread(self.instrument)
 
             if spread:
-                spread_adjustment = spread / 2.0
+                # Convert buffer from pips to price (1 pip = 0.0001 for most pairs)
+                buffer_price = self.spread_buffer_pips * 0.0001
+                spread_adjustment = (spread / 2.0) + buffer_price
 
                 if signal_type == 'SELL':  # SHORT position
                     adjusted_stop_loss = base_stop_loss + spread_adjustment
-                    self.logger.info(f"  Stop Loss Adjustment (SHORT): {base_stop_loss:.5f} → {adjusted_stop_loss:.5f}")
+                    self.logger.info(f"  Stop Loss Adjustment (SHORT): {base_stop_loss:.5f} → {adjusted_stop_loss:.5f} (spread/2 + {self.spread_buffer_pips} pips buffer)")
                 else:  # BUY / LONG position
                     adjusted_stop_loss = base_stop_loss - spread_adjustment
-                    self.logger.info(f"  Stop Loss Adjustment (LONG): {base_stop_loss:.5f} → {adjusted_stop_loss:.5f}")
+                    self.logger.info(f"  Stop Loss Adjustment (LONG): {base_stop_loss:.5f} → {adjusted_stop_loss:.5f} (spread/2 + {self.spread_buffer_pips} pips buffer)")
 
                 return adjusted_stop_loss
             else:
@@ -1029,7 +1037,9 @@ class MarketAwareTradingBot:
                 signal_info,
                 current_position,
                 candle_timestamp,
-                self.last_signal_candle_time
+                self.last_signal_candle_time,
+                market_trend=self.current_market_signal,
+                config=self.config
             )
 
             if should_trade:
@@ -1057,60 +1067,99 @@ class MarketAwareTradingBot:
 
     def check_existing_trades(self):
         """Check for existing trades on startup and initialize tracking"""
-        trades = self.client.get_trades()
-        if not trades:
-            return
-            
-        account_summary = self.client.get_account_summary()
-        if not account_summary:
-            return
-            
-        for trade in trades:
-            trade_id = trade['id']
-            
-            # Check if NEW_ORDER entry already exists in CSV
-            if not self.csv_logger.trade_exists(trade_id, 'NEW_ORDER'):
-                # Log the existing trade as NEW_ORDER (external)
-                position_side = 'LONG' if float(trade['currentUnits']) > 0 else 'SHORT'
-                units = abs(float(trade['currentUnits']))
+        try:
+            trades = self.client.get_trades()
+            if not trades:
+                self.logger.info("💡 No existing trades found")
+                return
                 
-                csv_data = {
-                    'tradeID': trade_id,
-                    'market': 'NEUTRAL',  # Unknown at restart
-                    'action': 'NEW_ORDER',
-                    'pp_sign': position_side,
-                    'pp_sign_time': trade['openTime'][:19].replace('T', ' '),
-                    'order_time': trade['openTime'][:19].replace('T', ' '),
-                    'close_time': 'N/A',
-                    'duration(m)': 'N/A',
-                    'open_position': f"{trade['instrument']} {position_side} {units:,.0f} units",
-                    'entry_price': f"{float(trade['price']):.5f}",
-                    'stop_loss': f"{float(trade.get('stopLossOrder', {}).get('price', 0)):.5f}" if trade.get('stopLossOrder') else 'N/A',
-                    'highest_pl': 'N/A',
-                    'lowest_pl': 'N/A',
-                    'realized_pl': 'N/A',
-                    'accountBalance': f"${float(account_summary['balance']):,.2f}"
-                }
-                self.csv_logger.log_trade(csv_data)
-                self.logger.info(f"📊 Logged existing trade {trade_id} as NEW_ORDER")
+            account_summary = self.client.get_account_summary()
+            if not account_summary:
+                self.logger.warning("⚠️  Could not fetch account summary")
+                return
+                
+            self.logger.info(f"🔍 Checking {len(trades)} existing trades...")
             
-            # Initialize tracking for existing trade
-            if trade['instrument'] == self.instrument:
-                self.current_trade_id = trade_id
-                self.current_position_side = 'LONG' if float(trade['currentUnits']) > 0 else 'SHORT'
-                self.current_entry_price = float(trade['price'])
-                self.current_position_size = abs(float(trade['currentUnits']))
+            for trade in trades:
+                # Add error handling for individual trade processing
+                try:
+                    trade_id = trade.get('id')
+                    if not trade_id:
+                        self.logger.error(f"❌ Trade missing ID: {trade}")
+                        continue
+            
+                    # Check if NEW_ORDER entry already exists in CSV
+                    if not self.csv_logger.trade_exists(trade_id, 'NEW_ORDER'):
+                        # Log the existing trade as NEW_ORDER (external)
+                        # Handle different possible key names for units
+                        current_units = None
+                        for key in ['currentUnits', 'current_units', 'units', 'initialUnits']:
+                            if key in trade:
+                                current_units = float(trade[key])
+                                break
+                        
+                        if current_units is None:
+                            self.logger.error(f"❌ Unable to find units for trade {trade_id}. Available keys: {list(trade.keys())}")
+                            continue
+                        
+                        position_side = 'LONG' if current_units > 0 else 'SHORT'
+                        units = abs(current_units)
+                        
+                        csv_data = {
+                            'tradeID': trade_id,
+                            'market': 'NEUTRAL',  # Unknown at restart
+                            'action': 'NEW_ORDER',
+                            'pp_sign': position_side,
+                            'pp_sign_time': trade['openTime'][:19].replace('T', ' '),
+                            'order_time': trade['openTime'][:19].replace('T', ' '),
+                            'close_time': 'N/A',
+                            'duration(m)': 'N/A',
+                            'open_position': f"{trade['instrument']} {position_side} {units:,.0f} units",
+                            'entry_price': f"{float(trade['price']):.5f}",
+                            'stop_loss': f"{float(trade.get('stopLossOrder', {}).get('price', 0)):.5f}" if trade.get('stopLossOrder') else 'N/A',
+                            'highest_pl': 'N/A',
+                            'lowest_pl': 'N/A',
+                            'realized_pl': 'N/A',
+                            'accountBalance': f"${float(account_summary['balance']):,.2f}"
+                        }
+                        self.csv_logger.log_trade(csv_data)
+                        self.logger.info(f"📊 Logged existing trade {trade_id} as NEW_ORDER")
+            
+                    # Initialize tracking for existing trade
+                    if trade['instrument'] == self.instrument:
+                        # Handle different possible key names for units (same as above)
+                        tracking_units = None
+                        for key in ['currentUnits', 'current_units', 'units', 'initialUnits']:
+                            if key in trade:
+                                tracking_units = float(trade[key])
+                                break
+                        
+                        if tracking_units is None:
+                            self.logger.error(f"❌ Unable to find units for tracking trade {trade_id}. Available keys: {list(trade.keys())}")
+                            continue
+                            
+                        self.current_trade_id = trade_id
+                        self.current_position_side = 'LONG' if tracking_units > 0 else 'SHORT'
+                        self.current_entry_price = float(trade['price'])
+                        self.current_position_size = abs(tracking_units)
+                        
+                        # Initialize trade tracker
+                        self.trade_tracker.entry_price = self.current_entry_price
+                        self.trade_tracker.position_side = self.current_position_side
+                        self.trade_tracker.units = self.current_position_size
+                        
+                        if trade.get('stopLossOrder'):
+                            self.current_stop_loss_price = float(trade['stopLossOrder']['price'])
+                            self.current_stop_loss_order_id = trade['stopLossOrder']['id']
+                        
+                        self.logger.info(f"🔄 Resumed tracking existing {self.current_position_side} position (Trade ID: {trade_id})")
                 
-                # Initialize trade tracker
-                self.trade_tracker.entry_price = self.current_entry_price
-                self.trade_tracker.position_side = self.current_position_side
-                self.trade_tracker.units = self.current_position_size
-                
-                if trade.get('stopLossOrder'):
-                    self.current_stop_loss_price = float(trade['stopLossOrder']['price'])
-                    self.current_stop_loss_order_id = trade['stopLossOrder']['id']
-                
-                self.logger.info(f"🔄 Resumed tracking existing {self.current_position_side} position (Trade ID: {trade_id})")
+                except Exception as e:
+                    self.logger.error(f"❌ Error processing trade {trade_id}: {e}")
+                    continue
+                    
+        except Exception as e:
+            self.logger.error(f"❌ Error in check_existing_trades: {e}", exc_info=True)
 
     def run(self):
         """Main bot loop"""

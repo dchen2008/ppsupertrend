@@ -1,8 +1,8 @@
 # Account3 Configuration Override
-# Aggressive configuration - higher risk/reward ratios
+# Test configuration with disable_opposite_trade disabled
 
 # Check interval in seconds
-check_interval: 45
+check_interval: 60
 
 # Market trend configuration
 market:
@@ -13,11 +13,22 @@ market:
 stoploss:
   type: PPSuperTrend
   
-# Aggressive Risk/Reward configuration
+# Standard Risk/Reward configuration
 risk_reward:
   bear_market:
-    short_rr: 1.5    # Aggressive approach
-    long_rr: 0.5     # Very conservative counter-trend
+    short_rr: 1.2    
+    long_rr: 0.6     
   bull_market:
-    short_rr: 0.5    # Very conservative counter-trend
-    long_rr: 1.5     # Aggressive approach
+    short_rr: 0.6    
+    long_rr: 1.2     
+    
+# Position sizing configuration - allow opposite trades
+position_sizing:
+  use_dynamic: true
+  disable_opposite_trade: false  # Allow trades against 3H trend
+  bear:  # Bear market (3H PP SuperTrend signal)
+    short_risk_per_trade: 300   
+    long_risk_per_trade: 100    
+  bull:  # Bull market (3H PP SuperTrend signal)
+    short_risk_per_trade: 100   
+    long_risk_per_trade: 300

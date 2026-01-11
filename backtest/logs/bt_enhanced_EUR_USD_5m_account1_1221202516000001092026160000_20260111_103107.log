@@ -1,0 +1,14 @@
+/Users/dongchen/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+
+🎯 FIXED BACKTEST - EXACT LIVE BOT LOGIC
+Account: account1
+Instrument: EUR_USD
+Timeframe: 5m
+Period: 2025-12-21 16:00:00+00:00 to 2026-01-09 16:00:00+00:00
+Traceback (most recent call last):
+  File "/Users/dongchen/Documents/AI-project/GitHub/ppsupertrend/fixed_backtest.py", line 673, in <module>
+    sys.exit(main())
+  File "/Users/dongchen/Documents/AI-project/GitHub/ppsupertrend/fixed_backtest.py", line 604, in main
+    print(f"Initial Balance: ${args.balance:,.2f}")
+TypeError: unsupported format string passed to NoneType.__format__

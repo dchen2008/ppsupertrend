@@ -13,6 +13,7 @@ market:
 stoploss:
   type: PPSuperTrend
   
+  
 # Standard Risk/Reward configuration (same as defaults)
 risk_reward:
   bear_market:
