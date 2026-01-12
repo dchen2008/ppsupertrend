@@ -1,5 +1,0 @@
-market,signal,time,entry_price,stop_loss_price,take_profit_price,position_lots,risk_amount,original_stop_pips,buffer_pips,adjusted_stop_pips,take_profit_ratio,highest_ratio,potential_profit,actual_profit,position_status,take_profit_hit,stop_loss_hit
-BEAR,SELL,"Jan 04, 06:30PM",1.16853,1.17230,1.16476,0.88,$300,33.9,3,37.7,1.0:1,0.69:1,$230.83,$-95.52,MARKET_CLOSE,NO,NO
-BEAR,SELL,"Jan 06, 01:00AM",1.17180,1.17419,1.16941,1.49,$300,20.2,3,23.9,1.0:1,1.42:1,$506.17,$355.83,TP_HIT,YES,NO
-BEAR,SELL,"Jan 06, 11:30PM",1.16872,1.17045,1.16699,2.22,$300,13.5,3,17.3,1.0:1,0.83:1,$319.87,$104.40,MARKET_CLOSE,NO,NO
-BEAR,SELL,"Jan 08, 12:30AM",1.16717,1.16898,1.16536,2.10,$300,14.3,3,18.1,1.0:1,2.96:1,$1121.03,$378.58,TP_HIT,YES,NO

@@ -8,6 +8,35 @@ This is a Python-based automated forex trading bot that uses the Pivot Point Sup
 1. **Standard Bot** (`trading_bot_enhanced.py`): Original PP SuperTrend strategy with configurable stop losses
 2. **Market-Aware Bot** (`trading_bot_market_aware.py`): Enhanced version that uses 3H timeframe for market trend detection and dynamic risk/reward ratios based on bull/bear market conditions
 
+## Directory Structure
+
+```
+ppsupertrend/
+├── src/                    # Source code (tracked)
+│   ├── config.py
+│   ├── config.yaml         # Default configuration
+│   ├── trading_bot_market_aware.py
+│   └── ...
+├── scripts/                # Launch scripts (tracked)
+├── backtest/
+│   ├── data/               # Downloaded OANDA data (ignored)
+│   ├── results/            # Backtest output CSVs (ignored)
+│   └── logs/               # Backtest logs (ignored)
+├── account1/               # Per-account runtime (account1-4)
+│   ├── config.yaml         # Account-specific overrides (tracked)
+│   ├── csv/                # Trade history CSVs (ignored)
+│   ├── logs/               # Bot logs (ignored)
+│   └── state/              # Signal state persistence (ignored)
+├── .gitignore              # Ignores runtime outputs
+└── CLAUDE.md
+```
+
+**What's tracked vs ignored:**
+- **Tracked**: Source code, configs, scripts, `.gitkeep` files
+- **Ignored**: Logs, CSVs, state files, backtest data/results, `.DS_Store`
+
+**`.gitkeep` files**: Empty files in ignored directories ensure the folder structure exists on fresh clone. Runtime files are generated locally but never committed.
+
 ## Core Architecture
 
 The repository contains a dual-architecture trading system with two distinct bot implementations:
@@ -57,7 +86,12 @@ pip install -r requirements.txt
 python tests/test_connection.py
 
 # Run market-aware bot (recommended)
-./scripts/auto_trade_market.sh at=account1 fr=EUR_USD tf=5m
+./scripts/auto_trade_market.sh at=account1 fr=EUR_USD tf=5m           # Mac/Linux
+scripts\auto_trade_market.bat at=account1 fr=EUR_USD tf=5m            # Windows
+
+# Catch-up mode: Enter position based on current trend (if bot missed a signal)
+./scripts/auto_trade_market.sh at=account1 fr=EUR_USD tf=5m catch-up  # Mac/Linux
+scripts\auto_trade_market.bat at=account1 fr=EUR_USD tf=5m catch-up   # Windows
 
 # Run enhanced backtest (exact bot logic) - FIXED VERSION
 python3 fixed_backtest.py at=account1 fr=EUR_USD tf=5m bt="01/04/2026 16:00:00,01/09/2026 16:00:00"
@@ -275,9 +309,53 @@ SUGGESTED Take Profit:
 
 1. **API Retry Logic**: All OANDA API calls use `@api_retry_handler` decorator (3 retries)
 2. **Stop Loss Updates**: Use trade ID, not stop loss order ID for modifications
-3. **Signal Persistence Issue**: `last_signal_candle_time` not persisted across bot restarts
+3. **Signal State Persistence**: `last_signal_candle_time` is persisted to `{account}/state/{instrument}_{timeframe}_state.json` and survives bot restarts
 4. **Spread Simulation**: Fixed backtest uses typical spread of 1.5 pips for EUR/USD
 5. **Time Zone**: Backtest outputs use UTC-8 for readability
+
+## Catch-Up Mode
+
+When the bot misses a signal (e.g., due to restart or network issues), use the `catch-up` parameter to enter a position based on the current trend:
+
+```bash
+# Enter position based on current trend (HOLD_SHORT → SHORT, HOLD_LONG → LONG)
+./scripts/auto_trade_market.sh at=account1 fr=EUR_USD tf=5m catch-up
+```
+
+**How it works:**
+1. Checks if there's an existing position (skips if position exists)
+2. Reads current signal state:
+   - `HOLD_SHORT` or `SELL` → Opens SHORT position
+   - `HOLD_LONG` or `BUY` → Opens LONG position
+3. Respects `disable_opposite_trade` setting (won't open LONG in BEAR market, etc.)
+4. Saves state after catch-up to prevent duplicate trades on next restart
+
+**Use case:** Bot was offline when a SELL signal occurred. Signal has transitioned to HOLD_SHORT. Running with `catch-up` will open a SHORT position based on the current trend.
+
+## Signal State Persistence
+
+The bot persists `last_signal_candle_time` to prevent duplicate trades across restarts:
+
+**State file location:** `{account}/state/{instrument}_{timeframe}_state.json`
+
+**Example:** `account1/state/EUR_USD_5m_state.json`
+
+```json
+{
+  "last_signal_candle_time": "2026-01-12T14:25:00+00:00",
+  "updated_at": "2026-01-12T06:30:07.123456"
+}
+```
+
+**Behavior:**
+- On startup: Bot loads saved state and won't re-trade the same signal
+- After trade: State is saved immediately
+- After position close (TP/SL hit): State is reset to `null` allowing next signal
+
+**To force a new trade on current signal:** Delete the state file:
+```bash
+rm account1/state/EUR_USD_5m_state.json
+```
 
 ## Testing Recommendations
 
