@@ -1,0 +1,148 @@
+/Users/dongchen/Documents/AI-project/GitHub/ppsupertrend/venv/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-01-09 13:32:02,518 - INFO - Downloading EUR_USD data for timeframes: ['M5', 'H3']
+2026-01-09 13:32:02,518 - INFO - Downloading EUR_USD data for timeframes: ['M5', 'H3']
+2026-01-09 13:32:02,518 - INFO - 
+--- Downloading M5 data ---
+2026-01-09 13:32:02,518 - INFO - 
+--- Downloading M5 data ---
+2026-01-09 13:32:02,518 - INFO - Downloading recent EUR_USD M5 data...
+2026-01-09 13:32:02,518 - INFO - Downloading recent EUR_USD M5 data...
+2026-01-09 13:32:02,518 - INFO - Requesting 864 recent candles
+2026-01-09 13:32:02,518 - INFO - Requesting 864 recent candles
+2026-01-09 13:32:02,853 - INFO - Downloaded 863 candles from 2026-01-06 21:35:00+00:00 to 2026-01-09 21:25:00+00:00
+2026-01-09 13:32:02,853 - INFO - Downloaded 863 candles from 2026-01-06 21:35:00+00:00 to 2026-01-09 21:25:00+00:00
+2026-01-09 13:32:02,858 - INFO - Data cached to backtest/data/EUR_USD_M5_20260106_20260109.csv
+2026-01-09 13:32:02,858 - INFO - Data cached to backtest/data/EUR_USD_M5_20260106_20260109.csv
+2026-01-09 13:32:02,858 - INFO - ✓ M5: 863 candles
+2026-01-09 13:32:02,858 - INFO - ✓ M5: 863 candles
+2026-01-09 13:32:02,858 - INFO - 
+--- Downloading H3 data ---
+2026-01-09 13:32:02,858 - INFO - 
+--- Downloading H3 data ---
+2026-01-09 13:32:02,858 - INFO - Downloading recent EUR_USD H3 data...
+2026-01-09 13:32:02,858 - INFO - Downloading recent EUR_USD H3 data...
+2026-01-09 13:32:02,858 - INFO - Requesting 50 recent candles
+2026-01-09 13:32:02,858 - INFO - Requesting 50 recent candles
+2026-01-09 13:32:03,027 - INFO - Downloaded 49 candles from 2025-12-31 16:00:00+00:00 to 2026-01-09 16:00:00+00:00
+2026-01-09 13:32:03,027 - INFO - Downloaded 49 candles from 2025-12-31 16:00:00+00:00 to 2026-01-09 16:00:00+00:00
+2026-01-09 13:32:03,028 - INFO - Data cached to backtest/data/EUR_USD_H3_20260106_20260109.csv
+2026-01-09 13:32:03,028 - INFO - Data cached to backtest/data/EUR_USD_H3_20260106_20260109.csv
+2026-01-09 13:32:03,028 - INFO - ✓ H3: 49 candles
+2026-01-09 13:32:03,028 - INFO - ✓ H3: 49 candles
+
+==================================================
+DOWNLOAD SUMMARY
+==================================================
+M5: 863 candles (2026-01-06 21:35:00+00:00 to 2026-01-09 21:25:00+00:00)
+H3: 49 candles (2025-12-31 16:00:00+00:00 to 2026-01-09 16:00:00+00:00)
+/Users/dongchen/Documents/AI-project/GitHub/ppsupertrend/venv/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-01-09 13:32:03,696 - INFO - Downloading EUR_USD data for timeframes: ['M5', 'H3']
+2026-01-09 13:32:03,696 - INFO - Downloading EUR_USD data for timeframes: ['M5', 'H3']
+2026-01-09 13:32:03,696 - INFO - 
+--- Downloading M5 data ---
+2026-01-09 13:32:03,696 - INFO - 
+--- Downloading M5 data ---
+2026-01-09 13:32:03,696 - INFO - Loading cached data from backtest/data/EUR_USD_M5_20260106_20260109.csv
+2026-01-09 13:32:03,696 - INFO - Loading cached data from backtest/data/EUR_USD_M5_20260106_20260109.csv
+2026-01-09 13:32:03,701 - INFO - ✓ M5: 863 candles
+2026-01-09 13:32:03,701 - INFO - ✓ M5: 863 candles
+2026-01-09 13:32:03,701 - INFO - 
+--- Downloading H3 data ---
+2026-01-09 13:32:03,701 - INFO - 
+--- Downloading H3 data ---
+2026-01-09 13:32:03,701 - INFO - Loading cached data from backtest/data/EUR_USD_H3_20260106_20260109.csv
+2026-01-09 13:32:03,701 - INFO - Loading cached data from backtest/data/EUR_USD_H3_20260106_20260109.csv
+2026-01-09 13:32:03,702 - INFO - ✓ H3: 49 candles
+2026-01-09 13:32:03,702 - INFO - ✓ H3: 49 candles
+2026-01-09 13:32:03,707 - INFO - Starting backtest for EUR_USD 5m
+2026-01-09 13:32:03,707 - INFO - Starting backtest for EUR_USD 5m
+2026-01-09 13:32:03,707 - INFO - Trading data: 863 candles
+2026-01-09 13:32:03,707 - INFO - Trading data: 863 candles
+2026-01-09 13:32:03,707 - INFO - Market data: 49 candles
+2026-01-09 13:32:03,707 - INFO - Market data: 49 candles
+2026-01-09 13:32:03,707 - INFO - Backtest period: 2026-01-06 21:35:00+00:00 to 2026-01-09 21:25:00+00:00
+2026-01-09 13:32:03,707 - INFO - Backtest period: 2026-01-06 21:35:00+00:00 to 2026-01-09 21:25:00+00:00
+2026-01-09 13:32:03,707 - INFO - Calculating indicators...
+2026-01-09 13:32:03,707 - INFO - Calculating indicators...
+2026-01-09 13:32:04,189 - INFO - OPENED SHORT | Price: 1.16934 | SL: 1.17045 | TP: 1.16823 | Size: 90,453 | Market: NEUTRAL
+2026-01-09 13:32:04,189 - INFO - OPENED SHORT | Price: 1.16934 | SL: 1.17045 | TP: 1.16823 | Size: 90,453 | Market: NEUTRAL
+2026-01-09 13:32:04,196 - INFO - CLOSED SHORT | P/L: $-50.65 | Reason: SIGNAL_REVERSAL | Duration: 120m
+2026-01-09 13:32:04,196 - INFO - CLOSED SHORT | P/L: $-50.65 | Reason: SIGNAL_REVERSAL | Duration: 120m
+2026-01-09 13:32:04,196 - INFO - OPENED LONG | Price: 1.16990 | SL: 1.16893 | TP: 1.17087 | Size: 103,273 | Market: NEUTRAL
+2026-01-09 13:32:04,196 - INFO - OPENED LONG | Price: 1.16990 | SL: 1.16893 | TP: 1.17087 | Size: 103,273 | Market: NEUTRAL
+2026-01-09 13:32:04,198 - INFO - CLOSED LONG | P/L: $-100.00 | Reason: STOP_LOSS | Duration: 40m
+2026-01-09 13:32:04,198 - INFO - CLOSED LONG | P/L: $-100.00 | Reason: STOP_LOSS | Duration: 40m
+2026-01-09 13:32:04,198 - INFO - OPENED SHORT | Price: 1.16864 | SL: 1.17032 | TP: 1.16696 | Size: 59,584 | Market: NEUTRAL
+2026-01-09 13:32:04,198 - INFO - OPENED SHORT | Price: 1.16864 | SL: 1.17032 | TP: 1.16696 | Size: 59,584 | Market: NEUTRAL
+2026-01-09 13:32:04,210 - INFO - CLOSED SHORT | P/L: $-35.75 | Reason: SIGNAL_REVERSAL | Duration: 225m
+2026-01-09 13:32:04,210 - INFO - CLOSED SHORT | P/L: $-35.75 | Reason: SIGNAL_REVERSAL | Duration: 225m
+2026-01-09 13:32:04,210 - INFO - OPENED LONG | Price: 1.16924 | SL: 1.16752 | TP: 1.17096 | Size: 58,253 | Market: NEUTRAL
+2026-01-09 13:32:04,210 - INFO - OPENED LONG | Price: 1.16924 | SL: 1.16752 | TP: 1.17096 | Size: 58,253 | Market: NEUTRAL
+2026-01-09 13:32:04,234 - INFO - CLOSED LONG | P/L: $-54.76 | Reason: SIGNAL_REVERSAL | Duration: 460m
+2026-01-09 13:32:04,234 - INFO - CLOSED LONG | P/L: $-54.76 | Reason: SIGNAL_REVERSAL | Duration: 460m
+2026-01-09 13:32:04,234 - INFO - OPENED SHORT | Price: 1.16830 | SL: 1.16959 | TP: 1.16701 | Size: 77,605 | Market: NEUTRAL
+2026-01-09 13:32:04,234 - INFO - OPENED SHORT | Price: 1.16830 | SL: 1.16959 | TP: 1.16701 | Size: 77,605 | Market: NEUTRAL
+2026-01-09 13:32:04,261 - INFO - CLOSED SHORT | P/L: $24.83 | Reason: SIGNAL_REVERSAL | Duration: 465m
+2026-01-09 13:32:04,261 - INFO - CLOSED SHORT | P/L: $24.83 | Reason: SIGNAL_REVERSAL | Duration: 465m
+2026-01-09 13:32:04,262 - INFO - OPENED LONG | Price: 1.16798 | SL: 1.16700 | TP: 1.16896 | Size: 101,655 | Market: NEUTRAL
+2026-01-09 13:32:04,262 - INFO - OPENED LONG | Price: 1.16798 | SL: 1.16700 | TP: 1.16896 | Size: 101,655 | Market: NEUTRAL
+2026-01-09 13:32:04,279 - INFO - CLOSED LONG | P/L: $-59.98 | Reason: SIGNAL_REVERSAL | Duration: 335m
+2026-01-09 13:32:04,279 - INFO - CLOSED LONG | P/L: $-59.98 | Reason: SIGNAL_REVERSAL | Duration: 335m
+2026-01-09 13:32:04,279 - INFO - OPENED SHORT | Price: 1.16739 | SL: 1.16849 | TP: 1.16629 | Size: 91,126 | Market: NEUTRAL
+2026-01-09 13:32:04,279 - INFO - OPENED SHORT | Price: 1.16739 | SL: 1.16849 | TP: 1.16629 | Size: 91,126 | Market: NEUTRAL
+2026-01-09 13:32:04,297 - INFO - CLOSED SHORT | P/L: $100.00 | Reason: TAKE_PROFIT | Duration: 330m
+2026-01-09 13:32:04,297 - INFO - CLOSED SHORT | P/L: $100.00 | Reason: TAKE_PROFIT | Duration: 330m
+2026-01-09 13:32:04,318 - INFO - OPENED LONG | Price: 1.16532 | SL: 1.16433 | TP: 1.16631 | Size: 101,019 | Market: NEUTRAL
+2026-01-09 13:32:04,318 - INFO - OPENED LONG | Price: 1.16532 | SL: 1.16433 | TP: 1.16631 | Size: 101,019 | Market: NEUTRAL
+2026-01-09 13:32:04,330 - INFO - CLOSED LONG | P/L: $18.18 | Reason: SIGNAL_REVERSAL | Duration: 225m
+2026-01-09 13:32:04,330 - INFO - CLOSED LONG | P/L: $18.18 | Reason: SIGNAL_REVERSAL | Duration: 225m
+2026-01-09 13:32:04,331 - INFO - OPENED SHORT | Price: 1.16550 | SL: 1.16619 | TP: 1.16481 | Size: 145,017 | Market: NEUTRAL
+2026-01-09 13:32:04,331 - INFO - OPENED SHORT | Price: 1.16550 | SL: 1.16619 | TP: 1.16481 | Size: 145,017 | Market: NEUTRAL
+2026-01-09 13:32:04,337 - INFO - CLOSED SHORT | P/L: $100.00 | Reason: TAKE_PROFIT | Duration: 115m
+2026-01-09 13:32:04,337 - INFO - CLOSED SHORT | P/L: $100.00 | Reason: TAKE_PROFIT | Duration: 115m
+2026-01-09 13:32:04,340 - INFO - OPENED LONG | Price: 1.16571 | SL: 1.16440 | TP: 1.16702 | Size: 76,609 | Market: NEUTRAL
+2026-01-09 13:32:04,340 - INFO - OPENED LONG | Price: 1.16571 | SL: 1.16440 | TP: 1.16702 | Size: 76,609 | Market: NEUTRAL
+2026-01-09 13:32:04,348 - INFO - CLOSED LONG | P/L: $-48.26 | Reason: SIGNAL_REVERSAL | Duration: 150m
+2026-01-09 13:32:04,348 - INFO - CLOSED LONG | P/L: $-48.26 | Reason: SIGNAL_REVERSAL | Duration: 150m
+2026-01-09 13:32:04,348 - INFO - OPENED SHORT | Price: 1.16508 | SL: 1.16588 | TP: 1.16428 | Size: 124,959 | Market: NEUTRAL
+2026-01-09 13:32:04,348 - INFO - OPENED SHORT | Price: 1.16508 | SL: 1.16588 | TP: 1.16428 | Size: 124,959 | Market: NEUTRAL
+2026-01-09 13:32:04,354 - INFO - CLOSED SHORT | P/L: $100.00 | Reason: TAKE_PROFIT | Duration: 115m
+2026-01-09 13:32:04,354 - INFO - CLOSED SHORT | P/L: $100.00 | Reason: TAKE_PROFIT | Duration: 115m
+2026-01-09 13:32:04,375 - INFO - OPENED LONG | Price: 1.16516 | SL: 1.16378 | TP: 1.16654 | Size: 72,352 | Market: NEUTRAL
+2026-01-09 13:32:04,375 - INFO - OPENED LONG | Price: 1.16516 | SL: 1.16378 | TP: 1.16654 | Size: 72,352 | Market: NEUTRAL
+2026-01-09 13:32:04,377 - INFO - CLOSED LONG | P/L: $-96.95 | Reason: SIGNAL_REVERSAL | Duration: 55m
+2026-01-09 13:32:04,377 - INFO - CLOSED LONG | P/L: $-96.95 | Reason: SIGNAL_REVERSAL | Duration: 55m
+2026-01-09 13:32:04,377 - INFO - OPENED SHORT | Price: 1.16382 | SL: 1.16666 | TP: 1.16098 | Size: 35,243 | Market: NEUTRAL
+2026-01-09 13:32:04,377 - INFO - OPENED SHORT | Price: 1.16382 | SL: 1.16666 | TP: 1.16098 | Size: 35,243 | Market: NEUTRAL
+2026-01-09 13:32:04,391 - INFO - CLOSED SHORT | P/L: $0.00 | Reason: SIGNAL_REVERSAL | Duration: 250m
+2026-01-09 13:32:04,391 - INFO - CLOSED SHORT | P/L: $0.00 | Reason: SIGNAL_REVERSAL | Duration: 250m
+2026-01-09 13:32:04,391 - INFO - OPENED LONG | Price: 1.16382 | SL: 1.16270 | TP: 1.16494 | Size: 89,340 | Market: NEUTRAL
+2026-01-09 13:32:04,391 - INFO - OPENED LONG | Price: 1.16382 | SL: 1.16270 | TP: 1.16494 | Size: 89,340 | Market: NEUTRAL
+2026-01-09 13:32:04,400 - INFO - CLOSED LONG | P/L: $-33.06 | Reason: BACKTEST_END | Duration: 170m
+2026-01-09 13:32:04,400 - INFO - CLOSED LONG | P/L: $-33.06 | Reason: BACKTEST_END | Duration: 170m
+2026-01-09 13:32:04,400 - INFO - Backtest completed. Total trades: 14
+2026-01-09 13:32:04,400 - INFO - Backtest completed. Total trades: 14
+Downloading historical data...
+Running backtest...
+
+============================================================
+BACKTEST RESULTS
+============================================================
+Instrument: EUR_USD
+Period: 3 days
+Total Trades: 14
+Win Rate: 35.7%
+Total Return: $-136.39
+Return %: -2.73%
+Profit Factor: 0.72
+Final Balance: $4863.61
+/Users/dongchen/Documents/AI-project/GitHub/ppsupertrend/venv/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+Traceback (most recent call last):
+  File "/tmp/run_backtest_20260109_133144.py", line 7, in <module>
+    from backtest.src.report_generator import BacktestReportGenerator
+  File "/Users/dongchen/Documents/AI-project/GitHub/ppsupertrend/./backtest/src/report_generator.py", line 9, in <module>
+    import matplotlib.pyplot as plt
+ModuleNotFoundError: No module named 'matplotlib'

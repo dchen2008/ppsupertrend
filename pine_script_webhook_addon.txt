@@ -1,0 +1,14 @@
+// Add this to the end of your existing Pine Script (PivotPointSuperTrend_Bot_Match.pine)
+
+// Webhook integration for signal transmission
+if buy_signal
+    alert('{"signal":"BUY","symbol":"EUR_USD","price":' + str.tostring(close) + ',"timeframe":"5m","timestamp":"' + str.tostring(time) + '","supertrend":' + str.tostring(supertrend) + ',"atr":' + str.tostring(atr) + '}', alert.freq_once_per_bar)
+
+if sell_signal
+    alert('{"signal":"SELL","symbol":"EUR_USD","price":' + str.tostring(close) + ',"timeframe":"5m","timestamp":"' + str.tostring(time) + '","supertrend":' + str.tostring(supertrend) + ',"atr":' + str.tostring(atr) + '}', alert.freq_once_per_bar)
+
+// Usage Instructions:
+// 1. Add this code to your Pine Script
+// 2. Create TradingView alerts with webhook URL pointing to your server
+// 3. Set webhook URL to: http://your-server:5000/webhook/tradingview
+// 4. Use the JSON alert message for automatic signal transmission

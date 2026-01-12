@@ -1,0 +1,149 @@
+/Users/dongchen/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-01-11 07:32:21,883 - INFO - Downloading EUR_USD data for timeframes: ['M15', 'H3', 'M1']
+2026-01-11 07:32:21,883 - INFO - Downloading EUR_USD data for timeframes: ['M15', 'H3', 'M1']
+2026-01-11 07:32:21,883 - INFO - 
+--- Downloading M15 data ---
+2026-01-11 07:32:21,883 - INFO - 
+--- Downloading M15 data ---
+2026-01-11 07:32:21,883 - INFO - Downloading recent EUR_USD M15 data...
+2026-01-11 07:32:21,883 - INFO - Downloading recent EUR_USD M15 data...
+2026-01-11 07:32:21,883 - INFO - Requesting 2880 recent candles
+2026-01-11 07:32:21,883 - INFO - Requesting 2880 recent candles
+2026-01-11 07:32:22,668 - INFO - Downloaded 2880 candles from 2025-11-26 22:00:00+00:00 to 2026-01-09 21:45:00+00:00
+2026-01-11 07:32:22,668 - INFO - Downloaded 2880 candles from 2025-11-26 22:00:00+00:00 to 2026-01-09 21:45:00+00:00
+2026-01-11 07:32:22,683 - INFO - Data cached to backtest/data/EUR_USD_M15_20251212_20260111.csv
+2026-01-11 07:32:22,683 - INFO - Data cached to backtest/data/EUR_USD_M15_20251212_20260111.csv
+2026-01-11 07:32:22,683 - INFO - ✓ M15: 2880 candles
+2026-01-11 07:32:22,683 - INFO - ✓ M15: 2880 candles
+2026-01-11 07:32:22,683 - INFO - 
+--- Downloading H3 data ---
+2026-01-11 07:32:22,683 - INFO - 
+--- Downloading H3 data ---
+2026-01-11 07:32:22,683 - INFO - Downloading recent EUR_USD H3 data...
+2026-01-11 07:32:22,683 - INFO - Downloading recent EUR_USD H3 data...
+2026-01-11 07:32:22,683 - INFO - Requesting 240 recent candles
+2026-01-11 07:32:22,683 - INFO - Requesting 240 recent candles
+2026-01-11 07:32:22,906 - INFO - Downloaded 240 candles from 2025-11-26 22:00:00+00:00 to 2026-01-09 19:00:00+00:00
+2026-01-11 07:32:22,906 - INFO - Downloaded 240 candles from 2025-11-26 22:00:00+00:00 to 2026-01-09 19:00:00+00:00
+2026-01-11 07:32:22,907 - INFO - Data cached to backtest/data/EUR_USD_H3_20251212_20260111.csv
+2026-01-11 07:32:22,907 - INFO - Data cached to backtest/data/EUR_USD_H3_20251212_20260111.csv
+2026-01-11 07:32:22,907 - INFO - ✓ H3: 240 candles
+2026-01-11 07:32:22,907 - INFO - ✓ H3: 240 candles
+2026-01-11 07:32:22,907 - INFO - 
+--- Downloading M1 data ---
+2026-01-11 07:32:22,907 - INFO - 
+--- Downloading M1 data ---
+2026-01-11 07:32:22,907 - INFO - Downloading recent EUR_USD M1 data...
+2026-01-11 07:32:22,907 - INFO - Downloading recent EUR_USD M1 data...
+2026-01-11 07:32:22,907 - INFO - Requesting 5000 recent candles
+2026-01-11 07:32:22,907 - INFO - Requesting 5000 recent candles
+2026-01-11 07:32:24,564 - INFO - Downloaded 5000 candles from 2026-01-06 10:12:00+00:00 to 2026-01-09 21:59:00+00:00
+2026-01-11 07:32:24,564 - INFO - Downloaded 5000 candles from 2026-01-06 10:12:00+00:00 to 2026-01-09 21:59:00+00:00
+2026-01-11 07:32:24,592 - INFO - Data cached to backtest/data/EUR_USD_M1_20251212_20260111.csv
+2026-01-11 07:32:24,592 - INFO - Data cached to backtest/data/EUR_USD_M1_20251212_20260111.csv
+2026-01-11 07:32:24,592 - INFO - ✓ M1: 5000 candles
+2026-01-11 07:32:24,592 - INFO - ✓ M1: 5000 candles
+2026-01-11 07:32:24,600 - INFO - 🎯 Starting FIXED backtest (exact live bot logic)
+2026-01-11 07:32:24,600 - INFO - Period: 2026-01-04 16:00:00+00:00 to 2026-01-09 16:00:00+00:00
+2026-01-11 07:32:24,602 - INFO - Filtered to 457 trading candles
+2026-01-11 07:32:24,976 - INFO - 
+📍 Signal at 2026-01-05 02:30:00+00:00: SELL
+2026-01-11 07:32:24,976 - INFO -    Market Trend: BEAR
+2026-01-11 07:32:24,976 - INFO -    Entry Price: 1.16853
+2026-01-11 07:32:24,976 - INFO -    ✅ Trade ALLOWED: OPEN_SHORT
+2026-01-11 07:32:24,976 - INFO - Market-aware position sizing:
+2026-01-11 07:32:24,976 - INFO -   Market trend: BEAR, Position: SHORT
+2026-01-11 07:32:24,976 - INFO -   Risk amount: $300.00
+2026-01-11 07:32:24,976 - INFO -   Position size: 88441 units (0.884 lots)
+2026-01-11 07:32:24,976 - INFO -   Actual risk: $300.00
+2026-01-11 07:32:24,976 - INFO -   Stop distance: 0.00339 (33.9 pips)
+2026-01-11 07:32:24,991 - INFO -    📊 Max Potential: $230.83 (ratio: 0.69:1)
+2026-01-11 07:32:24,991 - INFO -    ⏸️  Position OPEN: TP=1.16476, SL=1.17230, Max=1.16592
+2026-01-11 07:32:24,992 - INFO -    📊 Position OPENED: SHORT at 1.16853
+2026-01-11 07:32:25,208 - INFO - 
+📍 Signal at 2026-01-05 15:15:00+00:00: BUY
+2026-01-11 07:32:25,208 - INFO -    Market Trend: BEAR
+2026-01-11 07:32:25,208 - INFO -    Entry Price: 1.16961
+2026-01-11 07:32:25,208 - INFO -    🔄 Closing existing SELL position
+2026-01-11 07:32:25,208 - INFO -    💼 Position CLOSED: -95.52 P&L (Reason: NEW_SIGNAL)
+2026-01-11 07:32:25,208 - INFO - ⚠️  Skipping LONG trade: disable_opposite_trade enabled and market trend is BEAR
+2026-01-11 07:32:25,208 - INFO -    🚫 Trade FILTERED: BUY blocked by disable_opposite_trade in BEAR market
+2026-01-11 07:32:25,529 - INFO - 
+📍 Signal at 2026-01-06 09:00:00+00:00: SELL
+2026-01-11 07:32:25,529 - INFO -    Market Trend: BEAR
+2026-01-11 07:32:25,529 - INFO -    Entry Price: 1.17180
+2026-01-11 07:32:25,529 - INFO -    ✅ Trade ALLOWED: OPEN_SHORT
+2026-01-11 07:32:25,529 - INFO - Market-aware position sizing:
+2026-01-11 07:32:25,529 - INFO -   Market trend: BEAR, Position: SHORT
+2026-01-11 07:32:25,529 - INFO -   Risk amount: $300.00
+2026-01-11 07:32:25,529 - INFO -   Position size: 148874 units (1.489 lots)
+2026-01-11 07:32:25,529 - INFO -   Actual risk: $300.00
+2026-01-11 07:32:25,529 - INFO -   Stop distance: 0.00202 (20.2 pips)
+2026-01-11 07:32:25,546 - INFO -    💰 Take Profit HIT: $355.83 profit
+2026-01-11 07:32:25,875 - INFO - 
+📍 Signal at 2026-01-07 01:30:00+00:00: BUY
+2026-01-11 07:32:25,875 - INFO -    Market Trend: BEAR
+2026-01-11 07:32:25,875 - INFO -    Entry Price: 1.16982
+2026-01-11 07:32:25,875 - INFO - ⚠️  Skipping LONG trade: disable_opposite_trade enabled and market trend is BEAR
+2026-01-11 07:32:25,875 - INFO -    🚫 Trade FILTERED: BUY blocked by disable_opposite_trade in BEAR market
+2026-01-11 07:32:25,982 - INFO - 
+📍 Signal at 2026-01-07 07:30:00+00:00: SELL
+2026-01-11 07:32:25,982 - INFO -    Market Trend: BEAR
+2026-01-11 07:32:25,982 - INFO -    Entry Price: 1.16872
+2026-01-11 07:32:25,982 - INFO -    ✅ Trade ALLOWED: OPEN_SHORT
+2026-01-11 07:32:25,982 - INFO - Market-aware position sizing:
+2026-01-11 07:32:25,982 - INFO -   Market trend: BEAR, Position: SHORT
+2026-01-11 07:32:25,982 - INFO -   Risk amount: $300.00
+2026-01-11 07:32:25,982 - INFO -   Position size: 222134 units (2.221 lots)
+2026-01-11 07:32:25,982 - INFO -   Actual risk: $300.00
+2026-01-11 07:32:25,982 - INFO -   Stop distance: 0.00135 (13.5 pips)
+2026-01-11 07:32:26,005 - INFO -    📊 Max Potential: $319.87 (ratio: 0.83:1)
+2026-01-11 07:32:26,005 - INFO -    ⏸️  Position OPEN: TP=1.16699, SL=1.17045, Max=1.16728
+2026-01-11 07:32:26,006 - INFO -    📊 Position OPENED: SHORT at 1.16872
+2026-01-11 07:32:26,378 - INFO - 
+📍 Signal at 2026-01-08 05:45:00+00:00: BUY
+2026-01-11 07:32:26,378 - INFO -    Market Trend: BEAR
+2026-01-11 07:32:26,378 - INFO -    Entry Price: 1.16825
+2026-01-11 07:32:26,378 - INFO -    🔄 Closing existing SELL position
+2026-01-11 07:32:26,378 - INFO -    💼 Position CLOSED: +104.40 P&L (Reason: NEW_SIGNAL)
+2026-01-11 07:32:26,379 - INFO - ⚠️  Skipping LONG trade: disable_opposite_trade enabled and market trend is BEAR
+2026-01-11 07:32:26,379 - INFO -    🚫 Trade FILTERED: BUY blocked by disable_opposite_trade in BEAR market
+2026-01-11 07:32:26,432 - INFO - 
+📍 Signal at 2026-01-08 08:30:00+00:00: SELL
+2026-01-11 07:32:26,432 - INFO -    Market Trend: BEAR
+2026-01-11 07:32:26,432 - INFO -    Entry Price: 1.16717
+2026-01-11 07:32:26,432 - INFO -    ✅ Trade ALLOWED: OPEN_SHORT
+2026-01-11 07:32:26,432 - INFO - Market-aware position sizing:
+2026-01-11 07:32:26,432 - INFO -   Market trend: BEAR, Position: SHORT
+2026-01-11 07:32:26,432 - INFO -   Risk amount: $300.00
+2026-01-11 07:32:26,432 - INFO -   Position size: 209538 units (2.095 lots)
+2026-01-11 07:32:26,432 - INFO -   Actual risk: $300.00
+2026-01-11 07:32:26,432 - INFO -   Stop distance: 0.00143 (14.3 pips)
+2026-01-11 07:32:26,464 - INFO -    💰 Take Profit HIT: $378.58 profit
+
+🎯 FIXED BACKTEST - EXACT LIVE BOT LOGIC
+Account: account1
+Instrument: EUR_USD
+Timeframe: 15m
+Period: 2026-01-04 16:00:00+00:00 to 2026-01-09 16:00:00+00:00
+Initial Balance: $5,000.00
+
+📥 Downloading data...
+
+🔧 Running FIXED backtest with exact live bot logic...
+
+📊 FIXED BACKTEST RESULTS:
+Total Allowed Trades: 4
+Profitable Trades (TP Hit): 2
+Win Rate (TP Hit Rate): 50.0%
+Actual Profit (TP Hits): $734.41
+Max Potential Profit: $2177.90
+Return %: +14.69%
+Final Balance: $6,477.70
+
+📈 TRADE BREAKDOWN:
+  SELL trades: 4 total, 2 profitable (50.0%)
+
+📄 Signal analysis saved to: EUR_USD_15m_account1_sign_ratio_profit_Jan-4_Jan-9_790.csv
+Path: backtest/results/EUR_USD_15m_account1_sign_ratio_profit_Jan-4_Jan-9_790.csv

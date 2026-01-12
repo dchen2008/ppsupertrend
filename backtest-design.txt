@@ -1,0 +1,19 @@
+Base on current bot code exactly logic, pls implement a backtest.
+1. Download latest 3 or 6 month(configable) data for OANDA:
+    it supports to get 3H, 5min, 15mins pp SuperTrend info
+    live candle price data
+
+2. running cmd as:
+    ./scripts/bt_auto_trade_market.sh at=account1 fr=EUR_USD tf=5m bt=30d
+    ./scripts/bt_auto_trade_market.sh at=account2 fr=GBP_USD tf=15m bt=30d
+    The bt=30d, means backtest timeframe is 30 days.
+
+    Pls add a prefix into print out log/csv files as: bt_xxx
+
+3. pls follow industry best practice print out a comprehensive summary report for each back testing
+
+4. The new backtest code should be  new folder: ./backtest
+   and support parallel running backtest code.
+   and when running bt should not impact bot auto trade running
+   and backtest code should minize OANDA API call times.
+

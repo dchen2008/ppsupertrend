@@ -188,7 +188,7 @@ class RiskManager:
         self.logger.info(f"Calculated take profit: {take_profit:.5f} (RR: {risk_reward_ratio})")
         return round(take_profit, 5)
 
-    def should_trade(self, signal_info, current_position, current_candle_time, last_signal_candle_time):
+    def should_trade(self, signal_info, current_position, current_candle_time, last_signal_candle_time, market_trend=None, config=None):
         """
         Determine if we should execute a trade based on current state
 
@@ -196,14 +196,16 @@ class RiskManager:
         - Close LONG position when SELL signal appears
         - Close SHORT position when BUY signal appears
         - This allows new position to open immediately (OANDA allows only 1 position per instrument)
-        - Prevent duplicate trades on the same signal candle
-        - Skip stale signals (older than max_signal_age)
+        - Prevent duplicate trades on the same signal candle (one trade per signal)
+        - Check disable_opposite_trade to skip trades opposite to market trend
 
         Args:
-            signal_info: Signal information dict with 'signal' and 'candle_age_seconds'
+            signal_info: Signal information dict with 'signal'
             current_position: Current position dict or None
             current_candle_time: Timestamp of the current signal candle
             last_signal_candle_time: Timestamp of the last candle that triggered a trade
+            market_trend: Current market trend ('BULL', 'BEAR', 'NEUTRAL')
+            config: Bot configuration dict
 
         Returns:
             tuple: (bool: should_trade, str: action, str: next_action)
@@ -212,24 +214,29 @@ class RiskManager:
         """
         signal = signal_info['signal']
 
-        # Check signal age - skip if too old (stale) - but only for entry signals
-        # HOLD signals should persist indefinitely to allow take profit targets to be reached
-        if 'candle_age_seconds' in signal_info and signal not in ['HOLD_LONG', 'HOLD_SHORT']:
-            signal_age = signal_info['candle_age_seconds']
-            if signal_age > TradingConfig.max_signal_age:
-                self.logger.warning(f"⏰ Skipping stale {signal} signal: {signal_age:.1f}s old (max: {TradingConfig.max_signal_age}s)")
-                return False, 'HOLD', None
-
-        # Check for duplicate signal from same candle
+        # Check for duplicate signal from same candle (ensures one trade per signal)
         if last_signal_candle_time is not None and current_candle_time == last_signal_candle_time:
             self.logger.debug(f"Ignoring duplicate {signal} signal from same candle: {current_candle_time}")
             return False, 'HOLD', None
 
+        # Check disable_opposite_trade setting
+        disable_opposite_trade = False
+        if config and config.get('position_sizing', {}).get('disable_opposite_trade', False):
+            disable_opposite_trade = True
+
         # If no position, check for entry signals
         if current_position is None or current_position['units'] == 0:
             if signal == 'BUY':
+                # Check if disable_opposite_trade is enabled and market trend is BEAR
+                if disable_opposite_trade and market_trend == 'BEAR':
+                    self.logger.info(f"⚠️  Skipping LONG trade: disable_opposite_trade enabled and market trend is BEAR")
+                    return False, 'HOLD', None
                 return True, 'OPEN_LONG', None
             elif signal == 'SELL':
+                # Check if disable_opposite_trade is enabled and market trend is BULL
+                if disable_opposite_trade and market_trend == 'BULL':
+                    self.logger.info(f"⚠️  Skipping SHORT trade: disable_opposite_trade enabled and market trend is BULL")
+                    return False, 'HOLD', None
                 return True, 'OPEN_SHORT', None
             else:
                 return False, 'HOLD', None
@@ -239,11 +246,21 @@ class RiskManager:
 
         # Close on opposite signal and prepare to open opposite position immediately
         if current_side == 'LONG' and signal == 'SELL':
-            self.logger.info("🔄 Trend reversal: Closing LONG and opening SHORT")
-            return True, 'CLOSE', 'OPEN_SHORT'
+            # Check if disable_opposite_trade prevents SHORT position in BULL market
+            if disable_opposite_trade and market_trend == 'BULL':
+                self.logger.info("🔄 Trend reversal: Closing LONG position only (disable_opposite_trade prevents SHORT in BULL market)")
+                return True, 'CLOSE', None
+            else:
+                self.logger.info("🔄 Trend reversal: Closing LONG and opening SHORT")
+                return True, 'CLOSE', 'OPEN_SHORT'
         elif current_side == 'SHORT' and signal == 'BUY':
-            self.logger.info("🔄 Trend reversal: Closing SHORT and opening LONG")
-            return True, 'CLOSE', 'OPEN_LONG'
+            # Check if disable_opposite_trade prevents LONG position in BEAR market
+            if disable_opposite_trade and market_trend == 'BEAR':
+                self.logger.info("🔄 Trend reversal: Closing SHORT position only (disable_opposite_trade prevents LONG in BEAR market)")
+                return True, 'CLOSE', None
+            else:
+                self.logger.info("🔄 Trend reversal: Closing SHORT and opening LONG")
+                return True, 'CLOSE', 'OPEN_LONG'
 
         # Hold if no action needed
         return False, 'HOLD', None

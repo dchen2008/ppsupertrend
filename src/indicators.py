@@ -280,8 +280,25 @@ def get_current_signal(df):
     last_row = df.iloc[-1]
     prev_row = df.iloc[-2] if len(df) > 1 else None
 
+    # Check for buy signal
+    if last_row['buy_signal']:
+        signal = 'BUY'
+    # Check for sell signal
+    elif last_row['sell_signal']:
+        signal = 'SELL'
+    # If in uptrend but no new signal, trend continuation
+    elif last_row['trend'] == 1:
+        signal = 'HOLD_LONG'
+    # If in downtrend but no new signal, trend continuation
+    elif last_row['trend'] == -1:
+        signal = 'HOLD_SHORT'
+    # Should never reach here if PP SuperTrend is working correctly
+    else:
+        # Default to trend-based signal if somehow trend is 0
+        signal = 'HOLD_LONG' if last_row['close'] > last_row['supertrend'] else 'HOLD_SHORT'
+
     signal_info = {
-        'signal': 'HOLD',
+        'signal': signal,
         'trend': int(last_row['trend']),
         'supertrend': float(last_row['supertrend']) if not pd.isna(last_row['supertrend']) else None,
         'price': float(last_row['close']),
@@ -290,19 +307,6 @@ def get_current_signal(df):
         'atr': float(last_row['atr']) if not pd.isna(last_row['atr']) else None,
         'pivot': float(last_row['center']) if not pd.isna(last_row['center']) else None
     }
-
-    # Check for buy signal
-    if last_row['buy_signal']:
-        signal_info['signal'] = 'BUY'
-    # Check for sell signal
-    elif last_row['sell_signal']:
-        signal_info['signal'] = 'SELL'
-    # If in uptrend but no new signal, trend continuation
-    elif last_row['trend'] == 1:
-        signal_info['signal'] = 'HOLD_LONG'
-    # If in downtrend but no new signal, trend continuation
-    elif last_row['trend'] == -1:
-        signal_info['signal'] = 'HOLD_SHORT'
     
     # Add debug info for signal detection
     if prev_row is not None:

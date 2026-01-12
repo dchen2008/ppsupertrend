@@ -6,27 +6,31 @@
 # Usage:
 #   ./auto_trade_market.sh at=account1 fr=EUR_USD tf=5m
 #   ./auto_trade_market.sh at=account2 fr=EUR_USD tf=15m
+#   ./auto_trade_market.sh at=account1 fr=EUR_USD tf=5m catch-up
 #
 # Examples:
 #   ./auto_trade_market.sh at=account1 fr=EUR_USD tf=5m
 #   ./auto_trade_market.sh at=account1 fr=GBP_USD tf=15m
 #   ./auto_trade_market.sh at=account2 fr=USD_JPY tf=5m
+#   ./auto_trade_market.sh at=account1 fr=EUR_USD tf=5m catch-up  # Enter on current trend
 
-# Check if correct number of arguments
-if [ "$#" -ne 3 ]; then
+# Check if correct number of arguments (3 required, 1 optional)
+if [ "$#" -lt 3 ] || [ "$#" -gt 4 ]; then
     echo "❌ Error: Invalid number of arguments"
     echo ""
-    echo "Usage: $0 at=<account> fr=<instrument> tf=<timeframe>"
+    echo "Usage: $0 at=<account> fr=<instrument> tf=<timeframe> [catch-up]"
     echo ""
     echo "Examples:"
     echo "  $0 at=account1 fr=EUR_USD tf=5m"
     echo "  $0 at=account2 fr=EUR_USD tf=15m"
     echo "  $0 at=account1 fr=GBP_USD tf=5m"
+    echo "  $0 at=account1 fr=EUR_USD tf=5m catch-up  # Enter on current trend"
     echo ""
     echo "Parameters:"
     echo "  at=account1|account2|account3  - Trading account to use"
     echo "  fr=EUR_USD|GBP_USD|USD_JPY...  - Currency pair to trade"
     echo "  tf=5m|15m                      - Trading timeframe"
+    echo "  catch-up                       - (Optional) Enter position on current trend"
     echo ""
     echo "Note: Account-specific configuration will be loaded from:"
     echo "      <account>/config.yaml"
@@ -37,6 +41,7 @@ fi
 ACCOUNT_ARG=$1
 INSTRUMENT_ARG=$2
 TIMEFRAME_ARG=$3
+CATCHUP_ARG=$4
 
 # Validate account argument format
 if [[ ! $ACCOUNT_ARG =~ ^at= ]]; then
@@ -149,4 +154,9 @@ mkdir -p "${ACCOUNT}/logs"
 mkdir -p "${ACCOUNT}/csv"
 
 # Run the market-aware bot
-python3 -m src.trading_bot_market_aware "$ACCOUNT_ARG" "$INSTRUMENT_ARG" "$TIMEFRAME_ARG"
+if [ -n "$CATCHUP_ARG" ]; then
+    echo "🔄 Catch-up mode enabled: Will enter on current trend if no position"
+    python3 -m src.trading_bot_market_aware "$ACCOUNT_ARG" "$INSTRUMENT_ARG" "$TIMEFRAME_ARG" "$CATCHUP_ARG"
+else
+    python3 -m src.trading_bot_market_aware "$ACCOUNT_ARG" "$INSTRUMENT_ARG" "$TIMEFRAME_ARG"
+fi

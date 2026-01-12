@@ -129,3 +129,18 @@ position_sizing:
 
   This aligns position sizing with market conditions - taking larger positions when trading WITH the trend and
   smaller positions when trading AGAINST the trend.
+
+
+  2. backtest requirements
+
+  can you double check why orignal backtest code result is so different with your latest? Pls    │
+│   enhance the backtest code, make sure it is really work as my bot logic.                        │
+│   and enhance backtest cmd support one time range:bt=01/04/2026 16:00:00,01/09/2026 16:00:00,    │
+│   e.g.:                                                                                          │
+│   ./backtest/scripts/bt_auto_trade_market.sh at=account1 fr=EUR_USD tf=5m bt=1/04/2026           │
+│   16:00:00,01/09/2026 16:00:00                                                                   │
+│   and please print out one new csv as your above output, filename:                               │
+│   bt_EUR_USD_5m_account1_5d_20260109_142228_EUR_USD_5m_sign_ratio.csv                            │
+│   sign, time,           highest_ratio,potential_profit,                                          │
+│   sell,"Jan 4, 10:55pm",2.78:1, $3.94,                                                           │
+╰────────────────────────────────────────
