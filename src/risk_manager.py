@@ -196,12 +196,11 @@ class RiskManager:
         - Close LONG position when SELL signal appears
         - Close SHORT position when BUY signal appears
         - This allows new position to open immediately (OANDA allows only 1 position per instrument)
-        - Prevent duplicate trades on the same signal candle
-        - Skip stale signals (older than max_signal_age)
+        - Prevent duplicate trades on the same signal candle (one trade per signal)
         - Check disable_opposite_trade to skip trades opposite to market trend
 
         Args:
-            signal_info: Signal information dict with 'signal' and 'candle_age_seconds'
+            signal_info: Signal information dict with 'signal'
             current_position: Current position dict or None
             current_candle_time: Timestamp of the current signal candle
             last_signal_candle_time: Timestamp of the last candle that triggered a trade
@@ -215,15 +214,7 @@ class RiskManager:
         """
         signal = signal_info['signal']
 
-        # Check signal age - skip if too old (stale) - but only for entry signals
-        # HOLD signals should persist indefinitely to allow take profit targets to be reached
-        if 'candle_age_seconds' in signal_info and signal not in ['HOLD_LONG', 'HOLD_SHORT']:
-            signal_age = signal_info['candle_age_seconds']
-            if signal_age > TradingConfig.max_signal_age:
-                self.logger.warning(f"⏰ Skipping stale {signal} signal: {signal_age:.1f}s old (max: {TradingConfig.max_signal_age}s)")
-                return False, 'HOLD', None
-
-        # Check for duplicate signal from same candle
+        # Check for duplicate signal from same candle (ensures one trade per signal)
         if last_signal_candle_time is not None and current_candle_time == last_signal_candle_time:
             self.logger.debug(f"Ignoring duplicate {signal} signal from same candle: {current_candle_time}")
             return False, 'HOLD', None

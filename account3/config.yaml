@@ -1,8 +1,8 @@
-# Account3 Configuration Override
-# Test configuration with disable_opposite_trade disabled
+# Account1 Configuration Override
+# Conservative configuration - uses mostly defaults
 
 # Check interval in seconds
-check_interval: 60
+check_interval: 10
 
 # Market trend configuration
 market:
@@ -12,23 +12,24 @@ market:
 # Stop loss configuration
 stoploss:
   type: PPSuperTrend
+  spread_buffer_pips: 3   # Additional buffer in pips when use_spread_adjustment=True (default: 3)
   
-# Standard Risk/Reward configuration
+# Conservative Risk/Reward configuration
 risk_reward:
   bear_market:
-    short_rr: 1.2    
-    long_rr: 0.6     
+    short_rr: 1.5    # Conservative approach
+    long_rr: 0.8     # Conservative approach
   bull_market:
-    short_rr: 0.6    
-    long_rr: 1.2     
+    short_rr: 0.8   # Conservative approach
+    long_rr: 1.5     # Conservative approach
     
-# Position sizing configuration - allow opposite trades
+# Position sizing configuration based on market trend
 position_sizing:
   use_dynamic: true
-  disable_opposite_trade: false  # Allow trades against 3H trend
+  disable_opposite_trade: true  # if 3H PP SuperTrend sign is bear/bull, the bot will skip trade when 5mins/15mins's pp sign is LONG/SHORT
   bear:  # Bear market (3H PP SuperTrend signal)
-    short_risk_per_trade: 300   
-    long_risk_per_trade: 100    
+    short_risk_per_trade: 100   # If 5min/15min PP sign is SHORT, risk $300 per trade
+    long_risk_per_trade: 100    # If 5min/15min PP sign is LONG, risk $100 per trade
   bull:  # Bull market (3H PP SuperTrend signal)
-    short_risk_per_trade: 100   
-    long_risk_per_trade: 300
+    short_risk_per_trade: 100   # If 5min/15min PP sign is SHORT, risk $100 per trade
+    long_risk_per_trade: 100    # If 5min/15min PP sign is LONG, risk $300 per trade

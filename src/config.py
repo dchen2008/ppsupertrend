@@ -20,16 +20,16 @@ class OANDAConfig:
             'account_id': '101-001-38143009-001',
             'is_practice': True
         },
-        # email:fastsolarllc@gmail.com
+                # email:don@aidog.us
         'account3': {
-            'api_key': '',
-            'account_id': 'your_account_id_here',
+            'api_key': '068b6bc3bd53b0156d2e4811d38c42d9-bed103c8bc1666cb8308ba5267b1d510',
+            'account_id': '101-001-38195348-001',
             'is_practice': True
         },
-        # email:don@aidog.ai
+        # email:fastsolarllc@gmail.com
         'account4': {
-            'api_key': 'your_api_key_here',
-            'account_id': 'your_account_id_here',
+            'api_key': '97e97cf3987d09e57edbc71c4cac6ad9-196ea977cd536d28e4f7bffe0ba4f9c1',
+            'account_id': '101-001-38195467-001',
             'is_practice': True
         }
 
@@ -141,7 +141,6 @@ class TradingConfig:
     # Bot behavior
     check_interval = 60  # Check for new signals every 60 seconds (faster trailing stop updates)
     lookback_candles = 100  # Number of candles to fetch for calculation
-    max_signal_age = 180  # Maximum age (in seconds) of a signal to act upon. Skip signals older than this to avoid stale entries.
 
     # Trailing stop loss settings
     enable_trailing_stop = True  # Enable trailing stop loss that follows SuperTrend

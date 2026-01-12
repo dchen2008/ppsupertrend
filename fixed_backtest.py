@@ -354,28 +354,34 @@ class FixedBacktestEngine:
                             min_loss_price = lowest_price
                             unrealized_pl_max = (max_profit_price - signal_info['price']) * position_size
                             max_profit_ratio = (max_profit_price - signal_info['price']) / risk if risk > 0 else 0
-                            
+                            # Calculate potential loss (worst drawdown)
+                            unrealized_pl_min = (min_loss_price - signal_info['price']) * position_size  # Negative for loss
+                            min_loss_ratio = (signal_info['price'] - min_loss_price) / risk if risk > 0 else 0
+
                             # Check if take profit or stop loss would be hit
                             take_profit_hit = highest_price >= take_profit_price
                             stop_loss_hit = lowest_price <= stop_loss
-                            
+
                             if take_profit_hit:
                                 actual_profit = reward * position_size
                             elif stop_loss_hit:
                                 actual_profit = -risk_amount  # Full loss
                             else:
                                 actual_profit = 0  # Position still open, no realized P&L
-                            
+
                         else:  # SHORT
                             max_profit_price = lowest_price
                             min_loss_price = highest_price
                             unrealized_pl_max = (signal_info['price'] - max_profit_price) * position_size
                             max_profit_ratio = (signal_info['price'] - max_profit_price) / risk if risk > 0 else 0
-                            
+                            # Calculate potential loss (worst drawdown)
+                            unrealized_pl_min = (signal_info['price'] - min_loss_price) * position_size  # Negative for loss
+                            min_loss_ratio = (min_loss_price - signal_info['price']) / risk if risk > 0 else 0
+
                             # Check if take profit or stop loss would be hit
                             take_profit_hit = lowest_price <= take_profit_price
                             stop_loss_hit = highest_price >= stop_loss
-                            
+
                             if take_profit_hit:
                                 actual_profit = reward * position_size
                             elif stop_loss_hit:
@@ -416,7 +422,7 @@ class FixedBacktestEngine:
                             position_status = 'OPEN'
                         
                         self.signal_analysis.append({
-                            'market': current_market_trend,  # 3H PP market trend 
+                            'market': current_market_trend,  # 3H PP market trend
                             'signal': current_actual_signal,       # 5m/15m PP signal
                             'time': utc_minus_8.strftime('%b %d, %I:%M%p'),
                             'entry_price': f"{signal_info['price']:.5f}",
@@ -431,6 +437,8 @@ class FixedBacktestEngine:
                             'highest_ratio': f"{max_profit_ratio:.2f}:1",
                             'potential_profit': f"${unrealized_pl_max:.2f}",
                             'actual_profit': f"${actual_profit:.2f}",
+                            'lowest_ratio': f"{min_loss_ratio:.2f}:1",
+                            'potential_loss': f"${unrealized_pl_min:.2f}",
                             'position_status': position_status,
                             'take_profit_hit': 'YES' if take_profit_hit else 'NO',
                             'stop_loss_hit': 'YES' if ('stop_loss_hit' in locals() and stop_loss_hit) else 'NO'
@@ -519,7 +527,7 @@ class FixedBacktestEngine:
             'market', 'signal', 'time', 'entry_price', 'stop_loss_price', 'take_profit_price',
             'position_lots', 'risk_amount', 'original_stop_pips', 'buffer_pips', 'adjusted_stop_pips',
             'take_profit_ratio', 'highest_ratio', 'potential_profit', 'actual_profit',
-            'position_status', 'take_profit_hit', 'stop_loss_hit'
+            'lowest_ratio', 'potential_loss', 'position_status', 'take_profit_hit', 'stop_loss_hit'
         ]
         
         df_csv = df[csv_columns].copy()
@@ -601,7 +609,6 @@ def main():
     print(f"Instrument: {instrument}")
     print(f"Timeframe: {timeframe}")
     print(f"Period: {start_date} to {end_date}")
-    print(f"Initial Balance: ${args.balance:,.2f}")
     
     try:
         # Download data
@@ -624,7 +631,8 @@ def main():
             account=account,
             initial_balance=args.balance
         )
-        
+        print(f"Initial Balance: ${engine.initial_balance:,.2f}")
+
         results = engine.run_fixed_backtest(
             data[granularity], data['H3'], start_date, end_date
         )

@@ -2,7 +2,7 @@
 # Conservative configuration - uses mostly defaults
 
 # Check interval in seconds
-check_interval: 60
+check_interval: 10
 
 # Market trend configuration
 market:
@@ -12,23 +12,24 @@ market:
 # Stop loss configuration
 stoploss:
   type: PPSuperTrend
+  spread_buffer_pips: 3   # Additional buffer in pips when use_spread_adjustment=True (default: 3)
   
 # Conservative Risk/Reward configuration
 risk_reward:
   bear_market:
-    short_rr: 1.0    # Conservative approach
-    long_rr: 0.5     # Conservative approach
+    short_rr: 0.6    # Conservative approach
+    long_rr: 0.3     # Conservative approach
   bull_market:
-    short_rr: 0.5    # Conservative approach
-    long_rr: 1.0     # Conservative approach
+    short_rr: 0.3    # Conservative approach
+    long_rr: 0.6     # Conservative approach
     
 # Position sizing configuration based on market trend
 position_sizing:
   use_dynamic: true
   disable_opposite_trade: true  # if 3H PP SuperTrend sign is bear/bull, the bot will skip trade when 5mins/15mins's pp sign is LONG/SHORT
   bear:  # Bear market (3H PP SuperTrend signal)
-    short_risk_per_trade: 300   # If 5min/15min PP sign is SHORT, risk $300 per trade
+    short_risk_per_trade: 100   # If 5min/15min PP sign is SHORT, risk $300 per trade
     long_risk_per_trade: 100    # If 5min/15min PP sign is LONG, risk $100 per trade
   bull:  # Bull market (3H PP SuperTrend signal)
     short_risk_per_trade: 100   # If 5min/15min PP sign is SHORT, risk $100 per trade
-    long_risk_per_trade: 300    # If 5min/15min PP sign is LONG, risk $300 per trade
+    long_risk_per_trade: 100    # If 5min/15min PP sign is LONG, risk $300 per trade

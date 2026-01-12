@@ -9,6 +9,7 @@ import sys
 import argparse
 import csv
 import os
+import json
 from datetime import datetime
 from threading import Lock
 import pandas as pd
@@ -113,7 +114,11 @@ class TradingBotEnhanced:
         self.trade_id_counter = 0
 
         # Track last signal candle timestamp to prevent duplicate trades
-        self.last_signal_candle_time = None
+        # Persisted to file so it survives bot restarts
+        state_dir = f"{account}/state"
+        os.makedirs(state_dir, exist_ok=True)
+        self.state_file = f"{state_dir}/{instrument}_{timeframe}_state.json"
+        self.last_signal_candle_time = self._load_state()
 
         self.logger.info("=" * 80)
         self.logger.info(f"Enhanced Trading Bot Initialized")
@@ -130,7 +135,34 @@ class TradingBotEnhanced:
                         f"ATR Period={TradingConfig.atr_period}")
         self.logger.info(f"Check Interval: {TradingConfig.check_interval} seconds")
         self.logger.info(f"Trailing Stop: {'ENABLED' if TradingConfig.enable_trailing_stop else 'DISABLED'}")
+        if self.last_signal_candle_time:
+            self.logger.info(f"📂 Restored last signal time: {self.last_signal_candle_time}")
         self.logger.info("=" * 80)
+
+    def _load_state(self):
+        """Load persisted state from file (survives bot restarts)"""
+        try:
+            if os.path.exists(self.state_file):
+                with open(self.state_file, 'r') as f:
+                    state = json.load(f)
+                last_signal_time_str = state.get('last_signal_candle_time')
+                if last_signal_time_str:
+                    return pd.Timestamp(last_signal_time_str)
+        except Exception as e:
+            print(f"Warning: Could not load state from {self.state_file}: {e}")
+        return None
+
+    def _save_state(self):
+        """Save state to file for persistence across restarts"""
+        try:
+            state = {
+                'last_signal_candle_time': self.last_signal_candle_time.isoformat() if self.last_signal_candle_time else None,
+                'updated_at': datetime.now().isoformat()
+            }
+            with open(self.state_file, 'w') as f:
+                json.dump(state, f, indent=2)
+        except Exception as e:
+            self.logger.warning(f"Could not save state to {self.state_file}: {e}")
 
     def setup_logging(self):
         """Configure logging with unique logger name"""
@@ -403,6 +435,7 @@ class TradingBotEnhanced:
 
                 # Reset signal tracking so next signal can be acted upon
                 self.last_signal_candle_time = None
+                self._save_state()
             else:
                 self.logger.error("❌ Failed to close position")
 
@@ -724,6 +757,7 @@ class TradingBotEnhanced:
                     self.current_pivot_point_value = None
                     self.current_position_size = None
                     self.last_signal_candle_time = None
+                    self._save_state()
 
             # Recover tracking if needed
             if current_position and current_position['units'] != 0 and not self.current_stop_loss_order_id:
@@ -807,6 +841,8 @@ class TradingBotEnhanced:
 
                 # Update last signal candle time after ALL actions complete
                 self.last_signal_candle_time = candle_timestamp
+                self._save_state()
+                self.logger.info(f"📝 Saved signal state: {candle_timestamp}")
             else:
                 if current_position and current_position['units'] != 0:
                     self.update_trailing_stop_loss(signal_info, current_position)

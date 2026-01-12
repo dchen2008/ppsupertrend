@@ -20,12 +20,12 @@ stoploss:
 risk_reward:
   bear_market:
     # During bear markets, favor short positions
-    short_rr: 1.2         # Take profit at 1.2 R:R for short positions
-    long_rr: 0.6          # Take profit at 0.6 R:R for long positions (small profit)
+    short_rr: 2.0         # Take profit at 1.2 R:R for short positions
+    long_rr: 0.8          # Take profit at 0.6 R:R for long positions (small profit)
   bull_market:
     # During bull markets, favor long positions  
-    short_rr: 0.6         # Take profit at 0.6 R:R for short positions (small profit)
-    long_rr: 1.2          # Take profit at 1.2 R:R for long positions
+    short_rr: 0.8         # Take profit at 0.6 R:R for short positions (small profit)
+    long_rr: 2.0          # Take profit at 1.2 R:R for long positions
 
 # Position sizing configuration based on market trend
 position_sizing:
