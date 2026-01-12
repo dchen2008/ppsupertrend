@@ -793,11 +793,29 @@ class MarketAwareTradingBot:
                         self.current_stop_loss_order_id = sl_order['id']
                         self.current_stop_loss_price = float(sl_order['price'])
                         self.current_position_side = position_type
-                    
-                    # Store take profit info
+
+                    # Store take profit info and recalculate if needed based on actual fill price
                     if 'takeProfitOrderTransaction' in result:
                         tp_order = result['takeProfitOrderTransaction']
-                        self.current_take_profit_price = float(tp_order['price'])
+                        initial_tp_price = float(tp_order['price'])
+                        tp_order_id = tp_order['id']
+
+                        # Recalculate correct TP based on actual fill price (not signal price)
+                        correct_tp = self.calculate_take_profit(actual_price, stop_loss, position_type, risk_reward_ratio)
+
+                        # Check if TP needs correction (more than 0.5 pip difference)
+                        tp_difference_pips = abs(correct_tp - initial_tp_price) / 0.0001
+                        if tp_difference_pips > 0.5:
+                            self.logger.info(f"📐 TP Correction: {initial_tp_price:.5f} → {correct_tp:.5f} (based on actual fill {actual_price:.5f})")
+                            try:
+                                self.client.update_take_profit(self.current_trade_id, correct_tp, tp_order_id)
+                                self.current_take_profit_price = correct_tp
+                                self.logger.info(f"✅ Take profit updated to {correct_tp:.5f}")
+                            except Exception as e:
+                                self.logger.warning(f"⚠️  Failed to update TP: {e}. Using initial TP {initial_tp_price:.5f}")
+                                self.current_take_profit_price = initial_tp_price
+                        else:
+                            self.current_take_profit_price = initial_tp_price
 
                     # Initialize trade tracker
                     self.trade_tracker.entry_price = actual_price

@@ -304,7 +304,15 @@ class FixedBacktestEngine:
                         stop_loss = signal_info['supertrend'] - spread_adjustment
                     else:
                         stop_loss = signal_info['supertrend'] + spread_adjustment
-                    
+
+                    # Simulate entry fill price with spread (like live trading)
+                    # LONG: buy at ASK (mid + half spread), SHORT: sell at BID (mid - half spread)
+                    half_spread = typical_spread / 2.0
+                    if position_type == 'LONG':
+                        entry_fill_price = signal_info['price'] + half_spread
+                    else:
+                        entry_fill_price = signal_info['price'] - half_spread
+
                     # Get take profit ratio from config (exactly like live bot)
                     if current_market_trend == 'BEAR' and position_type == 'SHORT':
                         take_profit_ratio = self.config.get('risk_reward', {}).get('bear_market', {}).get('short_rr', 1.2)
@@ -317,14 +325,15 @@ class FixedBacktestEngine:
                     else:
                         take_profit_ratio = 1.0
                     
-                    # Calculate take profit price (exactly like live bot)
-                    risk = abs(signal_info['price'] - stop_loss)
+                    # Calculate take profit price based on FILL price (not signal price)
+                    # This matches the fix in live bot where TP is recalculated after fill
+                    risk = abs(entry_fill_price - stop_loss)
                     reward = risk * take_profit_ratio
-                    
+
                     if position_type == 'LONG':
-                        take_profit_price = signal_info['price'] + reward
+                        take_profit_price = entry_fill_price + reward
                     else:
-                        take_profit_price = signal_info['price'] - reward
+                        take_profit_price = entry_fill_price - reward
                     
                     # Find next signal to calculate potential profit
                     next_signal_time = None
@@ -352,11 +361,11 @@ class FixedBacktestEngine:
                         if position_type == 'LONG':
                             max_profit_price = highest_price
                             min_loss_price = lowest_price
-                            unrealized_pl_max = (max_profit_price - signal_info['price']) * position_size
-                            max_profit_ratio = (max_profit_price - signal_info['price']) / risk if risk > 0 else 0
+                            unrealized_pl_max = (max_profit_price - entry_fill_price) * position_size
+                            max_profit_ratio = (max_profit_price - entry_fill_price) / risk if risk > 0 else 0
                             # Calculate potential loss (worst drawdown)
-                            unrealized_pl_min = (min_loss_price - signal_info['price']) * position_size  # Negative for loss
-                            min_loss_ratio = (signal_info['price'] - min_loss_price) / risk if risk > 0 else 0
+                            unrealized_pl_min = (min_loss_price - entry_fill_price) * position_size  # Negative for loss
+                            min_loss_ratio = (entry_fill_price - min_loss_price) / risk if risk > 0 else 0
 
                             # Check if take profit or stop loss would be hit
                             take_profit_hit = highest_price >= take_profit_price
@@ -372,11 +381,11 @@ class FixedBacktestEngine:
                         else:  # SHORT
                             max_profit_price = lowest_price
                             min_loss_price = highest_price
-                            unrealized_pl_max = (signal_info['price'] - max_profit_price) * position_size
-                            max_profit_ratio = (signal_info['price'] - max_profit_price) / risk if risk > 0 else 0
+                            unrealized_pl_max = (entry_fill_price - max_profit_price) * position_size
+                            max_profit_ratio = (entry_fill_price - max_profit_price) / risk if risk > 0 else 0
                             # Calculate potential loss (worst drawdown)
-                            unrealized_pl_min = (signal_info['price'] - min_loss_price) * position_size  # Negative for loss
-                            min_loss_ratio = (min_loss_price - signal_info['price']) / risk if risk > 0 else 0
+                            unrealized_pl_min = (entry_fill_price - min_loss_price) * position_size  # Negative for loss
+                            min_loss_ratio = (min_loss_price - entry_fill_price) / risk if risk > 0 else 0
 
                             # Check if take profit or stop loss would be hit
                             take_profit_hit = lowest_price <= take_profit_price
@@ -407,11 +416,11 @@ class FixedBacktestEngine:
                         # Convert position size to lots for readability
                         position_lots = position_size / 100000
                         
-                        # Calculate stop loss distances in pips
+                        # Calculate stop loss distances in pips (from fill price)
                         # Original distance (without buffer)
-                        original_stop_distance_pips = abs(signal_info['price'] - signal_info['supertrend']) * 10000
+                        original_stop_distance_pips = abs(entry_fill_price - signal_info['supertrend']) * 10000
                         # Adjusted distance (with buffer)
-                        adjusted_stop_distance_pips = abs(signal_info['price'] - stop_loss) * 10000
+                        adjusted_stop_distance_pips = abs(entry_fill_price - stop_loss) * 10000
                         
                         # Determine position status
                         if take_profit_hit:
@@ -425,7 +434,7 @@ class FixedBacktestEngine:
                             'market': current_market_trend,  # 3H PP market trend
                             'signal': current_actual_signal,       # 5m/15m PP signal
                             'time': utc_minus_8.strftime('%b %d, %I:%M%p'),
-                            'entry_price': f"{signal_info['price']:.5f}",
+                            'entry_price': f"{entry_fill_price:.5f}",  # Use fill price, not signal price
                             'stop_loss_price': f"{stop_loss:.5f}",
                             'take_profit_price': f"{take_profit_price:.5f}",
                             'position_lots': f"{position_lots:.2f}",
@@ -448,14 +457,14 @@ class FixedBacktestEngine:
                         if position_status == 'OPEN':
                             self.current_position = {
                                 'signal': current_actual_signal,
-                                'entry_time': current_time, 
-                                'entry_price': signal_info['price'],
+                                'entry_time': current_time,
+                                'entry_price': entry_fill_price,  # Use fill price
                                 'position_size': position_size,
                                 'risk_amount': risk_amount,
                                 'stop_loss': stop_loss,
                                 'take_profit': take_profit_price
                             }
-                            self.logger.info(f"   📊 Position OPENED: {position_type} at {signal_info['price']:.5f}")
+                            self.logger.info(f"   📊 Position OPENED: {position_type} at {entry_fill_price:.5f} (signal: {signal_info['price']:.5f})")
                         else:
                             # Position already closed (TP or SL hit), update balance
                             self.current_balance += actual_profit

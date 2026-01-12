@@ -257,6 +257,49 @@ class OANDAClient:
         return data
 
     @api_retry_handler
+    def update_take_profit(self, trade_id, new_price, existing_tp_order_id=None):
+        """
+        Update or create take profit order for a trade
+
+        Args:
+            trade_id: The trade ID to set TP for
+            new_price: The new take profit price
+            existing_tp_order_id: If provided, updates existing TP order; otherwise creates new
+
+        Returns:
+            Response dict or None
+        """
+        if existing_tp_order_id:
+            # Update existing TP order
+            url = f"{self.base_url}/v3/accounts/{self.account_id}/orders/{existing_tp_order_id}"
+            order_data = {
+                "order": {
+                    "type": "TAKE_PROFIT",
+                    "tradeID": str(trade_id),
+                    "price": f"{new_price:.5f}",
+                    "timeInForce": "GTC"
+                }
+            }
+            response = requests.put(url, headers=self.headers, json=order_data, timeout=OANDAConfig.api_timeout)
+        else:
+            # Create new TP order
+            url = f"{self.base_url}/v3/accounts/{self.account_id}/orders"
+            order_data = {
+                "order": {
+                    "type": "TAKE_PROFIT",
+                    "tradeID": str(trade_id),
+                    "price": f"{new_price:.5f}",
+                    "timeInForce": "GTC"
+                }
+            }
+            response = requests.post(url, headers=self.headers, json=order_data, timeout=OANDAConfig.api_timeout)
+
+        response.raise_for_status()
+        data = response.json()
+        self.logger.info(f"Take profit {'updated' if existing_tp_order_id else 'created'}: {new_price:.5f} for trade {trade_id}")
+        return data
+
+    @api_retry_handler
     def close_position(self, instrument, side="ALL"):
         """
         Close position for an instrument
