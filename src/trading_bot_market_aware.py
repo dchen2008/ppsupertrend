@@ -956,7 +956,11 @@ class MarketAwareTradingBot:
     # ============================================================================
 
     def execute_trade(self, action, signal_info, account_summary):
-        """Execute trade based on action and log to CSV"""
+        """Execute trade based on action and log to CSV
+
+        Returns:
+            bool: True if trade executed successfully, False otherwise
+        """
         if action == 'CLOSE':
             # Close existing position
             current_position = self.client.get_position(self.instrument)
@@ -1073,8 +1077,10 @@ class MarketAwareTradingBot:
                 # Reset signal tracking so next signal can be acted upon
                 self.last_signal_candle_time = None
                 self._save_state()
+                return True
             else:
                 self.logger.error("❌ Failed to close position")
+                return False
 
         elif action in ['OPEN_LONG', 'OPEN_SHORT']:
             # Get current market trend
@@ -1219,8 +1225,12 @@ class MarketAwareTradingBot:
                             rr_ratio=risk_reward_ratio,
                             signal_time=self.current_trade_open_time
                         )
+                return True
             else:
                 self.logger.error("❌ Failed to place order")
+                return False
+
+        return False  # Unknown action
 
     def update_trailing_stop_loss(self, signal_info, current_position):
         """Update trailing stop loss based on SuperTrend movement"""
@@ -1606,20 +1616,23 @@ class MarketAwareTradingBot:
                         self.reset_scalping_state("New PP signal detected (trend reversal)")
 
                 self.logger.info(f"🎯 TRADE SIGNAL: {action}")
-                self.execute_trade(action, signal_info, account_summary)
+                trade_success = self.execute_trade(action, signal_info, account_summary)
 
                 # If closing position with intent to open opposite, do it immediately
-                if action == 'CLOSE' and next_action in ['OPEN_LONG', 'OPEN_SHORT']:
+                if trade_success and action == 'CLOSE' and next_action in ['OPEN_LONG', 'OPEN_SHORT']:
                     self.logger.info(f"➡️  Immediately opening opposite position: {next_action}")
                     time.sleep(1)
                     account_summary = self.client.get_account_summary()
                     current_position = self.client.get_position(self.instrument)
-                    self.execute_trade(next_action, signal_info, account_summary)
+                    trade_success = self.execute_trade(next_action, signal_info, account_summary)
 
-                # Update last signal candle time after ALL actions complete
-                self.last_signal_candle_time = candle_timestamp
-                self._save_state()
-                self.logger.info(f"📝 Saved signal state: {candle_timestamp}")
+                # Update last signal candle time ONLY if trade succeeded
+                if trade_success:
+                    self.last_signal_candle_time = candle_timestamp
+                    self._save_state()
+                    self.logger.info(f"📝 Saved signal state: {candle_timestamp}")
+                else:
+                    self.logger.warning(f"⚠️  Trade failed - NOT saving signal state (will retry on next cycle)")
             else:
                 if current_position and current_position['units'] != 0:
                     self.update_trailing_stop_loss(signal_info, current_position)

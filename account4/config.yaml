@@ -2,7 +2,7 @@
 # Conservative configuration - uses mostly defaults
 
 # Check interval in seconds
-check_interval: 10
+check_interval: 3
 
 # Market trend configuration
 market:
