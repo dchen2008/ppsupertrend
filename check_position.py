@@ -13,8 +13,16 @@ sys.path.insert(0, 'src')
 from config import OANDAConfig
 
 def main():
-    # Set account (default to account1, or pass as argument)
-    account = sys.argv[1] if len(sys.argv) > 1 else 'account1'
+    # Parse arguments
+    account = 'account1'
+    trade_id = None
+
+    for arg in sys.argv[1:]:
+        if arg.startswith('tradeid='):
+            trade_id = arg.split('=')[1]
+        elif not arg.startswith('-'):
+            account = arg
+
     OANDAConfig.set_account(account)
 
     base_url = OANDAConfig.get_base_url()
@@ -24,6 +32,16 @@ def main():
     print(f"=" * 60)
     print(f"Account: {account} ({account_id})")
     print(f"=" * 60)
+
+    # If specific trade ID requested, show only that trade
+    if trade_id:
+        print(f"\n>>> TRADE DETAILS (ID: {trade_id}):")
+        print("-" * 60)
+        url = f"{base_url}/v3/accounts/{account_id}/trades/{trade_id}"
+        response = requests.get(url, headers=headers, timeout=10)
+        trade_data = response.json()
+        print(json.dumps(trade_data, indent=2))
+        return
 
     # 1. Get open trades (includes SL/TP details)
     print("\n>>> OPEN TRADES (with SL/TP details):")

@@ -17,3 +17,63 @@ Base on current bot code exactly logic, pls implement a backtest.
    and when running bt should not impact bot auto trade running
    and backtest code should minize OANDA API call times.
 
+
+
+5. 
+Pls do two enhancements:
+pls short the backtest output csv&log file name as:
+./backtest/results/EUR_USD_5m_account1_sign_ratio_profit_Dec-7_Dec-11_752.csv to account1_EUR_USD_5min_1207_1211_752.csv
+./logs/bt_enhanced_EUR_USD_5m_account1_0109202600000001092026120000_20260111_002357.log to account1_EUR_USD_5min_1207_1211_752.log
+
+New enhance batch backtest, and come up a summary csv report:
+./scripts/batch_bt.sh at="account1,account2,account3,account4" fr=EUR_USD tf=5m bt="01/04/2026 16:00:00,01/09/2026 16:00:00"
+The script will use 4 account configuration to pull backtest report(./backtest/results/summary_act1-2-3-4_EUR_USD_5min_1207_1211_752.csv):
+It will run cmd like below one by one:
+  python3 fixed_backtest.py at=account1 fr=EUR_USD tf=5m bt="01/04/2026 16:00:00,01/09/2026 16:00:00"
+  python3 fixed_backtest.py at=account2 fr=EUR_USD tf=5m bt="01/04/2026 16:00:00,01/09/2026 16:00:00"
+  python3 fixed_backtest.py at=account3 fr=EUR_USD tf=5m bt="01/04/2026 16:00:00,01/09/2026 16:00:00"
+  python3 fixed_backtest.py at=account4 fr=EUR_USD tf=5m bt="01/04/2026 16:00:00,01/09/2026 16:00:00"
+
+finally I need the backtest code aggregates above 4 csv test result, generate one summary csv report include below context:
+Backtest Summary Report
+Period: Dec 14, 2025 16:00 - Dec 19, 2026 16:00 (EUR/USD 5m)
+
+account1: Configuration Settings
+  ┌─────────┬────────────┬───────────┬────────────┬───────────┬────────┐
+  │ Account │ Bear Short │ Bear Long │ Bull Short │ Bull Long │ Buffer │
+  ├─────────┼────────────┼───────────┼────────────┼───────────┼────────┤
+  │ 1       │ 0.6:1      │ 0.3:1     │ 0.3:1      │ 0.6:1     │ 3 pips │
+  ├─────────┼────────────┼───────────┼────────────┼───────────┼────────┤
+  │ 2       │ 1.0:1      │ 0.5:1     │ 0.5:1      │ 1.0:1     │ 3 pips │
+  ├─────────┼────────────┼───────────┼────────────┼───────────┼────────┤
+  │ 3       │ 1.5:1      │ 0.8:1     │ 0.8:1      │ 1.5:1     │ 3 pips │
+  ├─────────┼────────────┼───────────┼────────────┼───────────┼────────┤
+  │ 4       │ 2.0:1      │ 1.0:1     │ 1.0:1      │ 2.0:1     │ 3 pips │
+  └─────────┴────────────┴───────────┴────────────┴───────────┴────────┘
+
+  Results
+
+  ┌─────────┬────────┬─────────┬──────────┬───────────┬───────────────┐
+  │ Account │ Trades │ TP Hits │ Win Rate │ Total P/L │ Final Balance │
+  ├─────────┼────────┼─────────┼──────────┼───────────┼───────────────┤
+  │ 1       │ 42     │ 26      │ 61.9%    │ +$2,954   │ $12,954       │
+  ├─────────┼────────┼─────────┼──────────┼───────────┼───────────────┤
+  │ 2       │ 42     │ 15      │ 35.7%    │ +$2,486   │ $12,486       │
+  ├─────────┼────────┼─────────┼──────────┼───────────┼───────────────┤
+  │ 3       │ 42     │ 9       │ 21.4%    │ +$2,244   │ $12,244       │
+  ├─────────┼────────┼─────────┼──────────┼───────────┼───────────────┤
+  │ 4       │ 42     │ 6       │ 14.3%    │ +$2,202   │ $12,202       │
+  └─────────┴────────┴─────────┴──────────┴───────────┴───────────────┘
+
+  Trade Breakdown by Direction
+  ┌─────────┬────────────┬───────────┬─────────────┬────────────┐
+  │ Account │ BUY Trades │ BUY Win % │ SELL Trades │ SELL Win % │
+  ├─────────┼────────────┼───────────┼─────────────┼────────────┤
+  │ 1       │ 25         │ 52.0%     │ 17          │ 76.5%      │
+  ├─────────┼────────────┼───────────┼─────────────┼────────────┤
+  │ 2       │ 25         │ 40.0%     │ 17          │ 29.4%      │
+  ├─────────┼────────────┼───────────┼─────────────┼────────────┤
+  │ 3       │ 25         │ 16.0%     │ 17          │ 29.4%      │
+  ├─────────┼────────────┼───────────┼─────────────┼────────────┤
+  │ 4       │ 25         │ 8.0%      │ 17          │ 23.5%      │
+  └─────────┴────────────┴───────────┴─────────────┴────────────┘

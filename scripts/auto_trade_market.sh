@@ -7,30 +7,34 @@
 #   ./auto_trade_market.sh at=account1 fr=EUR_USD tf=5m
 #   ./auto_trade_market.sh at=account2 fr=EUR_USD tf=15m
 #   ./auto_trade_market.sh at=account1 fr=EUR_USD tf=5m catch-up
+#   ./auto_trade_market.sh at=account1 fr=EUR_USD tf=5m close-position
 #
 # Examples:
 #   ./auto_trade_market.sh at=account1 fr=EUR_USD tf=5m
 #   ./auto_trade_market.sh at=account1 fr=GBP_USD tf=15m
 #   ./auto_trade_market.sh at=account2 fr=USD_JPY tf=5m
-#   ./auto_trade_market.sh at=account1 fr=EUR_USD tf=5m catch-up  # Enter on current trend
+#   ./auto_trade_market.sh at=account1 fr=EUR_USD tf=5m catch-up        # Enter on current trend
+#   ./auto_trade_market.sh at=account1 fr=EUR_USD tf=5m close-position  # Close position immediately
 
 # Check if correct number of arguments (3 required, 1 optional)
 if [ "$#" -lt 3 ] || [ "$#" -gt 4 ]; then
     echo "❌ Error: Invalid number of arguments"
     echo ""
-    echo "Usage: $0 at=<account> fr=<instrument> tf=<timeframe> [catch-up]"
+    echo "Usage: $0 at=<account> fr=<instrument> tf=<timeframe> [catch-up|close-position]"
     echo ""
     echo "Examples:"
     echo "  $0 at=account1 fr=EUR_USD tf=5m"
     echo "  $0 at=account2 fr=EUR_USD tf=15m"
     echo "  $0 at=account1 fr=GBP_USD tf=5m"
-    echo "  $0 at=account1 fr=EUR_USD tf=5m catch-up  # Enter on current trend"
+    echo "  $0 at=account1 fr=EUR_USD tf=5m catch-up        # Enter on current trend"
+    echo "  $0 at=account1 fr=EUR_USD tf=5m close-position  # Close position immediately"
     echo ""
     echo "Parameters:"
     echo "  at=account1|account2|account3  - Trading account to use"
     echo "  fr=EUR_USD|GBP_USD|USD_JPY...  - Currency pair to trade"
     echo "  tf=5m|15m                      - Trading timeframe"
     echo "  catch-up                       - (Optional) Enter position on current trend"
+    echo "  close-position                 - (Optional) Close position immediately"
     echo ""
     echo "Note: Account-specific configuration will be loaded from:"
     echo "      <account>/config.yaml"
@@ -140,11 +144,14 @@ if [ -f "$CONFIG_TO_DISPLAY" ]; then
     echo "---"
 fi
 
-echo ""
-echo "Starting bot in 3 seconds..."
-echo "Press Ctrl+C to stop"
-echo ""
-sleep 3
+# Skip delay for close-position (immediate action)
+if [ "$CATCHUP_ARG" != "close-position" ]; then
+    echo ""
+    echo "Starting bot in 3 seconds..."
+    echo "Press Ctrl+C to stop"
+    echo ""
+    sleep 3
+fi
 
 # Change to project root directory
 cd "$PROJECT_ROOT"
@@ -154,7 +161,10 @@ mkdir -p "${ACCOUNT}/logs"
 mkdir -p "${ACCOUNT}/csv"
 
 # Run the market-aware bot
-if [ -n "$CATCHUP_ARG" ]; then
+if [ "$CATCHUP_ARG" == "close-position" ]; then
+    echo "🔒 Close-position mode: Closing all positions for $INSTRUMENT immediately"
+    python3 -m src.trading_bot_market_aware "$ACCOUNT_ARG" "$INSTRUMENT_ARG" "$TIMEFRAME_ARG" "$CATCHUP_ARG"
+elif [ -n "$CATCHUP_ARG" ]; then
     echo "🔄 Catch-up mode enabled: Will enter on current trend if no position"
     python3 -m src.trading_bot_market_aware "$ACCOUNT_ARG" "$INSTRUMENT_ARG" "$TIMEFRAME_ARG" "$CATCHUP_ARG"
 else
