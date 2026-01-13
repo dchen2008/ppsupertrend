@@ -477,3 +477,158 @@ class OANDAClient:
         if 'transaction' in data:
             return data['transaction']
         return None
+
+    @api_retry_handler
+    def place_limit_order(self, instrument, units, price, stop_loss=None, take_profit=None, expiry_seconds=43200):
+        """
+        Place a limit order for scalping re-entry
+
+        Args:
+            instrument: Currency pair (e.g., "EUR_USD")
+            units: Number of units (positive for buy, negative for sell)
+            price: Limit price
+            stop_loss: Stop loss price (optional)
+            take_profit: Take profit price (optional)
+            expiry_seconds: Order expiry in seconds (default: 12 hours)
+
+        Returns:
+            Order response dict or None
+        """
+        from datetime import timedelta
+
+        url = f"{self.base_url}/v3/accounts/{self.account_id}/orders"
+
+        expiry_time = datetime.utcnow() + timedelta(seconds=expiry_seconds)
+
+        order_data = {
+            "order": {
+                "type": "LIMIT",
+                "instrument": instrument,
+                "units": str(units),
+                "price": f"{price:.5f}",
+                "timeInForce": "GTD",  # Good Till Date
+                "gtdTime": expiry_time.strftime("%Y-%m-%dT%H:%M:%S.000000000Z")
+            }
+        }
+
+        # Add stop loss if provided
+        if stop_loss is not None:
+            order_data["order"]["stopLossOnFill"] = {
+                "price": f"{stop_loss:.5f}"
+            }
+
+        # Add take profit if provided
+        if take_profit is not None:
+            order_data["order"]["takeProfitOnFill"] = {
+                "price": f"{take_profit:.5f}"
+            }
+
+        response = requests.post(url, headers=self.headers, json=order_data, timeout=OANDAConfig.api_timeout)
+        response.raise_for_status()
+        data = response.json()
+
+        self.logger.info(f"Limit order placed: {units} units of {instrument} @ {price:.5f}")
+        return data
+
+    @api_retry_handler
+    def get_order_status(self, order_id):
+        """
+        Get status of a specific order
+
+        Args:
+            order_id: Order ID to check
+
+        Returns:
+            str: Order state ('PENDING', 'FILLED', 'CANCELLED', 'TRIGGERED', 'NOT_FOUND')
+        """
+        url = f"{self.base_url}/v3/accounts/{self.account_id}/orders/{order_id}"
+
+        response = requests.get(url, headers=self.headers, timeout=OANDAConfig.api_timeout)
+
+        if response.status_code == 404:
+            # Order not found - likely filled or cancelled, check transactions
+            return 'NOT_FOUND'
+
+        response.raise_for_status()
+        data = response.json()
+
+        if 'order' in data:
+            return data['order'].get('state', 'UNKNOWN')
+        return 'UNKNOWN'
+
+    @api_retry_handler
+    def get_order(self, order_id):
+        """
+        Get full order information
+
+        Args:
+            order_id: Order ID to check
+
+        Returns:
+            dict: Order information or None if not found
+        """
+        url = f"{self.base_url}/v3/accounts/{self.account_id}/orders/{order_id}"
+
+        response = requests.get(url, headers=self.headers, timeout=OANDAConfig.api_timeout)
+
+        if response.status_code == 404:
+            return None
+
+        response.raise_for_status()
+        data = response.json()
+
+        if 'order' in data:
+            return data['order']
+        return None
+
+    @api_retry_handler
+    def cancel_order(self, order_id):
+        """
+        Cancel a pending order
+
+        Args:
+            order_id: Order ID to cancel
+
+        Returns:
+            Response dict or None
+        """
+        url = f"{self.base_url}/v3/accounts/{self.account_id}/orders/{order_id}/cancel"
+
+        response = requests.put(url, headers=self.headers, timeout=OANDAConfig.api_timeout)
+        response.raise_for_status()
+        result = response.json()
+
+        self.logger.info(f"Order cancelled: {order_id}")
+        return result
+
+    @api_retry_handler
+    def get_pending_orders(self, instrument=None):
+        """
+        Get pending orders for an instrument
+
+        Args:
+            instrument: Optional filter by instrument
+
+        Returns:
+            list of pending orders
+        """
+        url = f"{self.base_url}/v3/accounts/{self.account_id}/pendingOrders"
+
+        response = requests.get(url, headers=self.headers, timeout=OANDAConfig.api_timeout)
+        response.raise_for_status()
+        data = response.json()
+
+        orders = []
+        if 'orders' in data:
+            for order in data['orders']:
+                if instrument is None or order.get('instrument') == instrument:
+                    orders.append({
+                        'id': order['id'],
+                        'type': order['type'],
+                        'instrument': order.get('instrument'),
+                        'units': order.get('units'),
+                        'price': order.get('price'),
+                        'state': order.get('state')
+                    })
+
+        return orders

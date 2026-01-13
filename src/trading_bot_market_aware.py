@@ -220,6 +220,19 @@ class MarketAwareTradingBot:
         self.market_check_interval = 180  # Check market every 3 minutes
         self.current_market_signal = 'NEUTRAL'
 
+        # Scalping strategy state
+        self.scalping_config = self.config.get('scalping', {})
+        self.scalping_enabled = self.scalping_config.get('enabled', False)
+        self.scalping_active = False
+        self.scalping_signal_price = None
+        self.scalping_signal_time = None
+        self.scalping_entry_count = 0
+        self.scalping_position_type = None  # 'LONG' or 'SHORT'
+        self.scalping_original_supertrend = None
+        self.scalping_market_trend = None
+        self.scalping_rr_ratio = None
+        self.scalping_pending_limit_order_id = None
+
         self.logger.info("=" * 80)
         self.logger.info(f"Market-Aware Trading Bot Initialized")
         self.logger.info("=" * 80)
@@ -567,7 +580,7 @@ class MarketAwareTradingBot:
         """Check if take profit was hit and update tracking"""
         if not self.current_trade_id or not self.current_take_profit_price:
             return
-        
+
         # Check if position still exists
         current_position = self.client.get_position(self.instrument)
         if not current_position or current_position['units'] == 0:
@@ -577,6 +590,370 @@ class MarketAwareTradingBot:
                 self.logger.info("📍 Position closed (likely take profit hit)")
                 return True
         return False
+
+    # ============================================================================
+    # SCALPING STRATEGY METHODS
+    # ============================================================================
+
+    def is_in_scalping_window(self):
+        """
+        Check if current time is within the scalping window (default: 8 PM - 8 AM PT).
+
+        Returns:
+            bool: True if within scalping window, False otherwise
+        """
+        if not self.scalping_enabled:
+            return False
+
+        try:
+            import pytz
+            from datetime import datetime, time as dt_time
+
+            # Get timezone from config
+            tz_name = self.scalping_config.get('time_window', {}).get('timezone', 'America/Los_Angeles')
+            tz = pytz.timezone(tz_name)
+
+            # Get current time in configured timezone
+            now = datetime.now(tz)
+            current_time = now.time()
+
+            # Parse start and end times from config
+            start_str = self.scalping_config.get('time_window', {}).get('start', '20:00')
+            end_str = self.scalping_config.get('time_window', {}).get('end', '08:00')
+
+            start_hour, start_min = map(int, start_str.split(':'))
+            end_hour, end_min = map(int, end_str.split(':'))
+
+            start_time = dt_time(start_hour, start_min)
+            end_time = dt_time(end_hour, end_min)
+
+            # Handle overnight window (start > end, e.g., 20:00 - 08:00)
+            if start_time > end_time:
+                # In window if current time >= start OR current time < end
+                in_window = current_time >= start_time or current_time < end_time
+            else:
+                # Normal window (start < end)
+                in_window = start_time <= current_time < end_time
+
+            return in_window
+
+        except Exception as e:
+            self.logger.error(f"Error checking scalping window: {e}")
+            return False
+
+    def start_scalping_mode(self, signal_price, position_type, supertrend_value, market_trend, rr_ratio, signal_time):
+        """
+        Initialize scalping mode after first trade entry.
+
+        Args:
+            signal_price: The entry price of the initial trade (signal_price)
+            position_type: 'LONG' or 'SHORT'
+            supertrend_value: SuperTrend value at signal time
+            market_trend: 'BULL' or 'BEAR'
+            rr_ratio: Risk/reward ratio used for take profit
+            signal_time: Timestamp of the PP signal
+        """
+        if not self.scalping_enabled:
+            return
+
+        if not self.is_in_scalping_window():
+            self.logger.info("📊 Not in scalping window, skipping scalping mode")
+            return
+
+        self.scalping_active = True
+        self.scalping_signal_price = signal_price
+        self.scalping_position_type = position_type
+        self.scalping_original_supertrend = supertrend_value
+        self.scalping_market_trend = market_trend
+        self.scalping_rr_ratio = rr_ratio
+        self.scalping_signal_time = signal_time
+        self.scalping_entry_count = 1  # First entry
+
+        self.logger.info("=" * 60)
+        self.logger.info("🔄 SCALPING MODE ACTIVATED")
+        self.logger.info(f"   Signal Price: {signal_price:.5f}")
+        self.logger.info(f"   Position Type: {position_type}")
+        self.logger.info(f"   Market Trend: {market_trend}")
+        self.logger.info(f"   R:R Ratio: {rr_ratio:.2f}")
+        self.logger.info(f"   Entry #: {self.scalping_entry_count}")
+        self.logger.info("=" * 60)
+
+    def reset_scalping_state(self, reason=""):
+        """
+        Clear scalping state when:
+        - New PP signal occurs (trend reversal)
+        - Time window ends
+        - Stop loss hit
+
+        Args:
+            reason: Optional reason string for logging
+        """
+        if self.scalping_active:
+            self.logger.info(f"🛑 SCALPING MODE DEACTIVATED: {reason}")
+            self.logger.info(f"   Total scalping entries: {self.scalping_entry_count}")
+
+        # Cancel any pending limit order
+        if self.scalping_pending_limit_order_id:
+            try:
+                self.client.cancel_order(self.scalping_pending_limit_order_id)
+                self.logger.info(f"   Cancelled pending limit order: {self.scalping_pending_limit_order_id}")
+            except Exception as e:
+                self.logger.warning(f"   Failed to cancel limit order: {e}")
+
+        self.scalping_active = False
+        self.scalping_signal_price = None
+        self.scalping_signal_time = None
+        self.scalping_entry_count = 0
+        self.scalping_position_type = None
+        self.scalping_original_supertrend = None
+        self.scalping_market_trend = None
+        self.scalping_rr_ratio = None
+        self.scalping_pending_limit_order_id = None
+
+    def check_scalping_re_entry(self, current_price):
+        """
+        Check if price has returned to signal_price (or better) for scalping re-entry.
+        "Better" means:
+        - For LONG: price <= signal_price (cheaper entry)
+        - For SHORT: price >= signal_price (higher entry to short)
+
+        Args:
+            current_price: Current market price
+
+        Returns:
+            bool: True if re-entry condition met, False otherwise
+        """
+        if not self.scalping_active or not self.scalping_signal_price:
+            return False
+
+        if not self.is_in_scalping_window():
+            self.reset_scalping_state("Time window ended")
+            return False
+
+        # Check if at or better than signal price
+        if self.scalping_position_type == 'LONG':
+            # For long, we want price at or below signal_price (better entry)
+            return current_price <= self.scalping_signal_price
+        else:  # SHORT
+            # For short, we want price at or above signal_price (better entry)
+            return current_price >= self.scalping_signal_price
+
+    def execute_scalping_re_entry(self, signal_info, account_summary):
+        """
+        Execute a scalping re-entry trade using the original signal parameters.
+        Uses limit order for precise entry at signal_price.
+
+        Args:
+            signal_info: Current signal info (for stop loss calculation)
+            account_summary: Account summary for position sizing
+        """
+        if not self.scalping_active:
+            return False
+
+        self.scalping_entry_count += 1
+
+        self.logger.info("=" * 60)
+        self.logger.info(f"🔄 SCALPING RE-ENTRY #{self.scalping_entry_count}")
+        self.logger.info(f"   Signal Price: {self.scalping_signal_price:.5f}")
+        self.logger.info(f"   Position Type: {self.scalping_position_type}")
+        self.logger.info(f"   Market Trend: {self.scalping_market_trend}")
+        self.logger.info("=" * 60)
+
+        # Calculate position size using original market trend
+        position_size, risk_amount_used = self.risk_manager.calculate_position_size(
+            account_summary['balance'],
+            signal_info,
+            market_trend=self.scalping_market_trend,
+            position_type=self.scalping_position_type,
+            config=self.config
+        )
+
+        # Validate trade
+        is_valid, reason = self.risk_manager.validate_trade(account_summary, position_size)
+        if not is_valid:
+            self.logger.warning(f"⚠️  Scalping re-entry validation failed: {reason}")
+            return False
+
+        # Determine units
+        units = position_size if self.scalping_position_type == 'LONG' else -position_size
+
+        # Calculate stop loss using original supertrend + buffer
+        signal_type = 'BUY' if self.scalping_position_type == 'LONG' else 'SELL'
+
+        # Use original supertrend value for consistent stop loss
+        if self.scalping_original_supertrend:
+            buffer_price = self.spread_buffer_pips * 0.0001
+            if signal_type == 'SELL':
+                stop_loss = self.scalping_original_supertrend + buffer_price
+            else:
+                stop_loss = self.scalping_original_supertrend - buffer_price
+        else:
+            stop_loss = self.calculate_stop_loss(signal_info, signal_type)
+
+        # Calculate take profit based on original R:R ratio
+        take_profit = self.calculate_take_profit(
+            self.scalping_signal_price,  # Use signal_price, not current price
+            stop_loss,
+            self.scalping_position_type,
+            self.scalping_rr_ratio
+        )
+
+        self.logger.info(f"💰 Position Size: {abs(units):,} units ({abs(units)/100000:.3f} lots)")
+        self.logger.info(f"📍 Entry Price: {self.scalping_signal_price:.5f}")
+        self.logger.info(f"🛑 Stop Loss: {stop_loss:.5f}")
+        self.logger.info(f"✅ Take Profit: {take_profit:.5f} (R:R {self.scalping_rr_ratio:.2f})")
+
+        # Check if we should use limit orders or market orders
+        use_limit_orders = self.scalping_config.get('re_entry', {}).get('use_limit_orders', True)
+
+        if use_limit_orders:
+            # Place limit order at signal_price
+            price_buffer_pips = self.scalping_config.get('re_entry', {}).get('price_buffer_pips', 0.5)
+            buffer = price_buffer_pips * 0.0001
+
+            if self.scalping_position_type == 'LONG':
+                limit_price = self.scalping_signal_price + buffer  # Slightly above for execution
+            else:
+                limit_price = self.scalping_signal_price - buffer  # Slightly below for execution
+
+            result = self.client.place_limit_order(
+                instrument=self.instrument,
+                units=units,
+                price=limit_price,
+                stop_loss=stop_loss,
+                take_profit=take_profit
+            )
+
+            if result and 'orderCreateTransaction' in result:
+                order_id = result['orderCreateTransaction']['id']
+                self.scalping_pending_limit_order_id = order_id
+                self.logger.info(f"✅ Limit order placed: #{order_id} at {limit_price:.5f}")
+                return True
+            elif result and 'orderFillTransaction' in result:
+                # Order filled immediately
+                self._handle_scalping_order_fill(result, risk_amount_used)
+                return True
+            else:
+                self.logger.error("❌ Failed to place scalping limit order")
+                return False
+        else:
+            # Use market order for immediate entry
+            result = self.client.place_market_order(
+                instrument=self.instrument,
+                units=units,
+                stop_loss=stop_loss,
+                take_profit=take_profit
+            )
+
+            if result:
+                self._handle_scalping_order_fill(result, risk_amount_used)
+                return True
+            else:
+                self.logger.error("❌ Failed to place scalping market order")
+                return False
+
+    def _handle_scalping_order_fill(self, result, risk_amount_used):
+        """Handle order fill for scalping entry"""
+        self.logger.info("✅ Scalping order filled!")
+        self.trade_count += 1
+
+        if 'orderFillTransaction' in result:
+            fill = result['orderFillTransaction']
+            actual_price = float(fill['price'])
+
+            self.logger.info(f"📈 Fill Price: {actual_price:.5f}")
+
+            # Store entry details
+            self.current_entry_price = actual_price
+            self.highest_price_during_trade = actual_price
+            self.lowest_price_during_trade = actual_price
+            self.current_trade_open_time = datetime.now()
+            self.current_supertrend_value = self.scalping_original_supertrend
+            self.current_position_size = abs(int(fill.get('units', 0)))
+            self.current_market_trend = self.scalping_market_trend
+            self.current_risk_reward_target = self.scalping_rr_ratio
+            self.current_risk_amount = risk_amount_used
+
+            if 'tradeOpened' in fill:
+                self.current_trade_id = fill['tradeOpened']['tradeID']
+
+            if 'stopLossOrderTransaction' in result:
+                sl_order = result['stopLossOrderTransaction']
+                self.current_stop_loss_order_id = sl_order['id']
+                self.current_stop_loss_price = float(sl_order['price'])
+                self.current_position_side = self.scalping_position_type
+
+            if 'takeProfitOrderTransaction' in result:
+                tp_order = result['takeProfitOrderTransaction']
+                self.current_take_profit_price = float(tp_order['price'])
+
+            # Initialize trade tracker
+            self.trade_tracker.entry_price = actual_price
+            self.trade_tracker.position_side = self.scalping_position_type
+            self.trade_tracker.units = self.current_position_size
+            self.trade_tracker.risk_amount = risk_amount_used
+
+    def check_pending_scalping_order(self):
+        """
+        Check if pending scalping limit order was filled.
+
+        Returns:
+            bool: True if order was filled, False otherwise
+        """
+        if not self.scalping_pending_limit_order_id:
+            return False
+
+        try:
+            order_info = self.client.get_order(self.scalping_pending_limit_order_id)
+
+            if order_info:
+                state = order_info.get('state', '')
+
+                if state == 'FILLED':
+                    self.logger.info(f"✅ Scalping limit order #{self.scalping_pending_limit_order_id} filled!")
+                    self.scalping_pending_limit_order_id = None
+
+                    # Refresh position tracking
+                    trades = self.client.get_trades(self.instrument)
+                    if trades and len(trades) > 0:
+                        trade = trades[0]
+                        self._recover_trade_tracking(trade)
+
+                    return True
+
+                elif state == 'CANCELLED':
+                    self.logger.info(f"⚠️  Scalping limit order #{self.scalping_pending_limit_order_id} cancelled")
+                    self.scalping_pending_limit_order_id = None
+
+        except Exception as e:
+            self.logger.error(f"Error checking pending scalping order: {e}")
+
+        return False
+
+    def _recover_trade_tracking(self, trade):
+        """Recover trade tracking from trade info"""
+        tracking_units = None
+        for key in ['currentUnits', 'current_units', 'units', 'initialUnits']:
+            if key in trade:
+                tracking_units = float(trade[key])
+                break
+
+        if tracking_units:
+            self.current_trade_id = trade.get('id')
+            self.current_position_side = 'LONG' if tracking_units > 0 else 'SHORT'
+            self.current_entry_price = float(trade.get('price', 0))
+            self.current_position_size = abs(tracking_units)
+
+            if trade.get('stopLossOrder'):
+                self.current_stop_loss_price = float(trade['stopLossOrder']['price'])
+                self.current_stop_loss_order_id = trade['stopLossOrder']['id']
+
+            if trade.get('takeProfitOrder'):
+                self.current_take_profit_price = float(trade['takeProfitOrder']['price'])
+
+    # ============================================================================
+    # END SCALPING STRATEGY METHODS
+    # ============================================================================
 
     def execute_trade(self, action, signal_info, account_summary):
         """Execute trade based on action and log to CSV"""
@@ -830,6 +1207,18 @@ class MarketAwareTradingBot:
                         if base_stop:
                             self.current_original_stop_pips = abs(actual_price - base_stop) / 0.0001
                             self.current_adjusted_stop_pips = abs(actual_price - stop_loss) / 0.0001
+
+                    # Start scalping mode if enabled and within time window
+                    # Use actual fill price as the signal_price for re-entries
+                    if self.scalping_enabled and self.is_in_scalping_window():
+                        self.start_scalping_mode(
+                            signal_price=actual_price,
+                            position_type=position_type,
+                            supertrend_value=signal_info.get('supertrend'),
+                            market_trend=market_trend,
+                            rr_ratio=risk_reward_ratio,
+                            signal_time=self.current_trade_open_time
+                        )
             else:
                 self.logger.error("❌ Failed to place order")
 
@@ -910,10 +1299,14 @@ class MarketAwareTradingBot:
         """Main trading logic: check signals and execute trades if needed"""
         try:
             # Check if market trend needs update
-            if (self.last_market_check is None or 
+            if (self.last_market_check is None or
                 (datetime.now() - self.last_market_check).total_seconds() > self.market_check_interval):
                 self.check_market_trend()
-            
+
+            # Check pending scalping limit orders
+            if self.scalping_pending_limit_order_id:
+                self.check_pending_scalping_order()
+
             # Fetch account summary
             account_summary = self.client.get_account_summary()
             if account_summary is None:
@@ -927,23 +1320,23 @@ class MarketAwareTradingBot:
 
             # Get current position
             current_position = self.client.get_position(self.instrument)
-            
+
             # Check if position was closed by take profit or stop loss
             if (self.current_position_side is not None and
                 self.current_entry_price is not None and
                 self.current_position_size and self.current_position_size > 0):
                 if current_position is None or current_position['units'] == 0:
                     self.logger.info("📍 Position closed externally (stop loss or take profit)")
-                    
+
                     # Log the close to CSV
                     close_time = datetime.now()
-                    
+
                     # Try to determine what closed the position
                     stop_loss_hit = 'UNKNOWN'
                     take_profit_hit = 'UNKNOWN'
                     profit = 0.0
                     close_price = self.current_stop_loss_price  # Default to stop loss price
-                    
+
                     try:
                         transactions = self.client.get_transaction_history(count=50)
                         if transactions:
@@ -959,14 +1352,14 @@ class MarketAwareTradingBot:
                                     break
                     except Exception as e:
                         self.logger.error(f"   Failed to fetch transaction history: {e}")
-                    
+
                     # Calculate duration
                     duration = 'N/A'
                     if self.current_trade_open_time:
                         duration_seconds = (close_time - self.current_trade_open_time).total_seconds()
                         duration_minutes = int(duration_seconds / 60)
                         duration = f"{duration_minutes}m"
-                    
+
                     # Calculate R:R ratios
                     risk_amount = self.current_risk_amount if self.current_risk_amount else 100
                     actual_rr = profit / risk_amount if risk_amount > 0 else 0
@@ -1009,11 +1402,11 @@ class MarketAwareTradingBot:
                     }
                     self.csv_logger.log_trade(csv_data)
                     self.logger.info(f"   💾 Logged external close to CSV: P/L=${profit:.2f}")
-                    
+
                     # Reset trade tracker
                     self.trade_tracker.reset()
 
-                    # Clear all tracking
+                    # Clear position tracking
                     self.current_stop_loss_order_id = None
                     self.current_trade_id = None
                     self.current_stop_loss_price = None
@@ -1031,8 +1424,23 @@ class MarketAwareTradingBot:
                     self.current_risk_amount = None
                     self.current_original_stop_pips = None
                     self.current_adjusted_stop_pips = None
-                    self.last_signal_candle_time = None
-                    self._save_state()
+
+                    # SCALPING: Check if TP was hit and scalping is active
+                    if self.scalping_active and take_profit_hit == 'TRUE':
+                        self.logger.info("🔄 SCALPING: Take profit hit - checking for re-entry opportunity")
+                        # Don't reset signal state - keep scalping active for re-entry
+                        # The scalping re-entry will be checked below
+                    elif self.scalping_active and stop_loss_hit == 'TRUE':
+                        # Stop loss hit - deactivate scalping
+                        self.reset_scalping_state("Stop loss hit")
+                        self.last_signal_candle_time = None
+                        self._save_state()
+                    else:
+                        # Normal close or unknown - reset signal state
+                        if self.scalping_active:
+                            self.reset_scalping_state("Position closed (unknown reason)")
+                        self.last_signal_candle_time = None
+                        self._save_state()
 
             # Recover tracking if needed
             if current_position and current_position['units'] != 0 and not self.current_stop_loss_order_id:
@@ -1069,6 +1477,24 @@ class MarketAwareTradingBot:
             position_pl = current_position['unrealized_pl'] if current_position and current_position['units'] != 0 else account_summary['unrealized_pl']
             self.logger.info(f"OVERALL Market: {self.current_market_signal} | Balance: ${account_summary['balance']:.2f} | "
                            f"P/L: ${position_pl:.2f}")
+
+            # Log scalping status
+            if self.scalping_enabled:
+                in_window = self.is_in_scalping_window()
+                # Get window times from config
+                start_time = self.scalping_config.get('time_window', {}).get('start', '20:00')
+                end_time = self.scalping_config.get('time_window', {}).get('end', '08:00')
+                tz_name = self.scalping_config.get('time_window', {}).get('timezone', 'America/Los_Angeles')
+
+                if self.scalping_active:
+                    scalping_info = f"SCALPING: ACTIVE | Entry #{self.scalping_entry_count} | Type: {self.scalping_position_type}"
+                elif in_window:
+                    scalping_info = f"SCALPING: ENABLED=TRUE | Window: {start_time}-{end_time} PT | IN_WINDOW (waiting for trade)"
+                else:
+                    scalping_info = f"SCALPING: ENABLED=TRUE | Window: {start_time}-{end_time} PT | OUT_OF_WINDOW"
+                self.logger.info(scalping_info)
+            else:
+                self.logger.info("SCALPING: ENABLED=FALSE")
 
             if current_position and current_position['units'] != 0:
                 position_units = abs(current_position['units'])
@@ -1134,6 +1560,26 @@ class MarketAwareTradingBot:
                     if current_price < self.lowest_price_during_trade:
                         self.lowest_price_during_trade = current_price
 
+            # SCALPING: Check for re-entry when no position and scalping is active
+            if self.scalping_active and (current_position is None or current_position['units'] == 0):
+                current_price = signal_info['price']
+
+                # Log scalping status
+                if self.scalping_signal_price:
+                    price_diff = current_price - self.scalping_signal_price
+                    price_diff_pips = price_diff / 0.0001
+                    self.logger.info(f"🔄 SCALPING: Waiting for re-entry | Signal Price: {self.scalping_signal_price:.5f} | "
+                                   f"Current: {current_price:.5f} | Diff: {price_diff_pips:.1f} pips | "
+                                   f"Type: {self.scalping_position_type}")
+
+                # Check if price has returned to signal_price (or better)
+                if self.check_scalping_re_entry(current_price):
+                    self.logger.info(f"🎯 SCALPING: Re-entry condition met! Price at/better than signal price")
+                    self.execute_scalping_re_entry(signal_info, account_summary)
+                    # Skip normal trading logic this cycle
+                    self.last_signal = signal_info
+                    return
+
             # Determine if we should trade
             should_trade, action, next_action = self.risk_manager.should_trade(
                 signal_info,
@@ -1145,6 +1591,20 @@ class MarketAwareTradingBot:
             )
 
             if should_trade:
+                # SCALPING: Reset scalping on new PP signal (trend reversal)
+                if self.scalping_active and action in ['OPEN_LONG', 'OPEN_SHORT', 'CLOSE']:
+                    # Check if this is a genuine new PP signal (opposite direction or new signal)
+                    is_new_signal = False
+                    if action == 'OPEN_LONG' and self.scalping_position_type == 'SHORT':
+                        is_new_signal = True
+                    elif action == 'OPEN_SHORT' and self.scalping_position_type == 'LONG':
+                        is_new_signal = True
+                    elif action == 'CLOSE':
+                        is_new_signal = True
+
+                    if is_new_signal:
+                        self.reset_scalping_state("New PP signal detected (trend reversal)")
+
                 self.logger.info(f"🎯 TRADE SIGNAL: {action}")
                 self.execute_trade(action, signal_info, account_summary)
 

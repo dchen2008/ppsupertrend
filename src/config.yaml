@@ -38,6 +38,19 @@ position_sizing:
     short_risk_per_trade: 100   # If 5min/15min PP sign is SHORT, risk $100 per trade
     long_risk_per_trade: 300    # If 5min/15min PP sign is LONG, risk $300 per trade
   
+# Scalping strategy configuration
+# Re-enters at signal price after TP hit within a defined time window
+scalping:
+  enabled: false  # Default disabled, enable per-account in account1/config.yaml
+  time_window:
+    start: "20:00"  # 8 PM (scalping window start)
+    end: "10:00"    # 8 AM next day (scalping window end)
+    timezone: "America/Los_Angeles"  # Pacific Time
+  re_entry:
+    use_limit_orders: true  # Use limit orders for re-entry (recommended)
+    price_buffer_pips: 0.5  # Buffer for limit order price
+  max_entries_per_signal: 0  # 0 = unlimited re-entries within time window
+
 # Backtest configuration
 backtest:
   initial_balance: 10000  # Default starting balance for backtests

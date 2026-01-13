@@ -144,3 +144,54 @@ position_sizing:
 │   sign, time,           highest_ratio,potential_profit,                                          │
 │   sell,"Jan 4, 10:55pm",2.78:1, $3.94,                                                           │
 ╰────────────────────────────────────────
+
+7. scalping trade strategy:
+   1. when 5min/15mins' pp signal occurs,the bot follow previous definition logic calculate one enter price(call signal_price) and make a new order,
+   2. after waiting a short period, it may reach my TP's RR(e.g.:0.6), when TP happen, the position be closed quickly. 
+   3. after waiting a while, the instrument fill/runs the price back to signal_price (or cheapter the signal_price), 
+   4. so I want the bot can catch up a new order(following existig same business logic to make the new order)
+     I want the bot can repeat 2,3,4 limit between one input time range: 20pm to next-day 20AM (which are large volumnes in daily)
+     If the bot run out of the time range, skip the scalping trade strategy, just keep its signal(5min/15mins's pp sign) trade strategy.
+
+User answered Claude's questions:
+  ⎿  · When should the bot re-enter after TP is hit? Should it wait until price touches the exact signal_price, or enter when price
+     becomes cheaper (better entry for the direction)? → At or better than signal_price
+     · What is the maximum number of scalping re-entries allowed per PP signal within the time window? → Unlimited
+     · What timezone should the scalping window (8 PM to 8 AM) use? → US Pacific (PT)
+     · If a new PP SuperTrend signal (trend reversal) occurs during the scalping window, what should happen? → Stop scalping, follow new
+     signal
+
+IMPLEMENTATION COMPLETED:
+=========================
+The scalping trade strategy has been implemented in src/trading_bot_market_aware.py:
+
+Key Methods Added:
+- is_in_scalping_window(): Checks if current time is within 8 PM - 8 AM Pacific Time
+- start_scalping_mode(): Initializes scalping after first trade entry
+- check_scalping_re_entry(): Detects when price returns to signal_price (or better)
+- reset_scalping_state(): Clears scalping state on SL hit, new PP signal, or window end
+- execute_scalping_re_entry(): Places re-entry order using original signal parameters
+
+Configuration (src/config.yaml and account1/config.yaml):
+```yaml
+scalping:
+  enabled: true  # Enable/disable per account
+  time_window:
+    start: "20:00"  # 8 PM Pacific
+    end: "08:00"    # 8 AM Pacific (next day)
+    timezone: "America/Los_Angeles"
+  re_entry:
+    use_limit_orders: true  # Use limit orders for precise entry
+    price_buffer_pips: 0.5  # Buffer for limit order price
+  max_entries_per_signal: 0  # 0 = unlimited
+```
+
+Flow:
+1. PP signal triggers first trade -> scalping mode activates (if within time window)
+2. TP hit -> position closes, bot monitors for price to return to signal_price
+3. Price at/better than signal_price -> bot re-enters same direction
+4. Repeat steps 2-3 unlimited times within time window
+5. On SL hit or new PP signal -> scalping deactivates
+6. Outside time window -> normal trading only
+
+To enable: Set `scalping.enabled: true` in account config (already enabled in account1)
