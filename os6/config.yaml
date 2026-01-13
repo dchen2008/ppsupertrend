@@ -12,21 +12,21 @@ market:
 # Stop loss configuration
 stoploss:
   type: PPSuperTrend
-  spread_buffer_pips: 3   # Additional buffer in pips when use_spread_adjustment=True (default: 3)
+  spread_buffer_pips: 5   # Additional buffer in pips when use_spread_adjustment=True (default: 3)
   
 # Conservative Risk/Reward configuration
 risk_reward:
   bear_market:
     short_rr: 0.6    # Conservative approach
-    long_rr: 0.4     # Conservative approach
+    long_rr: 0.2     # Conservative approach
   bull_market:
-    short_rr: 0.4    # Conservative approach
+    short_rr: 0.2    # Conservative approach
     long_rr: 0.6     # Conservative approach
     
 # Position sizing configuration based on market trend
 position_sizing:
   use_dynamic: true
-  disable_opposite_trade: true  # if 3H PP SuperTrend sign is bear/bull, the bot will skip trade when 5mins/15mins's pp sign is LONG/SHORT
+  disable_opposite_trade: false  # if 3H PP SuperTrend sign is bear/bull, the bot will skip trade when 5mins/15mins's pp sign is LONG/SHORT
   bear:  # Bear market (3H PP SuperTrend signal)
     short_risk_per_trade: 100   # If 5min/15min PP sign is SHORT, risk $300 per trade
     long_risk_per_trade: 100    # If 5min/15min PP sign is LONG, risk $100 per trade
@@ -36,4 +36,4 @@ position_sizing:
 
 # Scalping strategy - re-enter at signal price after TP hit
 scalping:
-  enabled: true  # Enable scalping for this account
+  enabled: false  # Enable scalping for this account

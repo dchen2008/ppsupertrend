@@ -3,6 +3,7 @@
 # =========================
 
 # Logs
+logs/
 account*/logs/
 !account*/logs/.gitkeep
 backtest/logs/

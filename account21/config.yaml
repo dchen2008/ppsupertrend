@@ -2,7 +2,7 @@
 # Conservative configuration - uses mostly defaults
 
 # Check interval in seconds
-check_interval: 10
+check_interval: 5
 
 # Market trend configuration
 market:
@@ -17,11 +17,11 @@ stoploss:
 # Conservative Risk/Reward configuration
 risk_reward:
   bear_market:
-    short_rr: 0.6    # Conservative approach
-    long_rr: 0.4     # Conservative approach
-  bull_market:
     short_rr: 0.4    # Conservative approach
-    long_rr: 0.6     # Conservative approach
+    long_rr: 0.3     # Conservative approach
+  bull_market:
+    short_rr: 0.3    # Conservative approach
+    long_rr: 0.4     # Conservative approach
     
 # Position sizing configuration based on market trend
 position_sizing:

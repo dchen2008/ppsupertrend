@@ -10,7 +10,7 @@ class OANDAConfig:
     ACCOUNTS = {
         # email: dchen2008@gmail.com
         'account1': {
-            'api_key': 'afe3376656d5530c5ae91e559b59e0ea-9b448f47df63b890056320f9da099228',
+            'api_key': '3c30c534764330b0e072a3b759bad8a8-eb42d4f158f206859e09966f8c74dff6',
             'account_id': '101-001-35749385-001',
             'is_practice': True
         },
@@ -31,8 +31,72 @@ class OANDAConfig:
             'api_key': '97e97cf3987d09e57edbc71c4cac6ad9-196ea977cd536d28e4f7bffe0ba4f9c1',
             'account_id': '101-001-38195467-001',
             'is_practice': True
+        },
+        # 
+        'account21': {
+            'api_key': '3c30c534764330b0e072a3b759bad8a8-eb42d4f158f206859e09966f8c74dff6',
+            'account_id': '101-001-35749385-002',
+            'is_practice': True
+        },
+        # 
+        'account22': {
+            'api_key': '3c30c534764330b0e072a3b759bad8a8-eb42d4f158f206859e09966f8c74dff6',
+            'account_id': '101-001-35749385-003',
+            'is_practice': True
+        },
+        # 
+        'account23': {
+            'api_key': '3c30c534764330b0e072a3b759bad8a8-eb42d4f158f206859e09966f8c74dff6',
+            'account_id': '101-001-35749385-004',
+            'is_practice': True
+        },
+        # 
+        'account24': {
+            'api_key': '3c30c534764330b0e072a3b759bad8a8-eb42d4f158f206859e09966f8c74dff6',
+            'account_id': '101-001-35749385-005',
+            'is_practice': True
+        },
+        # 
+        'account25': {
+            'api_key': '3c30c534764330b0e072a3b759bad8a8-eb42d4f158f206859e09966f8c74dff6',
+            'account_id': '101-001-35749385-006',
+            'is_practice': True
+        },
+        'account26': {
+            'api_key': '3c30c534764330b0e072a3b759bad8a8-eb42d4f158f206859e09966f8c74dff6',
+            'account_id': '101-001-35749385-007',
+            'is_practice': True
+        },
+        'os1': {
+            'api_key': 'a61dfcb2cf7a6481c0373f80469371dc-d8255db9fe371a77c0d28d3ab7c64bf2',
+            'account_id': '101-001-31676122-002',
+            'is_practice': True
+        },        
+        'os2': {
+            'api_key': 'a61dfcb2cf7a6481c0373f80469371dc-d8255db9fe371a77c0d28d3ab7c64bf2',
+            'account_id': '101-001-31676122-003',
+            'is_practice': True
+        },        
+        'os3': {
+            'api_key': 'a61dfcb2cf7a6481c0373f80469371dc-d8255db9fe371a77c0d28d3ab7c64bf2',
+            'account_id': '101-001-31676122-004',
+            'is_practice': True
+        },        
+        'os4': {
+            'api_key': 'a61dfcb2cf7a6481c0373f80469371dc-d8255db9fe371a77c0d28d3ab7c64bf2',
+            'account_id': '101-001-31676122-005',
+            'is_practice': True
+        },        
+        'os5': {
+            'api_key': 'a61dfcb2cf7a6481c0373f80469371dc-d8255db9fe371a77c0d28d3ab7c64bf2',
+            'account_id': '101-001-31676122-006',
+            'is_practice': True
+        },        
+        'os6': {
+            'api_key': 'a61dfcb2cf7a6481c0373f80469371dc-d8255db9fe371a77c0d28d3ab7c64bf2',
+            'account_id': '101-001-31676122-007',
+            'is_practice': True
         }
-
     }
 
     # Currently active account (default to first account if not set)
