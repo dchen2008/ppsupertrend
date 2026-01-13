@@ -1329,14 +1329,15 @@ def parse_arguments():
 Examples:
   python trading_bot_market_aware.py at=account1 fr=EUR_USD tf=5m
   python trading_bot_market_aware.py at=account2 fr=EUR_USD tf=15m
-  python trading_bot_market_aware.py at=account1 fr=EUR_USD tf=5m catch-up   # Enter on current trend
+  python trading_bot_market_aware.py at=account1 fr=EUR_USD tf=5m catch-up        # Enter on current trend
+  python trading_bot_market_aware.py at=account1 fr=EUR_USD tf=5m close-position  # Close position immediately
         """
     )
 
     parser.add_argument('account', type=str, help='Account: at=account1, at=account2, etc.')
     parser.add_argument('instrument', type=str, help='Trading instrument: fr=EUR_USD, fr=GBP_USD, etc.')
     parser.add_argument('timeframe', type=str, help='Timeframe: tf=5m or tf=15m')
-    parser.add_argument('catchup', nargs='?', default=None, help='Optional: catch-up to enter on current trend if no position')
+    parser.add_argument('action', nargs='?', default=None, help='Optional: catch-up or close-position')
 
     args = parser.parse_args()
 
@@ -1362,18 +1363,89 @@ Examples:
         available = ', '.join(OANDAConfig.list_accounts())
         parser.error(f"Account '{account}' not found. Available accounts: {available}")
 
-    # Parse catch-up flag
+    # Parse action flag (catch-up or close-position)
     catch_up = False
-    if args.catchup and args.catchup == 'catch-up':
-        catch_up = True
+    close_position = False
+    if args.action:
+        if args.action == 'catch-up':
+            catch_up = True
+        elif args.action == 'close-position':
+            close_position = True
 
-    return account, instrument, timeframe, catch_up
+    return account, instrument, timeframe, catch_up, close_position
+
+
+def close_position_immediately(account, instrument):
+    """Close all positions for the specified instrument immediately"""
+    print(f"\n🔒 CLOSE POSITION MODE")
+    print("=" * 60)
+    print(f"Account:    {account}")
+    print(f"Instrument: {instrument}")
+    print("=" * 60)
+
+    # Create OANDA client
+    client = OANDAClient()
+
+    # Get current positions
+    positions = client.get_open_positions()
+
+    # Find position for this instrument
+    target_position = None
+    for pos in positions:
+        if pos.get('instrument') == instrument:
+            target_position = pos
+            break
+
+    if not target_position:
+        print(f"\n⚠️  No open position found for {instrument}")
+        return
+
+    # Display position details
+    long_units = int(float(target_position.get('long', {}).get('units', 0)))
+    short_units = int(float(target_position.get('short', {}).get('units', 0)))
+    unrealized_pl = float(target_position.get('unrealizedPL', 0))
+
+    if long_units > 0:
+        print(f"\n📈 LONG Position: {long_units} units")
+        side = "LONG"
+    elif short_units < 0:
+        print(f"\n📉 SHORT Position: {abs(short_units)} units")
+        side = "SHORT"
+    else:
+        print(f"\n⚠️  No active position to close for {instrument}")
+        return
+
+    print(f"💰 Unrealized P/L: ${unrealized_pl:.2f}")
+
+    # Close the position
+    try:
+        result = client.close_position(instrument, side)
+
+        if result:
+            print(f"\n✅ Position closed successfully!")
+
+            # Extract realized P/L from response
+            if 'longOrderFillTransaction' in result:
+                fill = result['longOrderFillTransaction']
+                realized_pl = float(fill.get('pl', 0))
+                print(f"💵 Realized P/L: ${realized_pl:.2f}")
+            elif 'shortOrderFillTransaction' in result:
+                fill = result['shortOrderFillTransaction']
+                realized_pl = float(fill.get('pl', 0))
+                print(f"💵 Realized P/L: ${realized_pl:.2f}")
+        else:
+            print(f"\n❌ Failed to close position")
+
+    except Exception as e:
+        print(f"\n❌ Error closing position: {e}")
+
+    print("\n" + "=" * 60)
 
 
 def main():
     """Main entry point"""
     # Parse command line arguments
-    account, instrument, timeframe, catch_up = parse_arguments()
+    account, instrument, timeframe, catch_up, close_position = parse_arguments()
 
     # Set the active account BEFORE any API calls
     try:
@@ -1381,6 +1453,11 @@ def main():
         print(f"\n✓ Using account: {account} ({OANDAConfig.account_id})")
     except ValueError as e:
         print(f"\n❌ Error: {e}")
+        return
+
+    # Handle close-position mode (no confirmation needed - immediate action)
+    if close_position:
+        close_position_immediately(account, instrument)
         return
 
     # Display warning

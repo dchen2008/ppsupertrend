@@ -27,16 +27,20 @@ from backtest.src.data_downloader import BacktestDataDownloader
 class FixedBacktestEngine:
     """Fixed backtest engine that EXACTLY replicates live bot logic with proper filtering"""
     
-    def __init__(self, instrument, timeframe, account='account1', initial_balance=None):
+    def __init__(self, instrument, timeframe, account='account1', initial_balance=None, market_override=None):
         self.instrument = instrument
         self.timeframe = timeframe
         self.account = account
-        
+        self.market_override = market_override  # 'BEAR', 'BULL', or None
+
         # Map timeframe to granularity
         self.granularity = 'M5' if timeframe == '5m' else 'M15'
-        
+
         # Load configuration (exactly like live bot)
         self.config = self.load_account_config()
+
+        # Extract key settings for validation
+        self.disable_opposite_trade = self.config.get('position_sizing', {}).get('disable_opposite_trade', False)
         
         # Get initial balance from config if not provided
         if initial_balance is None:
@@ -192,7 +196,12 @@ class FixedBacktestEngine:
     def run_fixed_backtest(self, trading_data, market_data, start_date=None, end_date=None):
         """Run fixed backtest with EXACT live bot logic and filtering"""
         self.logger.info(f"🎯 Starting FIXED backtest (exact live bot logic)")
+        self.logger.info(f"Account: {self.account}")
         self.logger.info(f"Period: {start_date} to {end_date}")
+        self.logger.info(f"⚙️  Config: disable_opposite_trade={self.disable_opposite_trade}")
+        if self.market_override:
+            self.logger.info(f"⚙️  Market Override: {self.market_override} (3H calculation disabled)")
+            self.current_market_trend = self.market_override
         
         # Filter data to date range
         # CRITICAL: Only filter trading data to date range, preserve full market history for 3H calculations
@@ -223,18 +232,19 @@ class FixedBacktestEngine:
         
         for current_time, row in trading_data_with_indicators.iterrows():
             processed += 1
-            
-            # Update market trend periodically (exactly like live bot)
-            if processed % 12 == 0:  # Every 12 candles (3 hours for M15, 1 hour for M5)
-                prev_trend = self.current_market_trend
-                self.current_market_trend = self.check_market_trend(market_data, current_time)
-                if prev_trend != self.current_market_trend:
-                    self.logger.info(f"📊 3H Market Trend UPDATE at {current_time}: {prev_trend} → {self.current_market_trend}")
-            
-            # Skip until we have enough 3H data (exactly like live bot)
-            market_slice = market_data[market_data.index <= current_time]
-            if len(market_slice) < 15:
-                continue
+
+            # Update market trend periodically (skip if market override is set)
+            if self.market_override is None:
+                if processed % 12 == 0:  # Every 12 candles (3 hours for M15, 1 hour for M5)
+                    prev_trend = self.current_market_trend
+                    self.current_market_trend = self.check_market_trend(market_data, current_time)
+                    if prev_trend != self.current_market_trend:
+                        self.logger.info(f"📊 3H Market Trend UPDATE at {current_time}: {prev_trend} → {self.current_market_trend}")
+
+                # Skip until we have enough 3H data (exactly like live bot)
+                market_slice = market_data[market_data.index <= current_time]
+                if len(market_slice) < 15:
+                    continue
             
             # Get signal for current candle (exactly like live bot)
             data_slice = trading_data_with_indicators.loc[:current_time].copy()
@@ -266,10 +276,27 @@ class FixedBacktestEngine:
                 
                 # Apply EXACT live bot logic using RiskManager
                 position_type = 'LONG' if current_actual_signal == 'BUY' else 'SHORT'
-                
+
                 # Convert to position format for RiskManager (exactly like live bot)
                 current_position = None  # No existing position after closure
-                
+
+                # EXPLICIT CHECK: Apply disable_opposite_trade filter BEFORE calling RiskManager
+                # This ensures the backtest follows the exact same logic as live bot
+                trade_blocked_by_opposite_filter = False
+                if self.disable_opposite_trade:
+                    if current_market_trend == 'BEAR' and current_actual_signal == 'BUY':
+                        trade_blocked_by_opposite_filter = True
+                        self.logger.info(f"   🚫 BLOCKED: BUY signal in BEAR market (disable_opposite_trade=True)")
+                    elif current_market_trend == 'BULL' and current_actual_signal == 'SELL':
+                        trade_blocked_by_opposite_filter = True
+                        self.logger.info(f"   🚫 BLOCKED: SELL signal in BULL market (disable_opposite_trade=True)")
+
+                if trade_blocked_by_opposite_filter:
+                    # Skip this trade entirely - do not call RiskManager
+                    prev_signal = current_signal
+                    prev_actual_signal = current_actual_signal
+                    continue
+
                 # Use RiskManager to check if trade should execute (EXACT live bot logic)
                 should_trade, action, next_action = self.risk_manager.should_trade(
                     signal_info,
@@ -523,14 +550,43 @@ class FixedBacktestEngine:
             'signal_analysis': self.signal_analysis
         }
     
-    def save_signal_analysis_csv(self, results, output_dir, time_range_str):
+    def generate_base_filename(self, time_range_str):
+        """Generate base filename for CSV and log files.
+
+        Format: account1_EUR_USD_5min_0104_0109_752
+        """
+        random_num = random.randint(100, 999)  # 3-digit number
+
+        # Convert time range to readable format
+        # time_range_str format: "01042026160000_01092026160000"
+        start_str = time_range_str.split('_')[0]  # "01042026160000"
+        end_str = time_range_str.split('_')[1]    # "01092026160000"
+
+        # Extract month and day for MMDD format with leading zeros
+        start_month = start_str[0:2]  # "01"
+        start_day = start_str[2:4]    # "04"
+        end_month = end_str[0:2]      # "01"
+        end_day = end_str[2:4]        # "09"
+
+        # Format: MMDD_MMDD
+        date_range = f"{start_month}{start_day}_{end_month}{end_day}"
+
+        # Expand timeframe: 5m -> 5min, 15m -> 15min
+        timeframe_expanded = self.timeframe.replace('m', 'min')
+
+        # Format: account1_EUR_USD_5min_0104_0109_752
+        base_filename = f"{self.account}_{self.instrument}_{timeframe_expanded}_{date_range}_{random_num}"
+
+        return base_filename
+
+    def save_signal_analysis_csv(self, results, output_dir, time_range_str, base_filename=None):
         """Save signal analysis to CSV"""
         if not results['signal_analysis']:
-            return None
-        
+            return None, None
+
         # Create DataFrame
         df = pd.DataFrame(results['signal_analysis'])
-        
+
         # Reorder columns for CSV (more readable format with new enhancements)
         csv_columns = [
             'market', 'signal', 'time', 'entry_price', 'stop_loss_price', 'take_profit_price',
@@ -538,37 +594,20 @@ class FixedBacktestEngine:
             'take_profit_ratio', 'highest_ratio', 'potential_profit', 'actual_profit',
             'lowest_ratio', 'potential_loss', 'position_status', 'take_profit_hit', 'stop_loss_hit'
         ]
-        
+
         df_csv = df[csv_columns].copy()
-        
-        # Generate filename with new format: EUR_USD_5m_account1_sign_ratio_profit_Jan-4_Jan-9_xxx.csv
-        random_num = random.randint(100, 999)  # 3-digit number
-        
-        # Convert time range to readable format
-        # time_range_str format: "01042026160000_01092026160000"
-        start_str = time_range_str.split('_')[0]  # "01042026160000"
-        end_str = time_range_str.split('_')[1]    # "01092026160000"
-        
-        # Extract month and day for readable format
-        start_month = int(start_str[0:2])  # 01 -> 1
-        start_day = int(start_str[2:4])    # 04 -> 4
-        end_month = int(end_str[0:2])      # 01 -> 1  
-        end_day = int(end_str[2:4])        # 09 -> 9
-        
-        # Create month names
-        month_names = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
-                      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-        start_month_name = month_names[start_month - 1]
-        end_month_name = month_names[end_month - 1]
-        
-        readable_range = f"{start_month_name}-{start_day}_{end_month_name}-{end_day}"
-        filename = f"{self.instrument}_{self.timeframe}_{self.account}_sign_ratio_profit_{readable_range}_{random_num}.csv"
+
+        # Generate base filename if not provided
+        if base_filename is None:
+            base_filename = self.generate_base_filename(time_range_str)
+
+        filename = f"{base_filename}.csv"
         filepath = os.path.join(output_dir, filename)
-        
+
         # Save CSV
         df_csv.to_csv(filepath, index=False)
-        
-        return filename
+
+        return filename, base_filename
 
 def parse_time_range(time_range_str):
     """Parse time range string like '01/04/2026 16:00:00,01/09/2026 16:00:00'"""
@@ -593,65 +632,115 @@ def main():
     parser.add_argument('timeframe', help='Timeframe (format: tf=5m)')
     parser.add_argument('time_range', help='Time range (format: bt=MM/DD/YYYY HH:MM:SS,MM/DD/YYYY HH:MM:SS)')
     parser.add_argument('--balance', type=float, default=None, help='Initial balance (defaults to config value)')
+    parser.add_argument('--market', type=str, default=None, help='Override market trend: bear or bull (case insensitive)')
     parser.add_argument('--output-dir', default='backtest/results', help='Output directory')
-    
+
     args = parser.parse_args()
-    
+
     # Parse arguments
     try:
         account = args.account.split('=')[1]
-        instrument = args.instrument.split('=')[1] 
+        instrument = args.instrument.split('=')[1]
         timeframe = args.timeframe.split('=')[1]
         time_range_str = args.time_range.split('=')[1]
-        
+
         start_date, end_date = parse_time_range(time_range_str)
+
+        # Parse market override (case insensitive)
+        market_override = None
+        if args.market:
+            market_upper = args.market.upper()
+            if market_upper in ['BEAR', 'BULL']:
+                market_override = market_upper
+            else:
+                print(f"Warning: Invalid market value '{args.market}', ignoring. Use 'bear' or 'bull'.")
         
     except Exception as e:
         print(f"Error parsing arguments: {e}")
         return 1
     
-    # Setup logging
-    logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-    
+    # Generate time range key for filenames
+    time_range_csv = time_range_str.replace('/', '').replace(' ', '').replace(':', '').replace(',', '_')
+
+    # Create temporary engine just to generate base filename
+    temp_engine = FixedBacktestEngine(
+        instrument=instrument,
+        timeframe=timeframe,
+        account=account
+    )
+    base_filename = temp_engine.generate_base_filename(time_range_csv)
+
+    # Create output directories
+    os.makedirs(args.output_dir, exist_ok=True)
+    log_dir = 'logs'
+    os.makedirs(log_dir, exist_ok=True)
+
+    # Setup logging to both console and file
+    log_filename = f"{base_filename}.log"
+    log_filepath = os.path.join(log_dir, log_filename)
+
+    # Configure root logger
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(levelname)s - %(message)s',
+        handlers=[
+            logging.StreamHandler(),  # Console output
+            logging.FileHandler(log_filepath)  # File output
+        ]
+    )
+
     print(f"\n🎯 FIXED BACKTEST - EXACT LIVE BOT LOGIC")
     print(f"Account: {account}")
     print(f"Instrument: {instrument}")
     print(f"Timeframe: {timeframe}")
     print(f"Period: {start_date} to {end_date}")
-    
+    if market_override:
+        print(f"Market Override: {market_override} (3H calculation disabled)")
+
     try:
-        # Download data
+        # Download data for the specific date range
         print("\n📥 Downloading data...")
         downloader = BacktestDataDownloader(account=account)
-        
+
         granularity = 'M5' if timeframe == '5m' else 'M15'
-        data = downloader.get_data_for_backtest(
+
+        # Need extra historical data before start_date for 3H trend calculation
+        # Add 10 days buffer for sufficient 3H candles (only if no market override)
+        data_start_date = start_date - timedelta(days=10) if not market_override else start_date
+
+        # Download data for the specific date range
+        # Skip H3 download if market override is set
+        if market_override:
+            timeframes_to_download = [granularity]
+        else:
+            timeframes_to_download = [granularity, 'H3']
+
+        data = downloader.download_multiple_by_date_range(
             instrument=instrument,
-            trading_timeframe=granularity,
-            market_timeframe='H3',
-            days_back=30  # Get enough historical data
+            timeframes=timeframes_to_download,
+            start_date=data_start_date,
+            end_date=end_date
         )
-        
+
         # Run fixed backtest
         print("\n🔧 Running FIXED backtest with exact live bot logic...")
         engine = FixedBacktestEngine(
             instrument=instrument,
             timeframe=timeframe,
             account=account,
-            initial_balance=args.balance
+            initial_balance=args.balance,
+            market_override=market_override
         )
         print(f"Initial Balance: ${engine.initial_balance:,.2f}")
 
+        # Use empty DataFrame for market_data if market override is set
+        market_data = data.get('H3', pd.DataFrame())
         results = engine.run_fixed_backtest(
-            data[granularity], data['H3'], start_date, end_date
+            data[granularity], market_data, start_date, end_date
         )
-        
-        # Create output directory
-        os.makedirs(args.output_dir, exist_ok=True)
-        
-        # Save CSV
-        time_range_csv = time_range_str.replace('/', '').replace(' ', '').replace(':', '').replace(',', '_')
-        csv_filename = engine.save_signal_analysis_csv(results, args.output_dir, time_range_csv)
+
+        # Save CSV with the same base filename
+        csv_filename, _ = engine.save_signal_analysis_csv(results, args.output_dir, time_range_csv, base_filename)
         
         # Print results
         print(f"\n📊 FIXED BACKTEST RESULTS:")
@@ -675,9 +764,10 @@ def main():
                     print(f"  {signal_type} trades: {count} total, {profitable} profitable ({profitable/count*100:.1f}%)")
         
         if csv_filename:
-            print(f"\n📄 Signal analysis saved to: {csv_filename}")
-            print(f"Path: {args.output_dir}/{csv_filename}")
-        
+            print(f"\n📄 Output files:")
+            print(f"  CSV: {args.output_dir}/{csv_filename}")
+            print(f"  Log: {log_dir}/{log_filename}")
+
         return 0
         
     except Exception as e:
