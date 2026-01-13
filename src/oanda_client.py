@@ -399,7 +399,9 @@ class OANDAClient:
                         'current_units': float(trade['currentUnits']),
                         'unrealized_pl': float(trade['unrealizedPL']),
                         'stop_loss_order_id': trade.get('stopLossOrder', {}).get('id'),
-                        'take_profit_order_id': trade.get('takeProfitOrder', {}).get('id')
+                        'stop_loss_price': float(trade['stopLossOrder']['price']) if trade.get('stopLossOrder', {}).get('price') else None,
+                        'take_profit_order_id': trade.get('takeProfitOrder', {}).get('id'),
+                        'take_profit_price': float(trade['takeProfitOrder']['price']) if trade.get('takeProfitOrder', {}).get('price') else None
                     }
                     trades.append(trade_info)
 

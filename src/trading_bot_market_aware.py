@@ -1178,11 +1178,27 @@ class MarketAwareTradingBot:
                         self.current_position_side = position_type
 
                     # Store take profit info and recalculate if needed based on actual fill price
+                    # First try to get TP from order response
+                    initial_tp_price = None
+                    tp_order_id = None
+
                     if 'takeProfitOrderTransaction' in result:
                         tp_order = result['takeProfitOrderTransaction']
                         initial_tp_price = float(tp_order['price'])
                         tp_order_id = tp_order['id']
+                    else:
+                        # OANDA doesn't always return TP in order response - fetch from trade details
+                        time.sleep(0.5)  # Brief delay to ensure trade is registered
+                        trades = self.client.get_trades(self.instrument)
+                        if trades and len(trades) > 0:
+                            trade = trades[0]
+                            if trade.get('take_profit_price'):
+                                initial_tp_price = trade['take_profit_price']
+                                tp_order_id = trade.get('take_profit_order_id')
+                                self.logger.info(f"📋 Retrieved TP from trade: {initial_tp_price:.5f}")
 
+                    # Now do TP correction if we have the initial TP info
+                    if initial_tp_price is not None:
                         # Recalculate correct TP based on actual fill price (not signal price)
                         correct_tp = self.calculate_take_profit(actual_price, stop_loss, position_type, risk_reward_ratio)
 
@@ -1199,6 +1215,8 @@ class MarketAwareTradingBot:
                                 self.current_take_profit_price = initial_tp_price
                         else:
                             self.current_take_profit_price = initial_tp_price
+                    else:
+                        self.logger.warning(f"⚠️  Could not retrieve TP info - TP correction skipped")
 
                     # Initialize trade tracker
                     self.trade_tracker.entry_price = actual_price
@@ -1463,21 +1481,27 @@ class MarketAwareTradingBot:
                         self.current_position_side = 'LONG' if trade['units'] > 0 else 'SHORT'
                         self.current_entry_price = float(trade.get('price')) if trade.get('price') else None
                         self.current_position_size = abs(float(trade['units']))
-                        
-                        # Try to get stop loss price from order
-                        if trade.get('stop_loss_order'):
-                            self.current_stop_loss_price = float(trade['stop_loss_order'].get('price', 0))
-                        
+
+                        # Get stop loss price
+                        if trade.get('stop_loss_price'):
+                            self.current_stop_loss_price = trade['stop_loss_price']
+
+                        # Get take profit price
+                        if trade.get('take_profit_price'):
+                            self.current_take_profit_price = trade['take_profit_price']
+
                         if self.highest_price_during_trade is None and self.current_entry_price:
                             self.highest_price_during_trade = float(self.current_entry_price)
                         if self.lowest_price_during_trade is None and self.current_entry_price:
                             self.lowest_price_during_trade = float(self.current_entry_price)
-                        
+
                         self.logger.info(f"📌 Recovered tracking: Trade {self.current_trade_id}")
                         if self.current_entry_price:
                             self.logger.info(f"   Entry: {self.current_entry_price:.5f}")
                         if self.current_stop_loss_price:
                             self.logger.info(f"   Stop Loss: {self.current_stop_loss_price:.5f}")
+                        if self.current_take_profit_price:
+                            self.logger.info(f"   Take Profit: {self.current_take_profit_price:.5f}")
 
             # Log status
             self.logger.info("-" * 80)
@@ -1874,16 +1898,15 @@ def close_position_immediately(account, instrument):
         return
 
     # Display position details
-    long_units = int(float(target_position.get('long', {}).get('units', 0)))
-    short_units = int(float(target_position.get('short', {}).get('units', 0)))
-    unrealized_pl = float(target_position.get('unrealizedPL', 0))
+    # get_open_positions() returns simplified format with 'units' and 'side' keys
+    units = int(float(target_position.get('units', 0)))
+    side = target_position.get('side')
+    unrealized_pl = float(target_position.get('unrealized_pl', 0))
 
-    if long_units > 0:
-        print(f"\n📈 LONG Position: {long_units} units")
-        side = "LONG"
-    elif short_units < 0:
-        print(f"\n📉 SHORT Position: {abs(short_units)} units")
-        side = "SHORT"
+    if side == "LONG" and units > 0:
+        print(f"\n📈 LONG Position: {units} units")
+    elif side == "SHORT" and units < 0:
+        print(f"\n📉 SHORT Position: {abs(units)} units")
     else:
         print(f"\n⚠️  No active position to close for {instrument}")
         return

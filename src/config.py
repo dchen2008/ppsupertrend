@@ -62,13 +62,41 @@ class OANDAConfig:
             'account_id': '101-001-35749385-006',
             'is_practice': True
         },
-        # 
         'account26': {
             'api_key': '3c30c534764330b0e072a3b759bad8a8-eb42d4f158f206859e09966f8c74dff6',
             'account_id': '101-001-35749385-007',
             'is_practice': True
+        },
+        'os1': {
+            'api_key': 'a61dfcb2cf7a6481c0373f80469371dc-d8255db9fe371a77c0d28d3ab7c64bf2',
+            'account_id': '101-001-31676122-002',
+            'is_practice': True
+        },        
+        'os2': {
+            'api_key': 'a61dfcb2cf7a6481c0373f80469371dc-d8255db9fe371a77c0d28d3ab7c64bf2',
+            'account_id': '101-001-31676122-003',
+            'is_practice': True
+        },        
+        'os3': {
+            'api_key': 'a61dfcb2cf7a6481c0373f80469371dc-d8255db9fe371a77c0d28d3ab7c64bf2',
+            'account_id': '101-001-31676122-004',
+            'is_practice': True
+        },        
+        'os4': {
+            'api_key': 'a61dfcb2cf7a6481c0373f80469371dc-d8255db9fe371a77c0d28d3ab7c64bf2',
+            'account_id': '101-001-31676122-005',
+            'is_practice': True
+        },        
+        'os5': {
+            'api_key': 'a61dfcb2cf7a6481c0373f80469371dc-d8255db9fe371a77c0d28d3ab7c64bf2',
+            'account_id': '101-001-31676122-006',
+            'is_practice': True
+        },        
+        'os6': {
+            'api_key': 'a61dfcb2cf7a6481c0373f80469371dc-d8255db9fe371a77c0d28d3ab7c64bf2',
+            'account_id': '101-001-31676122-007',
+            'is_practice': True
         }
-
     }
 
     # Currently active account (default to first account if not set)
