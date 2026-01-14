@@ -58,6 +58,20 @@ python tests/test_market_aware_bot.py
 # Debug tools
 python3 analyze_signal_timing.py fr=EUR_USD tf=5m start="2026-01-04 16:00:00" end="2026-01-09 16:00:00"
 python3 debug_phantom_trades.py
+
+# News calendar tools
+python3 pull_news_calendar.py                        # Show next 14 days events
+python3 pull_news_calendar.py days=30                # Show next 30 days events
+python3 pull_news_calendar.py days=14 export         # Export to account1/news_events.json
+python3 pull_news_calendar.py at=account2 export     # Export to specific account
+python3 pull_news_calendar.py source=sample export   # Generate sample events
+
+# Add custom news events (not in official calendars)
+python3 add_news_event.py title="Supreme Court Tariff Ruling" time="01/15/2026 11:00"
+python3 add_news_event.py title="Fed Speech" time="tomorrow 14:30" impact=3
+python3 add_news_event.py title="Emergency" time="+2h"  # 2 hours from now
+python3 add_news_event.py list                          # List all events
+python3 add_news_event.py delete=2                      # Delete event at index 2
 ```
 
 ## Core Architecture
@@ -196,6 +210,58 @@ Download historical candle data for backtesting:
 | `days=` | Days back (alternative to range) | - |
 
 **Data saved to**: `backtest/data/EUR_USD_M5_20260104_20260109.csv`
+
+## News Calendar Filter
+
+The bot can pause trading and close positions before high-impact economic news events.
+
+### Enable News Filter
+
+Add to `account1/config.yaml`:
+```yaml
+news_filter:
+  enabled: true
+  pre_news_buffer_minutes: 10   # Close positions 10 mins before news
+  post_news_buffer_minutes: 15  # Resume trading 15 mins after news
+  close_positions_before_news: true
+```
+
+### Manage News Events
+
+Events are stored in `{account}/news_events.json`. Use the calendar tool:
+```bash
+# View upcoming events
+python3 pull_news_calendar.py days=14
+
+# Export sample events (edit timestamps manually)
+python3 pull_news_calendar.py source=sample export
+
+# After editing, verify events
+python3 pull_news_calendar.py source=manual
+```
+
+### Manual Event File Format
+```json
+{
+  "events": [
+    {
+      "title": "US CPI Report",
+      "timestamp": 1737050400,
+      "currency": "USD",
+      "impact": 3
+    }
+  ]
+}
+```
+
+Get timestamps from https://www.epochconverter.com/ and event dates from:
+- https://www.forexfactory.com/calendar
+- https://www.investing.com/economic-calendar/
+
+### Filtered Event Types
+Default keywords: FOMC, CPI, Core CPI, PPI, PCE, NFP, Non-Farm, GDP, Unemployment, Jobless, Interest Rate, ECB
+
+**Full documentation:** See [docs/NEWS_FILTER.md](docs/NEWS_FILTER.md)
 
 ## Important Notes
 

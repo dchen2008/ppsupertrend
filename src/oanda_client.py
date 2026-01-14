@@ -634,3 +634,52 @@ class OANDAClient:
                     })
 
         return orders
+
+    @api_retry_handler
+    def get_calendar_events(self, instrument='EUR_USD', period=2592000):
+        """
+        Fetch economic calendar events from OANDA ForexLabs API.
+
+        Args:
+            instrument: Currency pair filter (e.g., 'EUR_USD')
+            period: Lookahead period in seconds (default: 2592000 = 30 days)
+
+        Returns:
+            List of event dicts with fields: title, timestamp, currency, impact, region, etc.
+            Returns empty list on error.
+
+        Note: ForexLabs uses the labs/v1/calendar endpoint, not the v3 API.
+        Response format: [{
+            'title': 'US CPI',
+            'timestamp': 1705420800,
+            'currency': 'USD',
+            'impact': 3,
+            'region': 'americas',
+            'forecast': '0.2%',
+            'previous': '0.3%',
+            'actual': ''
+        }, ...]
+        """
+        # ForexLabs API uses the same base host but different path
+        if 'fxpractice' in self.base_url:
+            labs_url = "https://api-fxpractice.oanda.com"
+        else:
+            labs_url = "https://api-fxtrade.oanda.com"
+
+        url = f"{labs_url}/labs/v1/calendar"
+        params = {
+            'instrument': instrument,
+            'period': period
+        }
+
+        response = requests.get(
+            url,
+            headers=self.headers,
+            params=params,
+            timeout=OANDAConfig.api_timeout
+        )
+        response.raise_for_status()
+        data = response.json()
+
+        self.logger.debug(f"Fetched {len(data)} calendar events for {instrument}")
+        return data

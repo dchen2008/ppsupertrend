@@ -138,7 +138,6 @@ class RiskManager:
             spread = client.get_current_spread(instrument)
 
             if spread:
-                from .config import TradingConfig
                 # Adjust stop loss so position closes when MIDPOINT touches SuperTrend
                 # SuperTrend is calculated from MIDPOINT, but stops trigger on BID/ASK
                 spread_adjustment = spread / 2.0
@@ -188,7 +187,7 @@ class RiskManager:
         self.logger.info(f"Calculated take profit: {take_profit:.5f} (RR: {risk_reward_ratio})")
         return round(take_profit, 5)
 
-    def should_trade(self, signal_info, current_position, current_candle_time, last_signal_candle_time, market_trend=None, config=None):
+    def should_trade(self, signal_info, current_position, current_candle_time, last_signal_candle_time, market_trend=None, config=None, news_manager=None):
         """
         Determine if we should execute a trade based on current state
 
@@ -198,6 +197,7 @@ class RiskManager:
         - This allows new position to open immediately (OANDA allows only 1 position per instrument)
         - Prevent duplicate trades on the same signal candle (one trade per signal)
         - Check disable_opposite_trade to skip trades opposite to market trend
+        - Check news_manager for upcoming high-impact news events
 
         Args:
             signal_info: Signal information dict with 'signal'
@@ -206,10 +206,11 @@ class RiskManager:
             last_signal_candle_time: Timestamp of the last candle that triggered a trade
             market_trend: Current market trend ('BULL', 'BEAR', 'NEUTRAL')
             config: Bot configuration dict
+            news_manager: NewsManager instance for news filtering (optional)
 
         Returns:
             tuple: (bool: should_trade, str: action, str: next_action)
-                action: 'OPEN_LONG', 'OPEN_SHORT', 'CLOSE', 'HOLD'
+                action: 'OPEN_LONG', 'OPEN_SHORT', 'CLOSE', 'HOLD', 'HOLD_NEWS'
                 next_action: Action to take after closing (for trend reversals): 'OPEN_LONG', 'OPEN_SHORT', or None
         """
         signal = signal_info['signal']
@@ -218,6 +219,13 @@ class RiskManager:
         if last_signal_candle_time is not None and current_candle_time == last_signal_candle_time:
             self.logger.debug(f"Ignoring duplicate {signal} signal from same candle: {current_candle_time}")
             return False, 'HOLD', None
+
+        # Check news filter - block new trades during news window
+        if news_manager and news_manager.is_enabled():
+            is_blocked, reason, event = news_manager.is_news_blocked()
+            if is_blocked:
+                self.logger.info(f"📰 Trade blocked by news filter: {reason}")
+                return False, 'HOLD_NEWS', None
 
         # Check disable_opposite_trade setting
         disable_opposite_trade = False
