@@ -302,9 +302,9 @@ def main():
     print(f"Risk Amount:     ${risk_amount:.2f}" + (" (from config)" if risk_override is None else " (CLI override)"))
     print(f"SL Distance:     {sl_distance_pips:.1f} pips (price to SuperTrend)")
     print("")
-    print(f"Stop Loss:       {stop_loss:.5f} (SuperTrend {'+' if position_type == 'SHORT' else '-'} {buffer_pips} pip buffer)")
-    print(f"Take Profit:     {take_profit:.5f} (R:R = {rr_ratio})")
     print(f"Position Size:   {position_size:,} units")
+    print(f"Take Profit:     {take_profit:.5f} (R:R = {rr_ratio})")
+    print(f"Stop Loss:       {stop_loss:.5f} (SuperTrend {'+' if position_type == 'SHORT' else '-'} {buffer_pips} pip buffer)")
 
     # Verification section
     print("")
