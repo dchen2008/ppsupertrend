@@ -278,17 +278,17 @@ def main():
     # Get risk amount
     risk_amount = get_risk_amount(config, market_trend, position_type, risk_override)
 
-    # Calculate SL with buffer
-    stop_loss = calculate_stop_loss(supertrend_price, position_type, buffer_pips)
-
     # Get R:R ratio
     rr_ratio = get_rr_ratio(config, market_trend, position_type)
 
-    # Calculate TP
-    take_profit = calculate_take_profit(entry_price, stop_loss, rr_ratio, position_type)
+    # Step 1: Calculate TP FIRST using raw PP SuperTrend as risk reference (no buffer)
+    take_profit = calculate_take_profit(entry_price, supertrend_price, rr_ratio, position_type)
 
-    # Calculate position size
-    position_size = calculate_position_size(risk_amount, entry_price, stop_loss)
+    # Step 2: Calculate SL with buffer SECOND
+    stop_loss = calculate_stop_loss(supertrend_price, position_type, buffer_pips)
+
+    # Calculate position size using raw PP SuperTrend distance
+    position_size = calculate_position_size(risk_amount, entry_price, supertrend_price)
 
     # Calculate distances in pips
     sl_distance_pips = abs(supertrend_price - entry_price) / 0.0001
