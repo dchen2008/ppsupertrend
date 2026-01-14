@@ -19,6 +19,7 @@ from .config import OANDAConfig, TradingConfig
 from .oanda_client import OANDAClient
 from .indicators import calculate_pp_supertrend, get_current_signal
 from .risk_manager import RiskManager
+from .news_manager import NewsManager
 
 
 class TradeTracker:
@@ -233,6 +234,9 @@ class MarketAwareTradingBot:
         self.scalping_rr_ratio = None
         self.scalping_pending_limit_order_id = None
 
+        # Initialize news manager for high-impact event filtering
+        self.news_manager = NewsManager(self.client, self.config, self.account)
+
         self.logger.info("=" * 80)
         self.logger.info(f"Market-Aware Trading Bot Initialized")
         self.logger.info("=" * 80)
@@ -247,6 +251,13 @@ class MarketAwareTradingBot:
         self.logger.info(f"Risk/Reward Config: {self.risk_reward_config}")
         if self.last_signal_candle_time:
             self.logger.info(f"📂 Restored last signal time: {self.last_signal_candle_time}")
+        if self.news_manager.is_enabled():
+            self.logger.info(f"📰 News Filter: ENABLED")
+            self.logger.info(f"   Pre-news buffer: {int(self.news_manager.pre_news_buffer.total_seconds()//60)} mins")
+            self.logger.info(f"   Post-news buffer: {int(self.news_manager.post_news_buffer.total_seconds()//60)} mins")
+            self.logger.info(f"   Close positions before news: {self.news_manager.close_before_news}")
+        else:
+            self.logger.info(f"📰 News Filter: DISABLED")
         self.logger.info("=" * 80)
 
     def convert_timeframe_to_granularity(self, timeframe):
@@ -955,6 +966,113 @@ class MarketAwareTradingBot:
     # END SCALPING STRATEGY METHODS
     # ============================================================================
 
+    def _close_position_for_news(self, reason: str):
+        """
+        Close current position due to upcoming high-impact news event.
+
+        Args:
+            reason: Reason string for logging (e.g., "Close before news: US CPI in 5m")
+        """
+        try:
+            current_position = self.client.get_position(self.instrument)
+            if not current_position or current_position['units'] == 0:
+                return
+
+            side = current_position['side']
+            units = abs(current_position['units'])
+
+            self.logger.info("=" * 80)
+            self.logger.warning(f"📰 CLOSING POSITION for {self.instrument} - NEWS EVENT")
+            self.logger.info(f"Reason: {reason}")
+            self.logger.info(f"Position: {side} {units} units")
+            self.logger.info(f"Unrealized P/L: ${current_position['unrealized_pl']:.2f}")
+            self.logger.info("=" * 80)
+
+            result = self.client.close_position(self.instrument, side)
+
+            if result:
+                self.logger.info("✅ Position closed successfully (news event)")
+
+                # Get close details
+                close_time = datetime.now()
+                profit = current_position['unrealized_pl']
+
+                # Calculate R:R ratios for logging
+                risk_amount = self.current_risk_amount if self.current_risk_amount else 100
+                actual_rr = profit / risk_amount if risk_amount > 0 else 0
+                highest_ratio = self.trade_tracker.highest_ratio if self.trade_tracker.highest_ratio else actual_rr
+                lowest_ratio = self.trade_tracker.lowest_ratio if self.trade_tracker.lowest_ratio else actual_rr
+                potential_profit = self.trade_tracker.highest_pl if self.trade_tracker.highest_pl else profit
+                potential_loss = self.trade_tracker.lowest_pl if self.trade_tracker.lowest_pl else profit
+                position_size = self.current_position_size if self.current_position_size else 0
+
+                # Determine market
+                market = self.current_market_trend.upper() if self.current_market_trend and self.current_market_trend.upper() in ['BEAR', 'BULL'] else 'NEUTRAL'
+                if market not in ['BEAR', 'BULL']:
+                    market = 'BEAR'
+
+                # Log to CSV
+                csv_data = {
+                    'market': market,
+                    'signal': self.current_position_side if self.current_position_side else side,
+                    'time': self.current_trade_open_time.strftime('%Y-%m-%d %H:%M:%S') if self.current_trade_open_time else 'N/A',
+                    'entry_price': f"{self.current_entry_price:.5f}" if self.current_entry_price else 'N/A',
+                    'stop_loss_price': f"{self.current_stop_loss_price:.5f}" if self.current_stop_loss_price else 'N/A',
+                    'take_profit_price': f"{self.current_take_profit_price:.5f}" if self.current_take_profit_price else 'N/A',
+                    'position_lots': f"{position_size / 100000:.3f}" if position_size else 'N/A',
+                    'risk_amount': f"{risk_amount:.2f}",
+                    'original_stop_pips': f"{self.current_original_stop_pips:.1f}" if self.current_original_stop_pips else 'N/A',
+                    'buffer_pips': f"{self.spread_buffer_pips}",
+                    'adjusted_stop_pips': f"{self.current_adjusted_stop_pips:.1f}" if self.current_adjusted_stop_pips else 'N/A',
+                    'take_profit_ratio': f"{self.current_risk_reward_target:.1f}" if self.current_risk_reward_target else 'N/A',
+                    'highest_ratio': f"{highest_ratio:.2f}",
+                    'potential_profit': f"{potential_profit:.2f}",
+                    'actual_profit': f"{profit:.2f}",
+                    'lowest_ratio': f"{lowest_ratio:.2f}",
+                    'potential_loss': f"{potential_loss:.2f}",
+                    'position_status': 'NEWS_CLOSE',
+                    'take_profit_hit': 'FALSE',
+                    'stop_loss_hit': 'FALSE'
+                }
+                self.csv_logger.log_trade(csv_data)
+                self.logger.info(f"   💾 Logged news close to CSV: P/L=${profit:.2f}")
+
+                # Reset trade tracker
+                self.trade_tracker.reset()
+
+                # Clear position tracking
+                self.current_stop_loss_order_id = None
+                self.current_trade_id = None
+                self.current_stop_loss_price = None
+                self.current_take_profit_price = None
+                self.current_position_side = None
+                self.current_entry_price = None
+                self.highest_price_during_trade = None
+                self.lowest_price_during_trade = None
+                self.current_trade_open_time = None
+                self.current_supertrend_value = None
+                self.current_pivot_point_value = None
+                self.current_position_size = None
+                self.current_market_trend = 'NEUTRAL'
+                self.current_risk_reward_target = None
+                self.current_risk_amount = None
+                self.current_original_stop_pips = None
+                self.current_adjusted_stop_pips = None
+
+                # Reset scalping if active
+                if self.scalping_active:
+                    self.reset_scalping_state("Closed for news event")
+
+                # Reset signal state to allow new trade after news passes
+                self.last_signal_candle_time = None
+                self._save_state()
+
+            else:
+                self.logger.error("❌ Failed to close position for news event")
+
+        except Exception as e:
+            self.logger.error(f"Error closing position for news: {e}", exc_info=True)
+
     def execute_trade(self, action, signal_info, account_summary):
         """Execute trade based on action and log to CSV
 
@@ -1331,6 +1449,42 @@ class MarketAwareTradingBot:
                 (datetime.now() - self.last_market_check).total_seconds() > self.market_check_interval):
                 self.check_market_trend()
 
+            # Check news filter - close position and pause trading if high-impact news approaching
+            if self.news_manager.is_enabled():
+                # Check if we should close position before news
+                should_close, close_reason, close_event = self.news_manager.should_close_position()
+                if should_close:
+                    current_position = self.client.get_position(self.instrument)
+                    if current_position and current_position['units'] != 0:
+                        self.logger.warning(f"📰 {close_reason}")
+                        self.logger.info(f"   Event: {close_event}")
+                        self._close_position_for_news(close_reason)
+                        return  # Skip rest of trading logic this cycle
+
+                # Check if trading is blocked (pre/post news window)
+                is_blocked, block_reason, block_event = self.news_manager.is_news_blocked()
+                if is_blocked:
+                    self.logger.info(f"📰 Trading paused: {block_reason}")
+                    # Still check for position closure and tracking, just skip new trades
+                    # Continue to the position monitoring code below
+                else:
+                    # Log next upcoming news event (if within 60 minutes)
+                    next_event = self.news_manager.get_upcoming_event(within_minutes=60)
+                    if next_event:
+                        from datetime import datetime as dt
+                        import pytz
+                        now = dt.utcnow().replace(tzinfo=pytz.UTC)
+                        mins_until = int((next_event.datetime - now).total_seconds() / 60)
+                        pre_buffer = int(self.news_manager.pre_news_buffer.total_seconds() / 60)
+
+                        # Convert event time to Pacific Time for display
+                        pt_tz = pytz.timezone('America/Los_Angeles')
+                        event_time_pt = next_event.datetime.astimezone(pt_tz)
+                        event_time_str = event_time_pt.strftime('%m/%d %H:%M PT')
+
+                        self.logger.info(f"📰 Next NEWS: {next_event.title} ({next_event.currency}) at {event_time_str} ({mins_until}m) | "
+                                       f"Will close position & pause bot {pre_buffer}m before")
+
             # Check pending scalping limit orders
             if self.scalping_pending_limit_order_id:
                 self.check_pending_scalping_order()
@@ -1621,7 +1775,8 @@ class MarketAwareTradingBot:
                 candle_timestamp,
                 self.last_signal_candle_time,
                 market_trend=self.current_market_signal,
-                config=self.config
+                config=self.config,
+                news_manager=self.news_manager
             )
 
             if should_trade:

@@ -55,6 +55,75 @@ scalping:
 backtest:
   initial_balance: 10000  # Default starting balance for backtests
 
+# News calendar filter configuration
+# Pauses trading and closes positions before high-impact economic news events
+news_filter:
+  enabled: false  # Default disabled, enable per-account in account1/config.yaml
+
+  # Timing buffers (how long before/after news to pause trading)
+  pre_news_buffer_minutes: 10   # Close positions & pause X mins before news
+  post_news_buffer_minutes: 15  # Resume trading X mins after news
+
+  # OANDA Calendar API settings
+  # NOTE: OANDA ForexLabs Calendar API may be unavailable in some regions.
+  # If disabled or API fails, use the manual_events_file instead.
+  oanda_calendar:
+    enabled: false            # Set to true to try OANDA ForexLabs API
+    instrument: EUR_USD       # Filter events affecting this pair
+    period: 2592000           # 30 days lookahead (seconds)
+    cache_ttl: 3600           # Cache events for 1 hour (seconds)
+
+  # Manual event file (backup if OANDA misses events)
+  # Set to "{account}/news_events.json" to enable, or null to disable
+  manual_events_file: "{account}/news_events.json"
+
+  # Event filtering by impact level
+  # OANDA uses: 1=low, 2=medium, 3=high
+  impact_levels:
+    - 3  # High impact only
+
+  # Event keywords to filter (case-insensitive match against event title)
+  # Only events matching these keywords will trigger the filter
+  event_keywords:
+    # Fed/Central Bank
+    - "FOMC"
+    - "Fed Meeting"
+    - "Federal Reserve"
+    - "Interest Rate Decision"
+    - "ECB"
+    - "Bank of England"
+    # Inflation
+    - "CPI"
+    - "Consumer Price Index"
+    - "Core CPI"
+    - "PPI"
+    - "Producer Price Index"
+    - "PCE"
+    - "Personal Consumption"
+    - "Inflation"
+    # Employment
+    - "Non-Farm Payrolls"
+    - "NFP"
+    - "Unemployment Rate"
+    - "Jobless Claims"
+    - "Employment Change"
+    - "ADP Employment"
+    # Economic Growth
+    - "GDP"
+    - "Gross Domestic Product"
+    - "Retail Sales"
+    - "ISM Manufacturing"
+    - "ISM Services"
+
+  # Currency filter (events affecting these currencies)
+  currencies:
+    - EUR
+    - USD
+
+  # Actions
+  close_positions_before_news: true   # Auto-close open positions before news
+  log_blocked_trades: true            # Log when trades are blocked by news
+
 # Optional: ATR and Pivot parameters
 # indicators:
 #   pivot_period: 2

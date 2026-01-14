@@ -1,0 +1,43 @@
+{
+  "events": [
+    {
+      "title": "Core PPI m/m",
+      "timestamp": 1768455000,
+      "currency": "USD",
+      "impact": 3
+    },
+    {
+      "title": "Core Retail Sales m/m",
+      "timestamp": 1768455000,
+      "currency": "USD",
+      "impact": 3
+    },
+    {
+      "title": "PPI m/m",
+      "timestamp": 1768455000,
+      "currency": "USD",
+      "impact": 3
+    },
+    {
+      "title": "Retail Sales m/m",
+      "timestamp": 1768455000,
+      "currency": "USD",
+      "impact": 3
+    },
+    {
+      "title": "Supreme Court Tariff Ruling",
+      "timestamp": 1768503600,
+      "currency": "USD",
+      "impact": 3,
+      "source": "manual"
+    },
+    {
+      "title": "Unemployment Claims",
+      "timestamp": 1768541400,
+      "currency": "USD",
+      "impact": 3
+    }
+  ],
+  "last_updated": "2026-01-14T02:31:20Z",
+  "_source": "Forex Factory - manually adjusted for 2026"
+}

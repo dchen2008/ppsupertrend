@@ -37,3 +37,7 @@ position_sizing:
 # Scalping strategy - re-enter at signal price after TP hit
 scalping:
   enabled: true  # Enable scalping for this account
+
+# News filter - pause trading before high-impact events
+news_filter:
+  enabled: true
