@@ -3,3 +3,9 @@ numpy>=1.24.0
 requests>=2.31.0
 pyyaml>=6.0.0
 pytz>=2024.1
+
+# Testing dependencies
+pytest>=7.0.0
+pytest-cov>=4.0.0
+pytest-mock>=3.10.0
+pytest-xdist>=3.0.0

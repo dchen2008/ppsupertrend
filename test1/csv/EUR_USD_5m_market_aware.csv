@@ -1,0 +1,2 @@
+market,signal,time,entry_price,stop_loss_price,take_profit_price,position_lots,risk_amount,original_stop_pips,buffer_pips,adjusted_stop_pips,take_profit_ratio,highest_ratio,potential_profit,actual_profit,lowest_ratio,potential_loss,position_status,take_profit_hit,stop_loss_hit
+BEAR,SHORT,N/A,1.16439,1.16423,1.16358,1.303,100.00,N/A,5,N/A,N/A,0.00,35.18,0.00,0.00,-31.27,CLOSED,UNKNOWN,UNKNOWN

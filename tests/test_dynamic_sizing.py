@@ -70,8 +70,8 @@ def test_dynamic_position_sizing():
             'atr': stop_distance / TradingConfig.atr_factor
         }
 
-        # Calculate position size
-        position_size = risk_manager.calculate_position_size(account_balance, signal_info)
+        # Calculate position size (returns tuple: position_size, risk_amount)
+        position_size, risk_used = risk_manager.calculate_position_size(account_balance, signal_info)
 
         # Calculate metrics
         lots = position_size / 100000

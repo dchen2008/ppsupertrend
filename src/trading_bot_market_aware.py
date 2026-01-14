@@ -1227,14 +1227,19 @@ class MarketAwareTradingBot:
             signal_type = 'BUY' if action == 'OPEN_LONG' else 'SELL'
             position_type = 'LONG' if action == 'OPEN_LONG' else 'SHORT'
             stop_loss = self.calculate_stop_loss(signal_info, signal_type)
-            
+
             current_price = signal_info['price']
-            
+
+            # Get base stop (without buffer) for TP calculation
+            # Position sizing uses this distance, so TP must also use it for consistent R:R
+            base_stop = signal_info.get('supertrend') if self.stop_loss_type == 'supertrend' else signal_info.get('pivot')
+
             # Calculate take profit based on market trend and position type
             risk_reward_ratio = self.get_risk_reward_ratio(market_trend, position_type)
             take_profit = None
-            if stop_loss:
-                take_profit = self.calculate_take_profit(current_price, stop_loss, position_type, risk_reward_ratio)
+            if stop_loss and base_stop:
+                # Use base_stop (without buffer) to be consistent with position sizing
+                take_profit = self.calculate_take_profit(current_price, base_stop, position_type, risk_reward_ratio)
 
             # Log trade details
             self.logger.info("=" * 80)
@@ -1316,9 +1321,10 @@ class MarketAwareTradingBot:
                                 self.logger.info(f"📋 Retrieved TP from trade: {initial_tp_price:.5f}")
 
                     # Now do TP correction if we have the initial TP info
-                    if initial_tp_price is not None:
+                    if initial_tp_price is not None and base_stop is not None:
                         # Recalculate correct TP based on actual fill price (not signal price)
-                        correct_tp = self.calculate_take_profit(actual_price, stop_loss, position_type, risk_reward_ratio)
+                        # Use base_stop (without buffer) to be consistent with position sizing
+                        correct_tp = self.calculate_take_profit(actual_price, base_stop, position_type, risk_reward_ratio)
 
                         # Check if TP needs correction (more than 0.5 pip difference)
                         tp_difference_pips = abs(correct_tp - initial_tp_price) / 0.0001
