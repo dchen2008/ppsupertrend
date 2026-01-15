@@ -45,9 +45,18 @@ def api_retry_handler(func):
             except requests.exceptions.RequestException as e:
                 self.logger.error(f"🚨 API REQUEST ERROR ({attempt}/{max_retries}): {func.__name__}()")
                 self.logger.error(f"   Error: {str(e)}")
+                response_text = ''
                 if hasattr(e, 'response') and e.response is not None:
                     self.logger.error(f"   Status Code: {e.response.status_code}")
-                    self.logger.error(f"   Response: {e.response.text}")
+                    response_text = e.response.text
+                    self.logger.error(f"   Response: {response_text}")
+
+                # Don't retry on permanent errors (position doesn't exist, etc.)
+                non_retryable_errors = ['CLOSEOUT_POSITION_DOESNT_EXIST', 'NO_SUCH_POSITION', 'POSITION_NOT_FOUND']
+                if any(err in response_text for err in non_retryable_errors):
+                    self.logger.warning(f"   ⚠️  Non-retryable error detected. Position may already be closed.")
+                    return None
+
                 if attempt < max_retries:
                     self.logger.warning(f"   Retrying in {retry_delay}s...")
                     time.sleep(retry_delay)
@@ -65,11 +74,12 @@ def api_retry_handler(func):
 class OANDAClient:
     """Client for interacting with OANDA API"""
 
-    def __init__(self):
+    def __init__(self, logger=None):
         self.base_url = OANDAConfig.get_base_url()
         self.headers = OANDAConfig.get_headers()
         self.account_id = OANDAConfig.account_id
-        self.logger = logging.getLogger(__name__)
+        # Use provided logger or fall back to module logger
+        self.logger = logger if logger else logging.getLogger(__name__)
 
     @api_retry_handler
     def get_candles(self, instrument, granularity="M15", count=100):
@@ -398,6 +408,7 @@ class OANDAClient:
                         'units': float(trade['initialUnits']),
                         'current_units': float(trade['currentUnits']),
                         'unrealized_pl': float(trade['unrealizedPL']),
+                        'open_time': trade.get('openTime'),
                         'stop_loss_order_id': trade.get('stopLossOrder', {}).get('id'),
                         'stop_loss_price': float(trade['stopLossOrder']['price']) if trade.get('stopLossOrder', {}).get('price') else None,
                         'take_profit_order_id': trade.get('takeProfitOrder', {}).get('id'),

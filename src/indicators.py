@@ -9,7 +9,10 @@ import pandas as pd
 
 def calculate_atr(df, period=14):
     """
-    Calculate Average True Range (ATR)
+    Calculate Average True Range (ATR) using RMA (Wilder's Smoothed Moving Average)
+
+    This matches TradingView's atr() function which uses RMA internally.
+    RMA formula: RMA = (prev_RMA * (period - 1) + current_value) / period
 
     Args:
         df: DataFrame with 'high', 'low', 'close' columns
@@ -27,7 +30,11 @@ def calculate_atr(df, period=14):
     tr3 = abs(low - close.shift(1))
 
     tr = pd.concat([tr1, tr2, tr3], axis=1).max(axis=1)
-    atr = tr.rolling(window=period).mean()
+
+    # Use RMA (Wilder's Smoothed Moving Average) to match TradingView
+    # RMA = (prev_RMA * (period - 1) + current_value) / period
+    # This is equivalent to EMA with alpha = 1/period
+    atr = tr.ewm(alpha=1/period, adjust=False).mean()
 
     return atr
 
@@ -334,10 +341,17 @@ def get_current_signal(df, use_closed_candles_only=False):
         'supertrend': float(current_row['supertrend']) if not pd.isna(current_row['supertrend']) else None,
         # Price from current row (real-time)
         'price': float(current_row['close']),
+        # Closed candle close price (confirmed/completed candle) for emergency close detection
+        'closed_candle_close': float(signal_row['close']),
         'support': float(current_row['support']) if not pd.isna(current_row['support']) else None,
         'resistance': float(current_row['resistance']) if not pd.isna(current_row['resistance']) else None,
         'atr': float(current_row['atr']) if not pd.isna(current_row['atr']) else None,
-        'pivot': float(current_row['center']) if not pd.isna(current_row['center']) else None
+        'pivot': float(current_row['center']) if not pd.isna(current_row['center']) else None,
+        # Trailing stops for position-specific emergency close checks
+        # trailing_up = support level (for LONG positions)
+        # trailing_down = resistance level (for SHORT positions)
+        'trailing_up': float(current_row['trailing_up']) if not pd.isna(current_row['trailing_up']) else None,
+        'trailing_down': float(current_row['trailing_down']) if not pd.isna(current_row['trailing_down']) else None
     }
 
     # Add debug info for signal detection
