@@ -10,6 +10,13 @@ market:
   indicator: ppsupertrend  # Use PP SuperTrend for market direction
   timeframe: H3            # 3-hour timeframe for market trend
 
+# Signal detection configuration
+signal:
+  # Use only closed candles for signal detection (recommended for live trading)
+  # true  = Use second-to-last candle (last CLOSED candle) - no repainting, consistent signals
+  # false = Use last candle (might be incomplete) - faster signals but may repaint/disappear
+  use_closed_candles_only: true
+
 # Stop loss configuration
 stoploss:
   type: PPSuperTrend      # Trailing stop using PP SuperTrend from trading timeframe

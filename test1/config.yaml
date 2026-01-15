@@ -12,7 +12,7 @@ market:
 # Stop loss configuration
 stoploss:
   type: PPSuperTrend
-  spread_buffer_pips: 5   # Additional buffer in pips when use_spread_adjustment=True (default: 3)
+  spread_buffer_pips: 3   # Additional buffer in pips when use_spread_adjustment=True (default: 3)
   
 # Conservative Risk/Reward configuration
 risk_reward:

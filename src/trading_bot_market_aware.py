@@ -174,6 +174,10 @@ class MarketAwareTradingBot:
         # Buffer for spread adjustment (in pips, configurable)
         self.spread_buffer_pips = self.config.get('stoploss', {}).get('spread_buffer_pips', 3)
 
+        # Signal detection settings
+        # use_closed_candles_only: True = only use closed candles (no repainting)
+        self.use_closed_candles_only = self.config.get('signal', {}).get('use_closed_candles_only', True)
+
         # Initialize components
         self.client = OANDAClient()
         self.risk_manager = RiskManager()
@@ -205,6 +209,12 @@ class MarketAwareTradingBot:
         self.current_risk_amount = None  # Track actual risk amount used
         self.current_original_stop_pips = None  # Stop loss pips before buffer
         self.current_adjusted_stop_pips = None  # Stop loss pips after buffer
+
+        # Enhanced status display tracking
+        self.current_init_sl = None  # Raw SuperTrend (no buffer) at entry
+        self.current_init_tp = None  # Initial take profit price
+        self.current_fill_price = None  # Actual fill price from OANDA
+        self.current_expected_rr = None  # Expected R:R ratio at entry
 
         # Track unique trade IDs
         self.trade_id_counter = 0
@@ -246,6 +256,7 @@ class MarketAwareTradingBot:
         self.logger.info(f"Trading Timeframe: {self.timeframe} ({self.granularity})")
         self.logger.info(f"Market Trend Timeframe: {self.market_timeframe} ({self.market_granularity})")
         self.logger.info(f"Stop Loss Type: {self.stop_loss_type}")
+        self.logger.info(f"Use Closed Candles Only: {self.use_closed_candles_only}")
         self.logger.info(f"CSV Log: {self.csv_filename}")
         self.logger.info(f"Check Interval: {TradingConfig.check_interval} seconds")
         self.logger.info(f"Risk/Reward Config: {self.risk_reward_config}")
@@ -361,6 +372,130 @@ class MarketAwareTradingBot:
         except Exception as e:
             self.logger.warning(f"Could not save state to {self.state_file}: {e}")
 
+    def _get_scalping_status_line(self):
+        """Get scalping status line for status display"""
+        if not self.scalping_enabled:
+            return "SCALPING: ENABLED=FALSE"
+
+        in_window = self.is_in_scalping_window()
+        start_time = self.scalping_config.get('time_window', {}).get('start', '20:00')
+        end_time = self.scalping_config.get('time_window', {}).get('end', '08:00')
+
+        if self.scalping_active:
+            return f"SCALPING: ACTIVE | Entry #{self.scalping_entry_count} | Type: {self.scalping_position_type}"
+        elif in_window:
+            return f"SCALPING: ENABLED=TRUE | Window: {start_time}-{end_time} PT | IN_WINDOW (waiting for trade)"
+        else:
+            return f"SCALPING: ENABLED=TRUE | Window: {start_time}-{end_time} PT | OUT_OF_WINDOW"
+
+    def _add_position_details(self, lines, signal_info, current_position):
+        """Add detailed position info to status display"""
+        units = abs(current_position.get('units', 0))
+        side = current_position.get('side', 'UNKNOWN')
+        current_price = signal_info['price']
+        current_sl = self.current_stop_loss_price
+        current_tp = self.current_take_profit_price
+
+        # Trade info line
+        entry_time_str = self.current_trade_open_time.strftime('%Y-%m-%d %H:%M:%S') if self.current_trade_open_time else 'N/A'
+        lines.append(f"Trade ID:        {self.current_trade_id or 'N/A'} | [{side}] {units:,.0f} units | entry_time: {entry_time_str}")
+
+        # Entry details - handle None values
+        fill_price = self.current_fill_price if self.current_fill_price else self.current_entry_price
+        init_sl = self.current_init_sl if self.current_init_sl else self.current_supertrend_value
+        init_tp = self.current_init_tp if self.current_init_tp else current_tp
+        expected_rr = self.current_expected_rr if self.current_expected_rr else self.current_risk_reward_target
+
+        if fill_price:
+            lines.append(f"Entry Price:     {fill_price:.5f} ({'ask' if side == 'LONG' else 'bid'})")
+        if init_sl:
+            lines.append(f"SuperTrend:      {init_sl:.5f}")
+            lines.append(f"Init SL:         {init_sl:.5f} (raw SuperTrend)")
+        if init_tp and expected_rr:
+            lines.append(f"Init TP:         {init_tp:.5f} (Expected TP R:R = {expected_rr:.1f})")
+        if self.current_risk_amount:
+            lines.append(f"Risk Amount:     ${self.current_risk_amount:.2f}")
+
+        # Est max loss calculation
+        if fill_price and current_sl:
+            if side == 'LONG':
+                max_loss_pips = (fill_price - current_sl) / 0.0001
+            else:
+                max_loss_pips = (current_sl - fill_price) / 0.0001
+            max_loss_amount = max_loss_pips * 0.0001 * units
+            lines.append(f"Est. Max Loss:   ${max_loss_amount:.2f} (if SL triggered at {current_sl:.5f})")
+
+        # Now position section
+        lines.append(">>> NOW POSITION")
+        if fill_price:
+            lines.append(f"Fill Price:      {fill_price:.5f}")
+
+        # TP with warning if approaching
+        if current_tp:
+            if side == 'LONG':
+                pips_to_tp = (current_tp - current_price) / 0.0001
+            else:
+                pips_to_tp = (current_price - current_tp) / 0.0001
+
+            tp_warning = ""
+            if pips_to_tp <= 2.0 and pips_to_tp > 0:
+                tp_warning = f" (Approaching TP: {pips_to_tp:.1f} pips away)"
+            lines.append(f"Take Profit:     {current_tp:.5f}{tp_warning}")
+
+        if current_sl:
+            lines.append(f"Stop Loss:       {current_sl:.5f} (trailing SuperTrend + {self.spread_buffer_pips} pip buffer)")
+
+        # Risk/Reward section
+        lines.append(">>> RISK/REWARD estimate")
+
+        # Calculate pips to SL and TP from current price
+        if current_sl and current_tp:
+            if side == 'LONG':
+                risk_pips = (current_price - current_sl) / 0.0001
+                reward_pips = (current_tp - current_price) / 0.0001
+            else:
+                risk_pips = (current_sl - current_price) / 0.0001
+                reward_pips = (current_price - current_tp) / 0.0001
+
+            potential_loss = abs(risk_pips) * 0.0001 * units
+            potential_profit = abs(reward_pips) * 0.0001 * units
+            actual_rr = reward_pips / risk_pips if risk_pips > 0 else 0
+
+            lines.append(f"Risk (to SL):    {risk_pips:.1f} pips  |  Potential Loss:   ${potential_loss:.2f}")
+            lines.append(f"Reward (to TP):  {reward_pips:.1f} pips  |  Potential Profit: ${potential_profit:.2f}")
+            lines.append(f"Actual R:R:      {actual_rr:.2f}")
+
+    def print_status_display(self, signal_info, account_summary, current_position):
+        """Print formatted status display to console (no logger prefix)"""
+        lines = []
+        lines.append("-" * 80)
+
+        # Time line with Pacific Time
+        pt_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        lines.append(f"Time: {pt_time} Pacific Time (PT)")
+
+        # Scalping line
+        scalping_status = self._get_scalping_status_line()
+        lines.append(scalping_status)
+
+        # Account/Market line
+        balance = account_summary.get('balance', 0)
+        position_pl = current_position.get('unrealized_pl', 0) if current_position and current_position.get('units', 0) != 0 else 0
+        lines.append(f"Account: {self.account} | Market: {self.current_market_signal} | "
+                    f"Balance: ${balance:.2f} | P/L: ${position_pl:.2f}")
+
+        if current_position and current_position.get('units', 0) != 0:
+            # Has position - detailed view
+            self._add_position_details(lines, signal_info, current_position)
+        else:
+            # No position - simple view
+            lines.append(f"Signal: {signal_info['signal']} | Price: {signal_info['price']:.5f}")
+
+        lines.append("-" * 80)
+
+        # Print all lines at once (no logger prefix)
+        print("\n".join(lines))
+
     def setup_logging(self):
         """Configure logging with unique logger name"""
         # Create unique logger for this instance
@@ -419,8 +554,8 @@ class MarketAwareTradingBot:
             )
             
             # Get signal from 3H timeframe
-            signal_info = get_current_signal(df_with_indicators)
-            
+            signal_info = get_current_signal(df_with_indicators, self.use_closed_candles_only)
+
             # Determine market trend based on signal
             # BUY or HOLD_LONG indicates bull market
             # SELL or HOLD_SHORT indicates bear market  
@@ -524,7 +659,7 @@ class MarketAwareTradingBot:
         )
 
         # Get current signal
-        signal_info = get_current_signal(df_with_indicators)
+        signal_info = get_current_signal(df_with_indicators, self.use_closed_candles_only)
 
         # Get the timestamp of the last candle
         candle_timestamp = df_with_indicators.index[-1] if len(df_with_indicators) > 0 else None
@@ -802,9 +937,10 @@ class MarketAwareTradingBot:
             stop_loss = self.calculate_stop_loss(signal_info, signal_type)
 
         # Calculate take profit based on original R:R ratio
+        # Use RAW SuperTrend (no buffer) for TP calculation to match manual order tool logic
         take_profit = self.calculate_take_profit(
             self.scalping_signal_price,  # Use signal_price, not current price
-            stop_loss,
+            self.scalping_original_supertrend,  # Use RAW SuperTrend, not buffered stop_loss
             self.scalping_position_type,
             self.scalping_rr_ratio
         )
@@ -884,6 +1020,19 @@ class MarketAwareTradingBot:
             self.current_market_trend = self.scalping_market_trend
             self.current_risk_reward_target = self.scalping_rr_ratio
             self.current_risk_amount = risk_amount_used
+
+            # Enhanced status display tracking
+            self.current_init_sl = self.scalping_original_supertrend  # Raw SuperTrend (no buffer)
+            self.current_fill_price = actual_price  # Actual OANDA fill price
+            self.current_expected_rr = self.scalping_rr_ratio  # Expected R:R at entry
+            # Calculate init_tp using the same formula as scalping_re_entry
+            if self.scalping_original_supertrend:
+                self.current_init_tp = self.calculate_take_profit(
+                    self.scalping_signal_price,
+                    self.scalping_original_supertrend,
+                    self.scalping_position_type,
+                    self.scalping_rr_ratio
+                )
 
             if 'tradeOpened' in fill:
                 self.current_trade_id = fill['tradeOpened']['tradeID']
@@ -1059,6 +1208,12 @@ class MarketAwareTradingBot:
                 self.current_original_stop_pips = None
                 self.current_adjusted_stop_pips = None
 
+                # Reset enhanced status display tracking
+                self.current_init_sl = None
+                self.current_init_tp = None
+                self.current_fill_price = None
+                self.current_expected_rr = None
+
                 # Reset scalping if active
                 if self.scalping_active:
                     self.reset_scalping_state("Closed for news event")
@@ -1192,6 +1347,12 @@ class MarketAwareTradingBot:
                 self.current_original_stop_pips = None
                 self.current_adjusted_stop_pips = None
 
+                # Reset enhanced status display tracking
+                self.current_init_sl = None
+                self.current_init_tp = None
+                self.current_fill_price = None
+                self.current_expected_rr = None
+
                 # Reset signal tracking so next signal can be acted upon
                 self.last_signal_candle_time = None
                 self._save_state()
@@ -1288,6 +1449,12 @@ class MarketAwareTradingBot:
                     self.current_market_trend = market_trend
                     self.current_risk_reward_target = risk_reward_ratio
                     self.current_risk_amount = risk_amount_used
+
+                    # Enhanced status display tracking
+                    self.current_init_sl = base_stop  # Raw SuperTrend (no buffer)
+                    self.current_init_tp = take_profit  # Initial TP before correction
+                    self.current_fill_price = actual_price  # Actual OANDA fill price
+                    self.current_expected_rr = risk_reward_ratio  # Expected R:R at entry
 
                     # Store trade ID
                     if 'tradeOpened' in fill:
@@ -1663,65 +1830,14 @@ class MarketAwareTradingBot:
                         if self.current_take_profit_price:
                             self.logger.info(f"   Take Profit: {self.current_take_profit_price:.5f}")
 
-            # Log status
-            self.logger.info("-" * 80)
-            self.logger.info(f"Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+            # Print status display (no logger prefix for clean console output)
+            self.print_status_display(signal_info, account_summary, current_position)
 
-            # Use position-specific P/L from OANDA if position exists
-            position_pl = current_position['unrealized_pl'] if current_position and current_position['units'] != 0 else account_summary['unrealized_pl']
-            self.logger.info(f"OVERALL Market: {self.current_market_signal} | Balance: ${account_summary['balance']:.2f} | "
-                           f"P/L: ${position_pl:.2f}")
-
-            # Log scalping status
-            if self.scalping_enabled:
-                in_window = self.is_in_scalping_window()
-                # Get window times from config
-                start_time = self.scalping_config.get('time_window', {}).get('start', '20:00')
-                end_time = self.scalping_config.get('time_window', {}).get('end', '08:00')
-                tz_name = self.scalping_config.get('time_window', {}).get('timezone', 'America/Los_Angeles')
-
-                if self.scalping_active:
-                    scalping_info = f"SCALPING: ACTIVE | Entry #{self.scalping_entry_count} | Type: {self.scalping_position_type}"
-                elif in_window:
-                    scalping_info = f"SCALPING: ENABLED=TRUE | Window: {start_time}-{end_time} PT | IN_WINDOW (waiting for trade)"
-                else:
-                    scalping_info = f"SCALPING: ENABLED=TRUE | Window: {start_time}-{end_time} PT | OUT_OF_WINDOW"
-                self.logger.info(scalping_info)
-            else:
-                self.logger.info("SCALPING: ENABLED=FALSE")
-
+            # Update P&L tracking if position exists
             if current_position and current_position['units'] != 0:
-                position_units = abs(current_position['units'])
-                position_lots = position_units / 100000
-                risk_used = self.current_risk_amount if self.current_risk_amount else 100
-                self.logger.info(f"Position: {current_position['side']} {position_units:,} units ({position_lots:.3f} lots) [${risk_used:.0f} risk]")
-
-                # Calculate and display risk/reward information
-                if self.current_entry_price and self.current_stop_loss_price and self.current_position_size:
-                    # Use the actual risk amount that was used for this trade
-                    # This could be different based on market trend and position direction
-                    risk_amount = self.current_risk_amount if self.current_risk_amount else 100
-
-                    # Get expected R:R ratio based on market and position
-                    position_type = 'LONG' if current_position['side'] == 'LONG' else 'SHORT'
-                    expected_rr = self.get_risk_reward_ratio(self.current_market_signal, position_type)
-
-                    # Get current profit from OANDA API (accurate P/L)
-                    current_profit = float(current_position['unrealized_pl'])
-
-                    current_rr = current_profit / risk_amount if risk_amount > 0 else 0
-
-                    self.logger.info(f"Expected Take Profit R:R: {expected_rr:.1f} | Current R:R Reached: {current_rr:.2f}")
-
-                    # Update P&L tracking with OANDA unrealized P/L
-                    current_price = signal_info.get('close_price')
-                    self.trade_tracker.update_pl(current_price, unrealized_pl=current_profit)
-
-                    # Show if approaching take profit
-                    if current_rr >= expected_rr * 0.8:  # Within 80% of target
-                        self.logger.info(f"⚠️  Approaching Take Profit Target ({current_rr:.2f}/{expected_rr:.1f})")
-
-            self.logger.info(f"Signal: {signal_info['signal']} | Price: {signal_info['price']:.5f}")
+                current_profit = float(current_position['unrealized_pl'])
+                current_price = signal_info.get('close_price')
+                self.trade_tracker.update_pl(current_price, unrealized_pl=current_profit)
             
             # Log debug info if available
             if 'debug' in signal_info:
