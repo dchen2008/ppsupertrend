@@ -270,3 +270,8 @@ Default keywords: FOMC, CPI, Core CPI, PPI, PCE, NFP, Non-Farm, GDP, Unemploymen
 3. **Spread Simulation**: Backtest uses 1.5 pips typical spread for EUR/USD
 4. **Time Zone**: Backtest outputs use UTC-8
 5. **Config contains API keys**: `src/config.py` has OANDA credentials - do not commit changes to this file
+
+## Limit AI auto change code via comments
+# Manual only — AI must not modify this section:xxxx
+# e.g.: ./tools/manually_new_order_cal_tp_sl_position_size.py
+# Manual only — AI must not modify this section:init_take_profit

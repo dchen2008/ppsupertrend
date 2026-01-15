@@ -20,8 +20,8 @@
         fill_price
         current_SL_price
     Then perform two updates:
-        Adjusted TP: Recalculate TP using the preconfigured RR = 0.6, based on fill_price and current_SL_price.
-        New SL: Set SL to current PP SuperTrend price + 5 pips buffer.
+        Must first adjusted TP: Recalculate TP using the preconfigured RR = 0.6, based on fill_price and current_SL_price.
+        Must Second calculate the New SL: Set SL to current PP SuperTrend price + 5 pips buffer.
 Finally, call the API to modify the open position with the new TP and new SL.
 The bot don't need change the TP again until people manually set a new SL.
 
@@ -34,3 +34,7 @@ Pls come up a tool first under:./tools/
 ./tools/calculate_tp_sl_posistions_size.sh at=account1 fr=EUR_USD risk=$100 tf=5m
 -- at=account1, using account1/config.yaml's risk/reward ratio, 3H PP market[BEAR,BULL]
 -- tf=5m means using 5min PP superTrend price
+ 
+ ./tools/calculate_tp_sl_position_size.sh --help
+
+ ./tools/calculate_tp_sl_position_size.sh at=account1 fr=EUR_USD tf=5m

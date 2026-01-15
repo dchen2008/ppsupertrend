@@ -39,6 +39,11 @@ def detect_pivot_highs(df, period=2):
     A pivot high is a high that is higher than 'period' highs to the left
     and 'period' highs to the right
 
+    NOTE: To match Pine Script's pivothigh(prd, prd) behavior, the pivot value
+    is placed at the CONFIRMATION bar (period bars after the actual pivot).
+    This is because Pine Script's pivothigh returns the value at bar i+period
+    when a pivot is detected at bar i.
+
     Args:
         df: DataFrame with 'high' column
         period: Number of bars on each side
@@ -66,7 +71,8 @@ def detect_pivot_highs(df, period=2):
                     break
 
         if is_pivot:
-            pivot_highs.iloc[i] = highs[i]
+            # Place pivot at confirmation bar (period bars later) to match Pine Script
+            pivot_highs.iloc[i + period] = highs[i]
 
     return pivot_highs
 
@@ -77,6 +83,11 @@ def detect_pivot_lows(df, period=2):
 
     A pivot low is a low that is lower than 'period' lows to the left
     and 'period' lows to the right
+
+    NOTE: To match Pine Script's pivotlow(prd, prd) behavior, the pivot value
+    is placed at the CONFIRMATION bar (period bars after the actual pivot).
+    This is because Pine Script's pivotlow returns the value at bar i+period
+    when a pivot is detected at bar i.
 
     Args:
         df: DataFrame with 'low' column
@@ -105,7 +116,8 @@ def detect_pivot_lows(df, period=2):
                     break
 
         if is_pivot:
-            pivot_lows.iloc[i] = lows[i]
+            # Place pivot at confirmation bar (period bars later) to match Pine Script
+            pivot_lows.iloc[i + period] = lows[i]
 
     return pivot_lows
 
@@ -256,19 +268,25 @@ def calculate_pp_supertrend(df, pivot_period=2, atr_factor=3.0, atr_period=10):
     return result
 
 
-def get_current_signal(df):
+def get_current_signal(df, use_closed_candles_only=False):
     """
     Get the current trading signal from the indicator
 
     Args:
         df: DataFrame with calculated indicators
+        use_closed_candles_only: If True, use the last CLOSED candle (second-to-last row)
+                                 for SIGNAL detection to avoid repainting.
+                                 SuperTrend price always uses the current (latest) candle
+                                 for real-time stop loss placement.
+                                 Recommended for live trading.
+                                 If False, use the last row for everything.
 
     Returns:
         dict with signal information:
         {
             'signal': 'BUY', 'SELL', or 'HOLD',
             'trend': 1 or -1,
-            'supertrend': current supertrend value,
+            'supertrend': current supertrend value (always from latest candle),
             'price': current close price,
             'support': current support level,
             'resistance': current resistance level
@@ -277,47 +295,63 @@ def get_current_signal(df):
     if len(df) == 0:
         return None
 
-    last_row = df.iloc[-1]
-    prev_row = df.iloc[-2] if len(df) > 1 else None
+    # Current row always points to the latest candle (for real-time SuperTrend price)
+    current_row = df.iloc[-1]
 
-    # Check for buy signal
-    if last_row['buy_signal']:
+    # When use_closed_candles_only=True:
+    # - Use closed candle for SIGNAL detection (to avoid repainting)
+    # - Use current candle for SUPERTREND price (for real-time SL)
+    if use_closed_candles_only:
+        if len(df) < 2:
+            return None
+        signal_row = df.iloc[-2]  # Last CLOSED candle for signal
+        prev_row = df.iloc[-3] if len(df) > 2 else None
+    else:
+        signal_row = df.iloc[-1]  # Last candle for signal
+        prev_row = df.iloc[-2] if len(df) > 1 else None
+
+    # Check for buy signal (from signal_row - confirmed candle)
+    if signal_row['buy_signal']:
         signal = 'BUY'
     # Check for sell signal
-    elif last_row['sell_signal']:
+    elif signal_row['sell_signal']:
         signal = 'SELL'
     # If in uptrend but no new signal, trend continuation
-    elif last_row['trend'] == 1:
+    elif signal_row['trend'] == 1:
         signal = 'HOLD_LONG'
     # If in downtrend but no new signal, trend continuation
-    elif last_row['trend'] == -1:
+    elif signal_row['trend'] == -1:
         signal = 'HOLD_SHORT'
     # Should never reach here if PP SuperTrend is working correctly
     else:
         # Default to trend-based signal if somehow trend is 0
-        signal = 'HOLD_LONG' if last_row['close'] > last_row['supertrend'] else 'HOLD_SHORT'
+        signal = 'HOLD_LONG' if signal_row['close'] > signal_row['supertrend'] else 'HOLD_SHORT'
 
     signal_info = {
         'signal': signal,
-        'trend': int(last_row['trend']),
-        'supertrend': float(last_row['supertrend']) if not pd.isna(last_row['supertrend']) else None,
-        'price': float(last_row['close']),
-        'support': float(last_row['support']) if not pd.isna(last_row['support']) else None,
-        'resistance': float(last_row['resistance']) if not pd.isna(last_row['resistance']) else None,
-        'atr': float(last_row['atr']) if not pd.isna(last_row['atr']) else None,
-        'pivot': float(last_row['center']) if not pd.isna(last_row['center']) else None
+        'trend': int(signal_row['trend']),
+        # SuperTrend price from CURRENT row (real-time) for accurate SL placement
+        'supertrend': float(current_row['supertrend']) if not pd.isna(current_row['supertrend']) else None,
+        # Price from current row (real-time)
+        'price': float(current_row['close']),
+        'support': float(current_row['support']) if not pd.isna(current_row['support']) else None,
+        'resistance': float(current_row['resistance']) if not pd.isna(current_row['resistance']) else None,
+        'atr': float(current_row['atr']) if not pd.isna(current_row['atr']) else None,
+        'pivot': float(current_row['center']) if not pd.isna(current_row['center']) else None
     }
-    
+
     # Add debug info for signal detection
     if prev_row is not None:
         signal_info['debug'] = {
             'prev_trend': int(prev_row['trend']),
-            'curr_trend': int(last_row['trend']),
-            'trend_changed': int(prev_row['trend']) != int(last_row['trend']),
+            'curr_trend': int(signal_row['trend']),
+            'trend_changed': int(prev_row['trend']) != int(signal_row['trend']),
             'prev_close': float(prev_row['close']),
-            'curr_close': float(last_row['close']),
+            'curr_close': float(signal_row['close']),
             'prev_st': float(prev_row['supertrend']) if not pd.isna(prev_row['supertrend']) else None,
-            'curr_st': float(last_row['supertrend']) if not pd.isna(last_row['supertrend']) else None
+            'curr_st': float(signal_row['supertrend']) if not pd.isna(signal_row['supertrend']) else None,
+            # Add current (real-time) supertrend for reference
+            'realtime_st': float(current_row['supertrend']) if not pd.isna(current_row['supertrend']) else None
         }
 
     return signal_info

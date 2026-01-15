@@ -318,19 +318,12 @@ class FixedBacktestEngine:
                         config=self.config
                     )
                     
-                    # Calculate stop loss with spread adjustment (exactly like live bot)
-                    # Get buffer from config (default 3 pips)
-                    spread_buffer_pips = self.config.get('stoploss', {}).get('spread_buffer_pips', 3)
-                    
+                    # Get RAW SuperTrend (no buffer) for TP calculation
+                    # This matches the manual order tool logic
+                    raw_supertrend = signal_info['supertrend']
+
                     # Simulate spread (typical EUR/USD spread is around 1-2 pips)
                     typical_spread = 0.00015  # 1.5 pips typical spread
-                    buffer_price = spread_buffer_pips * 0.0001  # Convert pips to price
-                    spread_adjustment = (typical_spread / 2.0) + buffer_price
-                    
-                    if position_type == 'LONG':
-                        stop_loss = signal_info['supertrend'] - spread_adjustment
-                    else:
-                        stop_loss = signal_info['supertrend'] + spread_adjustment
 
                     # Simulate entry fill price with spread (like live trading)
                     # LONG: buy at ASK (mid + half spread), SHORT: sell at BID (mid - half spread)
@@ -351,16 +344,27 @@ class FixedBacktestEngine:
                         take_profit_ratio = self.config.get('risk_reward', {}).get('bull_market', {}).get('short_rr', 0.6)
                     else:
                         take_profit_ratio = 1.0
-                    
-                    # Calculate take profit price based on FILL price (not signal price)
-                    # This matches the fix in live bot where TP is recalculated after fill
-                    risk = abs(entry_fill_price - stop_loss)
+
+                    # STEP 1: Calculate take profit using RAW SuperTrend (no buffer)
+                    # This matches manual order tool logic where TP is calculated BEFORE buffer is applied
+                    risk = abs(entry_fill_price - raw_supertrend)  # Use RAW SuperTrend
                     reward = risk * take_profit_ratio
 
                     if position_type == 'LONG':
                         take_profit_price = entry_fill_price + reward
                     else:
                         take_profit_price = entry_fill_price - reward
+
+                    # STEP 2: Calculate stop loss with buffer AFTER TP calculation
+                    # Get buffer from config (default 3 pips)
+                    spread_buffer_pips = self.config.get('stoploss', {}).get('spread_buffer_pips', 3)
+                    buffer_price = spread_buffer_pips * 0.0001  # Convert pips to price
+                    spread_adjustment = (typical_spread / 2.0) + buffer_price
+
+                    if position_type == 'LONG':
+                        stop_loss = raw_supertrend - spread_adjustment
+                    else:
+                        stop_loss = raw_supertrend + spread_adjustment
                     
                     # Find next signal to calculate potential profit
                     next_signal_time = None
