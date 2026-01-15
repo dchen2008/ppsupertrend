@@ -496,6 +496,133 @@ class MarketAwareTradingBot:
         # Print all lines at once (no logger prefix)
         print("\n".join(lines))
 
+    def _check_emergency_close(self, signal_info, current_position):
+        """
+        Emergency close: If candle close price crosses SuperTrend opposite to position,
+        close immediately without waiting for confirmation bar signal change.
+
+        This protects against sudden reversals where waiting for bar-7 confirmation
+        would result in larger losses.
+
+        Args:
+            signal_info: Current signal info with 'price' and 'supertrend'
+            current_position: Current position dict with 'units' and 'side'
+
+        Returns:
+            bool: True if emergency close was triggered, False otherwise
+        """
+        if not current_position or current_position.get('units', 0) == 0:
+            return False
+
+        close_price = signal_info.get('price')
+        supertrend = signal_info.get('supertrend')
+
+        if close_price is None or supertrend is None:
+            return False
+
+        position_side = current_position.get('side') or self.current_position_side
+        if not position_side:
+            return False
+
+        # Check if price crossed SuperTrend opposite to position
+        should_emergency_close = False
+        cross_direction = None
+
+        if position_side == 'LONG' and close_price < supertrend:
+            # LONG position but close price dropped BELOW SuperTrend
+            should_emergency_close = True
+            cross_direction = "BELOW"
+        elif position_side == 'SHORT' and close_price > supertrend:
+            # SHORT position but close price rose ABOVE SuperTrend
+            should_emergency_close = True
+            cross_direction = "ABOVE"
+
+        if not should_emergency_close:
+            return False
+
+        # Execute emergency close
+        self.logger.warning("=" * 80)
+        self.logger.warning(f"⚠️  EMERGENCY CLOSE: Price crossed SuperTrend!")
+        self.logger.warning(f"   Position: {position_side}")
+        self.logger.warning(f"   Close Price: {close_price:.5f} crossed {cross_direction} SuperTrend: {supertrend:.5f}")
+        self.logger.warning(f"   Reason: Protecting against sudden reversal (not waiting for confirmation bar)")
+        self.logger.warning("=" * 80)
+
+        try:
+            result = self.client.close_position(self.instrument)
+
+            if result:
+                self.logger.info("✅ Emergency close executed successfully")
+
+                # Get profit/loss from result
+                profit = 0
+                if 'longOrderFillTransaction' in result:
+                    profit = float(result['longOrderFillTransaction'].get('pl', 0))
+                elif 'shortOrderFillTransaction' in result:
+                    profit = float(result['shortOrderFillTransaction'].get('pl', 0))
+
+                self.logger.info(f"📊 P/L: ${profit:.2f}")
+
+                # Reset all position tracking
+                self._reset_position_tracking()
+                return True
+            else:
+                self.logger.error("❌ Emergency close failed - no result returned")
+                return False
+
+        except Exception as e:
+            # Handle case where position was already closed (SL triggered)
+            error_msg = str(e)
+            if 'NO_SUCH_POSITION' in error_msg or 'POSITION_NOT_FOUND' in error_msg or '404' in error_msg:
+                self.logger.info("ℹ️  Position already closed (likely SL triggered)")
+                self._reset_position_tracking()
+                return True
+            else:
+                self.logger.error(f"❌ Emergency close error: {e}")
+                # Still try to reset tracking in case position is actually closed
+                try:
+                    current_pos = self.client.get_position(self.instrument)
+                    if not current_pos or current_pos.get('units', 0) == 0:
+                        self.logger.info("ℹ️  Position confirmed closed, resetting tracking")
+                        self._reset_position_tracking()
+                        return True
+                except:
+                    pass
+                return False
+
+    def _reset_position_tracking(self):
+        """Reset all position tracking variables after close"""
+        self.trade_tracker.reset()
+        self.current_stop_loss_order_id = None
+        self.current_trade_id = None
+        self.current_stop_loss_price = None
+        self.current_take_profit_price = None
+        self.current_position_side = None
+        self.current_entry_price = None
+        self.highest_price_during_trade = None
+        self.lowest_price_during_trade = None
+        self.current_trade_open_time = None
+        self.current_supertrend_value = None
+        self.current_pivot_point_value = None
+        self.current_position_size = None
+        self.current_market_trend = 'NEUTRAL'
+        self.current_risk_reward_target = None
+        self.current_risk_amount = None
+        self.current_original_stop_pips = None
+        self.current_adjusted_stop_pips = None
+        self.current_init_sl = None
+        self.current_init_tp = None
+        self.current_fill_price = None
+        self.current_expected_rr = None
+
+        # Reset scalping if active
+        if self.scalping_active:
+            self.reset_scalping_state("Emergency close triggered")
+
+        # Reset signal state
+        self.last_signal_candle_time = None
+        self._save_state()
+
     def setup_logging(self):
         """Configure logging with unique logger name"""
         # Create unique logger for this instance
@@ -1936,7 +2063,13 @@ class MarketAwareTradingBot:
                     self.logger.warning(f"⚠️  Trade failed - NOT saving signal state (will retry on next cycle)")
             else:
                 if current_position and current_position['units'] != 0:
-                    self.update_trailing_stop_loss(signal_info, current_position)
+                    # Check for emergency close (price crossed SuperTrend)
+                    # This triggers immediate close without waiting for confirmation bar
+                    if self._check_emergency_close(signal_info, current_position):
+                        self.logger.info("🔄 Emergency close complete - skipping trailing stop update")
+                    else:
+                        # Normal trailing stop update
+                        self.update_trailing_stop_loss(signal_info, current_position)
 
             self.last_signal = signal_info
 
