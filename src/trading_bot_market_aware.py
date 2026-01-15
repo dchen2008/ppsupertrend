@@ -81,7 +81,7 @@ class CSVLogger:
     def __init__(self, csv_filename):
         self.csv_filename = csv_filename
         self.lock = Lock()
-        self.fieldnames = ['market', 'signal', 'time', 'entry_price', 'stop_loss_price',
+        self.fieldnames = ['market', 'signal', 'time', 'tradeID', 'entry_price', 'stop_loss_price',
                           'take_profit_price', 'position_lots', 'risk_amount', 'original_stop_pips',
                           'buffer_pips', 'adjusted_stop_pips', 'take_profit_ratio', 'highest_ratio',
                           'potential_profit', 'actual_profit', 'lowest_ratio', 'potential_loss',
@@ -178,8 +178,8 @@ class MarketAwareTradingBot:
         # use_closed_candles_only: True = only use closed candles (no repainting)
         self.use_closed_candles_only = self.config.get('signal', {}).get('use_closed_candles_only', True)
 
-        # Initialize components
-        self.client = OANDAClient()
+        # Initialize components - pass logger for consistent logging
+        self.client = OANDAClient(logger=self.logger)
         self.risk_manager = RiskManager()
         self.csv_logger = CSVLogger(self.csv_filename)
         self.trade_tracker = TradeTracker()
@@ -357,7 +357,10 @@ class MarketAwareTradingBot:
                     return pd.Timestamp(last_signal_time_str)
         except Exception as e:
             # Log error but don't fail - just start fresh
-            print(f"Warning: Could not load state from {self.state_file}: {e}")
+            warning_msg = f"Warning: Could not load state from {self.state_file}: {e}"
+            print(warning_msg)
+            if hasattr(self, 'logger') and self.logger:
+                self.logger.warning(warning_msg)
         return None
 
     def _save_state(self):
@@ -396,25 +399,65 @@ class MarketAwareTradingBot:
         current_sl = self.current_stop_loss_price
         current_tp = self.current_take_profit_price
 
-        # Trade info line
-        entry_time_str = self.current_trade_open_time.strftime('%Y-%m-%d %H:%M:%S') if self.current_trade_open_time else 'N/A'
+        # Trade info line - get entry time from tracking or OANDA
+        entry_time_str = 'N/A'
+        if self.current_trade_open_time:
+            entry_time_str = self.current_trade_open_time.strftime('%Y-%m-%d %H:%M:%S')
+        elif self.current_trade_id:
+            # Try to get open time from OANDA
+            try:
+                trades = self.client.get_trades(self.instrument)
+                for trade in trades:
+                    if str(trade.get('id')) == str(self.current_trade_id):
+                        open_time = trade.get('open_time')
+                        if open_time:
+                            # Parse OANDA timestamp (UTC) and convert to Pacific Time
+                            from dateutil import parser
+                            import pytz
+                            dt_utc = parser.parse(open_time)
+                            pacific_tz = pytz.timezone('US/Pacific')
+                            dt_pacific = dt_utc.astimezone(pacific_tz)
+                            entry_time_str = dt_pacific.strftime('%Y-%m-%d %H:%M:%S')
+                        break
+            except Exception:
+                pass  # Keep N/A if failed
+
+        # Init position section
+        lines.append(">>> INIT POSITION")
         lines.append(f"Trade ID:        {self.current_trade_id or 'N/A'} | [{side}] {units:,.0f} units | entry_time: {entry_time_str}")
 
-        # Entry details - handle None values
+        # Entry details - handle None values with fallbacks
         fill_price = self.current_fill_price if self.current_fill_price else self.current_entry_price
+        # Use the correct trailing stop as fallback based on position direction
         init_sl = self.current_init_sl if self.current_init_sl else self.current_supertrend_value
+        if init_sl is None:
+            # Use position-specific trailing stop
+            if side == 'LONG':
+                init_sl = signal_info.get('trailing_up')
+            else:
+                init_sl = signal_info.get('trailing_down')
+            # Final fallback to supertrend
+            if init_sl is None:
+                init_sl = signal_info.get('supertrend')
         init_tp = self.current_init_tp if self.current_init_tp else current_tp
+        # Get risk amount with fallback to default 100
+        risk_amount = self.current_risk_amount if self.current_risk_amount else 100
+        # Get expected R:R - try tracking vars first, then calculate from config
         expected_rr = self.current_expected_rr if self.current_expected_rr else self.current_risk_reward_target
+        if expected_rr is None:
+            # Fall back to calculating from config based on current market/position
+            # Use current_market_signal (BEAR/BULL) not current_market_trend
+            market_trend = self.current_market_signal if self.current_market_signal in ['BEAR', 'BULL'] else 'BEAR'
+            expected_rr = self.get_risk_reward_ratio(market_trend, side)
 
+        # Show entry details
         if fill_price:
             lines.append(f"Entry Price:     {fill_price:.5f} ({'ask' if side == 'LONG' else 'bid'})")
         if init_sl:
-            lines.append(f"SuperTrend:      {init_sl:.5f}")
-            lines.append(f"Init SL:         {init_sl:.5f} (raw SuperTrend)")
+            lines.append(f"Init SL:         {init_sl:.5f} (same as raw SuperTrend)")
         if init_tp and expected_rr:
             lines.append(f"Init TP:         {init_tp:.5f} (Expected TP R:R = {expected_rr:.1f})")
-        if self.current_risk_amount:
-            lines.append(f"Risk Amount:     ${self.current_risk_amount:.2f}")
+        lines.append(f"Risk Amount:     ${risk_amount:.2f}")
 
         # Est max loss calculation
         if fill_price and current_sl:
@@ -425,25 +468,40 @@ class MarketAwareTradingBot:
             max_loss_amount = max_loss_pips * 0.0001 * units
             lines.append(f"Est. Max Loss:   ${max_loss_amount:.2f} (if SL triggered at {current_sl:.5f})")
 
-        # Now position section
-        lines.append(">>> NOW POSITION")
+        # Current position section
+        lines.append(">>> CURRENT POSITION")
         if fill_price:
             lines.append(f"Fill Price:      {fill_price:.5f}")
+        lines.append(f"Current Price:   {current_price:.5f}")
 
-        # TP with warning if approaching
+        # TP with warning if approaching (based on P/L / risk_amount percentage)
         if current_tp:
-            if side == 'LONG':
-                pips_to_tp = (current_tp - current_price) / 0.0001
-            else:
-                pips_to_tp = (current_price - current_tp) / 0.0001
+            # Calculate P/L percentage of risk amount (risk_amount already defined above)
+            unrealized_pl = current_position.get('unrealized_pl', 0)
+            pl_percentage = (unrealized_pl / risk_amount) * 100 if risk_amount > 0 else 0
+            expected_rr_pct = (expected_rr * 100) if expected_rr else 100  # Expected R:R as percentage
 
             tp_warning = ""
-            if pips_to_tp <= 2.0 and pips_to_tp > 0:
-                tp_warning = f" (Approaching TP: {pips_to_tp:.1f} pips away)"
+            # Show warning when P/L > 60% of risk amount (approaching TP target)
+            if pl_percentage > 60:
+                tp_warning = f" (⚠️ Approaching Take Profit Target: {pl_percentage:.2f}% --> {expected_rr_pct:.0f}%)"
             lines.append(f"Take Profit:     {current_tp:.5f}{tp_warning}")
 
         if current_sl:
             lines.append(f"Stop Loss:       {current_sl:.5f} (trailing SuperTrend + {self.spread_buffer_pips} pip buffer)")
+
+        # Show the relevant trailing stop based on position direction
+        # For LONG: trailing_up (support level below price)
+        # For SHORT: trailing_down (resistance level above price)
+        if side == 'LONG':
+            trailing_stop = signal_info.get('trailing_up')
+            stop_type = "trailing_up (support)"
+        else:
+            trailing_stop = signal_info.get('trailing_down')
+            stop_type = "trailing_down (resistance)"
+
+        if trailing_stop:
+            lines.append(f"SuperTrend:      {trailing_stop:.5f} ({stop_type})")
 
         # Risk/Reward section
         lines.append(">>> RISK/REWARD estimate")
@@ -468,7 +526,6 @@ class MarketAwareTradingBot:
     def print_status_display(self, signal_info, account_summary, current_position):
         """Print formatted status display to console (no logger prefix)"""
         lines = []
-        lines.append("-" * 80)
 
         # Time line with Pacific Time
         pt_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
@@ -493,8 +550,12 @@ class MarketAwareTradingBot:
 
         lines.append("-" * 80)
 
-        # Print all lines at once (no logger prefix)
-        print("\n".join(lines))
+        # Print to console and log to file for consistency
+        status_output = "\n".join(lines)
+        print(status_output)
+        # Log each line to file
+        for line in lines:
+            self.logger.info(line)
 
     def _check_emergency_close(self, signal_info, current_position):
         """
@@ -514,37 +575,49 @@ class MarketAwareTradingBot:
         if not current_position or current_position.get('units', 0) == 0:
             return False
 
-        close_price = signal_info.get('price')
-        supertrend = signal_info.get('supertrend')
+        # Use CLOSED candle's close price (not in-progress price) for emergency close
+        # This ensures we only trigger based on confirmed candle closes, not live price
+        close_price = signal_info.get('closed_candle_close') or signal_info.get('price')
 
-        if close_price is None or supertrend is None:
-            return False
+        # Get position-specific trailing stops
+        # trailing_up = support level (for LONG positions)
+        # trailing_down = resistance level (for SHORT positions)
+        trailing_up = signal_info.get('trailing_up')
+        trailing_down = signal_info.get('trailing_down')
 
         position_side = current_position.get('side') or self.current_position_side
         if not position_side:
             return False
 
-        # Check if price crossed SuperTrend opposite to position
+        # Check if price crossed the relevant trailing stop for the position direction
+        # This is consistent regardless of current trend direction
         should_emergency_close = False
         cross_direction = None
+        relevant_stop = None
 
-        if position_side == 'LONG' and close_price < supertrend:
-            # LONG position but close price dropped BELOW SuperTrend
+        if position_side == 'LONG' and trailing_up is not None and close_price < trailing_up:
+            # LONG position but close price dropped BELOW trailing_up (support)
             should_emergency_close = True
             cross_direction = "BELOW"
-        elif position_side == 'SHORT' and close_price > supertrend:
-            # SHORT position but close price rose ABOVE SuperTrend
+            relevant_stop = trailing_up
+        elif position_side == 'SHORT' and trailing_down is not None and close_price > trailing_down:
+            # SHORT position but close price rose ABOVE trailing_down (resistance)
             should_emergency_close = True
             cross_direction = "ABOVE"
+            relevant_stop = trailing_down
+
+        if close_price is None or relevant_stop is None:
+            return False
 
         if not should_emergency_close:
             return False
 
         # Execute emergency close
+        stop_type = "trailing_up (support)" if position_side == 'LONG' else "trailing_down (resistance)"
         self.logger.warning("=" * 80)
-        self.logger.warning(f"⚠️  EMERGENCY CLOSE: Price crossed SuperTrend!")
+        self.logger.warning(f"⚠️  EMERGENCY CLOSE: Price crossed trailing stop!")
         self.logger.warning(f"   Position: {position_side}")
-        self.logger.warning(f"   Close Price: {close_price:.5f} crossed {cross_direction} SuperTrend: {supertrend:.5f}")
+        self.logger.warning(f"   Close Price: {close_price:.5f} crossed {cross_direction} {stop_type}: {relevant_stop:.5f}")
         self.logger.warning(f"   Reason: Protecting against sudden reversal (not waiting for confirmation bar)")
         self.logger.warning("=" * 80)
 
@@ -567,13 +640,21 @@ class MarketAwareTradingBot:
                 self._reset_position_tracking()
                 return True
             else:
-                self.logger.error("❌ Emergency close failed - no result returned")
-                return False
+                # close_position returned None - check if position was already closed
+                self.logger.warning("⚠️  Emergency close returned no result - checking if position still exists...")
+                check_position = self.client.get_position(self.instrument)
+                if check_position is None or check_position.get('units', 0) == 0:
+                    self.logger.info("ℹ️  Position already closed (likely SL/TP triggered before emergency close)")
+                    self._reset_position_tracking()
+                    return True
+                else:
+                    self.logger.error("❌ Emergency close failed but position still exists - will retry next cycle")
+                    return False
 
         except Exception as e:
             # Handle case where position was already closed (SL triggered)
             error_msg = str(e)
-            if 'NO_SUCH_POSITION' in error_msg or 'POSITION_NOT_FOUND' in error_msg or '404' in error_msg:
+            if 'NO_SUCH_POSITION' in error_msg or 'POSITION_NOT_FOUND' in error_msg or '404' in error_msg or 'CLOSEOUT_POSITION_DOESNT_EXIST' in error_msg:
                 self.logger.info("ℹ️  Position already closed (likely SL triggered)")
                 self._reset_position_tracking()
                 return True
@@ -806,10 +887,20 @@ class MarketAwareTradingBot:
 
         if self.stop_loss_type == 'supertrend':
             # SuperTrend strategy: Stop exactly at SuperTrend line
-            supertrend = signal_info['supertrend']
-            if supertrend is None:
+            # Use the correct trailing stop based on position direction:
+            # - For LONG (BUY): use trailing_up (support level)
+            # - For SHORT (SELL): use trailing_down (resistance level)
+            if signal_type == 'SELL':  # SHORT position
+                base_stop_loss = signal_info.get('trailing_down')
+            else:  # BUY / LONG position
+                base_stop_loss = signal_info.get('trailing_up')
+
+            # Fallback to supertrend if trailing values not available
+            if base_stop_loss is None:
+                base_stop_loss = signal_info.get('supertrend')
+
+            if base_stop_loss is None:
                 return None
-            base_stop_loss = supertrend
 
         elif self.stop_loss_type == 'ppcenterline':
             # PPCenterLine strategy: Use pivot point center line
@@ -832,10 +923,8 @@ class MarketAwareTradingBot:
 
             if signal_type == 'SELL':  # SHORT position
                 adjusted_stop_loss = base_stop_loss + buffer_price
-                self.logger.info(f"  Stop Loss Adjustment (SHORT): {base_stop_loss:.5f} → {adjusted_stop_loss:.5f} (+{self.spread_buffer_pips} pips buffer)")
             else:  # BUY / LONG position
                 adjusted_stop_loss = base_stop_loss - buffer_price
-                self.logger.info(f"  Stop Loss Adjustment (LONG): {base_stop_loss:.5f} → {adjusted_stop_loss:.5f} (-{self.spread_buffer_pips} pips buffer)")
 
             # Calculate adjusted stop pips if entry price provided
             if entry_price:
@@ -1292,6 +1381,7 @@ class MarketAwareTradingBot:
                     'market': market,
                     'signal': self.current_position_side if self.current_position_side else side,
                     'time': self.current_trade_open_time.strftime('%Y-%m-%d %H:%M:%S') if self.current_trade_open_time else 'N/A',
+                    'tradeID': self.current_trade_id if self.current_trade_id else 'N/A',
                     'entry_price': f"{self.current_entry_price:.5f}" if self.current_entry_price else 'N/A',
                     'stop_loss_price': f"{self.current_stop_loss_price:.5f}" if self.current_stop_loss_price else 'N/A',
                     'take_profit_price': f"{self.current_take_profit_price:.5f}" if self.current_take_profit_price else 'N/A',
@@ -1311,7 +1401,7 @@ class MarketAwareTradingBot:
                     'stop_loss_hit': 'FALSE'
                 }
                 self.csv_logger.log_trade(csv_data)
-                self.logger.info(f"   💾 Logged news close to CSV: P/L=${profit:.2f}")
+                self.logger.info(f"   💾 Logged news close to CSV: Trade #{self.current_trade_id}, P/L=${profit:.2f}")
 
                 # Reset trade tracker
                 self.trade_tracker.reset()
@@ -1430,6 +1520,7 @@ class MarketAwareTradingBot:
                         'market': market,
                         'signal': current_position['side'],
                         'time': self.current_trade_open_time.strftime('%Y-%m-%d %H:%M:%S') if self.current_trade_open_time else 'N/A',
+                        'tradeID': self.current_trade_id if self.current_trade_id else 'N/A',
                         'entry_price': f"{self.current_entry_price:.5f}" if self.current_entry_price else 'N/A',
                         'stop_loss_price': f"{self.current_stop_loss_price:.5f}" if self.current_stop_loss_price else 'N/A',
                         'take_profit_price': f"{self.current_take_profit_price:.5f}" if self.current_take_profit_price else 'N/A',
@@ -1450,7 +1541,7 @@ class MarketAwareTradingBot:
                     }
                     self.csv_logger.log_trade(csv_data)
 
-                    self.logger.info(f"📊 Profit/Loss: ${profit:.2f}")
+                    self.logger.info(f"📊 Trade #{self.current_trade_id} closed, P/L: ${profit:.2f}")
 
                 # Reset trade tracker
                 self.trade_tracker.reset()
@@ -1673,7 +1764,13 @@ class MarketAwareTradingBot:
         if not TradingConfig.enable_trailing_stop:
             return
 
-        if not self.current_stop_loss_order_id or not signal_info['supertrend']:
+        # Check if we have the relevant trailing stop for the position direction
+        if self.current_position_side == 'LONG':
+            relevant_trailing = signal_info.get('trailing_up')
+        else:
+            relevant_trailing = signal_info.get('trailing_down')
+
+        if not self.current_stop_loss_order_id or not relevant_trailing:
             return
 
         if not current_position or current_position['units'] == 0:
@@ -1808,16 +1905,15 @@ class MarketAwareTradingBot:
                 self.current_entry_price is not None and
                 self.current_position_size and self.current_position_size > 0):
                 if current_position is None or current_position['units'] == 0:
-                    self.logger.info("📍 Position closed externally (stop loss or take profit)")
-
                     # Log the close to CSV
                     close_time = datetime.now()
 
-                    # Try to determine what closed the position
-                    stop_loss_hit = 'UNKNOWN'
-                    take_profit_hit = 'UNKNOWN'
+                    # Try to get actual P/L from OANDA transaction history
+                    stop_loss_hit = 'FALSE'
+                    take_profit_hit = 'FALSE'
                     profit = 0.0
                     close_price = self.current_stop_loss_price  # Default to stop loss price
+                    reason = ''
 
                     try:
                         transactions = self.client.get_transaction_history(count=50)
@@ -1828,12 +1924,42 @@ class MarketAwareTradingBot:
                                     close_price = float(txn.get('price', 0))
                                     profit = float(txn.get('pl', 0))
                                     reason = txn.get('reason', '')
-                                    stop_loss_hit = 'TRUE' if 'STOP_LOSS' in reason else 'FALSE'
-                                    take_profit_hit = 'TRUE' if 'TAKE_PROFIT' in reason else 'FALSE'
                                     self.logger.info(f"   Found close transaction: Price={close_price:.5f}, P/L=${profit:.2f}, Reason={reason}")
                                     break
                     except Exception as e:
                         self.logger.error(f"   Failed to fetch transaction history: {e}")
+
+                    # Calculate P/L percentage of risk amount
+                    risk_amount = self.current_risk_amount if self.current_risk_amount else 100
+                    pl_percentage = (profit / risk_amount) * 100 if risk_amount > 0 else 0
+                    expected_rr = self.current_expected_rr if self.current_expected_rr else self.current_risk_reward_target
+                    if expected_rr is None:
+                        # Fall back to calculating from config based on current market/position
+                        market_trend = self.current_market_signal if self.current_market_signal in ['BEAR', 'BULL'] else 'BEAR'
+                        position_type = self.current_position_side if self.current_position_side else 'SHORT'
+                        expected_rr = self.get_risk_reward_ratio(market_trend, position_type)
+                    expected_rr_pct = expected_rr * 100 if expected_rr else 60  # Default 60% (0.6 R:R)
+
+                    # Determine if TP or SL was hit based on P/L vs expected R:R
+                    # First check OANDA's reason field (if available)
+                    if 'STOP_LOSS' in reason:
+                        stop_loss_hit = 'TRUE'
+                        self.logger.info(f"📍 Position closed externally by stop loss: P/L=${profit:.2f} ({pl_percentage:.2f}%)")
+                    elif 'TAKE_PROFIT' in reason:
+                        take_profit_hit = 'TRUE'
+                        self.logger.info(f"📍 Position closed externally by take profit: ({pl_percentage:.2f}% vs expected TP R:R = {expected_rr:.1f})")
+                    else:
+                        # Calculate based on P/L percentage vs expected R:R
+                        # If P/L >= 90% of expected R:R, consider it a TP hit
+                        if profit > 0 and pl_percentage >= (expected_rr_pct * 0.9):
+                            take_profit_hit = 'TRUE'
+                            self.logger.info(f"📍 Position closed externally by take profit: ({pl_percentage:.2f}% vs expected TP R:R = {expected_rr:.1f})")
+                        elif profit < 0:
+                            stop_loss_hit = 'TRUE'
+                            self.logger.info(f"📍 Position closed externally by stop loss: P/L=${profit:.2f} ({pl_percentage:.2f}%)")
+                        else:
+                            # Small profit but not reaching TP threshold - likely manual close
+                            self.logger.info(f"📍 Position closed externally (manual/other): P/L=${profit:.2f} ({pl_percentage:.2f}%)")
 
                     # Calculate duration
                     duration = 'N/A'
@@ -1842,8 +1968,7 @@ class MarketAwareTradingBot:
                         duration_minutes = int(duration_seconds / 60)
                         duration = f"{duration_minutes}m"
 
-                    # Calculate R:R ratios
-                    risk_amount = self.current_risk_amount if self.current_risk_amount else 100
+                    # Calculate R:R ratios (risk_amount already defined above)
                     actual_rr = profit / risk_amount if risk_amount > 0 else 0
                     highest_ratio = self.trade_tracker.highest_ratio if self.trade_tracker.highest_ratio else actual_rr
                     lowest_ratio = self.trade_tracker.lowest_ratio if self.trade_tracker.lowest_ratio else actual_rr
@@ -1864,6 +1989,7 @@ class MarketAwareTradingBot:
                         'market': market,
                         'signal': self.current_position_side if self.current_position_side else 'N/A',
                         'time': self.current_trade_open_time.strftime('%Y-%m-%d %H:%M:%S') if self.current_trade_open_time else 'N/A',
+                        'tradeID': self.current_trade_id if self.current_trade_id else 'N/A',
                         'entry_price': f"{self.current_entry_price:.5f}" if self.current_entry_price else 'N/A',
                         'stop_loss_price': f"{self.current_stop_loss_price:.5f}" if self.current_stop_loss_price else 'N/A',
                         'take_profit_price': f"{self.current_take_profit_price:.5f}" if self.current_take_profit_price else 'N/A',
@@ -1883,7 +2009,7 @@ class MarketAwareTradingBot:
                         'stop_loss_hit': stop_loss_hit
                     }
                     self.csv_logger.log_trade(csv_data)
-                    self.logger.info(f"   💾 Logged external close to CSV: P/L=${profit:.2f}")
+                    self.logger.info(f"   💾 Logged external close to CSV: Trade #{self.current_trade_id}, P/L=${profit:.2f} ({pl_percentage:.2f}%), TP={take_profit_hit}, SL={stop_loss_hit}")
 
                     # Reset trade tracker
                     self.trade_tracker.reset()
