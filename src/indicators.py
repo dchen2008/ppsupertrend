@@ -347,11 +347,15 @@ def get_current_signal(df, use_closed_candles_only=False):
         'resistance': float(current_row['resistance']) if not pd.isna(current_row['resistance']) else None,
         'atr': float(current_row['atr']) if not pd.isna(current_row['atr']) else None,
         'pivot': float(current_row['center']) if not pd.isna(current_row['center']) else None,
-        # Trailing stops for position-specific emergency close checks
+        # Trailing stops for emergency close checks - use CLOSED candle (signal_row) values
+        # CRITICAL: Must use signal_row, not current_row, because:
+        # - When price crosses above trailing_down, current_row's trailing_down RESETS to upper_band
+        # - This would cause emergency close to fail (comparing against wrong/reset value)
+        # - signal_row has the trailing stop value BEFORE any reset from current bar
         # trailing_up = support level (for LONG positions)
         # trailing_down = resistance level (for SHORT positions)
-        'trailing_up': float(current_row['trailing_up']) if not pd.isna(current_row['trailing_up']) else None,
-        'trailing_down': float(current_row['trailing_down']) if not pd.isna(current_row['trailing_down']) else None
+        'trailing_up': float(signal_row['trailing_up']) if not pd.isna(signal_row['trailing_up']) else None,
+        'trailing_down': float(signal_row['trailing_down']) if not pd.isna(signal_row['trailing_down']) else None
     }
 
     # Add debug info for signal detection

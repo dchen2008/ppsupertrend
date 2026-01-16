@@ -550,12 +550,12 @@ class MarketAwareTradingBot:
 
         lines.append("-" * 80)
 
-        # Print to console and log to file for consistency
+        # Print to console (no prefix) and log to file (with prefix)
         status_output = "\n".join(lines)
         print(status_output)
-        # Log each line to file
+        # Log each line to file only (bypass console handler)
         for line in lines:
-            self.logger.info(line)
+            self._log_to_file_only(line)
 
     def _check_emergency_close(self, signal_info, current_position):
         """
@@ -735,7 +735,18 @@ class MarketAwareTradingBot:
         # Add handlers
         self.logger.addHandler(console_handler)
         self.logger.addHandler(file_handler)
-        
+
+        # Store file handler reference for file-only logging
+        self.file_handler = file_handler
+
+    def _log_to_file_only(self, message, level=logging.INFO):
+        """Log message to file only, bypassing console handler"""
+        if hasattr(self, 'file_handler') and self.file_handler:
+            record = self.logger.makeRecord(
+                self.logger.name, level, "", 0, message, None, None
+            )
+            self.file_handler.emit(record)
+
     def check_market_trend(self):
         """
         Check 3H PP SuperTrend for market direction (bull/bear)
@@ -1440,7 +1451,14 @@ class MarketAwareTradingBot:
                 self._save_state()
 
             else:
-                self.logger.error("❌ Failed to close position for news event")
+                # close_position returned None - check if position was already closed (SL/TP triggered)
+                self.logger.warning("⚠️  Close position returned no result - checking if position still exists...")
+                check_position = self.client.get_position(self.instrument)
+                if check_position is None or check_position.get('units', 0) == 0:
+                    self.logger.info("ℹ️  Position already closed (likely SL/TP triggered)")
+                    self._reset_position_tracking()
+                else:
+                    self.logger.error("❌ Failed to close position for news event")
 
         except Exception as e:
             self.logger.error(f"Error closing position for news: {e}", exc_info=True)
@@ -1576,8 +1594,16 @@ class MarketAwareTradingBot:
                 self._save_state()
                 return True
             else:
-                self.logger.error("❌ Failed to close position")
-                return False
+                # close_position returned None - check if position was already closed (SL/TP triggered)
+                self.logger.warning("⚠️  Close position returned no result - checking if position still exists...")
+                check_position = self.client.get_position(self.instrument)
+                if check_position is None or check_position.get('units', 0) == 0:
+                    self.logger.info("ℹ️  Position already closed (likely SL/TP triggered)")
+                    self._reset_position_tracking()
+                    return True
+                else:
+                    self.logger.error("❌ Failed to close position")
+                    return False
 
         elif action in ['OPEN_LONG', 'OPEN_SHORT']:
             # Get current market trend
@@ -2143,6 +2169,43 @@ class MarketAwareTradingBot:
                     self.last_signal = signal_info
                     return
 
+            # ============================================================================
+            # PP SIGNAL SWING LOGIC - Order of Operations
+            # ============================================================================
+            # When price crosses SuperTrend (signal swing from SELL→BUY or BUY→SELL):
+            #
+            # 1. EMERGENCY CLOSE (runs FIRST, before signal detection)
+            #    - Compares closed_candle_close vs trailing_down (SHORT) or trailing_up (LONG)
+            #    - Uses signal_row values (closed candle) to avoid reset issues
+            #    - If crossed: close position IMMEDIATELY, return early
+            #    - No SL update needed (position closed)
+            #
+            # 2. SIGNAL DETECTION (should_trade)
+            #    - If BUY/SELL signal detected: action=CLOSE (or OPEN_LONG/OPEN_SHORT)
+            #    - Execute trade in IF branch
+            #    - No SL update (not in ELSE branch)
+            #
+            # 3. TRAILING STOP UPDATE (ELSE branch - only when NO signal)
+            #    - Only runs when signal is HOLD_LONG or HOLD_SHORT
+            #    - Position is being held, update SL to trail price
+            #    - During signal swing, this is SKIPPED (position closed in step 1 or 2)
+            #
+            # Key principle: During signal swing, NO useless SL updates occur because
+            # the position is closed before we reach the SL update code.
+            # ============================================================================
+
+            # EMERGENCY CLOSE CHECK - Run BEFORE signal processing
+            # This must run first to close positions immediately when price crosses trailing stop,
+            # even if a signal is about to be detected (provides immediate protection)
+            if current_position and current_position['units'] != 0:
+                if self._check_emergency_close(signal_info, current_position):
+                    self.logger.info("🔄 Emergency close triggered - position closed before signal processing")
+                    # Re-fetch position to confirm it's closed
+                    current_position = self.client.get_position(self.instrument)
+                    if current_position is None or current_position.get('units', 0) == 0:
+                        self.last_signal = signal_info
+                        return  # Skip rest of trading logic this cycle
+
             # Determine if we should trade
             should_trade, action, next_action = self.risk_manager.should_trade(
                 signal_info,
@@ -2188,14 +2251,14 @@ class MarketAwareTradingBot:
                 else:
                     self.logger.warning(f"⚠️  Trade failed - NOT saving signal state (will retry on next cycle)")
             else:
+                # NO SIGNAL DETECTED - We are in HOLD_LONG or HOLD_SHORT state
+                # This means NO signal swing is occurring, safe to update trailing stop
                 if current_position and current_position['units'] != 0:
-                    # Check for emergency close (price crossed SuperTrend)
-                    # This triggers immediate close without waiting for confirmation bar
-                    if self._check_emergency_close(signal_info, current_position):
-                        self.logger.info("🔄 Emergency close complete - skipping trailing stop update")
-                    else:
-                        # Normal trailing stop update
-                        self.update_trailing_stop_loss(signal_info, current_position)
+                    # Normal trailing stop update - only runs when:
+                    # 1. Emergency close did NOT trigger (price hasn't crossed trailing stop)
+                    # 2. No BUY/SELL signal detected (still holding position)
+                    # During signal swing, this code is NEVER reached
+                    self.update_trailing_stop_loss(signal_info, current_position)
 
             self.last_signal = signal_info
 
