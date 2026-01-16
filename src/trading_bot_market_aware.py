@@ -83,7 +83,7 @@ class CSVLogger:
         self.lock = Lock()
         self.backup_created = False  # Track if old format was backed up
         self.fieldnames = [
-            'fr', 'market', 'signal', 'time', 'tradeID',
+            'fr', 'tf', 'market', 'signal', 'time', 'tradeID',
             'entry_price', 'stop_loss', 'take_profit', 'lots_size', 'risk_amount',
             'spread_buffer_pips', 'risk_reward_ratio',
             'top_price', 'bottom_price', 'max_profit', 'max_loss',
@@ -779,6 +779,7 @@ class MarketAwareTradingBot:
 
                 csv_data = {
                     'fr': self.instrument,
+                    'tf': self.timeframe.replace('m', 'min'),
                     'market': market,
                     'signal': signal_side,
                     'time': entry_time_pt,
@@ -1584,6 +1585,7 @@ class MarketAwareTradingBot:
                 # Log to CSV
                 csv_data = {
                     'fr': self.instrument,
+                    'tf': self.timeframe.replace('m', 'min'),
                     'market': market,
                     'signal': signal_side,
                     'time': entry_time_pt,
@@ -1751,6 +1753,7 @@ class MarketAwareTradingBot:
 
                     csv_data = {
                         'fr': self.instrument,
+                        'tf': self.timeframe.replace('m', 'min'),
                         'market': market,
                         'signal': signal_side,
                         'time': entry_time_pt,
@@ -2311,6 +2314,7 @@ class MarketAwareTradingBot:
                     # Log to CSV
                     csv_data = {
                         'fr': self.instrument,
+                        'tf': self.timeframe.replace('m', 'min'),
                         'market': market,
                         'signal': signal_side,
                         'time': entry_time_pt,
@@ -2771,6 +2775,7 @@ class MarketAwareTradingBot:
             # Build CSV data - avoid N/A by using actual values
             csv_data = {
                 'fr': self.instrument,
+                'tf': self.timeframe.replace('m', 'min'),
                 'market': market,
                 'signal': self.current_position_side,
                 'time': entry_time_pt,
