@@ -2566,14 +2566,18 @@ class MarketAwareTradingBot:
                             self.current_take_profit_price = float(trade['takeProfitOrder']['price'])
 
                         # Get open time from trade
-                        open_time_str = trade.get('openTime', '')
+                        # Note: get_trades() returns 'open_time' (underscore), not 'openTime' (camelCase)
+                        open_time_str = trade.get('open_time', '') or trade.get('openTime', '')
                         if open_time_str:
                             try:
                                 # Parse OANDA timestamp format
                                 self.current_trade_open_time = pd.to_datetime(open_time_str).to_pydatetime()
-                            except:
+                                self.logger.debug(f"📅 Trade open time from OANDA: {open_time_str} -> {self.current_trade_open_time}")
+                            except Exception as e:
+                                self.logger.warning(f"⚠️  Failed to parse open_time '{open_time_str}': {e}")
                                 self.current_trade_open_time = datetime.now()
                         else:
+                            self.logger.warning(f"⚠️  No open_time found in trade data. Available keys: {list(trade.keys())}")
                             self.current_trade_open_time = datetime.now()
 
                         # Get unrealized P/L
