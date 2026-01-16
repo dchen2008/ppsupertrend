@@ -253,22 +253,34 @@ class RiskManager:
         current_side = current_position['side']
 
         # Close on opposite signal and prepare to open opposite position immediately
-        if current_side == 'LONG' and signal == 'SELL':
+        # Also close when signal indicates opposite HOLD state (HOLD_SHORT for LONG, HOLD_LONG for SHORT)
+        # This catches cases where the bot missed the exact BUY/SELL signal candle but trend has already changed
+        if current_side == 'LONG' and signal in ['SELL', 'HOLD_SHORT']:
             # Check if disable_opposite_trade prevents SHORT position in BULL market
             if disable_opposite_trade and market_trend == 'BULL':
-                self.logger.info("🔄 Trend reversal: Closing LONG position only (disable_opposite_trade prevents SHORT in BULL market)")
+                self.logger.info(f"🔄 Trend reversal ({signal}): Closing LONG position only (disable_opposite_trade prevents SHORT in BULL market)")
                 return True, 'CLOSE', None
             else:
-                self.logger.info("🔄 Trend reversal: Closing LONG and opening SHORT")
-                return True, 'CLOSE', 'OPEN_SHORT'
-        elif current_side == 'SHORT' and signal == 'BUY':
+                if signal == 'SELL':
+                    self.logger.info("🔄 Trend reversal: Closing LONG and opening SHORT")
+                    return True, 'CLOSE', 'OPEN_SHORT'
+                else:
+                    # HOLD_SHORT - trend already changed, just close (don't open new position on HOLD signal)
+                    self.logger.info("🔄 Trend already reversed (HOLD_SHORT): Closing LONG position")
+                    return True, 'CLOSE', None
+        elif current_side == 'SHORT' and signal in ['BUY', 'HOLD_LONG']:
             # Check if disable_opposite_trade prevents LONG position in BEAR market
             if disable_opposite_trade and market_trend == 'BEAR':
-                self.logger.info("🔄 Trend reversal: Closing SHORT position only (disable_opposite_trade prevents LONG in BEAR market)")
+                self.logger.info(f"🔄 Trend reversal ({signal}): Closing SHORT position only (disable_opposite_trade prevents LONG in BEAR market)")
                 return True, 'CLOSE', None
             else:
-                self.logger.info("🔄 Trend reversal: Closing SHORT and opening LONG")
-                return True, 'CLOSE', 'OPEN_LONG'
+                if signal == 'BUY':
+                    self.logger.info("🔄 Trend reversal: Closing SHORT and opening LONG")
+                    return True, 'CLOSE', 'OPEN_LONG'
+                else:
+                    # HOLD_LONG - trend already changed, just close (don't open new position on HOLD signal)
+                    self.logger.info("🔄 Trend already reversed (HOLD_LONG): Closing SHORT position")
+                    return True, 'CLOSE', None
 
         # Hold if no action needed
         return False, 'HOLD', None

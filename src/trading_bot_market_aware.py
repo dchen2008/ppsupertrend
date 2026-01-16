@@ -622,7 +622,9 @@ class MarketAwareTradingBot:
         self.logger.warning("=" * 80)
 
         try:
-            result = self.client.close_position(self.instrument)
+            # Specify the correct side to avoid OANDA rejecting the request
+            # when trying to close a non-existent position in the other direction
+            result = self.client.close_position(self.instrument, side=position_side)
 
             if result:
                 self.logger.info("✅ Emergency close executed successfully")
