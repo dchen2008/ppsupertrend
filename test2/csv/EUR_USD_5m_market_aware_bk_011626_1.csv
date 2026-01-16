@@ -1,0 +1,2 @@
+fr,tf,market,signal,time,tradeID,entry_price,stop_loss,take_profit,lots_size,risk_amount,spread_buffer_pips,risk_reward_ratio,top_price,bottom_price,max_profit,max_loss,realized_profit_loss,close_time,position_status,close_reason,take_profit_hit,stop_loss_hit
+EUR_USD,5min,BEAR,SHORT,2026-01-16 08:10:00,797,1.16021,1.16021,1.16021,0.451,100.00,5,1.0:1,1.16021,1.16021,$0.00,$0.00,$0.00,,OPEN,,NO,NO
