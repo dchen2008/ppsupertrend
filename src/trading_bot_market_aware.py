@@ -2154,26 +2154,87 @@ class MarketAwareTradingBot:
                     # Log the close to CSV
                     close_time = datetime.now()
 
-                    # Try to get actual P/L from OANDA transaction history
+                    # Try to get actual P/L from OANDA - use multiple methods
                     stop_loss_hit = 'FALSE'
                     take_profit_hit = 'FALSE'
                     profit = 0.0
                     close_price = self.current_stop_loss_price  # Default to stop loss price
                     reason = ''
+                    position_size = self.current_position_size if self.current_position_size else 0
 
-                    try:
-                        transactions = self.client.get_transaction_history(count=50)
-                        if transactions:
-                            for txn in reversed(transactions):
-                                if (txn.get('type') == 'ORDER_FILL' and
-                                    txn.get('instrument') == self.instrument):
-                                    close_price = float(txn.get('price', 0))
-                                    profit = float(txn.get('pl', 0))
-                                    reason = txn.get('reason', '')
-                                    self.logger.info(f"   Found close transaction: Price={close_price:.5f}, P/L=${profit:.2f}, Reason={reason}")
-                                    break
-                    except Exception as e:
-                        self.logger.error(f"   Failed to fetch transaction history: {e}")
+                    # Method 1: Get trade close details directly using trade ID (most reliable)
+                    if self.current_trade_id:
+                        try:
+                            trade_details = self.client.get_trade_close_details(self.current_trade_id)
+                            if trade_details and trade_details.get('state') == 'CLOSED':
+                                profit = trade_details.get('realizedPL', 0)
+                                if trade_details.get('averageClosePrice'):
+                                    close_price = trade_details['averageClosePrice']
+                                # Get close reason from closing transaction
+                                closing_txn_ids = trade_details.get('closeReason', [])
+                                if closing_txn_ids:
+                                    for txn_id in closing_txn_ids:
+                                        try:
+                                            txn_detail = self.client.get_transaction_details(txn_id)
+                                            if txn_detail:
+                                                reason = txn_detail.get('reason', '')
+                                                self.logger.info(f"   Found close via trade details: Trade #{self.current_trade_id}, P/L=${profit:.2f}, Reason={reason}, ClosePrice={close_price:.5f}")
+                                                break
+                                        except Exception:
+                                            pass
+                                else:
+                                    self.logger.info(f"   Found close via trade details: Trade #{self.current_trade_id}, P/L=${profit:.2f}, ClosePrice={close_price:.5f}")
+                        except Exception as e:
+                            self.logger.debug(f"   Trade details lookup failed: {e}")
+
+                    # Method 2: Fallback to transaction history search
+                    if profit == 0 and not reason:
+                        try:
+                            transactions = self.client.get_transaction_history(count=50)
+                            if transactions:
+                                self.logger.debug(f"   Transaction search: found {len(transactions)} transactions")
+                                for txn in reversed(transactions):
+                                    if (txn.get('type') == 'ORDER_FILL' and
+                                        txn.get('instrument') == self.instrument):
+                                        close_price = float(txn.get('price', 0))
+                                        profit = float(txn.get('pl', 0))
+                                        reason = txn.get('reason', '')
+                                        self.logger.info(f"   Found close transaction: Price={close_price:.5f}, P/L=${profit:.2f}, Reason={reason}")
+                                        break
+                        except Exception as e:
+                            self.logger.error(f"   Failed to fetch transaction history: {e}")
+
+                    # Method 3: Price-based detection fallback when transaction lookup fails
+                    if profit == 0 and not reason:
+                        self.logger.info(f"   No transaction P/L found, using price-based detection")
+                        try:
+                            pricing = self.client.get_current_price(self.instrument)
+                            if pricing:
+                                # Use mid price as close price estimate
+                                close_price = (pricing['bid'] + pricing['ask']) / 2
+                                self.logger.debug(f"   Current price: bid={pricing['bid']:.5f}, ask={pricing['ask']:.5f}, mid={close_price:.5f}")
+                        except Exception as e:
+                            self.logger.debug(f"   Could not get current price: {e}")
+
+                        # Detect TP/SL hit based on price vs TP/SL levels
+                        if self.current_position_side == 'LONG':
+                            if self.current_take_profit_price and close_price >= self.current_take_profit_price:
+                                reason = 'TAKE_PROFIT_PRICE_BASED'
+                                profit = (self.current_take_profit_price - self.current_entry_price) * position_size if self.current_entry_price else 0
+                                self.logger.info(f"📍 Detected TP hit (price-based): close={close_price:.5f} >= TP={self.current_take_profit_price:.5f}")
+                            elif self.current_stop_loss_price and close_price <= self.current_stop_loss_price:
+                                reason = 'STOP_LOSS_PRICE_BASED'
+                                profit = (self.current_stop_loss_price - self.current_entry_price) * position_size if self.current_entry_price else 0
+                                self.logger.info(f"📍 Detected SL hit (price-based): close={close_price:.5f} <= SL={self.current_stop_loss_price:.5f}")
+                        elif self.current_position_side == 'SHORT':
+                            if self.current_take_profit_price and close_price <= self.current_take_profit_price:
+                                reason = 'TAKE_PROFIT_PRICE_BASED'
+                                profit = (self.current_entry_price - self.current_take_profit_price) * position_size if self.current_entry_price else 0
+                                self.logger.info(f"📍 Detected TP hit (price-based): close={close_price:.5f} <= TP={self.current_take_profit_price:.5f}")
+                            elif self.current_stop_loss_price and close_price >= self.current_stop_loss_price:
+                                reason = 'STOP_LOSS_PRICE_BASED'
+                                profit = (self.current_entry_price - self.current_stop_loss_price) * position_size if self.current_entry_price else 0
+                                self.logger.info(f"📍 Detected SL hit (price-based): close={close_price:.5f} >= SL={self.current_stop_loss_price:.5f}")
 
                     # Calculate P/L percentage of risk amount
                     risk_amount = self.current_risk_amount if self.current_risk_amount else 100
@@ -2214,7 +2275,7 @@ class MarketAwareTradingBot:
                             # Small profit but not reaching TP threshold - likely manual close
                             self.logger.info(f"📍 Position closed externally (manual/other): P/L=${profit:.2f} ({pl_percentage:.2f}%)")
 
-                    position_size = self.current_position_size if self.current_position_size else 0
+                    # position_size already defined above
                     signal_side = self.current_position_side if self.current_position_side else 'N/A'
 
                     # Determine market (only BEAR or BULL, fallback to current signal)
@@ -2303,11 +2364,11 @@ class MarketAwareTradingBot:
                     self.current_adjusted_stop_pips = None
 
                     # SCALPING: Check if TP was hit and scalping is active
-                    if self.scalping_active and take_profit_hit == 'TRUE':
+                    if self.scalping_active and take_profit_hit == 'YES':
                         self.logger.info("🔄 SCALPING: Take profit hit - checking for re-entry opportunity")
                         # Don't reset signal state - keep scalping active for re-entry
                         # The scalping re-entry will be checked below
-                    elif self.scalping_active and stop_loss_hit == 'TRUE':
+                    elif self.scalping_active and stop_loss_hit == 'YES':
                         # Stop loss hit - deactivate scalping
                         self.reset_scalping_state("Stop loss hit")
                         self.last_signal_candle_time = None
