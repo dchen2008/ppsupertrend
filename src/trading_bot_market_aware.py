@@ -728,7 +728,7 @@ class MarketAwareTradingBot:
                     estimated_profit = ratio * self.current_risk_amount
                     self.trade_tracker.milestones_hit[ratio] = {
                         'profit': estimated_profit,
-                        'time': f"{now_str} (recovered)"  # Mark as recovered/estimated
+                        'time': now_str
                     }
                     newly_added += 1
 
