@@ -1451,7 +1451,14 @@ class MarketAwareTradingBot:
                 self._save_state()
 
             else:
-                self.logger.error("❌ Failed to close position for news event")
+                # close_position returned None - check if position was already closed (SL/TP triggered)
+                self.logger.warning("⚠️  Close position returned no result - checking if position still exists...")
+                check_position = self.client.get_position(self.instrument)
+                if check_position is None or check_position.get('units', 0) == 0:
+                    self.logger.info("ℹ️  Position already closed (likely SL/TP triggered)")
+                    self._reset_position_tracking()
+                else:
+                    self.logger.error("❌ Failed to close position for news event")
 
         except Exception as e:
             self.logger.error(f"Error closing position for news: {e}", exc_info=True)
@@ -1587,8 +1594,16 @@ class MarketAwareTradingBot:
                 self._save_state()
                 return True
             else:
-                self.logger.error("❌ Failed to close position")
-                return False
+                # close_position returned None - check if position was already closed (SL/TP triggered)
+                self.logger.warning("⚠️  Close position returned no result - checking if position still exists...")
+                check_position = self.client.get_position(self.instrument)
+                if check_position is None or check_position.get('units', 0) == 0:
+                    self.logger.info("ℹ️  Position already closed (likely SL/TP triggered)")
+                    self._reset_position_tracking()
+                    return True
+                else:
+                    self.logger.error("❌ Failed to close position")
+                    return False
 
         elif action in ['OPEN_LONG', 'OPEN_SHORT']:
             # Get current market trend
