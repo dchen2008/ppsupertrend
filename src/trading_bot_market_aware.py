@@ -2169,6 +2169,18 @@ class MarketAwareTradingBot:
                     self.last_signal = signal_info
                     return
 
+            # EMERGENCY CLOSE CHECK - Run BEFORE signal processing
+            # This must run first to close positions immediately when price crosses trailing stop,
+            # even if a signal is about to be detected (provides immediate protection)
+            if current_position and current_position['units'] != 0:
+                if self._check_emergency_close(signal_info, current_position):
+                    self.logger.info("🔄 Emergency close triggered - position closed before signal processing")
+                    # Re-fetch position to confirm it's closed
+                    current_position = self.client.get_position(self.instrument)
+                    if current_position is None or current_position.get('units', 0) == 0:
+                        self.last_signal = signal_info
+                        return  # Skip rest of trading logic this cycle
+
             # Determine if we should trade
             should_trade, action, next_action = self.risk_manager.should_trade(
                 signal_info,
@@ -2215,13 +2227,8 @@ class MarketAwareTradingBot:
                     self.logger.warning(f"⚠️  Trade failed - NOT saving signal state (will retry on next cycle)")
             else:
                 if current_position and current_position['units'] != 0:
-                    # Check for emergency close (price crossed SuperTrend)
-                    # This triggers immediate close without waiting for confirmation bar
-                    if self._check_emergency_close(signal_info, current_position):
-                        self.logger.info("🔄 Emergency close complete - skipping trailing stop update")
-                    else:
-                        # Normal trailing stop update
-                        self.update_trailing_stop_loss(signal_info, current_position)
+                    # Normal trailing stop update (emergency close already checked above)
+                    self.update_trailing_stop_loss(signal_info, current_position)
 
             self.last_signal = signal_info
 
