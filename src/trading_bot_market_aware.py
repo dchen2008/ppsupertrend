@@ -420,6 +420,19 @@ class MarketAwareTradingBot:
         self.scalping_rr_ratio = None
         self.scalping_pending_limit_order_id = None
 
+        # PP Signal Swing Alert Mode state
+        self.signal_swing_alert_config = self.config.get('signal_swing_alert', {})
+        self.signal_swing_alert_enabled = self.signal_swing_alert_config.get('enabled', False)
+        self.signal_swing_alert_poll_interval = self.signal_swing_alert_config.get('alert_poll_interval', 1)
+        self.signal_swing_alert_active = False
+        self.alert_supertrend_reference = None  # supertrend_price1 from candle before crossover
+        self.alert_candle_start_time = None
+        self.alert_position_side = None
+        self.alert_previous_candle_time = None
+        self.last_known_supertrend = None       # Track supertrend from previous cycle
+        self.last_known_trailing_up = None      # Track trailing_up from previous cycle
+        self.last_known_trailing_down = None    # Track trailing_down from previous cycle
+
         # Initialize news manager for high-impact event filtering
         self.news_manager = NewsManager(self.client, self.config, self.account)
 
@@ -445,6 +458,10 @@ class MarketAwareTradingBot:
             self.logger.info(f"   Close positions before news: {self.news_manager.close_before_news}")
         else:
             self.logger.info(f"📰 News Filter: DISABLED")
+        if self.signal_swing_alert_enabled:
+            self.logger.info(f"⚡ Signal Swing Alert: ENABLED (poll interval: {self.signal_swing_alert_poll_interval}s)")
+        else:
+            self.logger.info(f"⚡ Signal Swing Alert: DISABLED")
         self.logger.info("=" * 80)
 
     def convert_timeframe_to_granularity(self, timeframe):
@@ -1321,6 +1338,19 @@ class MarketAwareTradingBot:
             candle_age_seconds = (pd.Timestamp.now(tz=timezone.utc) - candle_timestamp).total_seconds()
             signal_info['candle_age_seconds'] = candle_age_seconds
 
+        # Track last known supertrend values for signal swing alert detection
+        # Store current values BEFORE they might reset on signal change
+        # This ensures we have stable reference values from the previous candle
+        if signal_info.get('trailing_up') is not None:
+            self.last_known_trailing_up = signal_info['trailing_up']
+        if signal_info.get('trailing_down') is not None:
+            self.last_known_trailing_down = signal_info['trailing_down']
+        if signal_info.get('supertrend') is not None:
+            self.last_known_supertrend = signal_info['supertrend']
+
+        # Add candle_time to signal_info for alert mode tracking
+        signal_info['candle_time'] = candle_timestamp
+
         return df_with_indicators, signal_info, candle_timestamp
 
     def calculate_stop_loss(self, signal_info, signal_type, entry_price=None):
@@ -1772,6 +1802,437 @@ class MarketAwareTradingBot:
 
     # ============================================================================
     # END SCALPING STRATEGY METHODS
+    # ============================================================================
+
+    # ============================================================================
+    # PP SIGNAL SWING ALERT MODE METHODS
+    # ============================================================================
+
+    def _get_realtime_price(self):
+        """
+        Fetch current price and current candle high/low for wick detection.
+
+        Returns:
+            dict: {
+                'bid': float,
+                'ask': float,
+                'mid': float,
+                'candle_high': float,
+                'candle_low': float,
+                'candle_close': float,
+                'candle_time': timestamp
+            } or None if failed
+        """
+        try:
+            # Get current price
+            pricing = self.client.get_current_price(self.instrument)
+            if not pricing:
+                return None
+
+            # Get current (incomplete) candle for high/low
+            df = self.client.get_candles(
+                instrument=self.instrument,
+                granularity=self.granularity,
+                count=2  # Get last 2 candles (one complete, one in progress)
+            )
+
+            if df is None or len(df) < 1:
+                return None
+
+            # Use the last candle (which is the current incomplete candle)
+            current_candle = df.iloc[-1]
+
+            return {
+                'bid': pricing['bid'],
+                'ask': pricing['ask'],
+                'mid': (pricing['bid'] + pricing['ask']) / 2,
+                'candle_high': float(current_candle['high']),
+                'candle_low': float(current_candle['low']),
+                'candle_close': float(current_candle['close']),
+                'candle_time': df.index[-1]
+            }
+        except Exception as e:
+            self.logger.error(f"Error getting realtime price: {e}")
+            return None
+
+    def _check_signal_swing_alert_trigger(self, signal_info, current_position):
+        """
+        Check if current candle's wick has crossed the previous candle's SuperTrend.
+
+        Logic:
+        - LONG position: trigger if candle_low < trailing_up (support broken)
+        - SHORT position: trigger if candle_high > trailing_down (resistance broken)
+
+        Args:
+            signal_info: Current signal information with candle data
+            current_position: Current position details
+
+        Returns:
+            tuple: (should_trigger: bool, cross_type: str or None)
+        """
+        if not self.signal_swing_alert_enabled:
+            return False, None
+
+        if not current_position or current_position['units'] == 0:
+            return False, None
+
+        # Skip if alert is already active
+        if self.signal_swing_alert_active:
+            return False, None
+
+        # Use last known supertrend values (from previous candle)
+        # This ensures we're comparing against stable values, not ones that might reset
+        reference_trailing_up = self.last_known_trailing_up
+        reference_trailing_down = self.last_known_trailing_down
+
+        if reference_trailing_up is None and reference_trailing_down is None:
+            # Fall back to current signal_info if no history yet
+            reference_trailing_up = signal_info.get('trailing_up')
+            reference_trailing_down = signal_info.get('trailing_down')
+
+        # Get current candle high/low from signal_info
+        candle_high = signal_info.get('high') or signal_info.get('price')
+        candle_low = signal_info.get('low') or signal_info.get('price')
+
+        position_side = 'LONG' if current_position['units'] > 0 else 'SHORT'
+
+        if position_side == 'LONG':
+            # For LONG: check if wick breaks below support (trailing_up)
+            if reference_trailing_up is not None and candle_low < reference_trailing_up:
+                self.logger.debug(f"   SWING CHECK: LONG position, low={candle_low:.5f} < trailing_up={reference_trailing_up:.5f}")
+                return True, 'BELOW_SUPPORT'
+        else:  # SHORT
+            # For SHORT: check if wick breaks above resistance (trailing_down)
+            if reference_trailing_down is not None and candle_high > reference_trailing_down:
+                self.logger.debug(f"   SWING CHECK: SHORT position, high={candle_high:.5f} > trailing_down={reference_trailing_down:.5f}")
+                return True, 'ABOVE_RESISTANCE'
+
+        return False, None
+
+    def _activate_signal_swing_alert(self, cross_type, signal_info, current_position):
+        """
+        Enter alert mode and store reference values.
+
+        Args:
+            cross_type: 'BELOW_SUPPORT' or 'ABOVE_RESISTANCE'
+            signal_info: Current signal information
+            current_position: Current position details
+        """
+        position_side = 'LONG' if current_position['units'] > 0 else 'SHORT'
+
+        # Store reference supertrend based on position side
+        if position_side == 'LONG':
+            self.alert_supertrend_reference = self.last_known_trailing_up or signal_info.get('trailing_up')
+        else:
+            self.alert_supertrend_reference = self.last_known_trailing_down or signal_info.get('trailing_down')
+
+        self.signal_swing_alert_active = True
+        self.alert_position_side = position_side
+        self.alert_previous_candle_time = signal_info.get('candle_time') or pd.Timestamp.now(tz='UTC')
+        self.alert_candle_start_time = datetime.now()
+
+        self.logger.warning("=" * 80)
+        self.logger.warning(f"⚡ SIGNAL SWING DETECTED: Wick crossed {cross_type}")
+        self.logger.warning(f"⚡ SIGNAL SWING ALERT MODE ACTIVATED")
+        self.logger.warning(f"   Position Side: {position_side}")
+        self.logger.warning(f"   SuperTrend Reference: {self.alert_supertrend_reference:.5f}")
+        self.logger.warning(f"   Switching to {self.signal_swing_alert_poll_interval}-second polling...")
+        self.logger.warning("=" * 80)
+
+    def _run_alert_mode_loop(self):
+        """
+        Run 1-second polling loop until candle closes.
+        When new candle detected, execute decision and return.
+
+        Returns:
+            bool: True if signal swing decision was executed, False otherwise
+        """
+        self.logger.info("🔴 Entering alert mode loop")
+
+        loop_count = 0
+        max_loops = 600  # Safety: max 10 minutes in alert mode
+
+        while self.signal_swing_alert_active and loop_count < max_loops:
+            loop_count += 1
+
+            try:
+                # Get current price and candle data
+                realtime = self._get_realtime_price()
+                if realtime is None:
+                    self.logger.warning("   Failed to get realtime price, continuing...")
+                    time.sleep(self.signal_swing_alert_poll_interval)
+                    continue
+
+                current_candle_time = realtime['candle_time']
+
+                # Check if position was closed externally (SL hit) during alert
+                current_position = self.client.get_position(self.instrument)
+                if current_position is None or current_position['units'] == 0:
+                    self.logger.warning("   Position closed externally during alert mode - deactivating")
+                    self._deactivate_signal_swing_alert(reason="Position closed externally")
+                    return False
+
+                # Check if candle closed (new candle started)
+                if self.alert_previous_candle_time and current_candle_time > self.alert_previous_candle_time:
+                    self.logger.info("⏰ CANDLE CLOSED - Executing signal swing decision")
+                    self.logger.info(f"   Previous candle: {self.alert_previous_candle_time}")
+                    self.logger.info(f"   New candle: {current_candle_time}")
+
+                    # Get the close price of the completed candle
+                    # We need to fetch the completed candle's close
+                    df = self.client.get_candles(
+                        instrument=self.instrument,
+                        granularity=self.granularity,
+                        count=3
+                    )
+
+                    if df is not None and len(df) >= 2:
+                        # Second to last candle is the one that just closed
+                        closed_candle = df.iloc[-2]
+                        closed_candle_close = float(closed_candle['close'])
+
+                        self.logger.info(f"   Closed candle close: {closed_candle_close:.5f}")
+
+                        # Execute decision
+                        result = self._execute_signal_swing_decision(closed_candle_close, current_position)
+                        return result
+                    else:
+                        self.logger.warning("   Could not fetch closed candle data")
+                        self._deactivate_signal_swing_alert(reason="Could not fetch candle data")
+                        return False
+
+                # Log status periodically (every 10 loops)
+                if loop_count % 10 == 0:
+                    self.logger.info(f"   🔴 Alert mode: polling... (loop {loop_count}, mid={realtime['mid']:.5f})")
+
+                time.sleep(self.signal_swing_alert_poll_interval)
+
+            except Exception as e:
+                self.logger.error(f"Error in alert mode loop: {e}")
+                time.sleep(self.signal_swing_alert_poll_interval)
+
+        # Safety timeout reached
+        if loop_count >= max_loops:
+            self.logger.warning("   Alert mode safety timeout reached")
+            self._deactivate_signal_swing_alert(reason="Safety timeout")
+
+        return False
+
+    def _execute_signal_swing_decision(self, closed_candle_close, current_position):
+        """
+        Execute decision based on whether close crossed the SuperTrend reference.
+
+        Decision:
+        A. Wick-only cross, close didn't: Resume normal mode
+        B. Close crossed: Emergency close + open opposite position
+
+        Args:
+            closed_candle_close: The close price of the just-completed candle
+            current_position: Current position details
+
+        Returns:
+            bool: True if action was taken, False otherwise
+        """
+        if self.alert_supertrend_reference is None:
+            self.logger.warning("   No SuperTrend reference - resuming normal mode")
+            self._deactivate_signal_swing_alert(reason="No reference")
+            return False
+
+        position_side = 'LONG' if current_position['units'] > 0 else 'SHORT'
+
+        # Check if close crossed the SuperTrend reference
+        close_crossed = False
+        if position_side == 'LONG':
+            # For LONG: close crossed if close < trailing_up (support broken)
+            close_crossed = closed_candle_close < self.alert_supertrend_reference
+            self.logger.info(f"   LONG check: close={closed_candle_close:.5f} < ref={self.alert_supertrend_reference:.5f} = {close_crossed}")
+        else:  # SHORT
+            # For SHORT: close crossed if close > trailing_down (resistance broken)
+            close_crossed = closed_candle_close > self.alert_supertrend_reference
+            self.logger.info(f"   SHORT check: close={closed_candle_close:.5f} > ref={self.alert_supertrend_reference:.5f} = {close_crossed}")
+
+        if close_crossed:
+            # Decision B: Close crossed - Emergency close + open opposite
+            self.logger.warning("   ✓ CLOSE CROSSED - Emergency close + open opposite")
+
+            # Fetch fresh indicators to get new signal and supertrend for opposite position
+            df, signal_info, candle_timestamp = self.fetch_and_calculate_indicators()
+            if df is None or signal_info is None:
+                self.logger.error("   Failed to fetch indicators for opposite position")
+                self._deactivate_signal_swing_alert(reason="Failed to fetch indicators")
+                return False
+
+            # Get account summary for position sizing
+            account_summary = self.client.get_account_summary()
+            if account_summary is None:
+                self.logger.error("   Failed to get account summary")
+                self._deactivate_signal_swing_alert(reason="Failed to get account summary")
+                return False
+
+            # Close current position
+            self.logger.info(f"   Closing {position_side} position...")
+            close_result = self.client.close_position(self.instrument, position_side)
+
+            if close_result:
+                self.logger.info("   ✅ Position closed successfully")
+
+                # Log to CSV
+                self._log_signal_swing_close(current_position, "SIGNAL_SWING")
+
+                # Clear position tracking
+                self._reset_position_tracking()
+
+                # Determine new position direction (opposite)
+                new_position_type = 'SHORT' if position_side == 'LONG' else 'LONG'
+                new_action = 'OPEN_SHORT' if new_position_type == 'SHORT' else 'OPEN_LONG'
+
+                # Small delay before opening opposite
+                time.sleep(0.5)
+
+                # Get fresh account summary
+                account_summary = self.client.get_account_summary()
+
+                self.logger.info(f"   Opening {new_position_type} position...")
+                trade_success = self.execute_trade(new_action, signal_info, account_summary)
+
+                if trade_success:
+                    self.logger.info(f"   ✅ {new_position_type} position opened successfully")
+
+                    # Update signal state
+                    self.last_signal_candle_time = candle_timestamp
+                    self._save_state()
+                else:
+                    self.logger.warning(f"   ⚠️  Failed to open {new_position_type} position")
+
+                self._deactivate_signal_swing_alert(reason="Signal swing executed")
+                return True
+            else:
+                self.logger.error("   ❌ Failed to close position")
+                self._deactivate_signal_swing_alert(reason="Failed to close position")
+                return False
+        else:
+            # Decision A: Wick-only cross, close didn't cross - Resume normal
+            self.logger.info("   ✗ Wick-only cross - close did NOT cross SuperTrend")
+            self.logger.info("   Resuming normal trading mode")
+            self._deactivate_signal_swing_alert(reason="Wick-only cross")
+            return False
+
+    def _log_signal_swing_close(self, current_position, close_reason):
+        """Log position close due to signal swing to CSV"""
+        try:
+            close_time = datetime.now()
+            profit = float(current_position.get('unrealized_pl', 0))
+
+            risk_amount = self.current_risk_amount if self.current_risk_amount else 100
+            position_size = self.current_position_size if self.current_position_size else 0
+            signal_side = self.current_position_side if self.current_position_side else ('LONG' if current_position['units'] > 0 else 'SHORT')
+
+            market = self.current_market_trend.upper() if self.current_market_trend and self.current_market_trend.upper() in ['BEAR', 'BULL'] else 'BEAR'
+
+            # Calculate max_profit and max_loss
+            top_price = self.highest_price_during_trade if self.highest_price_during_trade else self.current_entry_price
+            bottom_price = self.lowest_price_during_trade if self.lowest_price_during_trade else self.current_entry_price
+            if signal_side == 'LONG' and self.current_entry_price:
+                max_profit = (top_price - self.current_entry_price) * position_size if top_price else 0
+                max_loss = (bottom_price - self.current_entry_price) * position_size if bottom_price else 0
+            elif signal_side == 'SHORT' and self.current_entry_price:
+                max_profit = (self.current_entry_price - bottom_price) * position_size if bottom_price else 0
+                max_loss = (self.current_entry_price - top_price) * position_size if top_price else 0
+            else:
+                max_profit = 0
+                max_loss = 0
+
+            entry_time_pt = self._format_time_tz(self.current_trade_open_time) if self.current_trade_open_time else 'N/A'
+            close_time_pt = self._format_time_tz(close_time)
+
+            csv_data = {
+                'fr': self.instrument,
+                'tf': self.timeframe.replace('m', 'min'),
+                'market': market,
+                'signal': signal_side,
+                'time': entry_time_pt,
+                'tradeID': self.current_trade_id if self.current_trade_id else 'N/A',
+                'entry_price': f"{self.current_entry_price:.5f}" if self.current_entry_price else 'N/A',
+                'stop_loss': f"{self.current_stop_loss_price:.5f}" if self.current_stop_loss_price else 'N/A',
+                'take_profit': f"{self.current_take_profit_price:.5f}" if self.current_take_profit_price else 'N/A',
+                'lots_size': f"{position_size / 100000:.3f}" if position_size else 'N/A',
+                'risk_amount': f"{risk_amount:.2f}",
+                'spread_buffer_pips': f"{self.spread_buffer_pips}",
+                'risk_reward_ratio': f"{self.current_risk_reward_target:.1f}:1" if self.current_risk_reward_target else 'N/A',
+                'top_price': f"{top_price:.5f}" if top_price else 'N/A',
+                'bottom_price': f"{bottom_price:.5f}" if bottom_price else 'N/A',
+                'max_profit': f"${max_profit:.2f}",
+                'max_loss': f"${max_loss:.2f}",
+                'realized_profit_loss': f"${profit:.2f}" if profit >= 0 else f"-${abs(profit):.2f}",
+                'close_time': close_time_pt,
+                'position_status': 'CLOSED',
+                'close_reason': close_reason,
+                'take_profit_hit': 'NO',
+                'stop_loss_hit': 'NO'
+            }
+
+            csv_data = self._add_milestone_columns_to_csv_data(csv_data)
+            csv_data = self._add_news_column_to_csv_data(csv_data, self.current_trade_open_time, close_time)
+
+            if self.csv_logger.has_open_trade(self.current_trade_id):
+                self.csv_logger.update_trade(self.current_trade_id, csv_data)
+                self.logger.info(f"   💾 Updated CSV: Trade #{self.current_trade_id} {close_reason}, P/L=${profit:.2f}")
+            else:
+                self.csv_logger.log_trade(csv_data)
+                self.logger.info(f"   💾 Logged signal swing close to CSV: Trade #{self.current_trade_id}, P/L=${profit:.2f}")
+
+            self.trade_tracker.reset()
+
+        except Exception as e:
+            self.logger.error(f"Error logging signal swing close: {e}")
+
+    def _deactivate_signal_swing_alert(self, reason=""):
+        """
+        Cleanup and return to normal trading mode.
+
+        Args:
+            reason: Reason for deactivation (for logging)
+        """
+        if self.signal_swing_alert_active:
+            self.logger.info("=" * 80)
+            self.logger.info(f"⚡ SIGNAL SWING ALERT MODE DEACTIVATED")
+            if reason:
+                self.logger.info(f"   Reason: {reason}")
+            self.logger.info("   Returning to normal polling interval")
+            self.logger.info("=" * 80)
+
+        self.signal_swing_alert_active = False
+        self.alert_supertrend_reference = None
+        self.alert_candle_start_time = None
+        self.alert_position_side = None
+        self.alert_previous_candle_time = None
+
+    def _reset_position_tracking(self):
+        """Reset all position tracking variables"""
+        self.current_stop_loss_order_id = None
+        self.current_trade_id = None
+        self.current_stop_loss_price = None
+        self.current_take_profit_price = None
+        self.current_position_side = None
+        self.current_entry_price = None
+        self.highest_price_during_trade = None
+        self.lowest_price_during_trade = None
+        self.current_trade_open_time = None
+        self.current_supertrend_value = None
+        self.current_pivot_point_value = None
+        self.current_position_size = None
+        self.current_market_trend = 'NEUTRAL'
+        self.current_risk_reward_target = None
+        self.current_risk_amount = None
+        self.current_original_stop_pips = None
+        self.current_adjusted_stop_pips = None
+        self.current_init_sl = None
+        self.current_init_tp = None
+        self.current_fill_price = None
+        self.current_expected_rr = None
+
+    # ============================================================================
+    # END PP SIGNAL SWING ALERT MODE METHODS
     # ============================================================================
 
     def _close_position_for_news(self, reason: str):
@@ -2732,6 +3193,11 @@ class MarketAwareTradingBot:
             # ============================================================================
             # When price crosses SuperTrend (signal swing from SELL→BUY or BUY→SELL):
             #
+            # 0. SIGNAL SWING ALERT CHECK (runs FIRST if enabled)
+            #    - Detects if current candle's WICK has crossed the previous candle's SuperTrend
+            #    - If crossed: activate alert mode, switch to 1-second polling
+            #    - Returns True to signal that alert mode was activated (caller should enter alert loop)
+            #
             # 1. EMERGENCY CLOSE (runs FIRST, before signal detection)
             #    - Compares closed_candle_close vs trailing_down (SHORT) or trailing_up (LONG)
             #    - Uses signal_row values (closed candle) to avoid reset issues
@@ -2751,6 +3217,16 @@ class MarketAwareTradingBot:
             # Key principle: During signal swing, NO useless SL updates occur because
             # the position is closed before we reach the SL update code.
             # ============================================================================
+
+            # SIGNAL SWING ALERT CHECK - Detect wick crossing SuperTrend
+            # This activates alert mode when wick crosses, BEFORE emergency close triggers
+            if self.signal_swing_alert_enabled and current_position and current_position['units'] != 0:
+                should_trigger, cross_type = self._check_signal_swing_alert_trigger(signal_info, current_position)
+                if should_trigger:
+                    self._activate_signal_swing_alert(cross_type, signal_info, current_position)
+                    # Return True to signal caller (run method) to enter alert mode loop
+                    self.last_signal = signal_info
+                    return True  # Signal swing alert activated
 
             # EMERGENCY CLOSE CHECK - Run BEFORE signal processing
             # This must run first to close positions immediately when price crosses trailing stop,
@@ -2812,11 +3288,17 @@ class MarketAwareTradingBot:
                 # NO SIGNAL DETECTED - We are in HOLD_LONG or HOLD_SHORT state
                 # This means NO signal swing is occurring, safe to update trailing stop
                 if current_position and current_position['units'] != 0:
-                    # Normal trailing stop update - only runs when:
-                    # 1. Emergency close did NOT trigger (price hasn't crossed trailing stop)
-                    # 2. No BUY/SELL signal detected (still holding position)
-                    # During signal swing, this code is NEVER reached
-                    self.update_trailing_stop_loss(signal_info, current_position)
+                    # Skip SL update if signal swing alert is active
+                    # (we're in alert mode, don't want to update SL while monitoring for candle close)
+                    if self.signal_swing_alert_active:
+                        self.logger.debug("   Skipping SL update - signal swing alert active")
+                    else:
+                        # Normal trailing stop update - only runs when:
+                        # 1. Emergency close did NOT trigger (price hasn't crossed trailing stop)
+                        # 2. No BUY/SELL signal detected (still holding position)
+                        # 3. Signal swing alert is NOT active
+                        # During signal swing, this code is NEVER reached
+                        self.update_trailing_stop_loss(signal_info, current_position)
 
             self.last_signal = signal_info
 
@@ -3127,8 +3609,18 @@ class MarketAwareTradingBot:
 
         try:
             while self.is_running:
-                self.check_and_trade()
-                time.sleep(TradingConfig.check_interval)
+                # check_and_trade returns True if signal swing alert was activated
+                alert_activated = self.check_and_trade()
+
+                # If signal swing alert was activated, enter the alert mode loop
+                if alert_activated and self.signal_swing_alert_active:
+                    # Run alert mode loop (1-second polling until candle closes)
+                    self._run_alert_mode_loop()
+                    # After alert mode, do a short delay then continue normal loop
+                    time.sleep(1)
+                else:
+                    # Normal polling interval
+                    time.sleep(TradingConfig.check_interval)
 
         except KeyboardInterrupt:
             self.logger.info("\n⏹️  Bot stopped by user")
