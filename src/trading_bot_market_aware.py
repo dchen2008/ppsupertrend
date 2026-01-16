@@ -550,12 +550,12 @@ class MarketAwareTradingBot:
 
         lines.append("-" * 80)
 
-        # Print to console and log to file for consistency
+        # Print to console (no prefix) and log to file (with prefix)
         status_output = "\n".join(lines)
         print(status_output)
-        # Log each line to file
+        # Log each line to file only (bypass console handler)
         for line in lines:
-            self.logger.info(line)
+            self._log_to_file_only(line)
 
     def _check_emergency_close(self, signal_info, current_position):
         """
@@ -735,7 +735,18 @@ class MarketAwareTradingBot:
         # Add handlers
         self.logger.addHandler(console_handler)
         self.logger.addHandler(file_handler)
-        
+
+        # Store file handler reference for file-only logging
+        self.file_handler = file_handler
+
+    def _log_to_file_only(self, message, level=logging.INFO):
+        """Log message to file only, bypassing console handler"""
+        if hasattr(self, 'file_handler') and self.file_handler:
+            record = self.logger.makeRecord(
+                self.logger.name, level, "", 0, message, None, None
+            )
+            self.file_handler.emit(record)
+
     def check_market_trend(self):
         """
         Check 3H PP SuperTrend for market direction (bull/bear)
