@@ -431,3 +431,73 @@ class NewsManager:
                 time_str = f"{mins_until}m"
             return f"{event.title} ({event.currency}) in {time_str}"
         return None
+
+    def get_events_during_period(self, start_time: datetime, end_time: datetime) -> List[NewsEvent]:
+        """
+        Get all news events that occurred during a specific time period.
+        Used for logging news events that happened during a trade.
+
+        Args:
+            start_time: Start of period (timezone-aware datetime)
+            end_time: End of period (timezone-aware datetime)
+
+        Returns:
+            List of NewsEvent objects that occurred during the period
+        """
+        # Ensure times are timezone-aware
+        if start_time.tzinfo is None:
+            start_time = pytz.UTC.localize(start_time)
+        if end_time.tzinfo is None:
+            end_time = pytz.UTC.localize(end_time)
+
+        # Load all events (including manual events)
+        events = []
+
+        # Load manual events if configured
+        if self.manual_events_file and os.path.exists(self.manual_events_file):
+            events.extend(self._load_manual_events())
+
+        # Fetch OANDA events if enabled
+        if self.oanda_calendar_enabled:
+            events.extend(self._fetch_oanda_events())
+
+        # Filter events by impact and currency (but not keywords for logging purposes)
+        filtered = []
+        for event in events:
+            # Filter by impact level
+            if event.impact not in self.impact_levels:
+                continue
+            # Filter by currency
+            if self.currencies and event.currency not in self.currencies:
+                continue
+            # Check if event occurred during the period
+            if start_time <= event.datetime <= end_time:
+                filtered.append(event)
+
+        # Sort by timestamp
+        filtered.sort(key=lambda e: e.timestamp)
+        return filtered
+
+    def format_events_for_csv(self, events: List[NewsEvent], timezone_str: str = 'US/Pacific') -> str:
+        """
+        Format news events for CSV column output.
+        Format: {event1-name},{event1-time};{event2-name},{event2-time};...
+
+        Args:
+            events: List of NewsEvent objects
+            timezone_str: Timezone for formatting times (default: Pacific)
+
+        Returns:
+            Formatted string for CSV column
+        """
+        if not events:
+            return ''
+
+        tz = pytz.timezone(timezone_str)
+        parts = []
+        for event in events:
+            event_time_local = event.datetime.astimezone(tz)
+            time_str = event_time_local.strftime('%Y-%m-%d %H:%M')
+            parts.append(f"{event.title},{time_str}")
+
+        return ';'.join(parts)

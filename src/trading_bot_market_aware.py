@@ -24,7 +24,7 @@ from .news_manager import NewsManager
 
 class TradeTracker:
     """Track P&L and R:R high/low for open trades"""
-    def __init__(self):
+    def __init__(self, milestone_ratios=None, timezone_str='US/Pacific'):
         self.highest_pl = None
         self.lowest_pl = None
         self.highest_ratio = None
@@ -33,6 +33,10 @@ class TradeTracker:
         self.position_side = None
         self.units = None
         self.risk_amount = None
+        # Milestone tracking
+        self.milestone_ratios = milestone_ratios or []
+        self.milestones_hit = {}  # {ratio: {'profit': float, 'time': str}}
+        self.timezone_str = timezone_str
 
     def update_pl(self, current_price, unrealized_pl=None):
         """Update highest/lowest P&L and R:R based on current price or OANDA unrealized P/L"""
@@ -62,6 +66,30 @@ class TradeTracker:
                 self.highest_ratio = current_ratio
             if self.lowest_ratio is None or current_ratio < self.lowest_ratio:
                 self.lowest_ratio = current_ratio
+            # Check milestones
+            self._check_milestones(current_ratio, current_pl)
+
+    def _check_milestones(self, current_ratio, current_pl):
+        """Check and record if any milestones have been hit"""
+        if not self.milestone_ratios:
+            return
+
+        from datetime import datetime
+        import pytz
+
+        tz = pytz.timezone(self.timezone_str)
+        timestamp = datetime.now(tz).strftime('%Y-%m-%d %H:%M:%S')
+
+        for ratio in self.milestone_ratios:
+            if ratio not in self.milestones_hit and current_ratio >= ratio:
+                self.milestones_hit[ratio] = {
+                    'profit': current_pl,
+                    'time': timestamp
+                }
+
+    def get_milestone_data(self):
+        """Get milestone data for CSV logging"""
+        return self.milestones_hit.copy()
 
     def reset(self):
         """Reset tracker for new trade"""
@@ -73,16 +101,21 @@ class TradeTracker:
         self.position_side = None
         self.units = None
         self.risk_amount = None
+        self.milestones_hit = {}
 
 
 class CSVLogger:
     """Thread-safe CSV logger for trade results"""
 
-    def __init__(self, csv_filename):
+    def __init__(self, csv_filename, milestone_ratios=None, news_log_enabled=False):
         self.csv_filename = csv_filename
         self.lock = Lock()
         self.backup_created = False  # Track if old format was backed up
-        self.fieldnames = [
+        self.milestone_ratios = milestone_ratios or []
+        self.news_log_enabled = news_log_enabled
+
+        # Base fieldnames (always present)
+        self.base_fieldnames = [
             'fr', 'tf', 'market', 'signal', 'time', 'tradeID',
             'entry_price', 'stop_loss', 'take_profit', 'lots_size', 'risk_amount',
             'spread_buffer_pips', 'risk_reward_ratio',
@@ -90,6 +123,9 @@ class CSVLogger:
             'realized_profit_loss', 'close_time', 'position_status', 'close_reason',
             'take_profit_hit', 'stop_loss_hit'
         ]
+
+        # Build complete fieldnames including optional columns
+        self.fieldnames = self._build_fieldnames()
 
         # Check if existing CSV has old format and backup if needed
         if os.path.exists(self.csv_filename):
@@ -100,6 +136,32 @@ class CSVLogger:
             with open(self.csv_filename, 'w', newline='') as f:
                 writer = csv.DictWriter(f, fieldnames=self.fieldnames)
                 writer.writeheader()
+
+    def _build_fieldnames(self):
+        """Build complete fieldnames list with optional columns"""
+        fieldnames = self.base_fieldnames.copy()
+        # Add news_time column if news logging is enabled
+        if self.news_log_enabled:
+            fieldnames.append('news_time')
+        # Add milestone columns
+        for ratio in self.milestone_ratios:
+            # Format: 0.2, 0.2_time, 0.3, 0.3_time, etc.
+            fieldnames.append(str(ratio))
+            fieldnames.append(f"{ratio}_time")
+        return fieldnames
+
+    def get_milestone_columns(self, milestone_data):
+        """Convert milestone data dict to CSV column values"""
+        columns = {}
+        for ratio in self.milestone_ratios:
+            if ratio in milestone_data:
+                profit = milestone_data[ratio]['profit']
+                columns[str(ratio)] = f"${profit:.2f}" if profit >= 0 else f"-${abs(profit):.2f}"
+                columns[f"{ratio}_time"] = milestone_data[ratio]['time']
+            else:
+                columns[str(ratio)] = ''
+                columns[f"{ratio}_time"] = ''
+        return columns
 
     def _backup_if_old_format(self):
         """Backup existing CSV if it has old format (different headers)"""
@@ -281,11 +343,22 @@ class MarketAwareTradingBot:
         # use_closed_candles_only: True = only use closed candles (no repainting)
         self.use_closed_candles_only = self.config.get('signal', {}).get('use_closed_candles_only', True)
 
+        # Take profit milestone tracking settings
+        self.tp_tracking_config = self.config.get('track_take_profit', {})
+        self.enable_tp_tracking = self.tp_tracking_config.get('enable', False)
+        self.tp_milestone_ratios = self.tp_tracking_config.get('range', []) if self.enable_tp_tracking else []
+
+        # News logging settings (log events during trade to CSV without affecting trading)
+        self.news_log_enabled = self.config.get('news_filter', {}).get('enabled_log', False)
+
+        # Timezone configuration (default: US/Pacific)
+        self.timezone_str = self.config.get('timezone', 'US/Pacific')
+
         # Initialize components - pass logger for consistent logging
         self.client = OANDAClient(logger=self.logger)
         self.risk_manager = RiskManager()
-        self.csv_logger = CSVLogger(self.csv_filename)
-        self.trade_tracker = TradeTracker()
+        self.csv_logger = CSVLogger(self.csv_filename, milestone_ratios=self.tp_milestone_ratios, news_log_enabled=self.news_log_enabled)
+        self.trade_tracker = TradeTracker(milestone_ratios=self.tp_milestone_ratios, timezone_str=self.timezone_str)
 
         # Bot state
         self.is_running = False
@@ -478,6 +551,198 @@ class MarketAwareTradingBot:
         except Exception as e:
             self.logger.warning(f"Could not save state to {self.state_file}: {e}")
 
+    def _add_milestone_columns_to_csv_data(self, csv_data):
+        """Add milestone tracking columns to csv_data dict"""
+        if self.enable_tp_tracking and self.tp_milestone_ratios:
+            milestone_data = self.trade_tracker.get_milestone_data()
+            milestone_columns = self.csv_logger.get_milestone_columns(milestone_data)
+            csv_data.update(milestone_columns)
+        return csv_data
+
+    def _get_news_time_for_csv(self, entry_time, close_time):
+        """
+        Get formatted news events that occurred during the trade period.
+        Format: {event1-name},{event1-time};{event2-name},{event2-time};...
+
+        Args:
+            entry_time: Trade entry time (datetime)
+            close_time: Trade close time (datetime)
+
+        Returns:
+            Formatted string for news_time column, or empty string if disabled/no events
+        """
+        if not self.news_log_enabled:
+            return ''
+
+        try:
+            events = self.news_manager.get_events_during_period(entry_time, close_time)
+            if events:
+                news_str = self.news_manager.format_events_for_csv(events)
+                if news_str:
+                    self.logger.info(f"   📰 News during trade: {news_str}")
+                return news_str
+        except Exception as e:
+            self.logger.warning(f"Failed to get news events for CSV: {e}")
+
+        return ''
+
+    def _add_news_column_to_csv_data(self, csv_data, entry_time=None, close_time=None):
+        """Add news_time column to csv_data dict if news logging is enabled"""
+        if self.news_log_enabled:
+            if entry_time and close_time:
+                csv_data['news_time'] = self._get_news_time_for_csv(entry_time, close_time)
+            else:
+                csv_data['news_time'] = ''
+        return csv_data
+
+    def _format_time_tz(self, dt):
+        """
+        Format datetime to configured timezone string.
+
+        Args:
+            dt: datetime object (timezone-aware or naive, assumed UTC if naive)
+
+        Returns:
+            Formatted string like '2026-01-16 08:10:07'
+        """
+        import pytz
+        tz = pytz.timezone(self.timezone_str)
+
+        if dt is None:
+            return ''
+
+        if dt.tzinfo is None:
+            # Naive datetime - localize to configured tz
+            dt_tz = tz.localize(dt)
+        else:
+            # Timezone-aware - convert to configured tz
+            dt_tz = dt.astimezone(tz)
+
+        return dt_tz.strftime('%Y-%m-%d %H:%M:%S')
+
+    def _catchup_milestone_tracking(self):
+        """
+        Catch up milestone tracking when bot restarts with existing position.
+        Fetches candle data to calculate actual max profit achieved, then fills milestones.
+        """
+        if not self.enable_tp_tracking or not self.tp_milestone_ratios:
+            return
+
+        if not self.current_trade_id or not self.current_risk_amount or not self.current_entry_price:
+            return
+
+        try:
+            import pytz
+            tz = pytz.timezone(self.timezone_str)
+
+            # First, try to recover milestones from existing CSV row
+            existing_trade = self.csv_logger.get_open_trade(self.current_trade_id)
+            recovered_count = 0
+
+            if existing_trade:
+                # Recover previously recorded milestones from CSV
+                for ratio in self.tp_milestone_ratios:
+                    ratio_col = str(ratio)
+                    time_col = f"{ratio}_time"
+                    if existing_trade.get(ratio_col) and existing_trade.get(time_col):
+                        # Parse the profit value (e.g., "$20.00" or "-$5.00")
+                        profit_str = existing_trade[ratio_col]
+                        try:
+                            if profit_str.startswith('-$'):
+                                profit = -float(profit_str[2:])
+                            elif profit_str.startswith('$'):
+                                profit = float(profit_str[1:])
+                            else:
+                                continue
+                            self.trade_tracker.milestones_hit[ratio] = {
+                                'profit': profit,
+                                'time': existing_trade[time_col]
+                            }
+                            recovered_count += 1
+                        except (ValueError, TypeError):
+                            continue
+
+            if recovered_count > 0:
+                self.logger.info(f"   📊 Recovered {recovered_count} milestones from CSV: {list(self.trade_tracker.milestones_hit.keys())}")
+
+            # Fetch candle data to calculate actual max profit achieved
+            top_price = self.current_entry_price
+            bottom_price = self.current_entry_price
+
+            try:
+                # Fetch candles since trade opened
+                candles_df = self.client.get_candles(self.instrument, self.granularity, count=500)
+                if candles_df is not None and len(candles_df) > 0:
+                    # Try to filter candles from trade open time
+                    if self.current_trade_open_time:
+                        trade_open_ts = pd.Timestamp(self.current_trade_open_time)
+                        if trade_open_ts.tzinfo is None:
+                            trade_open_ts = trade_open_ts.tz_localize('UTC')
+
+                        # Filter using index (time is set as index in OANDA client)
+                        candles_since_open = candles_df[candles_df.index >= trade_open_ts]
+                        if len(candles_since_open) > 0:
+                            top_price = float(candles_since_open['high'].max())
+                            bottom_price = float(candles_since_open['low'].min())
+                        else:
+                            top_price = float(candles_df['high'].max())
+                            bottom_price = float(candles_df['low'].min())
+                    else:
+                        top_price = float(candles_df['high'].max())
+                        bottom_price = float(candles_df['low'].min())
+
+                    self.logger.info(f"   📊 Candle data: top={top_price:.5f}, bottom={bottom_price:.5f}")
+            except Exception as e:
+                self.logger.warning(f"   ⚠️  Could not fetch candle data for milestone catch-up: {e}")
+                # Use CSV values as fallback
+                if existing_trade:
+                    try:
+                        csv_top = float(existing_trade.get('top_price', 0))
+                        csv_bottom = float(existing_trade.get('bottom_price', 0))
+                        if csv_top > 0:
+                            top_price = csv_top
+                        if csv_bottom > 0:
+                            bottom_price = csv_bottom
+                    except (ValueError, TypeError):
+                        pass
+
+            # Calculate max profit achieved based on position direction
+            if self.current_position_side == 'LONG':
+                max_profit = (top_price - self.current_entry_price) * self.current_position_size
+            else:  # SHORT
+                max_profit = (self.current_entry_price - bottom_price) * self.current_position_size
+
+            if self.current_risk_amount > 0:
+                max_ratio = max_profit / self.current_risk_amount
+            else:
+                max_ratio = 0
+
+            self.logger.info(f"   📊 Max profit: ${max_profit:.2f}, Max R:R: {max_ratio:.2f}")
+
+            # Fill any missing milestones up to max_ratio
+            now_str = datetime.now(tz).strftime('%Y-%m-%d %H:%M:%S')
+            newly_added = 0
+            for ratio in self.tp_milestone_ratios:
+                if ratio not in self.trade_tracker.milestones_hit and max_ratio >= ratio:
+                    # Estimate profit at this milestone
+                    estimated_profit = ratio * self.current_risk_amount
+                    self.trade_tracker.milestones_hit[ratio] = {
+                        'profit': estimated_profit,
+                        'time': f"{now_str} (recovered)"  # Mark as recovered/estimated
+                    }
+                    newly_added += 1
+
+            if newly_added > 0:
+                self.logger.info(f"   📊 Estimated {newly_added} milestones up to R:R {max_ratio:.2f}: {[r for r in self.tp_milestone_ratios if r <= max_ratio and r in self.trade_tracker.milestones_hit]}")
+
+            # Update trade tracker highest values
+            if max_profit > 0:
+                self.trade_tracker.highest_pl = max_profit
+                self.trade_tracker.highest_ratio = max_ratio
+
+        except Exception as e:
+            self.logger.warning(f"⚠️  Failed to catch up milestone tracking: {e}")
+
     def _get_scalping_status_line(self):
         """Get scalping status line for status display"""
         if not self.scalping_enabled:
@@ -514,13 +779,10 @@ class MarketAwareTradingBot:
                     if str(trade.get('id')) == str(self.current_trade_id):
                         open_time = trade.get('open_time')
                         if open_time:
-                            # Parse OANDA timestamp (UTC) and convert to Pacific Time
+                            # Parse OANDA timestamp (UTC) and convert to configured timezone
                             from dateutil import parser
-                            import pytz
                             dt_utc = parser.parse(open_time)
-                            pacific_tz = pytz.timezone('US/Pacific')
-                            dt_pacific = dt_utc.astimezone(pacific_tz)
-                            entry_time_str = dt_pacific.strftime('%Y-%m-%d %H:%M:%S')
+                            entry_time_str = self._format_time_tz(dt_utc)
                         break
             except Exception:
                 pass  # Keep N/A if failed
@@ -765,17 +1027,9 @@ class MarketAwareTradingBot:
                     max_profit = 0
                     max_loss = 0
 
-                # Format times in Pacific Time
-                import pytz
-                pacific_tz = pytz.timezone('US/Pacific')
-                if self.current_trade_open_time:
-                    if self.current_trade_open_time.tzinfo is None:
-                        entry_time_pt = pacific_tz.localize(self.current_trade_open_time).strftime('%Y-%m-%d %H:%M:%S')
-                    else:
-                        entry_time_pt = self.current_trade_open_time.astimezone(pacific_tz).strftime('%Y-%m-%d %H:%M:%S')
-                else:
-                    entry_time_pt = 'N/A'
-                close_time_pt = pacific_tz.localize(close_time).strftime('%Y-%m-%d %H:%M:%S')
+                # Format times in configured timezone
+                entry_time_pt = self._format_time_tz(self.current_trade_open_time) if self.current_trade_open_time else 'N/A'
+                close_time_pt = self._format_time_tz(close_time)
 
                 csv_data = {
                     'fr': self.instrument,
@@ -802,6 +1056,10 @@ class MarketAwareTradingBot:
                     'take_profit_hit': 'NO',
                     'stop_loss_hit': 'NO'
                 }
+                # Add milestone columns if tracking is enabled
+                csv_data = self._add_milestone_columns_to_csv_data(csv_data)
+                # Add news_time column if news logging is enabled
+                csv_data = self._add_news_column_to_csv_data(csv_data, self.current_trade_open_time, close_time)
                 # Update existing OPEN row or add new row
                 if self.csv_logger.has_open_trade(self.current_trade_id):
                     self.csv_logger.update_trade(self.current_trade_id, csv_data)
@@ -1570,17 +1828,9 @@ class MarketAwareTradingBot:
                     max_profit = 0
                     max_loss = 0
 
-                # Format times in Pacific Time
-                import pytz
-                pacific_tz = pytz.timezone('US/Pacific')
-                if self.current_trade_open_time:
-                    if self.current_trade_open_time.tzinfo is None:
-                        entry_time_pt = pacific_tz.localize(self.current_trade_open_time).strftime('%Y-%m-%d %H:%M:%S')
-                    else:
-                        entry_time_pt = self.current_trade_open_time.astimezone(pacific_tz).strftime('%Y-%m-%d %H:%M:%S')
-                else:
-                    entry_time_pt = 'N/A'
-                close_time_pt = close_time.astimezone(pacific_tz).strftime('%Y-%m-%d %H:%M:%S') if close_time.tzinfo else pacific_tz.localize(close_time).strftime('%Y-%m-%d %H:%M:%S')
+                # Format times in configured timezone
+                entry_time_pt = self._format_time_tz(self.current_trade_open_time) if self.current_trade_open_time else 'N/A'
+                close_time_pt = self._format_time_tz(close_time)
 
                 # Log to CSV
                 csv_data = {
@@ -1608,6 +1858,10 @@ class MarketAwareTradingBot:
                     'take_profit_hit': 'NO',
                     'stop_loss_hit': 'NO'
                 }
+                # Add milestone columns if tracking is enabled
+                csv_data = self._add_milestone_columns_to_csv_data(csv_data)
+                # Add news_time column if news logging is enabled
+                csv_data = self._add_news_column_to_csv_data(csv_data, self.current_trade_open_time, close_time)
                 # Update existing OPEN row or add new row
                 if self.csv_logger.has_open_trade(self.current_trade_id):
                     self.csv_logger.update_trade(self.current_trade_id, csv_data)
@@ -1739,17 +1993,9 @@ class MarketAwareTradingBot:
                         max_profit = 0
                         max_loss = 0
 
-                    # Format times in Pacific Time
-                    import pytz
-                    pacific_tz = pytz.timezone('US/Pacific')
-                    if self.current_trade_open_time:
-                        if self.current_trade_open_time.tzinfo is None:
-                            entry_time_pt = pacific_tz.localize(self.current_trade_open_time).strftime('%Y-%m-%d %H:%M:%S')
-                        else:
-                            entry_time_pt = self.current_trade_open_time.astimezone(pacific_tz).strftime('%Y-%m-%d %H:%M:%S')
-                    else:
-                        entry_time_pt = 'N/A'
-                    close_time_pt = close_time.astimezone(pacific_tz).strftime('%Y-%m-%d %H:%M:%S') if close_time.tzinfo else pacific_tz.localize(close_time).strftime('%Y-%m-%d %H:%M:%S')
+                    # Format times in configured timezone
+                    entry_time_pt = self._format_time_tz(self.current_trade_open_time) if self.current_trade_open_time else 'N/A'
+                    close_time_pt = self._format_time_tz(close_time)
 
                     csv_data = {
                         'fr': self.instrument,
@@ -1776,6 +2022,10 @@ class MarketAwareTradingBot:
                         'take_profit_hit': take_profit_hit,
                         'stop_loss_hit': stop_loss_hit
                     }
+                    # Add milestone columns if tracking is enabled
+                    csv_data = self._add_milestone_columns_to_csv_data(csv_data)
+                    # Add news_time column if news logging is enabled
+                    csv_data = self._add_news_column_to_csv_data(csv_data, self.current_trade_open_time, close_time)
                     # Update existing OPEN row or add new row
                     if self.csv_logger.has_open_trade(self.current_trade_id):
                         self.csv_logger.update_trade(self.current_trade_id, csv_data)
@@ -2299,17 +2549,9 @@ class MarketAwareTradingBot:
                         max_profit = 0
                         max_loss = 0
 
-                    # Format times in Pacific Time
-                    import pytz
-                    pacific_tz = pytz.timezone('US/Pacific')
-                    if self.current_trade_open_time:
-                        if self.current_trade_open_time.tzinfo is None:
-                            entry_time_pt = pacific_tz.localize(self.current_trade_open_time).strftime('%Y-%m-%d %H:%M:%S')
-                        else:
-                            entry_time_pt = self.current_trade_open_time.astimezone(pacific_tz).strftime('%Y-%m-%d %H:%M:%S')
-                    else:
-                        entry_time_pt = 'N/A'
-                    close_time_pt = close_time.astimezone(pacific_tz).strftime('%Y-%m-%d %H:%M:%S') if close_time.tzinfo else pacific_tz.localize(close_time).strftime('%Y-%m-%d %H:%M:%S')
+                    # Format times in configured timezone
+                    entry_time_pt = self._format_time_tz(self.current_trade_open_time) if self.current_trade_open_time else 'N/A'
+                    close_time_pt = self._format_time_tz(close_time)
 
                     # Log to CSV
                     csv_data = {
@@ -2337,6 +2579,10 @@ class MarketAwareTradingBot:
                         'take_profit_hit': take_profit_hit,
                         'stop_loss_hit': stop_loss_hit
                     }
+                    # Add milestone columns if tracking is enabled
+                    csv_data = self._add_milestone_columns_to_csv_data(csv_data)
+                    # Add news_time column if news logging is enabled
+                    csv_data = self._add_news_column_to_csv_data(csv_data, self.current_trade_open_time, close_time)
                     # Update existing OPEN row or add new row
                     if self.csv_logger.has_open_trade(self.current_trade_id):
                         self.csv_logger.update_trade(self.current_trade_id, csv_data)
@@ -2665,6 +2911,9 @@ class MarketAwareTradingBot:
 
                         self.logger.info(f"🔄 Resumed tracking existing {self.current_position_side} position (Trade ID: {trade_id})")
 
+                        # Catch up milestone tracking from CSV/max profit
+                        self._catchup_milestone_tracking()
+
                         # Always update CSV on restart to preserve/update dynamic values (top_price, bottom_price, etc.)
                         self._log_existing_position_to_csv(trade, account_summary)
                 
@@ -2678,21 +2927,12 @@ class MarketAwareTradingBot:
     def _log_existing_position_to_csv(self, trade, account_summary):
         """Log existing position to CSV when new format is created after backup"""
         try:
-            import pytz
-            pacific_tz = pytz.timezone('US/Pacific')
-
             # Get current market trend
             market_trend = self.check_market_trend()
             market = market_trend.upper() if market_trend in ['BEAR', 'BULL'] else 'BEAR'
 
-            # Format entry time in Pacific Time
-            if self.current_trade_open_time:
-                if self.current_trade_open_time.tzinfo is None:
-                    entry_time_pt = pacific_tz.localize(self.current_trade_open_time).strftime('%Y-%m-%d %H:%M:%S')
-                else:
-                    entry_time_pt = self.current_trade_open_time.astimezone(pacific_tz).strftime('%Y-%m-%d %H:%M:%S')
-            else:
-                entry_time_pt = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            # Format entry time in configured timezone
+            entry_time_pt = self._format_time_tz(self.current_trade_open_time) if self.current_trade_open_time else self._format_time_tz(datetime.now())
 
             # Get current price for unrealized P/L calculation
             current_price = self.current_entry_price
@@ -2735,7 +2975,8 @@ class MarketAwareTradingBot:
                         trade_open_ts = pd.Timestamp(self.current_trade_open_time)
                         if trade_open_ts.tzinfo is None:
                             trade_open_ts = trade_open_ts.tz_localize('UTC')
-                        candles_since_open = candles_df[candles_df['time'] >= trade_open_ts]
+                        # Filter using index (time is set as index in OANDA client)
+                        candles_since_open = candles_df[candles_df.index >= trade_open_ts]
                         if len(candles_since_open) > 0:
                             candle_top = candles_since_open['high'].max()  # Highest wick
                             candle_bottom = candles_since_open['low'].min()  # Lowest wick
@@ -2798,6 +3039,10 @@ class MarketAwareTradingBot:
                 'take_profit_hit': 'NO',
                 'stop_loss_hit': 'NO'
             }
+            # Add milestone columns if tracking is enabled (empty for OPEN trades)
+            csv_data = self._add_milestone_columns_to_csv_data(csv_data)
+            # Add news_time column if news logging is enabled (empty for OPEN trades)
+            csv_data = self._add_news_column_to_csv_data(csv_data)
 
             # Update existing row or add new row
             if existing_trade:
