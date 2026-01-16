@@ -2,6 +2,10 @@
 # This file contains default settings that apply to all accounts
 # Account-specific config files (account1/config.yaml, etc.) will override these settings
 
+# Timezone for all log timestamps (default: US/Pacific)
+# Common options: US/Pacific, US/Eastern, UTC, Europe/London
+timezone: "US/Pacific"
+
 # Check interval in seconds (how often to check both market trend and trading signals)
 check_interval: 60
 
@@ -66,6 +70,7 @@ backtest:
 # Pauses trading and closes positions before high-impact economic news events
 news_filter:
   enabled: false  # Default disabled, enable per-account in account1/config.yaml
+  enabled_log: true  # Log news events during trade to CSV (doesn't affect trading behavior)
 
   # Timing buffers (how long before/after news to pause trading)
   pre_news_buffer_minutes: 10   # Close positions & pause X mins before news
@@ -130,6 +135,12 @@ news_filter:
   # Actions
   close_positions_before_news: true   # Auto-close open positions before news
   log_blocked_trades: true            # Log when trades are blocked by news
+
+# Take profit milestone tracking (for market analysis)
+# Records profit amount and timestamp when each R:R milestone is first reached
+track_take_profit:
+  enable: true
+  range: [0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.2, 2.5, 2.9]
 
 # Optional: ATR and Pivot parameters
 # indicators:

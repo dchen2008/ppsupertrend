@@ -1,0 +1,22 @@
+{
+  "events": [
+    {
+      "title": "US CPI Report",
+      "timestamp": 1768584598,
+      "currency": "USD",
+      "impact": 3
+    },
+    {
+      "title": "Fed Speech",
+      "timestamp": 1768588198,
+      "currency": "USD",
+      "impact": 3
+    },
+    {
+      "title": "ECB Rate Decision",
+      "timestamp": 1768606198,
+      "currency": "EUR",
+      "impact": 3
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+fr,market,signal,time,tradeID,entry_price,stop_loss,take_profit,lots_size,risk_amount,spread_buffer_pips,risk_reward_ratio,top_price,bottom_price,max_profit,max_loss,realized_profit_loss,close_time,position_status,close_reason,take_profit_hit,stop_loss_hit
+EUR_USD,BEAR,SHORT,2026-01-15 21:20:20,412,1.16078,1.16169,1.16041,1.890,100.00,3,1.0:1,1.16143,1.16044,$64.25,$-122.84,-$75.59,2026-01-15 23:20:14,CLOSED,EMERGENCY_CLOSE,NO,NO
+EUR_USD,BEAR,LONG,2026-01-15 23:20:25,422,1.16116,1.16015,1.16144,1.524,100.00,3,0.4:1,1.16148,1.16081,$48.77,$-53.35,$0.00,2026-01-16 01:26:20,CLOSED,MANUAL_CLOSE,NO,NO
+EUR_USD,BEAR,SHORT,2026-01-16 07:30:11,432,1.16012,1.16281,1.15869,0.449,100.00,3,0.6:1,1.16080,1.15918,$42.24,$-30.56,$64.26,2026-01-16 07:42:39,CLOSED,TP_HIT,YES,NO

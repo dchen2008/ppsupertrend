@@ -492,6 +492,43 @@ class OANDAClient:
         return None
 
     @api_retry_handler
+    def get_trade_close_details(self, trade_id):
+        """
+        Get details of a closed trade including realized P/L and close reason.
+
+        Args:
+            trade_id: The trade ID to look up
+
+        Returns:
+            dict with trade details including:
+            - realizedPL: The realized profit/loss
+            - closeReason: Why the trade was closed (TAKE_PROFIT_ORDER, STOP_LOSS_ORDER, MARKET_ORDER, etc.)
+            - closeTime: When the trade was closed
+            - averageClosePrice: The average close price
+            Or None if trade not found
+        """
+        url = f"{self.base_url}/v3/accounts/{self.account_id}/trades/{trade_id}"
+
+        response = requests.get(url, headers=self.headers, timeout=OANDAConfig.api_timeout)
+        response.raise_for_status()
+        data = response.json()
+
+        if 'trade' in data:
+            trade = data['trade']
+            return {
+                'id': trade.get('id'),
+                'realizedPL': float(trade.get('realizedPL', 0)),
+                'closeReason': trade.get('closingTransactionIDs', []),  # List of closing transaction IDs
+                'closeTime': trade.get('closeTime'),
+                'averageClosePrice': float(trade.get('averageClosePrice', 0)) if trade.get('averageClosePrice') else None,
+                'state': trade.get('state'),  # OPEN or CLOSED
+                'instrument': trade.get('instrument'),
+                'initialUnits': float(trade.get('initialUnits', 0)),
+                'currentUnits': float(trade.get('currentUnits', 0))
+            }
+        return None
+
+    @api_retry_handler
     def place_limit_order(self, instrument, units, price, stop_loss=None, take_profit=None, expiry_seconds=43200):
         """
         Place a limit order for scalping re-entry

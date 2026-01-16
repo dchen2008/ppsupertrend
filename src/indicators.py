@@ -341,6 +341,9 @@ def get_current_signal(df, use_closed_candles_only=False):
         'supertrend': float(current_row['supertrend']) if not pd.isna(current_row['supertrend']) else None,
         # Price from current row (real-time)
         'price': float(current_row['close']),
+        # High and low wick prices from current candle for tracking
+        'high': float(current_row['high']) if 'high' in current_row and not pd.isna(current_row['high']) else None,
+        'low': float(current_row['low']) if 'low' in current_row and not pd.isna(current_row['low']) else None,
         # Closed candle close price (confirmed/completed candle) for emergency close detection
         'closed_candle_close': float(signal_row['close']),
         'support': float(current_row['support']) if not pd.isna(current_row['support']) else None,

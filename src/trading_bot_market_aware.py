@@ -24,7 +24,7 @@ from .news_manager import NewsManager
 
 class TradeTracker:
     """Track P&L and R:R high/low for open trades"""
-    def __init__(self):
+    def __init__(self, milestone_ratios=None, timezone_str='US/Pacific'):
         self.highest_pl = None
         self.lowest_pl = None
         self.highest_ratio = None
@@ -33,6 +33,10 @@ class TradeTracker:
         self.position_side = None
         self.units = None
         self.risk_amount = None
+        # Milestone tracking
+        self.milestone_ratios = milestone_ratios or []
+        self.milestones_hit = {}  # {ratio: {'profit': float, 'time': str}}
+        self.timezone_str = timezone_str
 
     def update_pl(self, current_price, unrealized_pl=None):
         """Update highest/lowest P&L and R:R based on current price or OANDA unrealized P/L"""
@@ -62,6 +66,30 @@ class TradeTracker:
                 self.highest_ratio = current_ratio
             if self.lowest_ratio is None or current_ratio < self.lowest_ratio:
                 self.lowest_ratio = current_ratio
+            # Check milestones
+            self._check_milestones(current_ratio, current_pl)
+
+    def _check_milestones(self, current_ratio, current_pl):
+        """Check and record if any milestones have been hit"""
+        if not self.milestone_ratios:
+            return
+
+        from datetime import datetime
+        import pytz
+
+        tz = pytz.timezone(self.timezone_str)
+        timestamp = datetime.now(tz).strftime('%Y-%m-%d %H:%M:%S')
+
+        for ratio in self.milestone_ratios:
+            if ratio not in self.milestones_hit and current_ratio >= ratio:
+                self.milestones_hit[ratio] = {
+                    'profit': current_pl,
+                    'time': timestamp
+                }
+
+    def get_milestone_data(self):
+        """Get milestone data for CSV logging"""
+        return self.milestones_hit.copy()
 
     def reset(self):
         """Reset tracker for new trade"""
@@ -73,25 +101,98 @@ class TradeTracker:
         self.position_side = None
         self.units = None
         self.risk_amount = None
+        self.milestones_hit = {}
 
 
 class CSVLogger:
     """Thread-safe CSV logger for trade results"""
 
-    def __init__(self, csv_filename):
+    def __init__(self, csv_filename, milestone_ratios=None, news_log_enabled=False):
         self.csv_filename = csv_filename
         self.lock = Lock()
-        self.fieldnames = ['market', 'signal', 'time', 'tradeID', 'entry_price', 'stop_loss_price',
-                          'take_profit_price', 'position_lots', 'risk_amount', 'original_stop_pips',
-                          'buffer_pips', 'adjusted_stop_pips', 'take_profit_ratio', 'highest_ratio',
-                          'potential_profit', 'actual_profit', 'lowest_ratio', 'potential_loss',
-                          'position_status', 'take_profit_hit', 'stop_loss_hit']
+        self.backup_created = False  # Track if old format was backed up
+        self.milestone_ratios = milestone_ratios or []
+        self.news_log_enabled = news_log_enabled
+
+        # Base fieldnames (always present)
+        self.base_fieldnames = [
+            'fr', 'tf', 'market', 'signal', 'time', 'tradeID',
+            'entry_price', 'stop_loss', 'take_profit', 'lots_size', 'risk_amount',
+            'spread_buffer_pips', 'risk_reward_ratio',
+            'top_price', 'bottom_price', 'max_profit', 'max_loss',
+            'realized_profit_loss', 'close_time', 'position_status', 'close_reason',
+            'take_profit_hit', 'stop_loss_hit'
+        ]
+
+        # Build complete fieldnames including optional columns
+        self.fieldnames = self._build_fieldnames()
+
+        # Check if existing CSV has old format and backup if needed
+        if os.path.exists(self.csv_filename):
+            self._backup_if_old_format()
 
         # Create CSV file with headers if it doesn't exist
         if not os.path.exists(self.csv_filename):
             with open(self.csv_filename, 'w', newline='') as f:
                 writer = csv.DictWriter(f, fieldnames=self.fieldnames)
                 writer.writeheader()
+
+    def _build_fieldnames(self):
+        """Build complete fieldnames list with optional columns"""
+        fieldnames = self.base_fieldnames.copy()
+        # Add news_time column if news logging is enabled
+        if self.news_log_enabled:
+            fieldnames.append('news_time')
+        # Add milestone columns
+        for ratio in self.milestone_ratios:
+            # Format: 0.2, 0.2_time, 0.3, 0.3_time, etc.
+            fieldnames.append(str(ratio))
+            fieldnames.append(f"{ratio}_time")
+        return fieldnames
+
+    def get_milestone_columns(self, milestone_data):
+        """Convert milestone data dict to CSV column values"""
+        columns = {}
+        for ratio in self.milestone_ratios:
+            if ratio in milestone_data:
+                profit = milestone_data[ratio]['profit']
+                columns[str(ratio)] = f"${profit:.2f}" if profit >= 0 else f"-${abs(profit):.2f}"
+                columns[f"{ratio}_time"] = milestone_data[ratio]['time']
+            else:
+                columns[str(ratio)] = ''
+                columns[f"{ratio}_time"] = ''
+        return columns
+
+    def _backup_if_old_format(self):
+        """Backup existing CSV if it has old format (different headers)"""
+        try:
+            with open(self.csv_filename, 'r', newline='') as f:
+                reader = csv.reader(f)
+                existing_headers = next(reader, None)
+
+            if existing_headers is None:
+                return  # Empty file, no backup needed
+
+            # Check if headers match current format
+            if existing_headers != self.fieldnames:
+                # Old format detected - create backup
+                date_suffix = datetime.now().strftime('%m%d%y')
+                base_name = self.csv_filename.rsplit('.', 1)[0]
+                backup_filename = f"{base_name}_bk_{date_suffix}.csv"
+
+                # If backup already exists today, add a counter
+                counter = 1
+                while os.path.exists(backup_filename):
+                    backup_filename = f"{base_name}_bk_{date_suffix}_{counter}.csv"
+                    counter += 1
+
+                # Rename old file to backup
+                os.rename(self.csv_filename, backup_filename)
+                self.backup_created = True
+                print(f"📁 Old CSV format detected. Backed up to: {backup_filename}")
+
+        except Exception as e:
+            print(f"⚠️  Warning: Could not check/backup existing CSV: {e}")
 
     def log_trade(self, trade_data):
         """Log a trade to CSV file in thread-safe manner"""
@@ -104,7 +205,7 @@ class CSVLogger:
         """Check if a trade with specific action already exists in CSV"""
         if not os.path.exists(self.csv_filename):
             return False
-            
+
         with self.lock:
             try:
                 with open(self.csv_filename, 'r', newline='') as f:
@@ -115,6 +216,70 @@ class CSVLogger:
             except Exception:
                 pass
         return False
+
+    def has_open_trade(self, trade_id):
+        """Check if there's an OPEN row for this trade ID"""
+        if not os.path.exists(self.csv_filename):
+            return False
+
+        with self.lock:
+            try:
+                with open(self.csv_filename, 'r', newline='') as f:
+                    reader = csv.DictReader(f)
+                    for row in reader:
+                        if row.get('tradeID') == str(trade_id) and row.get('position_status') == 'OPEN':
+                            return True
+            except Exception:
+                pass
+        return False
+
+    def update_trade(self, trade_id, updated_data):
+        """Update an existing trade row by tradeID with new data"""
+        if not os.path.exists(self.csv_filename):
+            return False
+
+        with self.lock:
+            try:
+                # Read all rows
+                rows = []
+                updated = False
+                with open(self.csv_filename, 'r', newline='') as f:
+                    reader = csv.DictReader(f)
+                    for row in reader:
+                        if row.get('tradeID') == str(trade_id) and row.get('position_status') == 'OPEN':
+                            # Update this row with new data
+                            row.update(updated_data)
+                            updated = True
+                        rows.append(row)
+
+                if updated:
+                    # Write back all rows
+                    with open(self.csv_filename, 'w', newline='') as f:
+                        writer = csv.DictWriter(f, fieldnames=self.fieldnames)
+                        writer.writeheader()
+                        writer.writerows(rows)
+                    return True
+
+            except Exception as e:
+                print(f"⚠️  Warning: Could not update trade in CSV: {e}")
+
+        return False
+
+    def get_open_trade(self, trade_id):
+        """Get existing OPEN trade data from CSV"""
+        if not os.path.exists(self.csv_filename):
+            return None
+
+        with self.lock:
+            try:
+                with open(self.csv_filename, 'r', newline='') as f:
+                    reader = csv.DictReader(f)
+                    for row in reader:
+                        if row.get('tradeID') == str(trade_id) and row.get('position_status') == 'OPEN':
+                            return row
+            except Exception:
+                pass
+        return None
 
 
 class MarketAwareTradingBot:
@@ -178,11 +343,22 @@ class MarketAwareTradingBot:
         # use_closed_candles_only: True = only use closed candles (no repainting)
         self.use_closed_candles_only = self.config.get('signal', {}).get('use_closed_candles_only', True)
 
+        # Take profit milestone tracking settings
+        self.tp_tracking_config = self.config.get('track_take_profit', {})
+        self.enable_tp_tracking = self.tp_tracking_config.get('enable', False)
+        self.tp_milestone_ratios = self.tp_tracking_config.get('range', []) if self.enable_tp_tracking else []
+
+        # News logging settings (log events during trade to CSV without affecting trading)
+        self.news_log_enabled = self.config.get('news_filter', {}).get('enabled_log', False)
+
+        # Timezone configuration (default: US/Pacific)
+        self.timezone_str = self.config.get('timezone', 'US/Pacific')
+
         # Initialize components - pass logger for consistent logging
         self.client = OANDAClient(logger=self.logger)
         self.risk_manager = RiskManager()
-        self.csv_logger = CSVLogger(self.csv_filename)
-        self.trade_tracker = TradeTracker()
+        self.csv_logger = CSVLogger(self.csv_filename, milestone_ratios=self.tp_milestone_ratios, news_log_enabled=self.news_log_enabled)
+        self.trade_tracker = TradeTracker(milestone_ratios=self.tp_milestone_ratios, timezone_str=self.timezone_str)
 
         # Bot state
         self.is_running = False
@@ -375,6 +551,198 @@ class MarketAwareTradingBot:
         except Exception as e:
             self.logger.warning(f"Could not save state to {self.state_file}: {e}")
 
+    def _add_milestone_columns_to_csv_data(self, csv_data):
+        """Add milestone tracking columns to csv_data dict"""
+        if self.enable_tp_tracking and self.tp_milestone_ratios:
+            milestone_data = self.trade_tracker.get_milestone_data()
+            milestone_columns = self.csv_logger.get_milestone_columns(milestone_data)
+            csv_data.update(milestone_columns)
+        return csv_data
+
+    def _get_news_time_for_csv(self, entry_time, close_time):
+        """
+        Get formatted news events that occurred during the trade period.
+        Format: {event1-name},{event1-time};{event2-name},{event2-time};...
+
+        Args:
+            entry_time: Trade entry time (datetime)
+            close_time: Trade close time (datetime)
+
+        Returns:
+            Formatted string for news_time column, or empty string if disabled/no events
+        """
+        if not self.news_log_enabled:
+            return ''
+
+        try:
+            events = self.news_manager.get_events_during_period(entry_time, close_time)
+            if events:
+                news_str = self.news_manager.format_events_for_csv(events)
+                if news_str:
+                    self.logger.info(f"   📰 News during trade: {news_str}")
+                return news_str
+        except Exception as e:
+            self.logger.warning(f"Failed to get news events for CSV: {e}")
+
+        return ''
+
+    def _add_news_column_to_csv_data(self, csv_data, entry_time=None, close_time=None):
+        """Add news_time column to csv_data dict if news logging is enabled"""
+        if self.news_log_enabled:
+            if entry_time and close_time:
+                csv_data['news_time'] = self._get_news_time_for_csv(entry_time, close_time)
+            else:
+                csv_data['news_time'] = ''
+        return csv_data
+
+    def _format_time_tz(self, dt):
+        """
+        Format datetime to configured timezone string.
+
+        Args:
+            dt: datetime object (timezone-aware or naive, assumed UTC if naive)
+
+        Returns:
+            Formatted string like '2026-01-16 08:10:07'
+        """
+        import pytz
+        tz = pytz.timezone(self.timezone_str)
+
+        if dt is None:
+            return ''
+
+        if dt.tzinfo is None:
+            # Naive datetime - localize to configured tz
+            dt_tz = tz.localize(dt)
+        else:
+            # Timezone-aware - convert to configured tz
+            dt_tz = dt.astimezone(tz)
+
+        return dt_tz.strftime('%Y-%m-%d %H:%M:%S')
+
+    def _catchup_milestone_tracking(self):
+        """
+        Catch up milestone tracking when bot restarts with existing position.
+        Fetches candle data to calculate actual max profit achieved, then fills milestones.
+        """
+        if not self.enable_tp_tracking or not self.tp_milestone_ratios:
+            return
+
+        if not self.current_trade_id or not self.current_risk_amount or not self.current_entry_price:
+            return
+
+        try:
+            import pytz
+            tz = pytz.timezone(self.timezone_str)
+
+            # First, try to recover milestones from existing CSV row
+            existing_trade = self.csv_logger.get_open_trade(self.current_trade_id)
+            recovered_count = 0
+
+            if existing_trade:
+                # Recover previously recorded milestones from CSV
+                for ratio in self.tp_milestone_ratios:
+                    ratio_col = str(ratio)
+                    time_col = f"{ratio}_time"
+                    if existing_trade.get(ratio_col) and existing_trade.get(time_col):
+                        # Parse the profit value (e.g., "$20.00" or "-$5.00")
+                        profit_str = existing_trade[ratio_col]
+                        try:
+                            if profit_str.startswith('-$'):
+                                profit = -float(profit_str[2:])
+                            elif profit_str.startswith('$'):
+                                profit = float(profit_str[1:])
+                            else:
+                                continue
+                            self.trade_tracker.milestones_hit[ratio] = {
+                                'profit': profit,
+                                'time': existing_trade[time_col]
+                            }
+                            recovered_count += 1
+                        except (ValueError, TypeError):
+                            continue
+
+            if recovered_count > 0:
+                self.logger.info(f"   📊 Recovered {recovered_count} milestones from CSV: {list(self.trade_tracker.milestones_hit.keys())}")
+
+            # Fetch candle data to calculate actual max profit achieved
+            top_price = self.current_entry_price
+            bottom_price = self.current_entry_price
+
+            try:
+                # Fetch candles since trade opened
+                candles_df = self.client.get_candles(self.instrument, self.granularity, count=500)
+                if candles_df is not None and len(candles_df) > 0:
+                    # Try to filter candles from trade open time
+                    if self.current_trade_open_time:
+                        trade_open_ts = pd.Timestamp(self.current_trade_open_time)
+                        if trade_open_ts.tzinfo is None:
+                            trade_open_ts = trade_open_ts.tz_localize('UTC')
+
+                        # Filter using index (time is set as index in OANDA client)
+                        candles_since_open = candles_df[candles_df.index >= trade_open_ts]
+                        if len(candles_since_open) > 0:
+                            top_price = float(candles_since_open['high'].max())
+                            bottom_price = float(candles_since_open['low'].min())
+                        else:
+                            top_price = float(candles_df['high'].max())
+                            bottom_price = float(candles_df['low'].min())
+                    else:
+                        top_price = float(candles_df['high'].max())
+                        bottom_price = float(candles_df['low'].min())
+
+                    self.logger.info(f"   📊 Candle data: top={top_price:.5f}, bottom={bottom_price:.5f}")
+            except Exception as e:
+                self.logger.warning(f"   ⚠️  Could not fetch candle data for milestone catch-up: {e}")
+                # Use CSV values as fallback
+                if existing_trade:
+                    try:
+                        csv_top = float(existing_trade.get('top_price', 0))
+                        csv_bottom = float(existing_trade.get('bottom_price', 0))
+                        if csv_top > 0:
+                            top_price = csv_top
+                        if csv_bottom > 0:
+                            bottom_price = csv_bottom
+                    except (ValueError, TypeError):
+                        pass
+
+            # Calculate max profit achieved based on position direction
+            if self.current_position_side == 'LONG':
+                max_profit = (top_price - self.current_entry_price) * self.current_position_size
+            else:  # SHORT
+                max_profit = (self.current_entry_price - bottom_price) * self.current_position_size
+
+            if self.current_risk_amount > 0:
+                max_ratio = max_profit / self.current_risk_amount
+            else:
+                max_ratio = 0
+
+            self.logger.info(f"   📊 Max profit: ${max_profit:.2f}, Max R:R: {max_ratio:.2f}")
+
+            # Fill any missing milestones up to max_ratio
+            now_str = datetime.now(tz).strftime('%Y-%m-%d %H:%M:%S')
+            newly_added = 0
+            for ratio in self.tp_milestone_ratios:
+                if ratio not in self.trade_tracker.milestones_hit and max_ratio >= ratio:
+                    # Estimate profit at this milestone
+                    estimated_profit = ratio * self.current_risk_amount
+                    self.trade_tracker.milestones_hit[ratio] = {
+                        'profit': estimated_profit,
+                        'time': now_str
+                    }
+                    newly_added += 1
+
+            if newly_added > 0:
+                self.logger.info(f"   📊 Estimated {newly_added} milestones up to R:R {max_ratio:.2f}: {[r for r in self.tp_milestone_ratios if r <= max_ratio and r in self.trade_tracker.milestones_hit]}")
+
+            # Update trade tracker highest values
+            if max_profit > 0:
+                self.trade_tracker.highest_pl = max_profit
+                self.trade_tracker.highest_ratio = max_ratio
+
+        except Exception as e:
+            self.logger.warning(f"⚠️  Failed to catch up milestone tracking: {e}")
+
     def _get_scalping_status_line(self):
         """Get scalping status line for status display"""
         if not self.scalping_enabled:
@@ -411,13 +779,10 @@ class MarketAwareTradingBot:
                     if str(trade.get('id')) == str(self.current_trade_id):
                         open_time = trade.get('open_time')
                         if open_time:
-                            # Parse OANDA timestamp (UTC) and convert to Pacific Time
+                            # Parse OANDA timestamp (UTC) and convert to configured timezone
                             from dateutil import parser
-                            import pytz
                             dt_utc = parser.parse(open_time)
-                            pacific_tz = pytz.timezone('US/Pacific')
-                            dt_pacific = dt_utc.astimezone(pacific_tz)
-                            entry_time_str = dt_pacific.strftime('%Y-%m-%d %H:%M:%S')
+                            entry_time_str = self._format_time_tz(dt_utc)
                         break
             except Exception:
                 pass  # Keep N/A if failed
@@ -637,6 +1002,71 @@ class MarketAwareTradingBot:
                     profit = float(result['shortOrderFillTransaction'].get('pl', 0))
 
                 self.logger.info(f"📊 P/L: ${profit:.2f}")
+
+                # Log to CSV before resetting tracking
+                close_time = datetime.now()
+                risk_amount = self.current_risk_amount if self.current_risk_amount else 100
+                position_size = self.current_position_size if self.current_position_size else 0
+                signal_side = self.current_position_side if self.current_position_side else position_side
+
+                # Determine market
+                market = self.current_market_trend.upper() if self.current_market_trend and self.current_market_trend.upper() in ['BEAR', 'BULL'] else 'NEUTRAL'
+                if market not in ['BEAR', 'BULL']:
+                    market = 'BEAR'
+
+                # Calculate max_profit and max_loss based on position side
+                top_price = self.highest_price_during_trade if self.highest_price_during_trade else self.current_entry_price
+                bottom_price = self.lowest_price_during_trade if self.lowest_price_during_trade else self.current_entry_price
+                if signal_side == 'LONG' and self.current_entry_price:
+                    max_profit = (top_price - self.current_entry_price) * position_size if top_price else 0
+                    max_loss = (bottom_price - self.current_entry_price) * position_size if bottom_price else 0
+                elif signal_side == 'SHORT' and self.current_entry_price:
+                    max_profit = (self.current_entry_price - bottom_price) * position_size if bottom_price else 0
+                    max_loss = (self.current_entry_price - top_price) * position_size if top_price else 0
+                else:
+                    max_profit = 0
+                    max_loss = 0
+
+                # Format times in configured timezone
+                entry_time_pt = self._format_time_tz(self.current_trade_open_time) if self.current_trade_open_time else 'N/A'
+                close_time_pt = self._format_time_tz(close_time)
+
+                csv_data = {
+                    'fr': self.instrument,
+                    'tf': self.timeframe.replace('m', 'min'),
+                    'market': market,
+                    'signal': signal_side,
+                    'time': entry_time_pt,
+                    'tradeID': self.current_trade_id if self.current_trade_id else 'N/A',
+                    'entry_price': f"{self.current_entry_price:.5f}" if self.current_entry_price else 'N/A',
+                    'stop_loss': f"{self.current_stop_loss_price:.5f}" if self.current_stop_loss_price else 'N/A',
+                    'take_profit': f"{self.current_take_profit_price:.5f}" if self.current_take_profit_price else 'N/A',
+                    'lots_size': f"{position_size / 100000:.3f}" if position_size else 'N/A',
+                    'risk_amount': f"{risk_amount:.2f}",
+                    'spread_buffer_pips': f"{self.spread_buffer_pips}",
+                    'risk_reward_ratio': f"{self.current_risk_reward_target:.1f}:1" if self.current_risk_reward_target else 'N/A',
+                    'top_price': f"{top_price:.5f}" if top_price else 'N/A',
+                    'bottom_price': f"{bottom_price:.5f}" if bottom_price else 'N/A',
+                    'max_profit': f"${max_profit:.2f}",
+                    'max_loss': f"${max_loss:.2f}",
+                    'realized_profit_loss': f"${profit:.2f}" if profit >= 0 else f"-${abs(profit):.2f}",
+                    'close_time': close_time_pt,
+                    'position_status': 'CLOSED',
+                    'close_reason': 'EMERGENCY_CLOSE',
+                    'take_profit_hit': 'NO',
+                    'stop_loss_hit': 'NO'
+                }
+                # Add milestone columns if tracking is enabled
+                csv_data = self._add_milestone_columns_to_csv_data(csv_data)
+                # Add news_time column if news logging is enabled
+                csv_data = self._add_news_column_to_csv_data(csv_data, self.current_trade_open_time, close_time)
+                # Update existing OPEN row or add new row
+                if self.csv_logger.has_open_trade(self.current_trade_id):
+                    self.csv_logger.update_trade(self.current_trade_id, csv_data)
+                    self.logger.info(f"   💾 Updated CSV: Trade #{self.current_trade_id} EMERGENCY_CLOSE, P/L=${profit:.2f}")
+                else:
+                    self.csv_logger.log_trade(csv_data)
+                    self.logger.info(f"   💾 Logged emergency close to CSV: Trade #{self.current_trade_id}, P/L=${profit:.2f}")
 
                 # Reset all position tracking
                 self._reset_position_tracking()
@@ -1375,46 +1805,70 @@ class MarketAwareTradingBot:
                 close_time = datetime.now()
                 profit = current_position['unrealized_pl']
 
-                # Calculate R:R ratios for logging
+                # Calculate values for logging
                 risk_amount = self.current_risk_amount if self.current_risk_amount else 100
-                actual_rr = profit / risk_amount if risk_amount > 0 else 0
-                highest_ratio = self.trade_tracker.highest_ratio if self.trade_tracker.highest_ratio else actual_rr
-                lowest_ratio = self.trade_tracker.lowest_ratio if self.trade_tracker.lowest_ratio else actual_rr
-                potential_profit = self.trade_tracker.highest_pl if self.trade_tracker.highest_pl else profit
-                potential_loss = self.trade_tracker.lowest_pl if self.trade_tracker.lowest_pl else profit
                 position_size = self.current_position_size if self.current_position_size else 0
+                signal_side = self.current_position_side if self.current_position_side else side
 
                 # Determine market
                 market = self.current_market_trend.upper() if self.current_market_trend and self.current_market_trend.upper() in ['BEAR', 'BULL'] else 'NEUTRAL'
                 if market not in ['BEAR', 'BULL']:
                     market = 'BEAR'
 
+                # Calculate max_profit and max_loss based on position side
+                top_price = self.highest_price_during_trade if self.highest_price_during_trade else self.current_entry_price
+                bottom_price = self.lowest_price_during_trade if self.lowest_price_during_trade else self.current_entry_price
+                if signal_side == 'LONG' and self.current_entry_price:
+                    max_profit = (top_price - self.current_entry_price) * position_size if top_price else 0
+                    max_loss = (bottom_price - self.current_entry_price) * position_size if bottom_price else 0
+                elif signal_side == 'SHORT' and self.current_entry_price:
+                    max_profit = (self.current_entry_price - bottom_price) * position_size if bottom_price else 0
+                    max_loss = (self.current_entry_price - top_price) * position_size if top_price else 0
+                else:
+                    max_profit = 0
+                    max_loss = 0
+
+                # Format times in configured timezone
+                entry_time_pt = self._format_time_tz(self.current_trade_open_time) if self.current_trade_open_time else 'N/A'
+                close_time_pt = self._format_time_tz(close_time)
+
                 # Log to CSV
                 csv_data = {
+                    'fr': self.instrument,
+                    'tf': self.timeframe.replace('m', 'min'),
                     'market': market,
-                    'signal': self.current_position_side if self.current_position_side else side,
-                    'time': self.current_trade_open_time.strftime('%Y-%m-%d %H:%M:%S') if self.current_trade_open_time else 'N/A',
+                    'signal': signal_side,
+                    'time': entry_time_pt,
                     'tradeID': self.current_trade_id if self.current_trade_id else 'N/A',
                     'entry_price': f"{self.current_entry_price:.5f}" if self.current_entry_price else 'N/A',
-                    'stop_loss_price': f"{self.current_stop_loss_price:.5f}" if self.current_stop_loss_price else 'N/A',
-                    'take_profit_price': f"{self.current_take_profit_price:.5f}" if self.current_take_profit_price else 'N/A',
-                    'position_lots': f"{position_size / 100000:.3f}" if position_size else 'N/A',
+                    'stop_loss': f"{self.current_stop_loss_price:.5f}" if self.current_stop_loss_price else 'N/A',
+                    'take_profit': f"{self.current_take_profit_price:.5f}" if self.current_take_profit_price else 'N/A',
+                    'lots_size': f"{position_size / 100000:.3f}" if position_size else 'N/A',
                     'risk_amount': f"{risk_amount:.2f}",
-                    'original_stop_pips': f"{self.current_original_stop_pips:.1f}" if self.current_original_stop_pips else 'N/A',
-                    'buffer_pips': f"{self.spread_buffer_pips}",
-                    'adjusted_stop_pips': f"{self.current_adjusted_stop_pips:.1f}" if self.current_adjusted_stop_pips else 'N/A',
-                    'take_profit_ratio': f"{self.current_risk_reward_target:.1f}" if self.current_risk_reward_target else 'N/A',
-                    'highest_ratio': f"{highest_ratio:.2f}",
-                    'potential_profit': f"{potential_profit:.2f}",
-                    'actual_profit': f"{profit:.2f}",
-                    'lowest_ratio': f"{lowest_ratio:.2f}",
-                    'potential_loss': f"{potential_loss:.2f}",
-                    'position_status': 'NEWS_CLOSE',
-                    'take_profit_hit': 'FALSE',
-                    'stop_loss_hit': 'FALSE'
+                    'spread_buffer_pips': f"{self.spread_buffer_pips}",
+                    'risk_reward_ratio': f"{self.current_risk_reward_target:.1f}:1" if self.current_risk_reward_target else 'N/A',
+                    'top_price': f"{top_price:.5f}" if top_price else 'N/A',
+                    'bottom_price': f"{bottom_price:.5f}" if bottom_price else 'N/A',
+                    'max_profit': f"${max_profit:.2f}",
+                    'max_loss': f"${max_loss:.2f}",
+                    'realized_profit_loss': f"${profit:.2f}" if profit >= 0 else f"-${abs(profit):.2f}",
+                    'close_time': close_time_pt,
+                    'position_status': 'CLOSED',
+                    'close_reason': 'NEWS_CLOSE',
+                    'take_profit_hit': 'NO',
+                    'stop_loss_hit': 'NO'
                 }
-                self.csv_logger.log_trade(csv_data)
-                self.logger.info(f"   💾 Logged news close to CSV: Trade #{self.current_trade_id}, P/L=${profit:.2f}")
+                # Add milestone columns if tracking is enabled
+                csv_data = self._add_milestone_columns_to_csv_data(csv_data)
+                # Add news_time column if news logging is enabled
+                csv_data = self._add_news_column_to_csv_data(csv_data, self.current_trade_open_time, close_time)
+                # Update existing OPEN row or add new row
+                if self.csv_logger.has_open_trade(self.current_trade_id):
+                    self.csv_logger.update_trade(self.current_trade_id, csv_data)
+                    self.logger.info(f"   💾 Updated CSV: Trade #{self.current_trade_id} NEWS_CLOSE, P/L=${profit:.2f}")
+                else:
+                    self.csv_logger.log_trade(csv_data)
+                    self.logger.info(f"   💾 Logged news close to CSV: Trade #{self.current_trade_id}, P/L=${profit:.2f}")
 
                 # Reset trade tracker
                 self.trade_tracker.reset()
@@ -1504,64 +1958,81 @@ class MarketAwareTradingBot:
                         duration_minutes = int(duration_seconds / 60)
                         duration = f"{duration_minutes}m"
 
-                    # Determine hit status
-                    stop_loss_hit = 'FALSE'
-                    take_profit_hit = 'FALSE'
+                    # Determine hit status and close reason
+                    stop_loss_hit = 'NO'
+                    take_profit_hit = 'NO'
+                    close_reason = 'SIGNAL_REVERSAL'
                     if fill.get('reason') == 'STOP_LOSS_ORDER':
-                        stop_loss_hit = 'TRUE'
+                        stop_loss_hit = 'YES'
+                        close_reason = 'SL_HIT'
                     elif fill.get('reason') == 'TAKE_PROFIT_ORDER':
-                        take_profit_hit = 'TRUE'
+                        take_profit_hit = 'YES'
+                        close_reason = 'TP_HIT'
 
                     position_size = abs(current_position['units'])
+                    signal_side = current_position['side']
 
-                    # Calculate actual risk/reward
-                    risk_reward_actual = 'N/A'
-                    if self.current_stop_loss_price and self.current_entry_price:
-                        risk = abs(self.current_entry_price - self.current_stop_loss_price) * position_size
-                        if risk > 0:
-                            risk_reward_actual = f"{(profit / risk):.2f}"
-
-                    # Calculate R:R ratios
+                    # Calculate values for logging
                     risk_amount = self.current_risk_amount if self.current_risk_amount else 100
-                    actual_rr = profit / risk_amount if risk_amount > 0 else 0
-                    highest_ratio = self.trade_tracker.highest_ratio if self.trade_tracker.highest_ratio else actual_rr
-                    lowest_ratio = self.trade_tracker.lowest_ratio if self.trade_tracker.lowest_ratio else actual_rr
-
-                    # Calculate potential profit/loss
-                    potential_profit = self.trade_tracker.highest_pl if self.trade_tracker.highest_pl else profit
-                    potential_loss = self.trade_tracker.lowest_pl if self.trade_tracker.lowest_pl else profit
 
                     # Determine market (only BEAR or BULL, fallback to current signal)
                     market = self.current_market_trend.upper() if self.current_market_trend and self.current_market_trend.upper() in ['BEAR', 'BULL'] else self.current_market_signal
                     if market not in ['BEAR', 'BULL']:
                         market = 'BEAR'  # Default fallback
 
+                    # Calculate max_profit and max_loss based on position side
+                    top_price = self.highest_price_during_trade if self.highest_price_during_trade else self.current_entry_price
+                    bottom_price = self.lowest_price_during_trade if self.lowest_price_during_trade else self.current_entry_price
+                    if signal_side == 'LONG' and self.current_entry_price:
+                        max_profit = (top_price - self.current_entry_price) * position_size if top_price else 0
+                        max_loss = (bottom_price - self.current_entry_price) * position_size if bottom_price else 0
+                    elif signal_side == 'SHORT' and self.current_entry_price:
+                        max_profit = (self.current_entry_price - bottom_price) * position_size if bottom_price else 0
+                        max_loss = (self.current_entry_price - top_price) * position_size if top_price else 0
+                    else:
+                        max_profit = 0
+                        max_loss = 0
+
+                    # Format times in configured timezone
+                    entry_time_pt = self._format_time_tz(self.current_trade_open_time) if self.current_trade_open_time else 'N/A'
+                    close_time_pt = self._format_time_tz(close_time)
+
                     csv_data = {
+                        'fr': self.instrument,
+                        'tf': self.timeframe.replace('m', 'min'),
                         'market': market,
-                        'signal': current_position['side'],
-                        'time': self.current_trade_open_time.strftime('%Y-%m-%d %H:%M:%S') if self.current_trade_open_time else 'N/A',
+                        'signal': signal_side,
+                        'time': entry_time_pt,
                         'tradeID': self.current_trade_id if self.current_trade_id else 'N/A',
                         'entry_price': f"{self.current_entry_price:.5f}" if self.current_entry_price else 'N/A',
-                        'stop_loss_price': f"{self.current_stop_loss_price:.5f}" if self.current_stop_loss_price else 'N/A',
-                        'take_profit_price': f"{self.current_take_profit_price:.5f}" if self.current_take_profit_price else 'N/A',
-                        'position_lots': f"{position_size / 100000:.3f}",
+                        'stop_loss': f"{self.current_stop_loss_price:.5f}" if self.current_stop_loss_price else 'N/A',
+                        'take_profit': f"{self.current_take_profit_price:.5f}" if self.current_take_profit_price else 'N/A',
+                        'lots_size': f"{position_size / 100000:.3f}",
                         'risk_amount': f"{risk_amount:.2f}",
-                        'original_stop_pips': f"{self.current_original_stop_pips:.1f}" if self.current_original_stop_pips else 'N/A',
-                        'buffer_pips': f"{self.spread_buffer_pips}",
-                        'adjusted_stop_pips': f"{self.current_adjusted_stop_pips:.1f}" if self.current_adjusted_stop_pips else 'N/A',
-                        'take_profit_ratio': f"{self.current_risk_reward_target:.1f}" if self.current_risk_reward_target else 'N/A',
-                        'highest_ratio': f"{highest_ratio:.2f}",
-                        'potential_profit': f"{potential_profit:.2f}",
-                        'actual_profit': f"{profit:.2f}",
-                        'lowest_ratio': f"{lowest_ratio:.2f}",
-                        'potential_loss': f"{potential_loss:.2f}",
+                        'spread_buffer_pips': f"{self.spread_buffer_pips}",
+                        'risk_reward_ratio': f"{self.current_risk_reward_target:.1f}:1" if self.current_risk_reward_target else 'N/A',
+                        'top_price': f"{top_price:.5f}" if top_price else 'N/A',
+                        'bottom_price': f"{bottom_price:.5f}" if bottom_price else 'N/A',
+                        'max_profit': f"${max_profit:.2f}",
+                        'max_loss': f"${max_loss:.2f}",
+                        'realized_profit_loss': f"${profit:.2f}" if profit >= 0 else f"-${abs(profit):.2f}",
+                        'close_time': close_time_pt,
                         'position_status': 'CLOSED',
+                        'close_reason': close_reason,
                         'take_profit_hit': take_profit_hit,
                         'stop_loss_hit': stop_loss_hit
                     }
-                    self.csv_logger.log_trade(csv_data)
-
-                    self.logger.info(f"📊 Trade #{self.current_trade_id} closed, P/L: ${profit:.2f}")
+                    # Add milestone columns if tracking is enabled
+                    csv_data = self._add_milestone_columns_to_csv_data(csv_data)
+                    # Add news_time column if news logging is enabled
+                    csv_data = self._add_news_column_to_csv_data(csv_data, self.current_trade_open_time, close_time)
+                    # Update existing OPEN row or add new row
+                    if self.csv_logger.has_open_trade(self.current_trade_id):
+                        self.csv_logger.update_trade(self.current_trade_id, csv_data)
+                        self.logger.info(f"   💾 Updated CSV: Trade #{self.current_trade_id} {close_reason}, P/L=${profit:.2f}")
+                    else:
+                        self.csv_logger.log_trade(csv_data)
+                        self.logger.info(f"📊 Trade #{self.current_trade_id} closed, P/L: ${profit:.2f}")
 
                 # Reset trade tracker
                 self.trade_tracker.reset()
@@ -1936,26 +2407,87 @@ class MarketAwareTradingBot:
                     # Log the close to CSV
                     close_time = datetime.now()
 
-                    # Try to get actual P/L from OANDA transaction history
+                    # Try to get actual P/L from OANDA - use multiple methods
                     stop_loss_hit = 'FALSE'
                     take_profit_hit = 'FALSE'
                     profit = 0.0
                     close_price = self.current_stop_loss_price  # Default to stop loss price
                     reason = ''
+                    position_size = self.current_position_size if self.current_position_size else 0
 
-                    try:
-                        transactions = self.client.get_transaction_history(count=50)
-                        if transactions:
-                            for txn in reversed(transactions):
-                                if (txn.get('type') == 'ORDER_FILL' and
-                                    txn.get('instrument') == self.instrument):
-                                    close_price = float(txn.get('price', 0))
-                                    profit = float(txn.get('pl', 0))
-                                    reason = txn.get('reason', '')
-                                    self.logger.info(f"   Found close transaction: Price={close_price:.5f}, P/L=${profit:.2f}, Reason={reason}")
-                                    break
-                    except Exception as e:
-                        self.logger.error(f"   Failed to fetch transaction history: {e}")
+                    # Method 1: Get trade close details directly using trade ID (most reliable)
+                    if self.current_trade_id:
+                        try:
+                            trade_details = self.client.get_trade_close_details(self.current_trade_id)
+                            if trade_details and trade_details.get('state') == 'CLOSED':
+                                profit = trade_details.get('realizedPL', 0)
+                                if trade_details.get('averageClosePrice'):
+                                    close_price = trade_details['averageClosePrice']
+                                # Get close reason from closing transaction
+                                closing_txn_ids = trade_details.get('closeReason', [])
+                                if closing_txn_ids:
+                                    for txn_id in closing_txn_ids:
+                                        try:
+                                            txn_detail = self.client.get_transaction_details(txn_id)
+                                            if txn_detail:
+                                                reason = txn_detail.get('reason', '')
+                                                self.logger.info(f"   Found close via trade details: Trade #{self.current_trade_id}, P/L=${profit:.2f}, Reason={reason}, ClosePrice={close_price:.5f}")
+                                                break
+                                        except Exception:
+                                            pass
+                                else:
+                                    self.logger.info(f"   Found close via trade details: Trade #{self.current_trade_id}, P/L=${profit:.2f}, ClosePrice={close_price:.5f}")
+                        except Exception as e:
+                            self.logger.debug(f"   Trade details lookup failed: {e}")
+
+                    # Method 2: Fallback to transaction history search
+                    if profit == 0 and not reason:
+                        try:
+                            transactions = self.client.get_transaction_history(count=50)
+                            if transactions:
+                                self.logger.debug(f"   Transaction search: found {len(transactions)} transactions")
+                                for txn in reversed(transactions):
+                                    if (txn.get('type') == 'ORDER_FILL' and
+                                        txn.get('instrument') == self.instrument):
+                                        close_price = float(txn.get('price', 0))
+                                        profit = float(txn.get('pl', 0))
+                                        reason = txn.get('reason', '')
+                                        self.logger.info(f"   Found close transaction: Price={close_price:.5f}, P/L=${profit:.2f}, Reason={reason}")
+                                        break
+                        except Exception as e:
+                            self.logger.error(f"   Failed to fetch transaction history: {e}")
+
+                    # Method 3: Price-based detection fallback when transaction lookup fails
+                    if profit == 0 and not reason:
+                        self.logger.info(f"   No transaction P/L found, using price-based detection")
+                        try:
+                            pricing = self.client.get_current_price(self.instrument)
+                            if pricing:
+                                # Use mid price as close price estimate
+                                close_price = (pricing['bid'] + pricing['ask']) / 2
+                                self.logger.debug(f"   Current price: bid={pricing['bid']:.5f}, ask={pricing['ask']:.5f}, mid={close_price:.5f}")
+                        except Exception as e:
+                            self.logger.debug(f"   Could not get current price: {e}")
+
+                        # Detect TP/SL hit based on price vs TP/SL levels
+                        if self.current_position_side == 'LONG':
+                            if self.current_take_profit_price and close_price >= self.current_take_profit_price:
+                                reason = 'TAKE_PROFIT_PRICE_BASED'
+                                profit = (self.current_take_profit_price - self.current_entry_price) * position_size if self.current_entry_price else 0
+                                self.logger.info(f"📍 Detected TP hit (price-based): close={close_price:.5f} >= TP={self.current_take_profit_price:.5f}")
+                            elif self.current_stop_loss_price and close_price <= self.current_stop_loss_price:
+                                reason = 'STOP_LOSS_PRICE_BASED'
+                                profit = (self.current_stop_loss_price - self.current_entry_price) * position_size if self.current_entry_price else 0
+                                self.logger.info(f"📍 Detected SL hit (price-based): close={close_price:.5f} <= SL={self.current_stop_loss_price:.5f}")
+                        elif self.current_position_side == 'SHORT':
+                            if self.current_take_profit_price and close_price <= self.current_take_profit_price:
+                                reason = 'TAKE_PROFIT_PRICE_BASED'
+                                profit = (self.current_entry_price - self.current_take_profit_price) * position_size if self.current_entry_price else 0
+                                self.logger.info(f"📍 Detected TP hit (price-based): close={close_price:.5f} <= TP={self.current_take_profit_price:.5f}")
+                            elif self.current_stop_loss_price and close_price >= self.current_stop_loss_price:
+                                reason = 'STOP_LOSS_PRICE_BASED'
+                                profit = (self.current_entry_price - self.current_stop_loss_price) * position_size if self.current_entry_price else 0
+                                self.logger.info(f"📍 Detected SL hit (price-based): close={close_price:.5f} >= SL={self.current_stop_loss_price:.5f}")
 
                     # Calculate P/L percentage of risk amount
                     risk_amount = self.current_risk_amount if self.current_risk_amount else 100
@@ -1970,74 +2502,94 @@ class MarketAwareTradingBot:
 
                     # Determine if TP or SL was hit based on P/L vs expected R:R
                     # First check OANDA's reason field (if available)
+                    stop_loss_hit = 'NO'
+                    take_profit_hit = 'NO'
+                    close_reason = 'MANUAL_CLOSE'
                     if 'STOP_LOSS' in reason:
-                        stop_loss_hit = 'TRUE'
+                        stop_loss_hit = 'YES'
+                        close_reason = 'SL_HIT'
                         self.logger.info(f"📍 Position closed externally by stop loss: P/L=${profit:.2f} ({pl_percentage:.2f}%)")
                     elif 'TAKE_PROFIT' in reason:
-                        take_profit_hit = 'TRUE'
+                        take_profit_hit = 'YES'
+                        close_reason = 'TP_HIT'
                         self.logger.info(f"📍 Position closed externally by take profit: ({pl_percentage:.2f}% vs expected TP R:R = {expected_rr:.1f})")
                     else:
                         # Calculate based on P/L percentage vs expected R:R
                         # If P/L >= 90% of expected R:R, consider it a TP hit
                         if profit > 0 and pl_percentage >= (expected_rr_pct * 0.9):
-                            take_profit_hit = 'TRUE'
+                            take_profit_hit = 'YES'
+                            close_reason = 'TP_HIT'
                             self.logger.info(f"📍 Position closed externally by take profit: ({pl_percentage:.2f}% vs expected TP R:R = {expected_rr:.1f})")
                         elif profit < 0:
-                            stop_loss_hit = 'TRUE'
+                            stop_loss_hit = 'YES'
+                            close_reason = 'SL_HIT'
                             self.logger.info(f"📍 Position closed externally by stop loss: P/L=${profit:.2f} ({pl_percentage:.2f}%)")
                         else:
                             # Small profit but not reaching TP threshold - likely manual close
                             self.logger.info(f"📍 Position closed externally (manual/other): P/L=${profit:.2f} ({pl_percentage:.2f}%)")
 
-                    # Calculate duration
-                    duration = 'N/A'
-                    if self.current_trade_open_time:
-                        duration_seconds = (close_time - self.current_trade_open_time).total_seconds()
-                        duration_minutes = int(duration_seconds / 60)
-                        duration = f"{duration_minutes}m"
-
-                    # Calculate R:R ratios (risk_amount already defined above)
-                    actual_rr = profit / risk_amount if risk_amount > 0 else 0
-                    highest_ratio = self.trade_tracker.highest_ratio if self.trade_tracker.highest_ratio else actual_rr
-                    lowest_ratio = self.trade_tracker.lowest_ratio if self.trade_tracker.lowest_ratio else actual_rr
-
-                    # Calculate potential profit/loss
-                    potential_profit = self.trade_tracker.highest_pl if self.trade_tracker.highest_pl else profit
-                    potential_loss = self.trade_tracker.lowest_pl if self.trade_tracker.lowest_pl else profit
-
-                    position_size = self.current_position_size if self.current_position_size else 0
+                    # position_size already defined above
+                    signal_side = self.current_position_side if self.current_position_side else 'N/A'
 
                     # Determine market (only BEAR or BULL, fallback to current signal)
                     market = self.current_market_trend.upper() if self.current_market_trend and self.current_market_trend.upper() in ['BEAR', 'BULL'] else self.current_market_signal
                     if market not in ['BEAR', 'BULL']:
                         market = 'BEAR'  # Default fallback
 
+                    # Calculate max_profit and max_loss based on position side
+                    top_price = self.highest_price_during_trade if self.highest_price_during_trade else self.current_entry_price
+                    bottom_price = self.lowest_price_during_trade if self.lowest_price_during_trade else self.current_entry_price
+                    if signal_side == 'LONG' and self.current_entry_price:
+                        max_profit = (top_price - self.current_entry_price) * position_size if top_price else 0
+                        max_loss = (bottom_price - self.current_entry_price) * position_size if bottom_price else 0
+                    elif signal_side == 'SHORT' and self.current_entry_price:
+                        max_profit = (self.current_entry_price - bottom_price) * position_size if bottom_price else 0
+                        max_loss = (self.current_entry_price - top_price) * position_size if top_price else 0
+                    else:
+                        max_profit = 0
+                        max_loss = 0
+
+                    # Format times in configured timezone
+                    entry_time_pt = self._format_time_tz(self.current_trade_open_time) if self.current_trade_open_time else 'N/A'
+                    close_time_pt = self._format_time_tz(close_time)
+
                     # Log to CSV
                     csv_data = {
+                        'fr': self.instrument,
+                        'tf': self.timeframe.replace('m', 'min'),
                         'market': market,
-                        'signal': self.current_position_side if self.current_position_side else 'N/A',
-                        'time': self.current_trade_open_time.strftime('%Y-%m-%d %H:%M:%S') if self.current_trade_open_time else 'N/A',
+                        'signal': signal_side,
+                        'time': entry_time_pt,
                         'tradeID': self.current_trade_id if self.current_trade_id else 'N/A',
                         'entry_price': f"{self.current_entry_price:.5f}" if self.current_entry_price else 'N/A',
-                        'stop_loss_price': f"{self.current_stop_loss_price:.5f}" if self.current_stop_loss_price else 'N/A',
-                        'take_profit_price': f"{self.current_take_profit_price:.5f}" if self.current_take_profit_price else 'N/A',
-                        'position_lots': f"{position_size / 100000:.3f}" if position_size else 'N/A',
+                        'stop_loss': f"{self.current_stop_loss_price:.5f}" if self.current_stop_loss_price else 'N/A',
+                        'take_profit': f"{self.current_take_profit_price:.5f}" if self.current_take_profit_price else 'N/A',
+                        'lots_size': f"{position_size / 100000:.3f}" if position_size else 'N/A',
                         'risk_amount': f"{risk_amount:.2f}",
-                        'original_stop_pips': f"{self.current_original_stop_pips:.1f}" if self.current_original_stop_pips else 'N/A',
-                        'buffer_pips': f"{self.spread_buffer_pips}",
-                        'adjusted_stop_pips': f"{self.current_adjusted_stop_pips:.1f}" if self.current_adjusted_stop_pips else 'N/A',
-                        'take_profit_ratio': f"{self.current_risk_reward_target:.1f}" if self.current_risk_reward_target else 'N/A',
-                        'highest_ratio': f"{highest_ratio:.2f}",
-                        'potential_profit': f"{potential_profit:.2f}",
-                        'actual_profit': f"{profit:.2f}",
-                        'lowest_ratio': f"{lowest_ratio:.2f}",
-                        'potential_loss': f"{potential_loss:.2f}",
+                        'spread_buffer_pips': f"{self.spread_buffer_pips}",
+                        'risk_reward_ratio': f"{self.current_risk_reward_target:.1f}:1" if self.current_risk_reward_target else 'N/A',
+                        'top_price': f"{top_price:.5f}" if top_price else 'N/A',
+                        'bottom_price': f"{bottom_price:.5f}" if bottom_price else 'N/A',
+                        'max_profit': f"${max_profit:.2f}",
+                        'max_loss': f"${max_loss:.2f}",
+                        'realized_profit_loss': f"${profit:.2f}" if profit >= 0 else f"-${abs(profit):.2f}",
+                        'close_time': close_time_pt,
                         'position_status': 'CLOSED',
+                        'close_reason': close_reason,
                         'take_profit_hit': take_profit_hit,
                         'stop_loss_hit': stop_loss_hit
                     }
-                    self.csv_logger.log_trade(csv_data)
-                    self.logger.info(f"   💾 Logged external close to CSV: Trade #{self.current_trade_id}, P/L=${profit:.2f} ({pl_percentage:.2f}%), TP={take_profit_hit}, SL={stop_loss_hit}")
+                    # Add milestone columns if tracking is enabled
+                    csv_data = self._add_milestone_columns_to_csv_data(csv_data)
+                    # Add news_time column if news logging is enabled
+                    csv_data = self._add_news_column_to_csv_data(csv_data, self.current_trade_open_time, close_time)
+                    # Update existing OPEN row or add new row
+                    if self.csv_logger.has_open_trade(self.current_trade_id):
+                        self.csv_logger.update_trade(self.current_trade_id, csv_data)
+                        self.logger.info(f"   💾 Updated CSV: Trade #{self.current_trade_id} {close_reason}, P/L=${profit:.2f} ({pl_percentage:.2f}%)")
+                    else:
+                        self.csv_logger.log_trade(csv_data)
+                        self.logger.info(f"   💾 Logged external close to CSV: Trade #{self.current_trade_id}, P/L=${profit:.2f} ({pl_percentage:.2f}%), TP={take_profit_hit}, SL={stop_loss_hit}")
 
                     # Reset trade tracker
                     self.trade_tracker.reset()
@@ -2062,11 +2614,11 @@ class MarketAwareTradingBot:
                     self.current_adjusted_stop_pips = None
 
                     # SCALPING: Check if TP was hit and scalping is active
-                    if self.scalping_active and take_profit_hit == 'TRUE':
+                    if self.scalping_active and take_profit_hit == 'YES':
                         self.logger.info("🔄 SCALPING: Take profit hit - checking for re-entry opportunity")
                         # Don't reset signal state - keep scalping active for re-entry
                         # The scalping re-entry will be checked below
-                    elif self.scalping_active and stop_loss_hit == 'TRUE':
+                    elif self.scalping_active and stop_loss_hit == 'YES':
                         # Stop loss hit - deactivate scalping
                         self.reset_scalping_state("Stop loss hit")
                         self.last_signal_candle_time = None
@@ -2141,15 +2693,19 @@ class MarketAwareTradingBot:
                 self.logger.info(f"   SuperTrend: {supertrend_str}")
                 self.logger.info(f"   Trend: {signal_info['trend']}")
 
-            # Update highest and lowest price tracking during open position
+            # Update highest and lowest price tracking during open position using wick prices
             if current_position and current_position['units'] != 0:
-                current_price = signal_info['price']
+                # Use candle high for top_price (upper wick)
+                candle_high = signal_info.get('high') or signal_info['price']
+                # Use candle low for bottom_price (lower wick)
+                candle_low = signal_info.get('low') or signal_info['price']
+
                 if self.highest_price_during_trade is not None:
-                    if current_price > self.highest_price_during_trade:
-                        self.highest_price_during_trade = current_price
+                    if candle_high > self.highest_price_during_trade:
+                        self.highest_price_during_trade = candle_high
                 if self.lowest_price_during_trade is not None:
-                    if current_price < self.lowest_price_during_trade:
-                        self.lowest_price_during_trade = current_price
+                    if candle_low < self.lowest_price_during_trade:
+                        self.lowest_price_during_trade = candle_low
 
             # SCALPING: Check for re-entry when no position and scalping is active
             if self.scalping_active and (current_position is None or current_position['units'] == 0):
@@ -2290,7 +2846,7 @@ class MarketAwareTradingBot:
                         self.logger.error(f"❌ Trade missing ID: {trade}")
                         continue
 
-                    # Initialize tracking for existing trade (CSV only logged on close)
+                    # Initialize tracking for existing trade
                     if trade['instrument'] == self.instrument:
                         # Handle different possible key names for units (same as above)
                         tracking_units = None
@@ -2298,26 +2854,68 @@ class MarketAwareTradingBot:
                             if key in trade:
                                 tracking_units = float(trade[key])
                                 break
-                        
+
                         if tracking_units is None:
                             self.logger.error(f"❌ Unable to find units for tracking trade {trade_id}. Available keys: {list(trade.keys())}")
                             continue
-                            
+
                         self.current_trade_id = trade_id
                         self.current_position_side = 'LONG' if tracking_units > 0 else 'SHORT'
                         self.current_entry_price = float(trade['price'])
                         self.current_position_size = abs(tracking_units)
-                        
+
                         # Initialize trade tracker
                         self.trade_tracker.entry_price = self.current_entry_price
                         self.trade_tracker.position_side = self.current_position_side
                         self.trade_tracker.units = self.current_position_size
-                        
+
                         if trade.get('stopLossOrder'):
                             self.current_stop_loss_price = float(trade['stopLossOrder']['price'])
                             self.current_stop_loss_order_id = trade['stopLossOrder']['id']
-                        
+
+                        if trade.get('takeProfitOrder'):
+                            self.current_take_profit_price = float(trade['takeProfitOrder']['price'])
+
+                        # Get open time from trade
+                        # Note: get_trades() returns 'open_time' (underscore), not 'openTime' (camelCase)
+                        open_time_str = trade.get('open_time', '') or trade.get('openTime', '')
+                        if open_time_str:
+                            try:
+                                # Parse OANDA timestamp format
+                                self.current_trade_open_time = pd.to_datetime(open_time_str).to_pydatetime()
+                                self.logger.debug(f"📅 Trade open time from OANDA: {open_time_str} -> {self.current_trade_open_time}")
+                            except Exception as e:
+                                self.logger.warning(f"⚠️  Failed to parse open_time '{open_time_str}': {e}")
+                                self.current_trade_open_time = datetime.now()
+                        else:
+                            self.logger.warning(f"⚠️  No open_time found in trade data. Available keys: {list(trade.keys())}")
+                            self.current_trade_open_time = datetime.now()
+
+                        # Get unrealized P/L
+                        unrealized_pl = float(trade.get('unrealizedPL', 0))
+
+                        # Calculate risk amount from stop loss distance
+                        if self.current_stop_loss_price:
+                            stop_distance = abs(self.current_entry_price - self.current_stop_loss_price)
+                            self.current_risk_amount = stop_distance * self.current_position_size
+
+                            # Calculate R:R ratio if we have take profit
+                            if self.current_take_profit_price:
+                                tp_distance = abs(self.current_take_profit_price - self.current_entry_price)
+                                self.current_risk_reward_target = tp_distance / stop_distance if stop_distance > 0 else 1.0
+                        else:
+                            self.current_risk_amount = 100  # Default
+                            self.current_risk_reward_target = 1.0
+
+                        self.trade_tracker.risk_amount = self.current_risk_amount
+
                         self.logger.info(f"🔄 Resumed tracking existing {self.current_position_side} position (Trade ID: {trade_id})")
+
+                        # Catch up milestone tracking from CSV/max profit
+                        self._catchup_milestone_tracking()
+
+                        # Always update CSV on restart to preserve/update dynamic values (top_price, bottom_price, etc.)
+                        self._log_existing_position_to_csv(trade, account_summary)
                 
                 except Exception as e:
                     self.logger.error(f"❌ Error processing trade {trade_id}: {e}")
@@ -2325,6 +2923,137 @@ class MarketAwareTradingBot:
                     
         except Exception as e:
             self.logger.error(f"❌ Error in check_existing_trades: {e}", exc_info=True)
+
+    def _log_existing_position_to_csv(self, trade, account_summary):
+        """Log existing position to CSV when new format is created after backup"""
+        try:
+            # Get current market trend
+            market_trend = self.check_market_trend()
+            market = market_trend.upper() if market_trend in ['BEAR', 'BULL'] else 'BEAR'
+
+            # Format entry time in configured timezone
+            entry_time_pt = self._format_time_tz(self.current_trade_open_time) if self.current_trade_open_time else self._format_time_tz(datetime.now())
+
+            # Get current price for unrealized P/L calculation
+            current_price = self.current_entry_price
+            try:
+                pricing = self.client.get_pricing(self.instrument)
+                if pricing:
+                    current_price = float(pricing.get('price', self.current_entry_price))
+            except:
+                pass
+
+            # Calculate current unrealized P/L
+            unrealized_pl = float(trade.get('unrealizedPL', 0))
+
+            # Position size in lots
+            position_lots = self.current_position_size / 100000
+
+            # Get spread buffer from config
+            spread_buffer = self.config.get('stoploss', {}).get('spread_buffer_pips', 3)
+
+            # Check if there's already an OPEN row for this trade (multiple restarts)
+            existing_trade = self.csv_logger.get_open_trade(self.current_trade_id)
+            existing_top = None
+            existing_bottom = None
+            if existing_trade:
+                try:
+                    existing_top = float(existing_trade.get('top_price', '0'))
+                    existing_bottom = float(existing_trade.get('bottom_price', '0'))
+                except (ValueError, TypeError):
+                    pass
+
+            # Fetch candle data to get actual wick prices since trade opened
+            candle_top = self.current_entry_price
+            candle_bottom = self.current_entry_price
+            try:
+                # Fetch recent candles (enough to cover trade duration)
+                candles_df = self.client.get_candles(self.instrument, self.granularity, count=200)
+                if candles_df is not None and len(candles_df) > 0:
+                    # Filter candles from trade open time to now
+                    if self.current_trade_open_time:
+                        trade_open_ts = pd.Timestamp(self.current_trade_open_time)
+                        if trade_open_ts.tzinfo is None:
+                            trade_open_ts = trade_open_ts.tz_localize('UTC')
+                        # Filter using index (time is set as index in OANDA client)
+                        candles_since_open = candles_df[candles_df.index >= trade_open_ts]
+                        if len(candles_since_open) > 0:
+                            candle_top = candles_since_open['high'].max()  # Highest wick
+                            candle_bottom = candles_since_open['low'].min()  # Lowest wick
+                        else:
+                            # Use all candles if none match
+                            candle_top = candles_df['high'].max()
+                            candle_bottom = candles_df['low'].min()
+                    else:
+                        # No open time, use recent candles
+                        candle_top = candles_df['high'].max()
+                        candle_bottom = candles_df['low'].min()
+            except Exception as e:
+                self.logger.warning(f"⚠️  Could not fetch candle data for wick prices: {e}")
+
+            # Preserve highest top_price and lowest bottom_price across restarts
+            if existing_top and existing_top > 0:
+                top_price = max(existing_top, candle_top)
+            else:
+                top_price = candle_top
+            if existing_bottom and existing_bottom > 0:
+                bottom_price = min(existing_bottom, candle_bottom)
+            else:
+                bottom_price = candle_bottom
+
+            # Initialize high/low tracking with preserved values
+            self.highest_price_during_trade = top_price
+            self.lowest_price_during_trade = bottom_price
+
+            # Calculate max profit/loss based on wick prices
+            if self.current_position_side == 'LONG':
+                max_profit = (top_price - self.current_entry_price) * self.current_position_size
+                max_loss = (bottom_price - self.current_entry_price) * self.current_position_size
+            else:  # SHORT
+                max_profit = (self.current_entry_price - bottom_price) * self.current_position_size
+                max_loss = (self.current_entry_price - top_price) * self.current_position_size
+
+            # Build CSV data - avoid N/A by using actual values
+            csv_data = {
+                'fr': self.instrument,
+                'tf': self.timeframe.replace('m', 'min'),
+                'market': market,
+                'signal': self.current_position_side,
+                'time': entry_time_pt,
+                'tradeID': self.current_trade_id,
+                'entry_price': f"{self.current_entry_price:.5f}",
+                'stop_loss': f"{self.current_stop_loss_price:.5f}" if self.current_stop_loss_price else f"{self.current_entry_price:.5f}",
+                'take_profit': f"{self.current_take_profit_price:.5f}" if self.current_take_profit_price else f"{self.current_entry_price:.5f}",
+                'lots_size': f"{position_lots:.3f}",
+                'risk_amount': f"{self.current_risk_amount:.2f}" if self.current_risk_amount else "100.00",
+                'spread_buffer_pips': f"{spread_buffer}",
+                'risk_reward_ratio': f"{self.current_risk_reward_target:.1f}:1" if self.current_risk_reward_target else "1.0:1",
+                'top_price': f"{top_price:.5f}",
+                'bottom_price': f"{bottom_price:.5f}",
+                'max_profit': f"${max_profit:.2f}" if max_profit >= 0 else f"-${abs(max_profit):.2f}",
+                'max_loss': f"${max_loss:.2f}" if max_loss >= 0 else f"-${abs(max_loss):.2f}",
+                'realized_profit_loss': f"${unrealized_pl:.2f}" if unrealized_pl >= 0 else f"-${abs(unrealized_pl):.2f}",
+                'close_time': '',
+                'position_status': 'OPEN',
+                'close_reason': '',
+                'take_profit_hit': 'NO',
+                'stop_loss_hit': 'NO'
+            }
+            # Add milestone columns if tracking is enabled (empty for OPEN trades)
+            csv_data = self._add_milestone_columns_to_csv_data(csv_data)
+            # Add news_time column if news logging is enabled (empty for OPEN trades)
+            csv_data = self._add_news_column_to_csv_data(csv_data)
+
+            # Update existing row or add new row
+            if existing_trade:
+                self.csv_logger.update_trade(self.current_trade_id, csv_data)
+                self.logger.info(f"📝 Updated existing OPEN trade in CSV (Trade ID: {self.current_trade_id})")
+            else:
+                self.csv_logger.log_trade(csv_data)
+                self.logger.info(f"📝 Logged existing position to new CSV format (Trade ID: {self.current_trade_id})")
+
+        except Exception as e:
+            self.logger.error(f"❌ Error logging existing position to CSV: {e}")
 
     def _execute_catch_up(self):
         """

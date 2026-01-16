@@ -93,14 +93,20 @@ class FixedBacktestEngine:
         
         # Update the existing record in signal_analysis
         # Find the last trade record that matches this position
+        import pytz
+        pacific_tz = pytz.timezone('US/Pacific')
+        close_time_pt = close_time.astimezone(pacific_tz).strftime('%Y-%m-%d %H:%M:%S') if close_time.tzinfo else close_time.strftime('%Y-%m-%d %H:%M:%S')
+
         for i in range(len(self.signal_analysis) - 1, -1, -1):
             trade = self.signal_analysis[i]
-            if (trade['signal'] == position['signal'] and 
+            if (trade['signal'] == position['signal'] and
                 trade['entry_price'] == f"{position['entry_price']:.5f}"):
-                
+
                 # Update with market close results
-                trade['actual_profit'] = f"${pnl:.2f}"
-                trade['position_status'] = 'MARKET_CLOSE'
+                trade['realized_profit_loss'] = f"${pnl:.2f}" if pnl >= 0 else f"-${abs(pnl):.2f}"
+                trade['close_time'] = close_time_pt
+                trade['position_status'] = 'CLOSED'
+                trade['close_reason'] = close_reason
                 trade['take_profit_hit'] = 'NO'
                 trade['stop_loss_hit'] = 'NO'
                 break
@@ -440,49 +446,62 @@ class FixedBacktestEngine:
                             self.logger.info(f"   📊 Max Potential: ${unrealized_pl_max:.2f} (ratio: {max_profit_ratio:.2f}:1)")
                             self.logger.info(f"   ⏸️  Position OPEN: TP={take_profit_price:.5f}, SL={stop_loss:.5f}, Max={max_profit_price:.5f}")
                         
-                        # Store for CSV (convert to UTC-8 timezone)
-                        from datetime import timezone, timedelta
-                        utc_minus_8 = current_time.tz_convert(timezone(timedelta(hours=-8)))
-                        
+                        # Store for CSV (convert to Pacific Time)
+                        import pytz
+                        pacific_tz = pytz.timezone('US/Pacific')
+                        entry_time_pt = current_time.astimezone(pacific_tz).strftime('%Y-%m-%d %H:%M:%S')
+
                         # Convert position size to lots for readability
                         position_lots = position_size / 100000
-                        
-                        # Calculate stop loss distances in pips (from fill price)
-                        # Original distance (without buffer)
-                        original_stop_distance_pips = abs(entry_fill_price - signal_info['supertrend']) * 10000
-                        # Adjusted distance (with buffer)
-                        adjusted_stop_distance_pips = abs(entry_fill_price - stop_loss) * 10000
-                        
-                        # Determine position status
+
+                        # Determine position status and close reason
                         if take_profit_hit:
-                            position_status = 'TP_HIT'
+                            position_status = 'CLOSED'
+                            close_reason = 'TP_HIT'
+                            # Calculate close_time (estimate based on price data where TP was hit)
+                            close_time_pt = next_signal_time.astimezone(pacific_tz).strftime('%Y-%m-%d %H:%M:%S') if next_signal_time else 'N/A'
                         elif 'stop_loss_hit' in locals() and stop_loss_hit:
-                            position_status = 'SL_HIT'
+                            position_status = 'CLOSED'
+                            close_reason = 'SL_HIT'
+                            close_time_pt = next_signal_time.astimezone(pacific_tz).strftime('%Y-%m-%d %H:%M:%S') if next_signal_time else 'N/A'
                         else:
                             position_status = 'OPEN'
-                        
+                            close_reason = 'N/A'
+                            close_time_pt = 'N/A'
+
+                        # Calculate max_profit and max_loss in dollars
+                        if position_type == 'LONG':
+                            max_profit_dollars = unrealized_pl_max
+                            max_loss_dollars = unrealized_pl_min
+                        else:  # SHORT
+                            max_profit_dollars = unrealized_pl_max
+                            max_loss_dollars = unrealized_pl_min
+
                         self.signal_analysis.append({
+                            'fr': self.instrument,
                             'market': current_market_trend,  # 3H PP market trend
-                            'signal': current_actual_signal,       # 5m/15m PP signal
-                            'time': utc_minus_8.strftime('%b %d, %I:%M%p'),
+                            'signal': current_actual_signal,       # 5m/15m PP signal (BUY or SELL)
+                            'time': entry_time_pt,
+                            'tradeID': f"BT{self.trade_id_counter}",  # Backtest trade ID
                             'entry_price': f"{entry_fill_price:.5f}",  # Use fill price, not signal price
-                            'stop_loss_price': f"{stop_loss:.5f}",
-                            'take_profit_price': f"{take_profit_price:.5f}",
-                            'position_lots': f"{position_lots:.2f}",
-                            'risk_amount': f"${risk_amount:.0f}",
-                            'original_stop_pips': f"{original_stop_distance_pips:.1f}",
-                            'buffer_pips': f"{spread_buffer_pips}",
-                            'adjusted_stop_pips': f"{adjusted_stop_distance_pips:.1f}",
-                            'take_profit_ratio': f"{take_profit_ratio:.1f}:1",
-                            'highest_ratio': f"{max_profit_ratio:.2f}:1",
-                            'potential_profit': f"${unrealized_pl_max:.2f}",
-                            'actual_profit': f"${actual_profit:.2f}",
-                            'lowest_ratio': f"{min_loss_ratio:.2f}:1",
-                            'potential_loss': f"${unrealized_pl_min:.2f}",
+                            'stop_loss': f"{stop_loss:.5f}",
+                            'take_profit': f"{take_profit_price:.5f}",
+                            'lots_size': f"{position_lots:.3f}",
+                            'risk_amount': f"{risk_amount:.2f}",
+                            'spread_buffer_pips': f"{spread_buffer_pips}",
+                            'risk_reward_ratio': f"{take_profit_ratio:.1f}:1",
+                            'top_price': f"{highest_price:.5f}",
+                            'bottom_price': f"{lowest_price:.5f}",
+                            'max_profit': f"${max_profit_dollars:.2f}",
+                            'max_loss': f"${max_loss_dollars:.2f}",
+                            'realized_profit_loss': f"${actual_profit:.2f}" if actual_profit >= 0 else f"-${abs(actual_profit):.2f}",
+                            'close_time': close_time_pt,
                             'position_status': position_status,
+                            'close_reason': close_reason,
                             'take_profit_hit': 'YES' if take_profit_hit else 'NO',
                             'stop_loss_hit': 'YES' if ('stop_loss_hit' in locals() and stop_loss_hit) else 'NO'
                         })
+                        self.trade_id_counter += 1
                         
                         # STEP 2: Track position if it's still open after analysis
                         if position_status == 'OPEN':
@@ -591,12 +610,14 @@ class FixedBacktestEngine:
         # Create DataFrame
         df = pd.DataFrame(results['signal_analysis'])
 
-        # Reorder columns for CSV (more readable format with new enhancements)
+        # Reorder columns for CSV (new cleaner format)
         csv_columns = [
-            'market', 'signal', 'time', 'entry_price', 'stop_loss_price', 'take_profit_price',
-            'position_lots', 'risk_amount', 'original_stop_pips', 'buffer_pips', 'adjusted_stop_pips',
-            'take_profit_ratio', 'highest_ratio', 'potential_profit', 'actual_profit',
-            'lowest_ratio', 'potential_loss', 'position_status', 'take_profit_hit', 'stop_loss_hit'
+            'fr', 'market', 'signal', 'time', 'tradeID',
+            'entry_price', 'stop_loss', 'take_profit', 'lots_size', 'risk_amount',
+            'spread_buffer_pips', 'risk_reward_ratio',
+            'top_price', 'bottom_price', 'max_profit', 'max_loss',
+            'realized_profit_loss', 'close_time', 'position_status', 'close_reason',
+            'take_profit_hit', 'stop_loss_hit'
         ]
 
         df_csv = df[csv_columns].copy()
