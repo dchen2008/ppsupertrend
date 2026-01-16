@@ -2169,6 +2169,31 @@ class MarketAwareTradingBot:
                     self.last_signal = signal_info
                     return
 
+            # ============================================================================
+            # PP SIGNAL SWING LOGIC - Order of Operations
+            # ============================================================================
+            # When price crosses SuperTrend (signal swing from SELL→BUY or BUY→SELL):
+            #
+            # 1. EMERGENCY CLOSE (runs FIRST, before signal detection)
+            #    - Compares closed_candle_close vs trailing_down (SHORT) or trailing_up (LONG)
+            #    - Uses signal_row values (closed candle) to avoid reset issues
+            #    - If crossed: close position IMMEDIATELY, return early
+            #    - No SL update needed (position closed)
+            #
+            # 2. SIGNAL DETECTION (should_trade)
+            #    - If BUY/SELL signal detected: action=CLOSE (or OPEN_LONG/OPEN_SHORT)
+            #    - Execute trade in IF branch
+            #    - No SL update (not in ELSE branch)
+            #
+            # 3. TRAILING STOP UPDATE (ELSE branch - only when NO signal)
+            #    - Only runs when signal is HOLD_LONG or HOLD_SHORT
+            #    - Position is being held, update SL to trail price
+            #    - During signal swing, this is SKIPPED (position closed in step 1 or 2)
+            #
+            # Key principle: During signal swing, NO useless SL updates occur because
+            # the position is closed before we reach the SL update code.
+            # ============================================================================
+
             # EMERGENCY CLOSE CHECK - Run BEFORE signal processing
             # This must run first to close positions immediately when price crosses trailing stop,
             # even if a signal is about to be detected (provides immediate protection)
@@ -2226,8 +2251,13 @@ class MarketAwareTradingBot:
                 else:
                     self.logger.warning(f"⚠️  Trade failed - NOT saving signal state (will retry on next cycle)")
             else:
+                # NO SIGNAL DETECTED - We are in HOLD_LONG or HOLD_SHORT state
+                # This means NO signal swing is occurring, safe to update trailing stop
                 if current_position and current_position['units'] != 0:
-                    # Normal trailing stop update (emergency close already checked above)
+                    # Normal trailing stop update - only runs when:
+                    # 1. Emergency close did NOT trigger (price hasn't crossed trailing stop)
+                    # 2. No BUY/SELL signal detected (still holding position)
+                    # During signal swing, this code is NEVER reached
                     self.update_trailing_stop_loss(signal_info, current_position)
 
             self.last_signal = signal_info
