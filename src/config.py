@@ -79,32 +79,52 @@ class OANDAConfig:
         },
         'os1': {
             'api_key': 'a61dfcb2cf7a6481c0373f80469371dc-d8255db9fe371a77c0d28d3ab7c64bf2',
-            'account_id': '101-001-31676122-002',
+            'account_id': '101-001-31676122-001',
             'is_practice': True
         },        
         'os2': {
             'api_key': 'a61dfcb2cf7a6481c0373f80469371dc-d8255db9fe371a77c0d28d3ab7c64bf2',
-            'account_id': '101-001-31676122-003',
+            'account_id': '101-001-31676122-002',
             'is_practice': True
         },        
         'os3': {
             'api_key': 'a61dfcb2cf7a6481c0373f80469371dc-d8255db9fe371a77c0d28d3ab7c64bf2',
-            'account_id': '101-001-31676122-004',
+            'account_id': '101-001-31676122-003',
             'is_practice': True
         },        
         'os4': {
             'api_key': 'a61dfcb2cf7a6481c0373f80469371dc-d8255db9fe371a77c0d28d3ab7c64bf2',
-            'account_id': '101-001-31676122-005',
+            'account_id': '101-001-31676122-004',
             'is_practice': True
         },        
         'os5': {
             'api_key': 'a61dfcb2cf7a6481c0373f80469371dc-d8255db9fe371a77c0d28d3ab7c64bf2',
-            'account_id': '101-001-31676122-006',
+            'account_id': '101-001-31676122-005',
             'is_practice': True
         },        
         'os6': {
             'api_key': 'a61dfcb2cf7a6481c0373f80469371dc-d8255db9fe371a77c0d28d3ab7c64bf2',
+            'account_id': '101-001-31676122-006',
+            'is_practice': True
+        },        
+        'os7': {
+            'api_key': 'a61dfcb2cf7a6481c0373f80469371dc-d8255db9fe371a77c0d28d3ab7c64bf2',
             'account_id': '101-001-31676122-007',
+            'is_practice': True
+        },        
+        'os8': {
+            'api_key': 'a61dfcb2cf7a6481c0373f80469371dc-d8255db9fe371a77c0d28d3ab7c64bf2',
+            'account_id': '101-001-31676122-008',
+            'is_practice': True
+        },        
+        'os9': {
+            'api_key': 'a61dfcb2cf7a6481c0373f80469371dc-d8255db9fe371a77c0d28d3ab7c64bf2',
+            'account_id': '101-001-31676122-009',
+            'is_practice': True
+        },        
+        'os10': {
+            'api_key': 'a61dfcb2cf7a6481c0373f80469371dc-d8255db9fe371a77c0d28d3ab7c64bf2',
+            'account_id': '101-001-31676122-010',
             'is_practice': True
         }
     }

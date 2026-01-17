@@ -17,11 +17,11 @@ stoploss:
 # Conservative Risk/Reward configuration
 risk_reward:
   bear_market:
-    short_rr: 0.6    # Conservative approach
-    long_rr: 0.2     # Conservative approach
+    short_rr: 5.0    # Conservative approach
+    long_rr: 5.0     # Conservative approach
   bull_market:
-    short_rr: 0.2    # Conservative approach
-    long_rr: 0.6     # Conservative approach
+    short_rr: 5.0    # Conservative approach
+    long_rr: 5.0     # Conservative approach
     
 # Position sizing configuration based on market trend
 position_sizing:
