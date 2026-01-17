@@ -10,8 +10,57 @@ class OANDAConfig:
     ACCOUNTS = {
         # email: dchen2008@gmail.com
         'account1': {
-            'api_key': 'ce37b575a2ce3880061d11fc05101f11-6e2a20ddd9e21e58e87c50e0ff03190f',
+            'api_key': '170c43072eeb5145da04852611a7280b-63e88f62be70febdbb20dd7a3a03915f',
             'account_id': '101-001-35749385-001',
+            'is_practice': True
+        },
+        'don2': {
+            'api_key': '170c43072eeb5145da04852611a7280b-63e88f62be70febdbb20dd7a3a03915f',
+            'account_id': '101-001-35749385-002',
+            'is_practice': True
+        },
+        # 
+        'don3': {
+            'api_key': '170c43072eeb5145da04852611a7280b-63e88f62be70febdbb20dd7a3a03915f',
+            'account_id': '101-001-35749385-003',
+            'is_practice': True
+        },
+        # 
+        'don4': {
+            'api_key': '170c43072eeb5145da04852611a7280b-63e88f62be70febdbb20dd7a3a03915f',
+            'account_id': '101-001-35749385-004',
+            'is_practice': True
+        },
+        # 
+        'don5': {
+            'api_key': '170c43072eeb5145da04852611a7280b-63e88f62be70febdbb20dd7a3a03915f',
+            'account_id': '101-001-35749385-005',
+            'is_practice': True
+        },
+        # 
+        'don6': {
+            'api_key': '170c43072eeb5145da04852611a7280b-63e88f62be70febdbb20dd7a3a03915f',
+            'account_id': '101-001-35749385-006',
+            'is_practice': True
+        },
+        'don7': {
+            'api_key': '170c43072eeb5145da04852611a7280b-63e88f62be70febdbb20dd7a3a03915f',
+            'account_id': '101-001-35749385-007',
+            'is_practice': True
+        },
+        'don8': {
+            'api_key': '170c43072eeb5145da04852611a7280b-63e88f62be70febdbb20dd7a3a03915f',
+            'account_id': '101-001-35749385-008',
+            'is_practice': True
+        },
+        'don9': {
+            'api_key': '170c43072eeb5145da04852611a7280b-63e88f62be70febdbb20dd7a3a03915f',
+            'account_id': '101-001-35749385-009',
+            'is_practice': True
+        },
+        'don10': {
+            'api_key': '170c43072eeb5145da04852611a7280b-63e88f62be70febdbb20dd7a3a03915f',
+            'account_id': '101-001-35749385-009',
             'is_practice': True
         },
         # email: dongchen168@gmail.com
@@ -30,51 +79,6 @@ class OANDAConfig:
         'account4': {
             'api_key': '97e97cf3987d09e57edbc71c4cac6ad9-196ea977cd536d28e4f7bffe0ba4f9c1',
             'account_id': '101-001-38195467-001',
-            'is_practice': True
-        },
-        # 
-        'account21': {
-            'api_key': 'ce37b575a2ce3880061d11fc05101f11-6e2a20ddd9e21e58e87c50e0ff03190f',
-            'account_id': '101-001-35749385-002',
-            'is_practice': True
-        },
-        # 
-        'account22': {
-            'api_key': 'ce37b575a2ce3880061d11fc05101f11-6e2a20ddd9e21e58e87c50e0ff03190f',
-            'account_id': '101-001-35749385-003',
-            'is_practice': True
-        },
-        # 
-        'account23': {
-            'api_key': 'ce37b575a2ce3880061d11fc05101f11-6e2a20ddd9e21e58e87c50e0ff03190f',
-            'account_id': '101-001-35749385-004',
-            'is_practice': True
-        },
-        # 
-        'account24': {
-            'api_key': 'ce37b575a2ce3880061d11fc05101f11-6e2a20ddd9e21e58e87c50e0ff03190f',
-            'account_id': '101-001-35749385-005',
-            'is_practice': True
-        },
-        # 
-        'account25': {
-            'api_key': 'ce37b575a2ce3880061d11fc05101f11-6e2a20ddd9e21e58e87c50e0ff03190f',
-            'account_id': '101-001-35749385-006',
-            'is_practice': True
-        },
-        'account26': {
-            'api_key': 'ce37b575a2ce3880061d11fc05101f11-6e2a20ddd9e21e58e87c50e0ff03190f',
-            'account_id': '101-001-35749385-007',
-            'is_practice': True
-        },
-        'test1': {
-            'api_key': 'ce37b575a2ce3880061d11fc05101f11-6e2a20ddd9e21e58e87c50e0ff03190f',
-            'account_id': '101-001-35749385-008',
-            'is_practice': True
-        },
-        'test2': {
-            'api_key': 'ce37b575a2ce3880061d11fc05101f11-6e2a20ddd9e21e58e87c50e0ff03190f',
-            'account_id': '101-001-35749385-009',
             'is_practice': True
         },
         'os1': {
@@ -177,7 +181,6 @@ class OANDAConfig:
             'account_id': '101-001-31676122-020',
             'is_practice': True
         }
-    }
     }
 
     # Currently active account (default to first account if not set)

@@ -1,0 +1,4 @@
+market,signal,time,tradeID,entry_price,stop_loss_price,take_profit_price,position_lots,risk_amount,original_stop_pips,buffer_pips,adjusted_stop_pips,take_profit_ratio,highest_ratio,potential_profit,actual_profit,lowest_ratio,potential_loss,position_status,take_profit_hit,stop_loss_hit
+BEAR,SHORT,N/A,224,1.16361,1.16434,1.16293,1.023,100.00,N/A,3,N/A,N/A,0.00,34.77,0.00,0.00,-25.57,CLOSED,UNKNOWN,UNKNOWN
+BEAR,SHORT,2026-01-15 04:56:56,244,1.16230,1.16414,1.16131,0.842,100.00,16.5,3,19.5,0.6,0.56,55.54,0.00,-0.19,-18.51,CLOSED,UNKNOWN,UNKNOWN
+BEAR,SHORT,N/A,254,1.16040,1.16134,1.15959,0.790,100.00,N/A,3,N/A,N/A,0.00,-22.92,0.00,0.00,-72.72,CLOSED,FALSE,FALSE
