@@ -32,7 +32,7 @@ python3 fixed_backtest.py at=account1 fr=EUR_USD tf=5m bt="01/06/2026 00:00:00,0
 # Download OANDA candle data
 ## 2025's data
 ./pull_oanda_candle_data.sh range="11/01/2025 16:00:00,11/30/2025 16:00:00" tf="M1,M5,M15,H3"
-./pull_oanda_candle_data.sh range="12/01/2025 16:00:00,11/31/2025 16:00:00" tf="M1,M5,M15,H3"
+./pull_oanda_candle_data.sh range="12/01/2025 16:00:00,12/31/2025 16:00:00" tf="M1,M5,M15,H3"
 ## 2026's data
 ./pull_oanda_candle_data.sh range="01/01/2026 16:00:00,01/09/2026 16:00:00" tf="M1,M5,M15,H3"
 
@@ -52,8 +52,13 @@ python3 check_balance.py                     # Check account balance
 tail -f account1/logs/bot_EUR_USD_5m_market_aware.log
 
 # Run tests
-python tests/test_connection.py
-python tests/test_market_aware_bot.py
+pytest tests/                            # Run all unit tests
+python tests/test_connection.py          # Test OANDA connection
+python tests/test_market_aware_bot.py    # Test market-aware bot
+
+# Bot management
+./scripts/stop_all_bots.sh               # Stop all running bot instances
+./scripts/kill_duplicate_bots.sh         # Kill duplicate bot processes
 
 # Debug tools
 python3 analyze_signal_timing.py fr=EUR_USD tf=5m start="2026-01-04 16:00:00" end="2026-01-09 16:00:00"
